@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect x="0" y="0" width="200" height="60" rx="8" fill="#6b6b47" opacity="0.8"/>
+  
+  <!-- 光芒效果 -->
+  <circle cx="40" cy="30" r="25" fill="#ffcc00" opacity="0.3"/>
+  <circle cx="40" cy="30" r="20" fill="#ffcc00" opacity="0.5"/>
+  
+  <!-- 卡通狗脸 -->
+  <circle cx="40" cy="30" r="15" fill="#d4a017"/>
+  <circle cx="35" cy="27" r="2" fill="#333"/>
+  <circle cx="45" cy="27" r="2" fill="#333"/>
+  
+  <!-- 微笑 -->
+  <path d="M35 33 Q40 37 45 33" stroke="#333" stroke-width="1.5" fill="none"/>
+  
+  <!-- 耳朵 -->
+  <path d="M30 20 Q32 15 36 18" fill="#d4a017"/>
+  <path d="M50 20 Q48 15 44 18" fill="#d4a017"/>
+  
+  <!-- 身体 -->
+  <rect x="35" y="40" width="10" height="15" rx="2" fill="#e0e0d1"/>
+  
+  <!-- 文字部分 -->
+  <text x="70" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffcc00" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.5))">Chill Guy</text>
+  <text x="70" y="48" font-family="Arial, sans-serif" font-size="16" fill="#fff" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.5))">Clicker</text>
+</svg>

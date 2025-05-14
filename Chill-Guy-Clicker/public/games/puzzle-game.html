@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Puzzle Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      color: #333;
+    }
+    .game-container {
+      text-align: center;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+    .puzzle-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+      margin: 20px auto;
+      width: 300px;
+      height: 300px;
+    }
+    .puzzle-tile {
+      background-color: #9932CC;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .puzzle-tile:hover {
+      transform: scale(1.05);
+    }
+    .empty {
+      background-color: transparent;
+      cursor: default;
+    }
+    .empty:hover {
+      transform: none;
+    }
+    .controls {
+      margin-top: 20px;
+    }
+    .btn {
+      background-color: #9932CC;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 0 5px;
+    }
+    .btn:hover {
+      background-color: #7B2C9D;
+    }
+    .moves {
+      margin-top: 15px;
+      font-size: 18px;
+    }
+    .win-message {
+      color: #9932CC;
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <h1>Puzzle Master</h1>
+    <div class="puzzle-grid" id="puzzleGrid"></div>
+    <div class="moves">Moves: <span id="moveCount">0</span></div>
+    <div class="controls">
+      <button id="shuffleBtn" class="btn">Shuffle</button>
+      <button id="solveBtn" class="btn">Solve</button>
+    </div>
+    <div id="winMessage" class="win-message">Puzzle Solved! Congratulations!</div>
+  </div>
+
+  <script>
+    // Game variables
+    const gridSize = 4;
+    const totalTiles = gridSize * gridSize;
+    let tiles = [];
+    let emptyTileIndex = totalTiles - 1;
+    let moveCount = 0;
+    let solved = false;
+    
+    // DOM elements
+    const puzzleGrid = document.getElementById('puzzleGrid');
+    const moveCountDisplay = document.getElementById('moveCount');
+    const shuffleBtn = document.getElementById('shuffleBtn');
+    const solveBtn = document.getElementById('solveBtn');
+    const winMessage = document.getElementById('winMessage');
+    
+    // Initialize the puzzle
+    function initPuzzle() {
+      // Create tiles
+      tiles = Array.from({ length: totalTiles - 1 }, (_, i) => i + 1);
+      tiles.push(0); // Empty tile represented by 0
+      
+      // Create the grid
+      renderPuzzle();
+      
+      // Add event listeners
+      shuffleBtn.addEventListener('click', shufflePuzzle);
+      solveBtn.addEventListener('click', solvePuzzle);
+    }
+    
+    // Render the puzzle grid
+    function renderPuzzle() {
+      puzzleGrid.innerHTML = '';
+      
+      tiles.forEach((tile, index) => {
+        const tileElement = document.createElement('div');
+        tileElement.className = 'puzzle-tile';
+        
+        if (tile === 0) {
+          tileElement.classList.add('empty');
+        } else {
+          tileElement.textContent = tile;
+          tileElement.addEventListener('click', () => moveTile(index));
+        }
+        
+        puzzleGrid.appendChild(tileElement);
+      });
+    }
+    
+    // Move a tile
+    function moveTile(index) {
+      if (solved) return;
+      
+      // Check if the tile is adjacent to the empty tile
+      if (isAdjacent(index, emptyTileIndex)) {
+        // Swap the tile with the empty tile
+        [tiles[index], tiles[emptyTileIndex]] = [tiles[emptyTileIndex], tiles[index]];
+        emptyTileIndex = index;
+        
+        // Update move count
+        moveCount++;
+        moveCountDisplay.textContent = moveCount;
+        
+        // Render the updated puzzle
+        renderPuzzle();
+        
+        // Check if the puzzle is solved
+        checkWin();
+      }
+    }
+    
+    // Check if two tiles are adjacent
+    function isAdjacent(index1, index2) {
+      const row1 = Math.floor(index1 / gridSize);
+      const col1 = index1 % gridSize;
+      const row2 = Math.floor(index2 / gridSize);
+      const col2 = index2 % gridSize;
+      
+      return (
+        (Math.abs(row1 - row2) === 1 && col1 === col2) ||
+        (Math.abs(col1 - col2) === 1 && row1 === row2)
+      );
+    }
+    
+    // Shuffle the puzzle
+    function shufflePuzzle() {
+      // Reset game state
+      moveCount = 0;
+      moveCountDisplay.textContent = moveCount;
+      solved = false;
+      winMessage.style.display = 'none';
+      
+      // Perform random moves to shuffle
+      for (let i = 0; i < 100; i++) {
+        const adjacentTiles = getAdjacentTiles(emptyTileIndex);
+        if (adjacentTiles.length > 0) {
+          const randomIndex = Math.floor(Math.random() * adjacentTiles.length);
+          const tileToMove = adjacentTiles[randomIndex];
+          
+          // Swap the tile with the empty tile
+          [tiles[tileToMove], tiles[emptyTileIndex]] = [tiles[emptyTileIndex], tiles[tileToMove]];
+          emptyTileIndex = tileToMove;
+        }
+      }
+      
+      renderPuzzle();
+    }
+    
+    // Get all tiles adjacent to a given tile
+    function getAdjacentTiles(index) {
+      const row = Math.floor(index / gridSize);
+      const col = index % gridSize;
+      const adjacent = [];
+      
+      // Check up
+      if (row > 0) {
+        adjacent.push(index - gridSize);
+      }
+      
+      // Check down
+      if (row < gridSize - 1) {
+        adjacent.push(index + gridSize);
+      }
+      
+      // Check left
+      if (col > 0) {
+        adjacent.push(index - 1);
+      }
+      
+      // Check right
+      if (col < gridSize - 1) {
+        adjacent.push(index + 1);
+      }
+      
+      return adjacent;
+    }
+    
+    // Solve the puzzle
+    function solvePuzzle() {
+      // Set the tiles to the solved state
+      tiles = Array.from({ length: totalTiles - 1 }, (_, i) => i + 1);
+      tiles.push(0);
+      emptyTileIndex = totalTiles - 1;
+      
+      // Update the display
+      renderPuzzle();
+      
+      // Show win message
+      solved = true;
+      winMessage.style.display = 'block';
+    }
+    
+    // Check if the puzzle is solved
+    function checkWin() {
+      const solvedState = Array.from({ length: totalTiles - 1 }, (_, i) => i + 1).concat([0]);
+      
+      if (JSON.stringify(tiles) === JSON.stringify(solvedState)) {
+        solved = true;
+        winMessage.style.display = 'block';
+      }
+    }
+    
+    // Initialize the game
+    initPuzzle();
+    shufflePuzzle(); // Start with a shuffled puzzle
+  </script>
+</body>
+</html>

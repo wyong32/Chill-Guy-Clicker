@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景圆形 -->
+  <circle cx="30" cy="30" r="25" fill="#41b883" />
+  
+  <!-- 卡通狗脸 -->
+  <circle cx="30" cy="30" r="20" fill="#fff" />
+  <circle cx="22" cy="25" r="3" fill="#333" />
+  <circle cx="38" cy="25" r="3" fill="#333" />
+  
+  <!-- 微笑 -->
+  <path d="M22 35 Q30 42 38 35" stroke="#333" stroke-width="2" fill="none" />
+  
+  <!-- 耳朵 -->
+  <path d="M15 15 Q18 5 25 12" fill="#fff" />
+  <path d="M45 15 Q42 5 35 12" fill="#fff" />
+  
+  <!-- 文字部分 -->
+  <text x="65" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#41b883">Chill Guy</text>
+  <text x="65" y="48" font-family="Arial, sans-serif" font-size="14" fill="#34495e">游戏世界</text>
+</svg>
