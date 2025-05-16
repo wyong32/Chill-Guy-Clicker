@@ -38,71 +38,47 @@
         <div class="footer-section links">
           <h3 class="footer-title">Quick Links</h3>
           <ul class="footer-links">
-            <li><router-link to="/" class="footer-link">Home</router-link></li>
-            <li><router-link to="/" class="footer-link">Hot Games</router-link></li>
-            <li><router-link to="/" class="footer-link">New Games</router-link></li>
-            <li><router-link to="/" class="footer-link">Categories</router-link></li>
-            <li><router-link to="/" class="footer-link">About Us</router-link></li>
+            <li><router-link to="/" class="footer-link">Chill Guy Clicker</router-link></li>
+            <li><router-link to="/Chill-Guy-Girl" class="footer-link">Chill Guy Girl</router-link></li>
+            <li><router-link to="/Chill-Guy-Music" class="footer-link">Chill Guy Music</router-link></li>
+            <li><router-link to="/Chill-Guy-PNG" class="footer-link">Chill Guy PNG</router-link></li>
+            <li><router-link to="/Chill-Guy-Wallpaper" class="footer-link">Chill Guy Wallpaper</router-link></li>
           </ul>
         </div>
         <div class="footer-section categories">
           <h3 class="footer-title">Game Categories</h3>
           <ul class="footer-links">
             <li>
-              <router-link to="/" class="footer-link">Casual Games</router-link>
+              <router-link to="/" class="footer-link">Chill Guy Clicker</router-link>
             </li>
             <li>
-              <router-link to="/" class="footer-link">Adventure Games</router-link>
+              <router-link to="/Chill-Girl-Clicker" class="footer-link">Chill Girl Clicker</router-link>
             </li>
             <li>
-              <router-link to="/" class="footer-link">Puzzle Games</router-link>
+              <router-link to="/Chill-Guy-Clicker-3D" class="footer-link">Chill Guy Clicker 3D</router-link>
             </li>
             <li>
-              <router-link to="/" class="footer-link">Racing Games</router-link>
+              <router-link to="/Chill-Guy-Unification" class="footer-link">Chill Guy: Unification</router-link>
             </li>
             <li>
-              <router-link to="/" class="footer-link">Strategy Games</router-link>
+              <router-link to="/Chill-Guy-Evolution" class="footer-link">Chill Guy Evolution</router-link>
             </li>
           </ul>
         </div>
-        <div class="footer-section contact">
-          <h3 class="footer-title">Contact Us</h3>
-          <div class="contact-info">
-            <div class="contact-item">
-              <svg viewBox="0 0 24 24" width="18" height="18">
-                <path
-                  fill="currentColor"
-                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-                />
-              </svg>
-              <span>contact@chillguygames.com</span>
-            </div>
-            <div class="contact-item">
-              <svg viewBox="0 0 24 24" width="18" height="18">
-                <path
-                  fill="currentColor"
-                  d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
-                />
-              </svg>
-              <span>+1 (555) 123-4567</span>
-            </div>
-            <div class="contact-item">
-              <svg viewBox="0 0 24 24" width="18" height="18">
-                <path
-                  fill="currentColor"
-                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-                />
-              </svg>
-              <span>123 Game Street, San Francisco, CA</span>
-            </div>
-          </div>
+        <div class="footer-section legal">
+          <h3 class="footer-title">Legal</h3>
+          <ul class="footer-links">
+            <li><router-link to="/privacy-policy" class="footer-link">Privacy Policy</router-link></li>
+            <li><router-link to="/terms-of-use" class="footer-link">Terms of Use</router-link></li>
+          </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="copyright">© 2023 Chill Guy Games. All rights reserved.</p>
-        <div class="footer-bottom-links">
-          <router-link to="/" class="footer-bottom-link">Privacy Policy</router-link>
-          <router-link to="/" class="footer-bottom-link">Terms of Use</router-link>
+        <div class="footer-bottom-content">
+          <p class="copyright">© 2023 Chill Guy Games. All rights reserved.</p>
+          <p class="disclaimer">
+            Disclaimer: This website is for entertainment purposes only. All games, images, and content are either owned by Chill Guy Games or used with permission. We are not responsible for any external content linked from this site.
+          </p>
         </div>
       </div>
     </div>
@@ -211,50 +187,33 @@ export default {
   color: var(--accent-color);
 }
 
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
 
-.contact-item {
-  display: flex;
-  align-items: center;
-  color: #fff;
-}
-
-.contact-item svg {
-  margin-right: 10px;
-  color: var(--primary-color);
-}
 
 .footer-bottom {
   border-top: 1px solid var(--border-color);
   padding-top: 20px;
+}
+
+.footer-bottom-content {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  gap: 15px;
 }
 
 .copyright {
   color: #ccc;
   font-size: 14px;
+  margin: 0;
 }
 
-.footer-bottom-links {
-  display: flex;
-  gap: 20px;
-}
-
-.footer-bottom-link {
-  color: #ccc;
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s;
-}
-
-.footer-bottom-link:hover {
-  color: var(--accent-color);
+.disclaimer {
+  color: #aaa;
+  font-size: 12px;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0;
 }
 
 @media (max-width: 992px) {
@@ -268,10 +227,8 @@ export default {
     grid-template-columns: 1fr;
   }
 
-  .footer-bottom {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
+  .disclaimer {
+    font-size: 11px;
   }
 }
 </style>

@@ -14,8 +14,7 @@
               :gameStarted="gameStarted"
               @start-game="startGame"
             />
-            <!-- If there's no detailsHtml, show GameInfo component -->
-            <GameInfo v-if="!featuredGame.detailsHtml" :game="featuredGame" />
+            <!-- GameInfo component removed -->
             <CommentSection :gameId="featuredGame.id" />
           </article>
         </section>
@@ -34,7 +33,6 @@
 import CommentSection from '@/components/CommentSection.vue'
 import StarryBackground from '@/components/StarryBackground.vue'
 import GameContainer from '@/components/GameContainer.vue'
-import GameInfo from '@/components/GameInfo.vue'
 import GameSidebar from '@/components/GameSidebar.vue'
 import MoreGames from '@/components/MoreGames.vue'
 import { games } from '@/data/games.js'
@@ -45,7 +43,6 @@ export default {
     CommentSection,
     StarryBackground,
     GameContainer,
-    GameInfo,
     GameSidebar,
     MoreGames,
   },
@@ -59,6 +56,10 @@ export default {
     // Get current game based on route parameter
     currentGame() {
       const addressBar = this.$route.params.addressBar
+
+      // 获取默认游戏（Chill-Guy-Clicker，ID为1）
+      const defaultGame = this.games.find(game => game.id === 1) || this.games[0]
+
       if (addressBar) {
         // Try to find game by addressBar or id
         const game = this.games.find(
@@ -66,35 +67,27 @@ export default {
             (g.addressBar && g.addressBar.toLowerCase() === addressBar.toLowerCase()) ||
             (g.id && String(g.id).toLowerCase() === addressBar.toLowerCase()),
         )
-        return game || this.games[0] // If not found, return first game
+        return game || defaultGame // If not found, return default game
       }
-      return this.games[0] // Default to first game
+      return defaultGame // Default to Chill-Guy-Clicker
     },
     // Get featured game (current game)
     featuredGame() {
       return this.currentGame
     },
-    // Get hot games (excluding current game)
+    // Get hot games (including current game if it's hot)
     hotGames() {
       return this.games
         .filter(
-          (game) =>
-            game.isHot &&
-            game.id !== this.currentGame.id &&
-            game.addressBar !== this.currentGame.addressBar,
+          (game) => game.isHot
         )
-        .slice(0, 4)
     },
-    // Get more games (excluding current game)
+    // Get more games (including current game if it's in more games)
     moreGames() {
       return this.games
         .filter(
-          (game) =>
-            (game.isMore || game.isRecommended) &&
-            game.id !== this.currentGame.id &&
-            game.addressBar !== this.currentGame.addressBar,
+          (game) => (game.isMore || game.isRecommended)
         )
-        .slice(0, 5)
     },
   },
   methods: {
@@ -199,16 +192,6 @@ export default {
   .game-sidebar {
     width: 100%;
   }
-
-  .hot-games-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-  }
-
-  .recommended-games-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
 
 @media (max-width: 768px) {
@@ -216,13 +199,7 @@ export default {
     padding-bottom: 60%;
   }
 
-  .hot-games-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .recommended-games-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  /* 移除未使用的 CSS 类 */
 
   .game-title {
     font-size: 28px;
@@ -230,13 +207,18 @@ export default {
 }
 
 @media (max-width: 480px) {
-  .game-iframe-container {
-    padding-bottom: 75%;
+  .container{
+    padding: 0 10px;
+  }
+  .main-content{
+    padding-top: 30px;
   }
 
-  .recommended-games-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .featured-game{
+    padding: 20px 10px;
   }
+
+  /* 移除未使用的 CSS 类 */
 
   .game-meta {
     flex-direction: column;

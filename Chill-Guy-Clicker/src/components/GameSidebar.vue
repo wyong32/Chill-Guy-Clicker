@@ -7,7 +7,7 @@
           v-for="game in games"
           :key="game.id"
           class="hot-game-card"
-          :to="'/' + (game.addressBar || game.id)"
+          :to="getGameRoute(game)"
           :aria-label="'Play ' + (game.pageTitle || game.title) + ' game'"
         >
           <img
@@ -31,12 +31,17 @@ export default {
       required: true,
     },
   },
+  methods: {
+    getGameRoute(game) {
+      return '/' + (game.addressBar || game.id)
+    }
+  }
 }
 </script>
 
 <style scoped>
 .game-sidebar {
-  width: 100%;
+  width: 300px;
 }
 
 .hot-games {
@@ -71,7 +76,7 @@ export default {
 
 .hot-games-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 15px;
 }
 
@@ -84,6 +89,7 @@ export default {
   cursor: pointer;
   text-decoration: none;
   display: block;
+  font-size: 0;
 }
 
 .hot-game-card:hover {
@@ -93,16 +99,15 @@ export default {
 
 .hot-game-img {
   width: 100%;
-  aspect-ratio: 16/9;
+  height: 100px;
   object-fit: cover;
 }
 
 .hot-game-title {
-  font-size: 14px;
-  padding: 10px;
+  font-size: 12px;
+  padding: 5px 10px;
   text-align: center;
   color: #333;
-  font-weight: 600;
   transition: color 0.3s;
 }
 

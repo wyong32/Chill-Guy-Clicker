@@ -14,19 +14,19 @@
         <nav class="nav">
           <ul class="nav-list">
             <li class="nav-item">
-              <router-link to="/" class="nav-link">Chill Guy Clicker</router-link>
+              <router-link to="/" class="nav-link" :class="{ 'custom-active': isActive('home') }">Chill Guy Clicker</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/" class="nav-link">Chill Guy Girl</router-link>
+              <router-link to="/Chill-Guy-Girl" class="nav-link" :class="{ 'custom-active': isActive('girl') }">Chill Guy Girl</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/" class="nav-link">Chill Guy Music</router-link>
+              <router-link to="/Chill-Guy-Music" class="nav-link" :class="{ 'custom-active': isActive('music') }">Chill Guy Music</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/" class="nav-link">Chill Guy PNG</router-link>
+              <router-link to="/Chill-Guy-PNG" class="nav-link" :class="{ 'custom-active': isActive('png') }">Chill Guy PNG</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/" class="nav-link">Chill Guy Wallpaper</router-link>
+              <router-link to="/Chill-Guy-Wallpaper" class="nav-link" :class="{ 'custom-active': isActive('wallpaper') }">Chill Guy Wallpaper</router-link>
             </li>
           </ul>
         </nav>
@@ -40,26 +40,28 @@
     <div class="mobile-menu" :class="{ active: mobileMenuActive }">
       <ul class="mobile-nav-list">
         <li class="mobile-nav-item">
-          <router-link to="/" class="mobile-nav-link" @click="closeMobileMenu">Home</router-link>
-        </li>
-        <li class="mobile-nav-item">
-          <router-link to="/hot" class="mobile-nav-link" @click="closeMobileMenu"
-            >Hot Games</router-link
+          <router-link to="/" class="mobile-nav-link" :class="{ 'custom-active': isActive('home') }" @click="closeMobileMenu"
+            >Chill Guy Clicker</router-link
           >
         </li>
         <li class="mobile-nav-item">
-          <router-link to="/new" class="mobile-nav-link" @click="closeMobileMenu"
-            >New Games</router-link
+          <router-link to="/Chill-Guy-Girl" class="mobile-nav-link" :class="{ 'custom-active': isActive('girl') }" @click="closeMobileMenu"
+            >Chill Guy Girl</router-link
           >
         </li>
         <li class="mobile-nav-item">
-          <router-link to="/categories" class="mobile-nav-link" @click="closeMobileMenu"
-            >Categories</router-link
+          <router-link to="/Chill-Guy-Music" class="mobile-nav-link" :class="{ 'custom-active': isActive('music') }" @click="closeMobileMenu"
+            >Chill Guy Music</router-link
           >
         </li>
         <li class="mobile-nav-item">
-          <router-link to="/about" class="mobile-nav-link" @click="closeMobileMenu"
-            >About Us</router-link
+          <router-link to="/Chill-Guy-PNG" class="mobile-nav-link" :class="{ 'custom-active': isActive('png') }" @click="closeMobileMenu"
+            >Chill Guy PNG</router-link
+          >
+        </li>
+        <li class="mobile-nav-item">
+          <router-link to="/Chill-Guy-Wallpaper" class="mobile-nav-link" :class="{ 'custom-active': isActive('wallpaper') }" @click="closeMobileMenu"
+            >Chill Guy Wallpaper</router-link
           >
         </li>
       </ul>
@@ -75,6 +77,27 @@ export default {
       mobileMenuActive: false,
     }
   },
+  computed: {
+    // 计算当前路由的类型，用于确定导航栏的激活状态
+    currentRouteType() {
+      const path = this.$route.path
+
+      // 检查路径是否匹配特定的模式
+      if (path === '/' || path.match(/^\/[^/]+$/) && !path.startsWith('/Chill-Guy-')) {
+        return 'home' // 首页或游戏详情页
+      } else if (path.startsWith('/Chill-Guy-Girl')) {
+        return 'girl'
+      } else if (path.startsWith('/Chill-Guy-Music')) {
+        return 'music'
+      } else if (path.startsWith('/Chill-Guy-PNG')) {
+        return 'png'
+      } else if (path.startsWith('/Chill-Guy-Wallpaper')) {
+        return 'wallpaper'
+      }
+
+      return 'home' // 默认返回首页
+    }
+  },
   methods: {
     toggleMobileMenu() {
       this.mobileMenuActive = !this.mobileMenuActive
@@ -84,6 +107,10 @@ export default {
       this.mobileMenuActive = false
       document.body.style.overflow = ''
     },
+    // 判断导航链接是否应该激活
+    isActive(type) {
+      return this.currentRouteType === type
+    }
   },
 }
 </script>
@@ -166,11 +193,11 @@ export default {
 }
 
 .nav-link:hover::after,
-.router-link-active::after {
+.custom-active::after {
   width: 100%;
 }
 
-.router-link-active {
+.custom-active {
   color: var(--primary-color);
 }
 
@@ -230,6 +257,10 @@ export default {
 
 .mobile-nav-link:hover {
   color: var(--accent-color);
+}
+
+.mobile-nav-link.custom-active {
+  color: var(--primary-color);
 }
 
 @media (max-width: 768px) {

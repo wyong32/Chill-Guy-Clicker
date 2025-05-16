@@ -6,7 +6,7 @@
         v-for="game in games"
         :key="game.id"
         class="more-game-card"
-        :to="'/' + (game.addressBar || game.id)"
+        :to="getGameRoute(game)"
         :aria-label="'Play ' + (game.pageTitle || game.title) + ' game'"
       >
         <img
@@ -29,6 +29,22 @@ export default {
       required: true,
     },
   },
+  methods: {
+    getGameRoute(game) {
+      // 如果是ID为1的游戏（Chill Guy Clicker），跳转到首页
+      if (game.id === 1) {
+        return '/'
+      }
+      // 如果是ID为2的游戏（Chill Girl Clicker），跳转到GirlGamesView页面
+      else if (game.id === 2) {
+        return '/Chill-Guy-Girl'
+      }
+      // 其他游戏保持原有的路由逻辑
+      else {
+        return '/' + (game.addressBar || game.id)
+      }
+    }
+  }
 }
 </script>
 
@@ -66,7 +82,7 @@ export default {
 
 .more-games-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 20px;
 }
 
@@ -79,6 +95,7 @@ export default {
   cursor: pointer;
   text-decoration: none;
   display: block;
+  font-size: 0;
 }
 
 .more-game-card:hover {
@@ -88,13 +105,13 @@ export default {
 
 .more-game-img {
   width: 100%;
-  aspect-ratio: 1/1;
+  height: 140px;
   object-fit: cover;
 }
 
 .more-game-title {
-  font-size: 14px;
-  padding: 10px;
+  font-size: 12px;
+  padding: 5px 10px;
   text-align: center;
   color: #333;
   font-weight: 600;
