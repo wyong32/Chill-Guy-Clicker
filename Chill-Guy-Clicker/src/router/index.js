@@ -9,12 +9,73 @@ import WallpaperDetailView from '../views/WallpaperDetailView.vue'
 import MusicDetailView from '../views/MusicDetailView.vue'
 import PrivacyPolicyView from '../views/PrivacyPolicyView.vue'
 import TermsOfUseView from '../views/TermsOfUseView.vue'
+
 import AdminLoginView from '../views/admin/LoginView.vue'
 import AdminDashboardView from '../views/admin/DashboardView.vue'
 import { games } from '../data/games.js'
 import { music } from '../data/music.js'
 import { pngImages } from '../data/png.js'
 import { wallpapers } from '../data/wallpapers.js'
+import { SITE_DOMAIN, SITE_NAME, DEFAULT_SHARE_IMAGE } from '../config/site.js'
+
+// 默认社交分享图片
+const DEFAULT_IMAGE = DEFAULT_SHARE_IMAGE
+
+// 更新规范URL
+const updateCanonicalUrl = (path) => {
+  // 获取或创建规范URL标签
+  let canonicalLink = document.querySelector('link[rel="canonical"]')
+  if (!canonicalLink) {
+    canonicalLink = document.createElement('link')
+    canonicalLink.setAttribute('rel', 'canonical')
+    document.head.appendChild(canonicalLink)
+  }
+
+  // 设置规范URL - 确保路径以/开头
+  const canonicalPath = path.startsWith('/') ? path : `/${path}`
+  canonicalLink.setAttribute('href', `${SITE_DOMAIN}${canonicalPath}`)
+}
+
+// 更新社交媒体标签
+const updateSocialTags = (title, description, image = DEFAULT_IMAGE, url, contentType = 'website') => {
+  // 确保URL是完整的
+  const fullUrl = url.startsWith('http') ? url : `${SITE_DOMAIN}${url.startsWith('/') ? url : `/${url}`}`
+
+  // Open Graph标签 (Facebook, 微信等)
+  updateMetaTag('property', 'og:title', title)
+  updateMetaTag('property', 'og:description', description)
+  updateMetaTag('property', 'og:image', image)
+  updateMetaTag('property', 'og:url', fullUrl)
+  updateMetaTag('property', 'og:type', contentType)
+  updateMetaTag('property', 'og:site_name', SITE_NAME)
+
+  // 音乐特定的Open Graph标签
+  if (contentType === 'music.song') {
+    // 尝试从URL中提取音乐信息
+    const addressBar = url.split('/').pop()
+    const musicItem = findMusicByAddressBar(addressBar)
+    if (musicItem && musicItem.artist) {
+      updateMetaTag('property', 'music:musician', musicItem.artist)
+    }
+  }
+
+  // Twitter Card标签
+  updateMetaTag('name', 'twitter:card', 'summary_large_image')
+  updateMetaTag('name', 'twitter:title', title)
+  updateMetaTag('name', 'twitter:description', description)
+  updateMetaTag('name', 'twitter:image', image)
+}
+
+// 辅助函数：更新或创建meta标签
+const updateMetaTag = (attrName, attrValue, content) => {
+  let metaTag = document.querySelector(`meta[${attrName}="${attrValue}"]`)
+  if (!metaTag) {
+    metaTag = document.createElement('meta')
+    metaTag.setAttribute(attrName, attrValue)
+    document.head.appendChild(metaTag)
+  }
+  metaTag.setAttribute('content', content)
+}
 
 // 根据 addressBar 查找游戏
 const findGameByAddressBar = (addressBarParam) => {
@@ -39,29 +100,32 @@ const findMusicByAddressBar = (addressBarParam) => {
 }
 
 // 更新页面元数据
-const updateMetaTags = (item) => {
-  if (!item || !item.seo) return
+const updateMetaTags = (item, path = null, contentType = 'website') => {
+  if (!item) return
+
+  // 如果item是SEO对象，直接使用
+  const seo = item.seo || item
 
   // 更新页面标题
-  document.title = item.seo.title || item.pageTitle || 'Chill Guy Games'
+  const title = seo.title || item.pageTitle || 'Chill Guy Games'
+  document.title = title
 
   // 更新描述
-  let metaDescription = document.querySelector('meta[name="description"]')
-  if (!metaDescription) {
-    metaDescription = document.createElement('meta')
-    metaDescription.setAttribute('name', 'description')
-    document.head.appendChild(metaDescription)
-  }
-  metaDescription.setAttribute('content', item.seo.description || '')
+  const description = seo.description || ''
+  updateMetaTag('name', 'description', description)
 
   // 更新关键词
-  let metaKeywords = document.querySelector('meta[name="keywords"]')
-  if (!metaKeywords) {
-    metaKeywords = document.createElement('meta')
-    metaKeywords.setAttribute('name', 'keywords')
-    document.head.appendChild(metaKeywords)
-  }
-  metaKeywords.setAttribute('content', item.seo.keywords || '')
+  updateMetaTag('name', 'keywords', seo.keywords || '')
+
+  // 获取路径和图片
+  const urlPath = path || (item.addressBar ? `/${item.addressBar}` : '/')
+  const image = item.imageUrl || item.thumbnail || DEFAULT_IMAGE
+
+  // 更新规范URL
+  updateCanonicalUrl(urlPath)
+
+  // 更新社交媒体标签
+  updateSocialTags(title, description, image, urlPath, contentType)
 }
 
 const router = createRouter({
@@ -84,11 +148,13 @@ const router = createRouter({
       name: 'girlGames',
       component: GirlGamesView,
       meta: {
-        seo: {
-          title: 'Chill Girl Games - Play Free Girl Games Online',
-          description: 'Play free girl games online at Chill Guy Games. Discover a collection of fun and relaxing games designed for girls of all ages.',
-          keywords: 'girl games, games for girls, online girl games, free girl games, chill girl games'
-        }
+       seo: {
+          title: 'Chill Girl Clicker - Relaxing Meme Idle Game - Play Now Free',
+          description:
+            'Play Chill Girl Clicker, a relaxing idle game inspired by the chill girl meme. Click to earn points, unlock chill upgrades, and vibe in style!',
+          keywords:
+            'chill girl clicker, chill girl meme, idle game, clicker game, relaxing game, aesthetic clicker',
+        },
       }
     },
     {
@@ -98,7 +164,7 @@ const router = createRouter({
       meta: {
         seo: {
           title: 'Chill Guy Music - Relaxing Music Collection',
-          description: 'Discover relaxing and chill music to enhance your mood. Perfect for studying, relaxing, or just vibing.',
+          description: 'Discover the ultimate chill guy girl experience with cozy clicker gameplay, lo-fi vibes, and relaxing upgrades for your aesthetic idle world.',
           keywords: 'chill music, relaxing music, lofi music, study music, background music, ambient music'
         }
       }
@@ -125,8 +191,33 @@ const router = createRouter({
 
         // 查找是否是游戏
         const game = findGameByAddressBar(addressBar);
-        if (game) {
-          updateMetaTags(game);
+        if (!game) {
+          // 如果找不到游戏，重定向到首页
+          next('/');
+          return;
+        }
+
+        // 设置游戏的SEO信息
+        if (game.seo) {
+          document.title = game.seo.title;
+
+          // 更新描述
+          let metaDescription = document.querySelector('meta[name="description"]');
+          if (!metaDescription) {
+            metaDescription = document.createElement('meta');
+            metaDescription.setAttribute('name', 'description');
+            document.head.appendChild(metaDescription);
+          }
+          metaDescription.setAttribute('content', game.seo.description);
+
+          // 更新关键词
+          let metaKeywords = document.querySelector('meta[name="keywords"]');
+          if (!metaKeywords) {
+            metaKeywords = document.createElement('meta');
+            metaKeywords.setAttribute('name', 'keywords');
+            document.head.appendChild(metaKeywords);
+          }
+          metaKeywords.setAttribute('content', game.seo.keywords);
         }
 
         next();
@@ -136,12 +227,58 @@ const router = createRouter({
       path: '/Chill-Guy-PNG',
       name: 'png',
       component: PngView,
-      meta: {
-        seo: {
-          title: 'Chill Guy PNG Images - Free Transparent PNG Downloads',
-          description: 'Download free transparent PNG images of Chill Guy characters. High-quality images for your creative projects and designs.',
-          keywords: 'png images, transparent png, chill guy png, free png downloads, character png, game assets'
+      beforeEnter: (to, from, next) => {
+        // 从 pngImages 数据中获取 SEO 信息
+        // 我们可以使用第一个 PNG 图片的 SEO 信息作为列表页的 SEO 信息
+        // 或者创建一个专门的 SEO 对象
+
+        // 设置默认 SEO 信息
+        let seoInfo = {
+          title: "Chill Guy PNG Images – High Quality Chill Guy Pictures",
+          description: "Download Chill Guy Clicker - Chill Guy PNG images with transparent backgrounds. Perfect for memes, graphic design, and creative projects featuring Chill Guy.",
+          keywords: "chill guy png images, chill guy transparent, chill guy png, chill guy pictures, chill guy graphics"
+        };
+
+        // 如果 pngImages 数据中有 SEO 信息，使用它
+        if (pngImages && pngImages.length > 0 && pngImages[0].seo) {
+          // 使用第一个 PNG 图片的 SEO 信息
+          seoInfo = pngImages[0].seo;
         }
+
+        // 设置页面标题
+        document.title = seoInfo.title;
+
+        // 更新描述
+        let metaDescription = document.querySelector('meta[name="description"]');
+        if (!metaDescription) {
+          metaDescription = document.createElement('meta');
+          metaDescription.setAttribute('name', 'description');
+          document.head.appendChild(metaDescription);
+        }
+        metaDescription.setAttribute('content', seoInfo.description);
+
+        // 更新关键词
+        let metaKeywords = document.querySelector('meta[name="keywords"]');
+        if (!metaKeywords) {
+          metaKeywords = document.createElement('meta');
+          metaKeywords.setAttribute('name', 'keywords');
+          document.head.appendChild(metaKeywords);
+        }
+        metaKeywords.setAttribute('content', seoInfo.keywords);
+
+        // 更新规范URL
+        updateCanonicalUrl('/Chill-Guy-PNG');
+
+        // 更新社交媒体标签
+        updateSocialTags(
+          seoInfo.title,
+          seoInfo.description,
+          pngImages && pngImages.length > 0 ? pngImages[0].imageUrl || DEFAULT_IMAGE : DEFAULT_IMAGE,
+          '/Chill-Guy-PNG',
+          'website'
+        );
+
+        next();
       }
     },
     {
@@ -163,9 +300,9 @@ const router = createRouter({
       component: WallpaperView,
       meta: {
         seo: {
-          title: 'Chill Guy Wallpapers - Free HD Wallpaper Downloads',
-          description: 'Download free HD wallpapers featuring Chill Guy characters. Perfect for desktop, mobile, and tablet backgrounds.',
-          keywords: 'wallpapers, desktop wallpapers, mobile wallpapers, chill guy wallpapers, HD wallpapers, free wallpapers'
+          title: 'Chill Guy Wallpapers - Cozy Aesthetic for Phone & Desktop',
+          description: 'Download stylish Chill Guy wallpapers with lo-fi and relaxed vibes. Perfect for your mobile or desktop background. Stay chill with every screen refresh.',
+          keywords: 'chill guy wallpapers, lo-fi chill backgrounds, aesthetic chill guy, phone wallpaper, chill desktop'
         }
       }
     },
@@ -206,6 +343,8 @@ const router = createRouter({
         }
       }
     },
+
+
     // 管理页面路由
     {
       path: '/admin/login',
@@ -258,32 +397,257 @@ router.beforeEach((to, _from, next) => {
   if (to.meta.seo) {
     // 使用路由中定义的 SEO 信息
     const seo = to.meta.seo
-    document.title = seo.title
+
+    // 获取图片和内容类型
+    let image = DEFAULT_IMAGE
+    let contentType = 'website'
+
+    // 处理详情页
+    if (to.params.addressBar) {
+      let item = null;
+
+      // 根据路由名称获取对应的数据项
+      switch (to.name) {
+        case 'game':
+          item = findGameByAddressBar(to.params.addressBar);
+          break;
+        case 'pngDetail':
+          item = pngImages.find(i => i.addressBar === to.params.addressBar);
+          break;
+        case 'wallpaperDetail':
+          item = wallpapers.find(i => i.addressBar === to.params.addressBar);
+          break;
+        case 'musicByAddressBar':
+          item = findMusicByAddressBar(to.params.addressBar);
+          contentType = 'music.song';
+          break;
+      }
+
+      // 如果找到了数据项，使用数据项中的SEO信息
+      if (item && item.seo) {
+        // 使用数据项中的SEO信息
+        document.title = item.seo.title;
+
+        // 更新描述
+        let metaDescription = document.querySelector('meta[name="description"]');
+        if (!metaDescription) {
+          metaDescription = document.createElement('meta');
+          metaDescription.setAttribute('name', 'description');
+          document.head.appendChild(metaDescription);
+        }
+        metaDescription.setAttribute('content', item.seo.description);
+
+        // 更新关键词
+        let metaKeywords = document.querySelector('meta[name="keywords"]');
+        if (!metaKeywords) {
+          metaKeywords = document.createElement('meta');
+          metaKeywords.setAttribute('name', 'keywords');
+          document.head.appendChild(metaKeywords);
+        }
+        metaKeywords.setAttribute('content', item.seo.keywords);
+
+        // 获取图片URL
+        const imageUrl = item.detailImageUrl || item.imageUrl || item.thumbnailUrl;
+        const image = imageUrl ? (imageUrl.startsWith('http') ? imageUrl : `${SITE_DOMAIN}/${imageUrl}`) : DEFAULT_IMAGE;
+
+        // 更新规范URL
+        updateCanonicalUrl(to.fullPath);
+
+        // 更新社交媒体标签
+        updateSocialTags(
+          item.seo.title,
+          item.seo.description,
+          image,
+          to.fullPath,
+          contentType
+        );
+
+        return; // 已经更新了SEO信息，不需要继续执行
+      } else if (item) {
+        // 如果数据项没有SEO信息，但有标题和描述
+        document.title = item.pageTitle || 'Chill Guy Games';
+
+        // 更新描述
+        let metaDescription = document.querySelector('meta[name="description"]');
+        if (!metaDescription) {
+          metaDescription = document.createElement('meta');
+          metaDescription.setAttribute('name', 'description');
+          document.head.appendChild(metaDescription);
+        }
+        metaDescription.setAttribute('content', item.description || 'Play free online games at Chill Guy Games');
+
+        // 更新关键词
+        let metaKeywords = document.querySelector('meta[name="keywords"]');
+        if (!metaKeywords) {
+          metaKeywords = document.createElement('meta');
+          metaKeywords.setAttribute('name', 'keywords');
+          document.head.appendChild(metaKeywords);
+        }
+        metaKeywords.setAttribute('content', 'online games, free games, browser games, chill games');
+
+        // 获取图片URL
+        const imageUrl = item.detailImageUrl || item.imageUrl || item.thumbnailUrl;
+        const image = imageUrl ? (imageUrl.startsWith('http') ? imageUrl : `${SITE_DOMAIN}/${imageUrl}`) : DEFAULT_IMAGE;
+
+        // 更新规范URL
+        updateCanonicalUrl(to.fullPath);
+
+        // 更新社交媒体标签
+        updateSocialTags(
+          item.pageTitle || 'Chill Guy Games',
+          item.description || 'Play free online games at Chill Guy Games',
+          image,
+          to.fullPath,
+          contentType
+        );
+
+        return; // 已经更新了SEO信息，不需要继续执行
+      }
+    }
+
+    // 如果不是详情页或没有找到数据项，使用路由中定义的SEO信息
+    document.title = seo.title;
 
     // 更新描述
-    let metaDescription = document.querySelector('meta[name="description"]')
+    let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
-      metaDescription = document.createElement('meta')
-      metaDescription.setAttribute('name', 'description')
-      document.head.appendChild(metaDescription)
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute('name', 'description');
+      document.head.appendChild(metaDescription);
     }
-    metaDescription.setAttribute('content', seo.description || '')
+    metaDescription.setAttribute('content', seo.description);
 
     // 更新关键词
-    let metaKeywords = document.querySelector('meta[name="keywords"]')
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
     if (!metaKeywords) {
-      metaKeywords = document.createElement('meta')
-      metaKeywords.setAttribute('name', 'keywords')
-      document.head.appendChild(metaKeywords)
+      metaKeywords = document.createElement('meta');
+      metaKeywords.setAttribute('name', 'keywords');
+      document.head.appendChild(metaKeywords);
     }
-    metaKeywords.setAttribute('content', seo.keywords || '')
+    metaKeywords.setAttribute('content', seo.keywords || '');
+
+    // 更新规范URL
+    updateCanonicalUrl(to.fullPath);
+
+    // 更新社交媒体标签
+    updateSocialTags(
+      seo.title,
+      seo.description,
+      image,
+      to.fullPath,
+      contentType
+    );
   } else if (to.meta.title) {
     // 兼容旧的 title 设置
-    document.title = `${to.meta.title} - Chill Guy Games`
+    const title = `${to.meta.title} - Chill Guy Games`
+    const metaData = {
+      title: title,
+      description: '欢迎访问Chill Guy Games'
+    }
+    updateMetaTags(metaData, to.fullPath)
   } else if (to.path === '/') {
     // 首页使用默认游戏的元数据
     const defaultGame = games.find(game => game.id === 1) || games[0]
-    updateMetaTags(defaultGame)
+    if (defaultGame && defaultGame.seo) {
+      // 使用默认游戏的SEO信息
+      document.title = defaultGame.seo.title;
+
+      // 更新描述
+      let metaDescription = document.querySelector('meta[name="description"]');
+      if (!metaDescription) {
+        metaDescription = document.createElement('meta');
+        metaDescription.setAttribute('name', 'description');
+        document.head.appendChild(metaDescription);
+      }
+      metaDescription.setAttribute('content', defaultGame.seo.description);
+
+      // 更新关键词
+      let metaKeywords = document.querySelector('meta[name="keywords"]');
+      if (!metaKeywords) {
+        metaKeywords = document.createElement('meta');
+        metaKeywords.setAttribute('name', 'keywords');
+        document.head.appendChild(metaKeywords);
+      }
+      metaKeywords.setAttribute('content', defaultGame.seo.keywords);
+
+      // 更新规范URL
+      updateCanonicalUrl('/');
+
+      // 更新社交媒体标签
+      updateSocialTags(
+        defaultGame.seo.title,
+        defaultGame.seo.description,
+        defaultGame.imageUrl || DEFAULT_IMAGE,
+        '/',
+        'website'
+      );
+    } else {
+      // 如果默认游戏没有SEO信息，使用基本信息
+      document.title = 'Chill Guy Games';
+
+      // 更新描述
+      let metaDescription = document.querySelector('meta[name="description"]');
+      if (!metaDescription) {
+        metaDescription = document.createElement('meta');
+        metaDescription.setAttribute('name', 'description');
+        document.head.appendChild(metaDescription);
+      }
+      metaDescription.setAttribute('content', 'Play free online games at Chill Guy Games');
+
+      // 更新关键词
+      let metaKeywords = document.querySelector('meta[name="keywords"]');
+      if (!metaKeywords) {
+        metaKeywords = document.createElement('meta');
+        metaKeywords.setAttribute('name', 'keywords');
+        document.head.appendChild(metaKeywords);
+      }
+      metaKeywords.setAttribute('content', 'online games, free games, browser games, chill games');
+
+      // 更新规范URL
+      updateCanonicalUrl('/');
+
+      // 更新社交媒体标签
+      updateSocialTags(
+        'Chill Guy Games',
+        'Play free online games at Chill Guy Games',
+        DEFAULT_IMAGE,
+        '/',
+        'website'
+      );
+    }
+  } else {
+    // 其他页面也需要设置规范URL和基本的社交媒体标签
+    document.title = 'Chill Guy Games';
+
+    // 更新描述
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute('name', 'description');
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.setAttribute('content', 'Play free online games at Chill Guy Games');
+
+    // 更新关键词
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (!metaKeywords) {
+      metaKeywords = document.createElement('meta');
+      metaKeywords.setAttribute('name', 'keywords');
+      document.head.appendChild(metaKeywords);
+    }
+    metaKeywords.setAttribute('content', 'online games, free games, browser games, chill games');
+
+    // 更新规范URL
+    updateCanonicalUrl(to.fullPath);
+
+    // 更新社交媒体标签
+    updateSocialTags(
+      'Chill Guy Games',
+      'Play free online games at Chill Guy Games',
+      DEFAULT_IMAGE,
+      to.fullPath,
+      'website'
+    );
   }
 
   next()

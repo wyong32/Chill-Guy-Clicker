@@ -1,15 +1,14 @@
 <template>
   <aside class="girl-skins-sidebar">
-    <h2 class="skins-title">Chill Girl Clicker Skins</h2>
+    <h2 class="skins-title">Chill Guy Girl Skins</h2> 
 
     <div class="skins-grid">
       <div v-for="skin in girlSkins" :key="skin.id" class="skin-card">
         <div class="skin-image">
-          <img :src="skin.imageUrl" :alt="skin.name" />
+          <img :src="skin.imageUrl" :alt="skin.imageAlt" />
         </div>
         <div class="skin-info">
-          <h3 class="skin-name">{{ skin.name }}</h3>
-          <p class="skin-description">{{ skin.description }}</p>
+          <h3 class="skin-title">{{ skin.title }}</h3>
         </div>
       </div>
     </div>
@@ -64,7 +63,7 @@ export default {
 
 .skins-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 15px;
 }
 
@@ -84,7 +83,7 @@ export default {
 }
 
 .skin-image {
-  height: 150px;
+  height: 180px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -104,14 +103,14 @@ export default {
 }
 
 .skin-info {
-  padding: 15px;
+  padding: 5px;
 }
 
-.skin-name {
-  font-size: 18px;
+.skin-title {
+  font-size: 12px;
   font-weight: 600;
-  margin-bottom: 8px;
   color: #333;
+  text-align: center;
 }
 
 .skin-description {
@@ -132,7 +131,7 @@ export default {
     height: 120px;
   }
 
-  .skin-name {
+  .skin-title {
     font-size: 16px;
   }
 

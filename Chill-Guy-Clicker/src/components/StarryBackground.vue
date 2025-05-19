@@ -16,21 +16,55 @@ export default {
       highPerformance: false,
       animationFrameId: null,
       lastFrameTime: 0,
-      frameDelay: 50, // 限制帧率，约20fps
+      frameDelay: 33, // 限制帧率，约30fps，提供更流畅的动画
+      resizeObserver: null, // 用于监听文档高度变化
+      documentHeight: 0, // 记录当前文档高度
     }
   },
   mounted() {
     // 检测设备性能
     this.detectPerformance()
     this.initBackground()
+
+    // 设置一个定时器，每隔一段时间检查文档高度是否变化
+    this.heightCheckInterval = setInterval(() => {
+      const newHeight = Math.max(window.innerHeight, document.body.offsetHeight);
+      if (Math.abs(newHeight - this.documentHeight) > 100) { // 如果高度变化超过100px
+        this.documentHeight = newHeight;
+        this.handleResize();
+      }
+    }, 2000); // 每2秒检查一次
   },
   methods: {
     detectPerformance() {
-      // 简单的性能检测，可以根据设备或浏览器特性进行更复杂的检测
+      // 更复杂的性能检测，考虑设备类型和硬件能力
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent,
       )
-      this.highPerformance = !isMobile
+
+      // 检查是否是高端移动设备
+      const isHighEndMobile = () => {
+        // 检查设备内存（如果可用）
+        if (navigator.deviceMemory) {
+          return navigator.deviceMemory >= 4; // 4GB或更多内存被视为高端设备
+        }
+
+        // 检查逻辑处理器数量（如果可用）
+        if (navigator.hardwareConcurrency) {
+          return navigator.hardwareConcurrency >= 4; // 4核或更多被视为高端设备
+        }
+
+        // 如果无法确定，默认为低性能
+        return false;
+      }
+
+      // 非移动设备或高端移动设备使用高性能模式
+      this.highPerformance = !isMobile || isHighEndMobile();
+
+      // 根据性能调整帧率
+      if (!this.highPerformance) {
+        this.frameDelay = 50; // 低性能设备使用20fps
+      }
     },
     togglePerformanceMode() {
       this.highPerformance = !this.highPerformance
@@ -47,7 +81,8 @@ export default {
       const background = this.$refs.bgCanvas
       const bgCtx = background.getContext('2d')
       const width = window.innerWidth
-      const height = document.body.offsetHeight
+      // 使用视口高度或文档高度中的较大值，确保背景覆盖整个页面
+      const height = Math.max(window.innerHeight, document.body.offsetHeight)
 
       background.width = width
       background.height = height
@@ -59,22 +94,83 @@ export default {
       // 创建实体数组
       const entities = []
 
-      // 星星类
+      // 增强版星星类 - 更小更清晰
       function Star(options) {
-        this.size = Math.random() * 2
-        this.speed = Math.random() * 0.05
-        this.x = options.x
-        this.y = options.y
-        this.alpha = Math.random() * 0.5 + 0.5 // 透明度变化
-        this.alphaChange = Math.random() * 0.01
+        // 星星大小更小，大部分是小点
+        const sizeRandom = Math.random();
+        if (sizeRandom > 0.98) {
+          // 只有2%的星星稍大一点
+          this.size = Math.random() * 0.8 + 1.2;
+        } else if (sizeRandom > 0.85) {
+          // 13%的星星中等大小
+          this.size = Math.random() * 0.5 + 0.8;
+        } else {
+          // 85%的星星都是小点
+          this.size = Math.random() * 0.4 + 0.4;
+        }
+
+        this.speed = Math.random() * 0.01 + 0.002; // 非常慢的移动速度，让星空看起来更稳定
+        this.x = options.x;
+        this.y = options.y;
+        this.alpha = Math.random() * 0.2 + 0.8; // 高透明度，使星星更明亮
+        this.alphaChange = Math.random() * 0.003 + 0.001; // 非常缓慢的闪烁
+
+        // 所有星星都是圆形，不再使用不同形状
+
+        // 添加颜色变化 - 更鲜明的颜色
+        this.colorType = Math.floor(Math.random() * 10); // 0-9的随机数决定颜色类型
+        if (this.colorType < 7) {
+          // 70%的星星是纯白色
+          this.color = 'rgb(255, 255, 255)';
+          this.glowColor = 'rgba(255, 255, 255, 0.08)';
+        } else if (this.colorType < 9) {
+          // 20%的星星是淡蓝色
+          this.color = 'rgb(240, 248, 255)';
+          this.glowColor = 'rgba(200, 230, 255, 0.08)';
+        } else {
+          // 10%的星星是淡黄色
+          this.color = 'rgb(255, 255, 240)';
+          this.glowColor = 'rgba(255, 255, 200, 0.08)';
+        }
       }
 
       Star.prototype.reset = function () {
-        this.size = Math.random() * 2
-        this.speed = Math.random() * 0.05
-        this.x = width
-        this.y = Math.random() * height
-        this.alpha = Math.random() * 0.5 + 0.5
+        // 星星大小更小，大部分是小点
+        const sizeRandom = Math.random();
+        if (sizeRandom > 0.98) {
+          // 只有2%的星星稍大一点
+          this.size = Math.random() * 0.8 + 1.2;
+        } else if (sizeRandom > 0.85) {
+          // 13%的星星中等大小
+          this.size = Math.random() * 0.5 + 0.8;
+        } else {
+          // 85%的星星都是小点
+          this.size = Math.random() * 0.4 + 0.4;
+        }
+
+        this.speed = Math.random() * 0.01 + 0.002; // 非常慢的移动速度
+        this.x = width;
+        this.y = Math.random() * height;
+        this.alpha = Math.random() * 0.2 + 0.8; // 高透明度
+        this.alphaChange = Math.random() * 0.003 + 0.001; // 非常缓慢的闪烁
+
+        // 所有星星都是圆形，不再使用不同形状
+
+        // 重置颜色
+        this.colorType = Math.floor(Math.random() * 10);
+        if (this.colorType < 7) {
+          // 70%的星星是纯白色
+          this.color = 'rgb(255, 255, 255)';
+          this.glowColor = 'rgba(255, 255, 255, 0.08)';
+        } else if (this.colorType < 9) {
+          // 20%的星星是淡蓝色
+          this.color = 'rgb(240, 248, 255)';
+          this.glowColor = 'rgba(200, 230, 255, 0.08)';
+        } else {
+          // 10%的星星是淡黄色
+          this.color = 'rgb(255, 255, 240)';
+          this.glowColor = 'rgba(255, 255, 200, 0.08)';
+        }
       }
 
       Star.prototype.update = function () {
@@ -82,123 +178,130 @@ export default {
 
         // 简单的闪烁效果
         this.alpha += this.alphaChange
-        if (this.alpha > 1 || this.alpha < 0.5) {
+        if (this.alpha > 1 || this.alpha < 0.7) {
           this.alphaChange = -this.alphaChange
         }
 
         if (this.x < 0) {
           this.reset()
         } else {
-          bgCtx.globalAlpha = this.alpha
-          bgCtx.fillRect(this.x, this.y, this.size, this.size)
-          bgCtx.globalAlpha = 1
+          // 设置全局透明度
+          bgCtx.globalAlpha = this.alpha;
+
+          // 只对较大的星星绘制非常淡的光晕
+          if (this.size > 0.8) {
+            bgCtx.beginPath();
+            bgCtx.arc(this.x, this.y, this.size * 1.5, 0, Math.PI * 2);
+            bgCtx.fillStyle = this.glowColor;
+            bgCtx.fill();
+          }
+
+          // 所有星星都使用圆形 - 更清晰锐利
+          bgCtx.fillStyle = this.color;
+          bgCtx.beginPath();
+
+          // 使用整数坐标和大小，避免抗锯齿导致的模糊
+          const x = Math.round(this.x);
+          const y = Math.round(this.y);
+          const radius = Math.max(0.5, this.size / 2); // 最小半径0.5像素
+
+          bgCtx.arc(x, y, radius, 0, Math.PI * 2);
+          bgCtx.fill();
+
+          // 重置全局透明度
+          bgCtx.globalAlpha = 1;
         }
       }
 
-      // 流星类
+      // 增强版流星类
       function ShootingStar() {
         this.reset()
       }
 
       ShootingStar.prototype.reset = function () {
-        this.x = Math.random() * width
-        this.y = 0
-        this.len = Math.random() * 80 + 10
-        this.speed = Math.random() * 10 + 6
-        this.size = Math.random() * 1 + 0.1
-        this.waitTime = new Date().getTime() + Math.random() * 5000 + 1000
+        this.x = Math.random() * width * 1.5 // 更大的生成范围
+        this.y = Math.random() * height * 0.3 - height * 0.1 // 从屏幕上方开始
+        this.len = Math.random() * 150 + 30 // 更长的流星尾巴
+        this.speed = Math.random() * 12 + 5 // 更多样的速度
+        this.size = Math.random() * 2 + 0.5 // 更粗的流星
+        this.waitTime = new Date().getTime() + Math.random() * 8000 + 1000 // 更长的等待时间
         this.active = false
+
+        // 随机流星颜色
+        const colorType = Math.floor(Math.random() * 10);
+        if (colorType < 6) {
+          // 60%的流星是白色
+          this.color = 'rgba(255, 255, 255, 0.7)';
+          this.tailColor = 'rgba(255, 255, 255, 0.1)';
+        } else if (colorType < 8) {
+          // 20%的流星是淡蓝色
+          this.color = 'rgba(200, 220, 255, 0.7)';
+          this.tailColor = 'rgba(200, 220, 255, 0.1)';
+        } else if (colorType < 9) {
+          // 10%的流星是淡黄色
+          this.color = 'rgba(255, 255, 220, 0.7)';
+          this.tailColor = 'rgba(255, 255, 220, 0.1)';
+        } else {
+          // 10%的流星是淡红色
+          this.color = 'rgba(255, 220, 220, 0.7)';
+          this.tailColor = 'rgba(255, 220, 220, 0.1)';
+        }
+
+        // 随机角度（主要是向下，但有一些变化）
+        this.angle = Math.PI / 4 + (Math.random() * Math.PI / 8 - Math.PI / 16);
+        this.vx = Math.cos(this.angle) * this.speed;
+        this.vy = Math.sin(this.angle) * this.speed;
       }
 
       ShootingStar.prototype.update = function () {
         if (this.active) {
-          this.x -= this.speed
-          this.y += this.speed
-          if (this.x < 0 || this.y >= height) {
-            this.reset()
+          this.x -= this.vx;
+          this.y += this.vy;
+
+          if (this.x < -this.len || this.y >= height + this.len) {
+            this.reset();
           } else {
-            bgCtx.lineWidth = this.size
-            bgCtx.beginPath()
-            bgCtx.moveTo(this.x, this.y)
-            bgCtx.lineTo(this.x + this.len, this.y - this.len)
-            bgCtx.stroke()
+            // 绘制流星尾巴（发光效果）
+            const gradient = bgCtx.createLinearGradient(
+              this.x, this.y,
+              this.x + Math.cos(this.angle) * this.len,
+              this.y - Math.sin(this.angle) * this.len
+            );
+            gradient.addColorStop(0, this.color);
+            gradient.addColorStop(1, this.tailColor);
+
+            bgCtx.strokeStyle = gradient;
+            bgCtx.lineWidth = this.size;
+            bgCtx.beginPath();
+            bgCtx.moveTo(this.x, this.y);
+            bgCtx.lineTo(
+              this.x + Math.cos(this.angle) * this.len,
+              this.y - Math.sin(this.angle) * this.len
+            );
+            bgCtx.stroke();
+
+            // 绘制流星头部（亮点）
+            bgCtx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            bgCtx.beginPath();
+            bgCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            bgCtx.fill();
           }
         } else {
           if (this.waitTime < new Date().getTime()) {
-            this.active = true
+            this.active = true;
           }
         }
       }
 
-      // 原始地形类 - 静态版本
-      function OriginalTerrain(options) {
-        options = options || {}
-        this.terrain = document.createElement('canvas')
-        this.terCtx = this.terrain.getContext('2d')
+      // 移除了地形类，只保留星星和流星
 
-        this.terrain.width = width
-        this.terrain.height = height
-        this.fillStyle = options.fillStyle || '#191D4C'
-        this.mHeight = options.mHeight || height
-
-        // 生成点
-        this.points = []
-
-        var displacement = options.displacement || 140,
-          power = Math.pow(2, Math.ceil(Math.log(width) / Math.log(2)))
-
-        // 设置起始高度和结束高度
-        this.points[0] = this.mHeight
-        this.points[power] = this.points[0]
-
-        // 创建其余点 - 使用原始算法
-        for (var i = 1; i < power; i *= 2) {
-          for (var j = power / i / 2; j < power; j += power / i) {
-            this.points[j] =
-              (this.points[j - power / i / 2] + this.points[j + power / i / 2]) / 2 +
-              Math.floor(Math.random() * -displacement + displacement)
-          }
-          displacement *= 0.6
-        }
-
-        // 立即绘制地形（只绘制一次）
-        this.draw()
-      }
-
-      OriginalTerrain.prototype.draw = function () {
-        // 绘制地形
-        this.terCtx.clearRect(0, 0, width, height)
-        this.terCtx.fillStyle = this.fillStyle
-
-        this.terCtx.beginPath()
-
-        // 绘制地形路径 - 使用原始方法
-        for (var i = 0; i <= width; i++) {
-          if (i === 0) {
-            this.terCtx.moveTo(0, this.points[0])
-          } else if (this.points[i] !== undefined) {
-            this.terCtx.lineTo(i, this.points[i])
-          }
-        }
-
-        this.terCtx.lineTo(width, this.terrain.height)
-        this.terCtx.lineTo(0, this.terrain.height)
-        this.terCtx.lineTo(0, this.points[0])
-        this.terCtx.fill()
-      }
-
-      OriginalTerrain.prototype.update = function () {
-        // 只需要将已经绘制好的地形画布绘制到背景画布上
-        bgCtx.drawImage(this.terrain, 0, 0, width, height)
-      }
-
-      // 初始化星星 - 进一步增加数量，填充更多星空区域
+      // 初始化星星 - 更多小星星，填满整个星空
       const starCount = this.highPerformance
-        ? Math.min(500, height * 0.8)
-        : Math.min(300, height * 0.6)
+        ? Math.min(1500, height * 2.0) // 高性能模式下更多星星
+        : Math.min(800, height * 1.2)  // 低性能模式下适量星星
       for (var i = 0; i < starCount; i++) {
-        // 确保星星主要分布在上部2/3的区域
-        const starY = Math.random() * height * 0.9 // 让一些星星也出现在地形上方
+        // 星星均匀分布在整个屏幕上
+        const starY = Math.random() * height
         entities.push(
           new Star({
             x: Math.random() * width,
@@ -207,53 +310,13 @@ export default {
         )
       }
 
-      // 添加流星 - 增加数量
-      const shootingStarCount = this.highPerformance ? 6 : 3
+      // 添加更多流星
+      const shootingStarCount = this.highPerformance ? 10 : 5
       for (var i = 0; i < shootingStarCount; i++) {
         entities.push(new ShootingStar())
       }
 
-      // 添加原始地形 - 静态版本，降低高度到屏幕三分之一
-      const terrainBaseHeight = (height * 2) / 3 // 地形基础高度在屏幕的2/3处（从上往下算）
-
-      if (this.highPerformance) {
-        // 高性能模式使用三层地形
-        entities.push(
-          new OriginalTerrain({
-            mHeight: terrainBaseHeight - 40, // 第一层地形
-            displacement: 100,
-          }),
-        )
-        entities.push(
-          new OriginalTerrain({
-            displacement: 80,
-            fillStyle: 'rgb(17,20,40)',
-            mHeight: terrainBaseHeight - 20, // 第二层地形
-          }),
-        )
-        entities.push(
-          new OriginalTerrain({
-            displacement: 120,
-            fillStyle: 'rgb(10,10,5)',
-            mHeight: terrainBaseHeight, // 第三层地形（最底层）
-          }),
-        )
-      } else {
-        // 低性能模式使用两层地形
-        entities.push(
-          new OriginalTerrain({
-            mHeight: terrainBaseHeight - 30,
-            displacement: 80,
-          }),
-        )
-        entities.push(
-          new OriginalTerrain({
-            displacement: 100,
-            fillStyle: 'rgb(10,10,20)',
-            mHeight: terrainBaseHeight,
-          }),
-        )
-      }
+      // 不再添加地形，全部是星空
 
       // 优化的动画函数 - 使用时间节流
       const animate = (timestamp) => {
@@ -265,10 +328,18 @@ export default {
 
         this.lastFrameTime = timestamp
 
-        bgCtx.fillStyle = '#110E19'
-        bgCtx.fillRect(0, 0, width, height)
-        bgCtx.fillStyle = '#ffffff'
-        bgCtx.strokeStyle = '#ffffff'
+        // 创建深空背景渐变
+        const gradient = bgCtx.createLinearGradient(0, 0, 0, height);
+        gradient.addColorStop(0, '#0B0B1A'); // 深蓝色顶部
+        gradient.addColorStop(0.5, '#0F0E1A'); // 中间色
+        gradient.addColorStop(1, '#13101C'); // 底部略微亮一点
+
+        bgCtx.fillStyle = gradient;
+        bgCtx.fillRect(0, 0, width, height);
+
+        // 默认填充和描边样式（会被各实体自己的样式覆盖）
+        bgCtx.fillStyle = '#ffffff';
+        bgCtx.strokeStyle = '#ffffff';
 
         var entLen = entities.length
 
@@ -303,6 +374,11 @@ export default {
       cancelAnimationFrame(this.animationFrameId)
     }
     window.removeEventListener('resize', this.handleResize)
+
+    // 清理高度检查定时器
+    if (this.heightCheckInterval) {
+      clearInterval(this.heightCheckInterval);
+    }
   },
 }
 </script>
@@ -315,6 +391,7 @@ export default {
   width: 100%;
   height: 100%;
   z-index: -1;
+  pointer-events: none; /* 确保背景不会阻止用户与页面交互 */
 }
 
 .bg-canvas {

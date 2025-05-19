@@ -2,9 +2,9 @@
   <div class="music-view">
     <div class="container">
       <h1 class="page-title">Chill Guy Music</h1>
-      <p class="page-description">
+      <h2 class="page-description">
         Discover relaxing and chill music to enhance your mood. Perfect for studying, relaxing, or just vibing.
-      </p>
+      </h2>
 
       <div class="music-grid">
         <div v-for="track in music" :key="track.id" class="music-card">
@@ -19,7 +19,6 @@
           <div class="music-info">
             <h3 class="music-title">{{ track.title }}</h3>
             <p class="music-artist">{{ track.artist }}</p>
-            <p class="music-description">{{ track.description }}</p>
             <div class="music-tags">
               <span v-for="(tag, index) in track.tags" :key="index" class="music-tag">
                 {{ tag }}

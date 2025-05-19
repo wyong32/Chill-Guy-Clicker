@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <StarryBackground />
-
     <main class="main-content container">
       <h1 class="game-title">{{ featuredGame.pageTitle || featuredGame.title }}</h1>
 
@@ -31,7 +29,6 @@
 
 <script>
 import CommentSection from '@/components/CommentSection.vue'
-import StarryBackground from '@/components/StarryBackground.vue'
 import GameContainer from '@/components/GameContainer.vue'
 import GameSidebar from '@/components/GameSidebar.vue'
 import MoreGames from '@/components/MoreGames.vue'
@@ -41,7 +38,6 @@ export default {
   name: 'HomeView',
   components: {
     CommentSection,
-    StarryBackground,
     GameContainer,
     GameSidebar,
     MoreGames,
@@ -94,12 +90,55 @@ export default {
     startGame() {
       this.gameStarted = true
     },
+
+    // 更新SEO信息
+    updateSEO() {
+      const game = this.currentGame;
+      if (game && game.seo) {
+        // 更新标题
+        document.title = game.seo.title;
+
+        // 更新描述
+        let metaDescription = document.querySelector('meta[name="description"]');
+        if (!metaDescription) {
+          metaDescription = document.createElement('meta');
+          metaDescription.setAttribute('name', 'description');
+          document.head.appendChild(metaDescription);
+        }
+        metaDescription.setAttribute('content', game.seo.description);
+
+        // 更新关键词
+        let metaKeywords = document.querySelector('meta[name="keywords"]');
+        if (!metaKeywords) {
+          metaKeywords = document.createElement('meta');
+          metaKeywords.setAttribute('name', 'keywords');
+          document.head.appendChild(metaKeywords);
+        }
+        metaKeywords.setAttribute('content', game.seo.keywords);
+      }
+    }
   },
-  // Watch for route changes to reset game state
+  // 组件挂载时更新SEO信息
+  mounted() {
+    this.updateSEO();
+  },
+
+  // Watch for route changes to reset game state and update SEO
   watch: {
     '$route.params.addressBar'() {
       this.gameStarted = false
+      this.updateSEO();
     },
+
+    // 监听当前游戏变化，更新SEO信息
+    currentGame: {
+      immediate: true,
+      handler(newGame) {
+        if (newGame) {
+          this.updateSEO();
+        }
+      }
+    }
   },
 }
 </script>

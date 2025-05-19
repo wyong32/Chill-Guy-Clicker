@@ -59,6 +59,7 @@
 
 <script>
 import { wallpapers } from '@/data/wallpapers.js'
+import { SITE_DOMAIN } from '@/config/site.js'
 
 export default {
   name: 'WallpaperDetailView',
@@ -113,6 +114,9 @@ export default {
             document.head.appendChild(metaKeywords)
           }
           metaKeywords.setAttribute('content', this.wallpaper.seo.keywords)
+
+          // 设置规范URL
+          this.updateCanonicalUrl()
         } else {
           document.title = `${this.wallpaper.title} - Chill Guy Wallpapers`
 
@@ -124,9 +128,29 @@ export default {
             document.head.appendChild(metaDescription)
           }
           metaDescription.setAttribute('content', this.wallpaper.description)
+
+          // 设置规范URL
+          this.updateCanonicalUrl()
         }
       } else {
         document.title = 'Wallpaper Not Found - Chill Guy Wallpapers'
+      }
+    },
+    updateCanonicalUrl() {
+      // 确保使用addressBar而不是ID来生成规范URL
+      if (this.wallpaper && this.wallpaper.addressBar) {
+        const canonicalUrl = `${SITE_DOMAIN}/Chill-Guy-Wallpaper/${this.wallpaper.addressBar}`
+
+        // 获取或创建规范URL标签
+        let canonicalLink = document.querySelector('link[rel="canonical"]')
+        if (!canonicalLink) {
+          canonicalLink = document.createElement('link')
+          canonicalLink.setAttribute('rel', 'canonical')
+          document.head.appendChild(canonicalLink)
+        }
+
+        // 设置规范URL
+        canonicalLink.setAttribute('href', canonicalUrl)
       }
     },
     downloadWallpaper(event) {

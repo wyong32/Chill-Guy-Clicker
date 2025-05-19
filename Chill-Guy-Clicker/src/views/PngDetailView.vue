@@ -78,45 +78,52 @@ export default {
       return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
     },
     loadPngImage() {
-      const imageId = parseInt(this.id)
-      this.pngImage = pngImages.find(item => item.id === imageId) || null
+      // 首先尝试通过 addressBar 查找图片
+      if (this.addressBar) {
+        this.pngImage = pngImages.find(item => item.addressBar === this.addressBar) || null
+      }
 
-      if (this.pngImage) {
-        // 设置页面标题和SEO信息
-        if (this.pngImage.seo) {
-          document.title = this.pngImage.seo.title
+      // 如果通过 addressBar 没有找到，则尝试通过 id 查找
+      if (!this.pngImage && this.id) {
+        const imageId = parseInt(this.id)
+        this.pngImage = pngImages.find(item => item.id === imageId) || null
+      }
 
-          // 设置页面描述
-          let metaDescription = document.querySelector('meta[name="description"]')
-          if (!metaDescription) {
-            metaDescription = document.createElement('meta')
-            metaDescription.setAttribute('name', 'description')
-            document.head.appendChild(metaDescription)
-          }
-          metaDescription.setAttribute('content', this.pngImage.seo.description)
-
-          // 设置关键词
-          let metaKeywords = document.querySelector('meta[name="keywords"]')
-          if (!metaKeywords) {
-            metaKeywords = document.createElement('meta')
-            metaKeywords.setAttribute('name', 'keywords')
-            document.head.appendChild(metaKeywords)
-          }
-          metaKeywords.setAttribute('content', this.pngImage.seo.keywords)
-        } else {
-          document.title = `${this.pngImage.title} - Chill Guy PNG Images`
-
-          // 设置页面描述
-          let metaDescription = document.querySelector('meta[name="description"]')
-          if (!metaDescription) {
-            metaDescription = document.createElement('meta')
-            metaDescription.setAttribute('name', 'description')
-            document.head.appendChild(metaDescription)
-          }
-          metaDescription.setAttribute('content', this.pngImage.description)
-        }
-      } else {
+      if (!this.pngImage) {
         document.title = 'PNG Image Not Found - Chill Guy PNG Images'
+      } else {
+        // 设置 SEO 信息
+        this.updateSEO()
+      }
+    },
+    updateSEO() {
+      if (!this.pngImage) return
+
+      // 如果 PNG 图片有 SEO 信息，使用它
+      if (this.pngImage.seo) {
+        // 设置页面标题
+        document.title = this.pngImage.seo.title
+
+        // 更新描述
+        let metaDescription = document.querySelector('meta[name="description"]')
+        if (!metaDescription) {
+          metaDescription = document.createElement('meta')
+          metaDescription.setAttribute('name', 'description')
+          document.head.appendChild(metaDescription)
+        }
+        metaDescription.setAttribute('content', this.pngImage.seo.description)
+
+        // 更新关键词
+        let metaKeywords = document.querySelector('meta[name="keywords"]')
+        if (!metaKeywords) {
+          metaKeywords = document.createElement('meta')
+          metaKeywords.setAttribute('name', 'keywords')
+          document.head.appendChild(metaKeywords)
+        }
+        metaKeywords.setAttribute('content', this.pngImage.seo.keywords)
+      } else {
+        // 如果没有 SEO 信息，使用基本信息
+        document.title = this.pngImage.title + ' - Chill Guy PNG Images'
       }
     },
     downloadImage(event) {

@@ -66,6 +66,8 @@ app.get('/', (_, res) => {
       login: 'POST /api/auth/login',
       getCurrentAdmin: 'GET /api/auth/me',
       register: 'POST /api/auth/register (development only)',
+
+
     },
   });
 });

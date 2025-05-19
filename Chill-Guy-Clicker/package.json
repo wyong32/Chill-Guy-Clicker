@@ -28,7 +28,9 @@
     "globals": "^16.0.0",
     "jsdom": "^26.0.0",
     "prettier": "3.5.3",
+    "sitemap-webpack-plugin": "^1.1.1",
     "vite": "^6.2.4",
+    "vite-plugin-robots": "^1.0.5",
     "vite-plugin-vue-devtools": "^7.7.2",
     "vitest": "^3.1.1"
   }

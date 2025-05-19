@@ -2,12 +2,12 @@
   <div class="wallpaper-view">
     <div class="container">
       <h1 class="page-title">Chill Guy Wallpapers</h1>
-      <p class="page-description">
+      <h2 class="page-description">
         Download high-resolution wallpapers featuring Chill Guy characters for your desktop, tablet, or phone.
-      </p>
+      </h2>
 
       <div class="filter-section">
-        <h3 class="filter-title">Categories</h3>
+        <h2 class="filter-title">Categories</h2>
         <div class="category-tabs">
           <button
             class="category-tab"
@@ -140,7 +140,7 @@ export default {
 
 .filter-title {
   font-size: 20px;
-  color: #333;
+  color: #fff;
   margin-bottom: 15px;
   text-align: center;
 }
@@ -198,14 +198,14 @@ export default {
 
 .wallpaper-image {
   position: relative;
-  height: 200px;
+  height: 206px;
   overflow: hidden;
 }
 
 .wallpaper-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.5s ease;
 }
 

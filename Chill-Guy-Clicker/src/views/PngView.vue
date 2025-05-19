@@ -2,9 +2,9 @@
   <div class="png-view">
     <div class="container">
       <h1 class="page-title">Chill Guy PNG Images</h1>
-      <p class="page-description">
+      <h2 class="page-description">
         Download high-quality PNG images of Chill Guy characters for your projects. All images are free to use.
-      </p>
+      </h2>
       <div class="waterfall-wrapper">
         <div class="waterfall-container" ref="waterfallContainer">
           <div

@@ -1,7 +1,5 @@
 <template>
   <div class="girl-games-view">
-    <StarryBackground />
-
     <main class="main-content container">
       <h1 class="game-title">{{ featuredGame.pageTitle || featuredGame.title }}</h1>
 
@@ -27,7 +25,6 @@
 </template>
 
 <script>
-import StarryBackground from '@/components/StarryBackground.vue'
 import GameContainer from '@/components/GameContainer.vue'
 import GirlSkinsSidebar from '@/components/GirlSkinsSidebar.vue'
 import { girlGames } from '@/data/girlGames.js'
@@ -35,7 +32,6 @@ import { girlGames } from '@/data/girlGames.js'
 export default {
   name: 'GirlGamesView',
   components: {
-    StarryBackground,
     GameContainer,
     GirlSkinsSidebar,
   },
@@ -134,6 +130,7 @@ export default {
 }
 
 /* Featured Game Area */
+
 .featured-game {
   background-color: rgba(255, 255, 255, 0.95);
   border-radius: 10px;
@@ -168,6 +165,10 @@ export default {
   }
   .main-content{
     padding-top: 30px;
+  }
+
+  .game-sidebar{
+    display: none;
   }
 
   .featured-game{

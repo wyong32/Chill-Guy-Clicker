@@ -28,27 +28,27 @@ export const wallpapers = [
         'Chill Guy, Chill Guy Wallpaper 4k PC, cartoon background, cozy wallpaper, 4K cartoon dog wallpaper',
     },
     detailsHtml: `
-    <h3>Chill Guy Wallpaper 4k PC – Relaxed Cartoon Style Background</h3>
+    <h2>Chill Guy Wallpaper 4k PC – Relaxed Cartoon Style Background</h2>
 
-    <p>To enjoy the best experience, please download the original high-quality image from the download section above.</p>
+<p>To enjoy the best viewing experience, make sure to download the original high-quality <strong>Chill Guy Wallpaper 4k PC</strong> from the download section above.</p>
 
-    <p>This <strong>Chill Guy Wallpaper 4k PC</strong> perfectly captures the relaxed vibe of the cartoon <strong>Chill Guy</strong> standing confidently in a cozy garden surrounded by plants and warm lighting. The blend of wooden textures and lush greenery creates a peaceful and inviting atmosphere.</p>
+<p>This <strong>Chill Guy Wallpaper 4k PC</strong> captures the laid-back energy of the beloved cartoon character in a cozy garden filled with greenery, wooden textures, and ambient lighting. Every element in this <strong>Chill Guy Wallpaper 4k PC</strong> contributes to a soothing and stylish atmosphere.</p>
 
-    <p>If you're searching for a <strong>Chill Guy Wallpaper 4k PC</strong> to add warmth and personality to your desktop, this image is an excellent choice. The charming cartoon style and soft tones of the <strong>Chill Guy</strong> bring both fun and calm to your screen.</p>
+<p>Whether you're refreshing your setup or just love cheerful backgrounds, this <strong>Chill Guy Wallpaper 4k PC</strong> adds personality and warmth to your desktop. The cartoon-style <strong>Chill Guy</strong> featured in the artwork is both fun and calming, making this <strong>Chill Guy Wallpaper 4k PC</strong> an ideal addition to any screen.</p>
 
-    <p>The 4K resolution guarantees crisp details and vibrant colors, making this <strong>Chill Guy Wallpaper 4k PC</strong> ideal for large displays. Whether you love cozy aesthetics or playful character art, this <strong>Chill Guy</strong> wallpaper is sure to enhance your desktop environment.</p>
+<p>Thanks to its 4K resolution, the <strong>Chill Guy Wallpaper 4k PC</strong> delivers crisp detail and vivid colors, ensuring it looks great on any size display. If you're a fan of cozy scenes and playful characters, you’ll appreciate everything this <strong>Chill Guy Wallpaper 4k PC</strong> has to offer.</p>
 
-    <ul>
-      <li><strong>Resolution:</strong> (16:9)</li>
-      <li><strong>File Size:</strong> 4.07MB</li>
-      <li><strong>Tags:</strong> Chill Guy, Chill Guy Wallpaper 4k PC, cozy, 4K, cartoon style</li>
-    </ul>
+<ul>
+  <li><strong>Resolution:</strong> (16:9)</li>
+  <li><strong>File Size:</strong> 4.07MB</li>
+  <li><strong>Tags:</strong> Chill Guy, Chill Guy Wallpaper 4k PC, cozy, 4K, cartoon style, desktop background</li>
+</ul>
   `,
   },
 
   {
     id: 2,
-    title: 'Chill Guy Autumn Vibes Wallpaper 4k PC – Cozy Cartoon Dog in Fall Setting',
+    title: 'Chill Guy Wallpaper 4k PC – Cozy Cartoon Dog in Fall Setting',
     description:
       'Download this Chill Guy Autumn Vibes Wallpaper 4k PC featuring a calm cartoon dog enjoying a beautiful fall day surrounded by golden leaves and warm-toned trees.',
     thumbnailUrl: '/images/Compress-images/wallpapers-02.png',
@@ -69,36 +69,37 @@ export const wallpapers = [
     fileSize: '4.83MB',
     publishDate: '2025-05-16',
     seo: {
-      title: 'Chill Guy Autumn Vibes Wallpaper 4k PC – Fall Cozy Cartoon Dog Background',
+      title: 'Autumn Vibes Wallpaper 4k PC – Fall Cozy Cartoon Dog',
       description:
-        'Enjoy the warm feel of autumn with the Chill Guy Autumn Vibes Wallpaper 4k PC. Featuring a charming cartoon dog among falling leaves and golden trees—perfect for any cozy setup.',
+        'Enjoy the warm feel of autumn with the Chill Guy Autumn Vibes Wallpaper 4k PC. Featuring a charming cartoon dog among falling leaves and golden trees.',
       keywords:
-        'Chill Guy, autumn cartoon wallpaper, cozy background, fall leaves, cartoon dog 4K wallpaper, Chill Guy Wallpaper 4k PC',
+        'Chill Guy, autumn cartoon wallpaper, cartoon dog 4K wallpaper, Chill Guy Wallpaper 4k PC',
     },
     detailsHtml: `
-    <h3>Chill Guy Autumn Vibes Wallpaper 4k PC – Cozy Cartoon Dog in Fall Setting</h3>
+<h2>Chill Guy Wallpaper 4k PC – Peaceful Cartoon Dog in Nature</h2>
 
-    <p>To experience the vibrant detail and cozy charm, please download the original high-resolution image using the link above.</p>
+<p>Download the original <strong>Chill Guy Wallpaper 4k PC</strong> for the best quality and crisp details from the link above. This <strong>Chill Guy Wallpaper 4k PC</strong> features a cozy cartoon dog in a calming natural scene.</p>
 
-    <p>This <strong>Chill Guy Autumn Vibes Wallpaper 4k PC</strong> showcases the beloved cartoon dog standing confidently in a whimsical fall scene. Surrounded by golden leaves and softly lit trees, the image captures the peaceful essence of autumn.</p>
+<p>This <strong>Chill Guy Wallpaper 4k PC</strong> captures the dog standing peacefully in a field of wildflowers. The <strong>Chill Guy Wallpaper 4k PC</strong> perfectly combines charming cartoon art with the beauty of nature to create a soothing desktop background.</p>
 
-    <p>Whether you're updating your setup for the season or simply love cozy cartoon backgrounds, this <strong>Chill Guy Wallpaper</strong> brings a delightful warmth and personality to your desktop. The character’s casual stance and the gently falling leaves complete the perfect autumn moment.</p>
+<p>Fans looking for a relaxing and stylish background will love this <strong>Chill Guy Wallpaper 4k PC</strong>. With warm colors and detailed textures, this <strong>Chill Guy Wallpaper 4k PC</strong> is ideal for ultra-HD and large monitors.</p>
 
-    <p>With stunning 4K resolution, this <strong>Chill Guy Autumn Vibes Wallpaper</strong> ensures every detail—from the textured foliage to the soft lighting—stands out beautifully on any screen.</p>
+<p>Experience every detail in stunning 4K resolution by using this <strong>Chill Guy Wallpaper 4k PC</strong> as your desktop wallpaper. The peaceful vibe of the <strong>Chill Guy Wallpaper 4k PC</strong> makes it perfect for work or relaxation.</p>
 
-    <ul>
-      <li><strong>Resolution:</strong> (16:9)</li>
-      <li><strong>File Size:</strong> 4.07MB</li>
-      <li><strong>Tags:</strong> Chill Guy, Chill Guy Wallpaper 4k PC, autumn, cozy, fall leaves, cartoon dog, 4K background</li>
-    </ul>
-  `,
+<ul>
+  <li><strong>Resolution:</strong> (16:9)</li>
+  <li><strong>File Size:</strong> 4.07MB</li>
+  <li><strong>Tags:</strong> Chill Guy, Chill Guy Wallpaper 4k PC, nature, cozy, 4K, cartoon dog</li>
+</ul>
+
+`
   },
 
   {
     id: 3,
-    title: 'Chill Guy Love Nature Wallpaper 4k PC – Moody Cartoon Style Outdoors',
+    title: 'Chill Guy Wallpaper 4k PC – Moody Cartoon Style Outdoors',
     description:
-      'Download this Chill Guy Love Nature Wallpaper 4k PC featuring a pensive cartoon dog standing on a rock in a moody, flower-filled landscape. Perfect for nature lovers who enjoy a touch of cartoon charm.',
+      'Download this Chill Guy Love Nature chill guy wallpaper 4k pc featuring a pensive cartoon dog standing on a rock in a moody, flower-filled landscape. Perfect for nature lovers who enjoy a touch of cartoon charm.',
     thumbnailUrl: '/images/Compress-images/wallpapers-03.png',
     detailImageUrl: '/images/Compress-images/wallpapers-03.png',
     addressBar: 'chill-guy-love-nature-wallpaper',
@@ -117,36 +118,38 @@ export const wallpapers = [
     fileSize: '4.47MB',
     publishDate: '2025-05-16',
     seo: {
-      title: 'Chill Guy Love Nature Wallpaper 4k PC – Peaceful Cartoon Dog in Wildflower Field',
+      title: 'Chill Guy Wallpaper 4k PC  – Cartoon Dog in Wildflower Field',
       description:
-        'Set a reflective tone on your desktop with the Chill Guy Love Nature Wallpaper 4k PC. Featuring a thoughtful cartoon dog amid a moody, wildflower-filled landscape, it’s perfect for tranquil setups.',
+        'reflective tone on your desktop with the Chill Guy Love Nature Wallpaper 4k PC. Featuring a thoughtful cartoon dog amid a moody, wildflower-filled landscape.',
       keywords:
-        'Chill Guy, nature cartoon wallpaper, peaceful desktop background, moody outdoor scene, cartoon dog 4K wallpaper, Chill Guy Wallpaper 4k PC',
+        'Chill Guy, peaceful desktop background, cartoon dog 4K wallpaper, Chill Guy Wallpaper 4k PC',
     },
     detailsHtml: `
-    <h3>Chill Guy Love Nature Wallpaper 4k PC – Peaceful Cartoon Dog in Wildflower Field</h3>
+   <h2>Chill Guy Wallpaper 4k PC – Cozy Autumn Scene</h2>
 
-    <p>For the full atmospheric effect and crisp detail, download the original 4K image from the link above.</p>
+<p>Download the original <strong>Chill Guy Wallpaper 4k PC</strong> to enjoy the best quality and vivid details.</p>
 
-    <p>This <strong>Chill Guy Love Nature Wallpaper 4k PC</strong> captures a serene moment as the cartoon dog stands quietly on a rock in a natural setting filled with wildflowers, bushes, and distant shadows. His shirt reads “Love You,” adding a personal and heartfelt touch to the moody scene.</p>
+<p>This <strong>Chill Guy Wallpaper 4k PC</strong> features a cozy cartoon dog surrounded by autumn leaves and warm colors.</p>
 
-    <p>If you're drawn to nature-themed backgrounds with a thoughtful vibe, this <strong>Chill Guy Wallpaper</strong> blends cartoon charm with outdoor beauty. The darker tones and scenic composition make it ideal for focused or reflective desktop moods.</p>
+<p>Fans love this <strong>Chill Guy Wallpaper 4k PC</strong> for its relaxing vibe and stunning 4K resolution.</p>
 
-    <p>The 4K resolution ensures that every flower, shadow, and texture in this peaceful setting pops with detail, perfect for large-screen or ultra-HD displays.</p>
+<p>The <strong>Chill Guy Wallpaper 4k PC</strong> is perfect for decorating your desktop with autumn warmth and charm.</p>
 
-    <ul>
-      <li><strong>Resolution:</strong> (16:9)</li>
-      <li><strong>File Size:</strong> 4.07MB</li>
-      <li><strong>Tags:</strong> Chill Guy, Chill Guy Wallpaper 4k PC, nature, moody, wildflowers, cartoon style, 4K background</li>
-    </ul>
+<p>Enjoy every detail in this <strong>Chill Guy Wallpaper 4k PC</strong>, from the textured foliage to the soft lighting effects.</p>
+
+<ul>
+  <li><strong>Resolution:</strong> (16:9)</li>
+  <li><strong>File Size:</strong> 4.07MB</li>
+  <li><strong>Tags:</strong> Chill Guy, Chill Guy Wallpaper 4k PC, autumn, cozy, 4K, cartoon dog</li>
+</ul>
   `,
   },
 
   {
     id: 4,
-    title: 'Chill Guy Enchanted Garden Wallpaper 4k PC – Whimsical Cartoon Forest Vibes',
+    title: 'Chill Guy Wallpaper 4k PC – Whimsical Cartoon Forest Vibes',
     description:
-      'Download this Chill Guy Enchanted Garden Wallpaper 4k PC featuring a cheerful cartoon dog standing in a magical forest path filled with blooming flowers and warm light.',
+      'Download this Chill Guy Enchanted Garden Chill Guy Wallpaper 4k PC featuring a cheerful cartoon dog standing in a magical forest path filled with blooming flowers and warm light.',
     thumbnailUrl: '/images/Compress-images/wallpapers-04.png',
     detailImageUrl: '/images/Compress-images/wallpapers-04.png',
     addressBar: 'chill-guy-enchanted-garden-wallpaper',
@@ -165,36 +168,37 @@ export const wallpapers = [
     fileSize: '4.91MB',
     publishDate: '2025-05-16',
     seo: {
-      title: 'Chill Guy Enchanted Garden Wallpaper 4k PC – Cozy Cartoon in Magical Forest',
+      title: 'Chill Guy Wallpaper 4k PC – Cozy Cartoon in Magical Forest',
       description:
-        'Transform your screen with the Chill Guy Enchanted Garden Wallpaper 4k PC. Featuring a cartoon dog surrounded by glowing flowers and dreamy forest tones, perfect for whimsical desktop vibes.',
+        'Transform your screen with the Chill Guy Enchanted Garden Wallpaper 4k PC. Featuring a cartoon dog surrounded by glowing flowers and dreamy forest tones.',
       keywords:
-        'Chill Guy, enchanted forest wallpaper, cozy cartoon garden, magical forest background, cartoon dog 4K wallpaper, Chill Guy Wallpaper 4k PC',
+        'Chill Guy, cozy cartoon garden, magical forest background, Chill Guy Wallpaper 4k PC',
     },
     detailsHtml: `
-    <h3>Chill Guy Enchanted Garden Wallpaper 4k PC – Cozy Cartoon in Magical Forest</h3>
+    <h2>Chill Guy Enchanted Garden Wallpaper 4k PC – Cozy Cartoon in Magical Forest</h2>
 
-    <p>Download the high-resolution version above to bring the full charm of this fantasy-inspired scene to your desktop.</p>
+<p>Download the original <strong>Chill Guy Wallpaper 4k PC</strong> version above to fully experience the charm of this fantasy-inspired scene on your desktop. This <strong>Chill Guy Wallpaper 4k PC</strong> brings a magical forest garden right to your screen.</p>
 
-    <p>The <strong>Chill Guy Enchanted Garden Wallpaper 4k PC</strong> shows our familiar cartoon friend standing in a glowing forest garden. Surrounded by vibrant flowers, lush greenery, and softly illuminated paths, this wallpaper brings a sense of wonder and calm to your digital space.</p>
+<p>The <strong>Chill Guy Wallpaper 4k PC</strong> features the beloved cartoon character standing amid glowing flowers, lush greenery, and softly lit forest paths. This <strong>Chill Guy Wallpaper 4k PC</strong> creates a soothing, fairytale atmosphere perfect for any desktop setup.</p>
 
-    <p>Perfect for lovers of fantasy settings or calming visuals, this <strong>Chill Guy</strong> piece creates a fairytale atmosphere on your screen. The mix of warm light and cool forest shadows adds visual depth and a dreamy vibe.</p>
+<p>If you love fantasy settings, the <strong>Chill Guy Wallpaper 4k PC</strong> blends warm lighting with cool forest shadows, giving your screen visual depth and a dreamy vibe. This <strong>Chill Guy Wallpaper 4k PC</strong> is ideal for those who want cozy yet magical backgrounds.</p>
 
-    <p>Presented in crisp 4K resolution, every petal, leaf, and stone path detail is beautifully rendered for stunning clarity on modern monitors.</p>
+<p>With crisp 4K resolution, this <strong>Chill Guy Wallpaper 4k PC</strong> ensures every petal, leaf, and stone path is beautifully detailed, perfect for modern monitors and widescreens.</p>
 
-    <ul>
-      <li><strong>Resolution:</strong> (16:9)</li>
-      <li><strong>File Size:</strong> 4.07MB</li>
-      <li><strong>Tags:</strong> Chill Guy, Chill Guy Wallpaper 4k PC, enchanted garden, magical forest, cartoon style, cozy, 4K background</li>
-    </ul>
+<ul>
+  <li><strong>Resolution:</strong> (16:9)</li>
+  <li><strong>File Size:</strong> 4.07MB</li>
+  <li><strong>Tags:</strong> Chill Guy, Chill Guy Wallpaper 4k PC, enchanted garden, magical forest, cartoon style, cozy, 4K background</li>
+</ul>
+
   `,
   },
 
   {
     id: 5,
-    title: 'Chill Guy Cyberpunk Wallpaper 4k PC – Futuristic Neon Cartoon Background',
+    title: 'Chill Guy Wallpaper 4k PC – Futuristic Neon Cartoon Background',
     description:
-      'Download this Chill Guy Cyberpunk Wallpaper 4k PC featuring a cool cartoon dog standing in a high-tech neon city. Ideal for fans of cyberpunk and animated aesthetics.',
+      'Download this Chill Guy Wallpaper 4k PC featuring a cool cartoon dog standing in a high-tech neon city. Ideal for fans of cyberpunk and animated aesthetics.',
     thumbnailUrl: '/images/Compress-images/wallpapers-05.png',
     detailImageUrl: '/images/Compress-images/wallpapers-05.png',
     addressBar: 'chill-guy-cyberpunk-wallpaper',
@@ -213,36 +217,37 @@ export const wallpapers = [
     fileSize: '3.68MB',
     publishDate: '2025-05-16',
     seo: {
-      title: 'Chill Guy Cyberpunk Wallpaper 4k PC – Neon Cartoon Dog in Futuristic City',
+      title: 'Chill Guy Wallpaper 4k PC – Neon Cartoon Dog in Futuristic',
       description:
-        'Set your screen apart with the Chill Guy Cyberpunk Wallpaper 4k PC. Featuring a cartoon dog in a neon-lit tech metropolis, this 4K wallpaper delivers bold sci-fi vibes.',
+        'Set your screen apart with the Chill Guy Wallpaper 4k PC. Featuring a cartoon dog in a neon-lit tech metropolis, this 4K wallpaper delivers bold sci-fi vibes.',
       keywords:
-        'Chill Guy, cyberpunk wallpaper, neon city background, sci-fi cartoon dog, futuristic 4K wallpaper, Chill Guy Wallpaper 4k PC',
+        'Chill Guy, cyberpunk wallpaper,  futuristic 4K wallpaper, Chill Guy Wallpaper 4k PC',
     },
     detailsHtml: `
-    <h3>Chill Guy Cyberpunk Wallpaper 4k PC – Neon Cartoon Dog in Futuristic City</h3>
+    <h2>chill guy wallpaper 4k pc – Neon Cartoon Dog in Futuristic City</h2>
 
-    <p>Experience this neon-lit cyberpunk world in full quality by downloading the original 4K version above.</p>
+<p>Experience this neon-lit cyberpunk world in full quality by downloading the original <strong>Chill Guy Wallpaper 4k PC</strong> 4K version above. This <strong>Chill Guy Wallpaper 4k PC</strong> brings the stylish cartoon hero right to your desktop with stunning clarity.</p>
 
-    <p>The <strong>Chill Guy Cyberpunk Wallpaper 4k PC</strong> places our stylish cartoon hero at the heart of a glowing metropolis. Surrounded by red and blue neon lights, towering data hubs, and digital textures, this piece brings a modern, high-tech edge to the cozy character.</p>
+<p>The <strong>Chill Guy Wallpaper 4k PC</strong> places our cozy cartoon dog at the heart of a glowing metropolis. Surrounded by red and blue neon lights, towering data hubs, and digital textures, this <strong>Chill Guy Wallpaper 4k PC</strong> combines a modern, high-tech edge with warm character charm.</p>
 
-    <p>This background is ideal for fans of <strong>futuristic aesthetics</strong>, combining playful character design with a sci-fi visual environment. It's a perfect choice for gamers, tech lovers, and those who want a desktop with personality and intensity.</p>
+<p>This <strong>Chill Guy Wallpaper 4k PC</strong> is perfect for fans of futuristic aesthetics, blending playful design with a sci-fi visual environment. Whether you’re a gamer, tech lover, or just want a desktop with personality and intensity, this <strong>Chill Guy Wallpaper 4k PC</strong> fits the bill.</p>
 
-    <p>The ultra-detailed 4K resolution ensures sharp light reflections, intricate city elements, and vivid color contrast — perfect for immersive desktop displays.</p>
+<p>The ultra-detailed 4K resolution of this <strong>Chill Guy Wallpaper 4k PC</strong> ensures sharp light reflections, intricate city elements, and vivid color contrast — perfect for immersive desktop displays.</p>
 
-    <ul>
-      <li><strong>Resolution:</strong> (16:9)</li>
-      <li><strong>File Size:</strong> 4.07MB</li>
-      <li><strong>Tags:</strong> Chill Guy, Chill Guy Wallpaper 4k PC, cyberpunk, neon city, futuristic, cartoon style, sci-fi, 4K background</li>
-    </ul>
+<ul>
+  <li><strong>Resolution:</strong> (16:9)</li>
+  <li><strong>File Size:</strong> 4.07MB</li>
+  <li><strong>Tags:</strong> Chill Guy, Chill Guy Wallpaper 4k PC, cyberpunk, neon city, futuristic, cartoon style, sci-fi, 4K background</li>
+</ul>
+
   `,
   },
 
   {
     id: 6,
-    title: 'Chill Guy in Paris Wallpaper 4k PC – Romantic Eiffel Tower Background',
+    title: 'Chill Guy Wallpaper 4K PC – Romantic Eiffel Tower Background',
     description:
-      'Download this Chill Guy in Paris Wallpaper 4k PC featuring a charming cartoon dog beside the Eiffel Tower at sunset. A perfect blend of cozy vibes and iconic scenery.',
+      'Download this Chill Guy Wallpaper 4K PC featuring a charming cartoon dog beside the Eiffel Tower at sunset. A perfect blend of cozy vibes and iconic scenery.',
     thumbnailUrl: '/images/Compress-images/wallpapers-06.png',
     detailImageUrl: '/images/Compress-images/wallpapers-06.png',
     addressBar: 'chill-guy-paris-wallpaper',
@@ -261,36 +266,37 @@ export const wallpapers = [
     fileSize: '1.19MB',
     publishDate: '2025-05-16',
     seo: {
-      title: 'Chill Guy in Paris Wallpaper 4k PC – Cartoon Dog at Eiffel Tower Sunset',
+      title: 'Chill Guy Wallpaper 4K PC – Cartoon Dog at Eiffel Tower',
       description:
-        'Discover the Chill Guy in Paris Wallpaper 4k PC – a romantic sunset view with a cozy cartoon dog in front of the Eiffel Tower. Ideal for travel lovers and stylish desktops.',
+        'Discover the Chill Guy Wallpaper 4K PC – a romantic sunset view with a cozy cartoon dog in front of the Eiffel Tower. Ideal for travel lovers and stylish.',
       keywords:
-        'Chill Guy, Paris wallpaper, Eiffel Tower background, cartoon dog sunset, 4K travel wallpaper, Chill Guy Wallpaper 4k PC',
+        'Chill Guy, Paris wallpaper, Eiffel Tower background, cartoon dog sunset, Chill Guy Wallpaper 4k PC',
     },
     detailsHtml: `
-    <h3>Chill Guy in Paris Wallpaper 4k PC – Cartoon Dog at Eiffel Tower Sunset</h3>
+   <h2>Chill Guy Wallpaper 4k PC – Cartoon Dog at Eiffel Tower Sunset</h2>
 
-    <p>Download the high-resolution original to capture the full warmth and detail of this scenic Chill Guy wallpaper.</p>
+<p>Download the high-resolution original <strong>Chill Guy Wallpaper 4k PC</strong> to capture the full warmth and detail of this scenic <strong>Chill Guy Wallpaper 4k PC</strong>.</p>
 
-    <p>This <strong>Chill Guy in Paris Wallpaper 4k PC</strong> features the beloved cartoon dog enjoying a peaceful moment by the Seine River, with the Eiffel Tower rising majestically in the background. Bathed in golden sunset tones, this image blends charm and wanderlust perfectly.</p>
+<p>This <strong>Chill Guy Wallpaper 4k PC</strong> features the beloved cartoon dog enjoying a peaceful moment by the Seine River, with the Eiffel Tower rising majestically in the background. Bathed in golden sunset tones, this <strong>Chill Guy Wallpaper 4k PC</strong> blends charm and wanderlust perfectly.</p>
 
-    <p>Ideal for fans of <strong>romantic travel scenes</strong> and cozy aesthetics, this wallpaper brings a soft, serene mood to your desktop. Whether you're a Paris lover or simply enjoy beautiful sunset art, this image adds elegance and personality to any screen.</p>
+<p>Ideal for fans of <strong>romantic travel scenes</strong> and cozy aesthetics, this <strong>Chill Guy Wallpaper 4k PC</strong> brings a soft, serene mood to your desktop. Whether you're a Paris lover or simply enjoy beautiful sunset art, this <strong>Chill Guy Wallpaper 4k PC</strong> adds elegance and personality to any screen.</p>
 
-    <p>The 4K quality ensures stunning clarity, from the water’s reflection to the Parisian architecture, creating a desktop experience that feels like a brief escape to the City of Love.</p>
+<p>The 4K quality of this <strong>Chill Guy Wallpaper 4k PC</strong> ensures stunning clarity, from the water’s reflection to the Parisian architecture, creating a desktop experience that feels like a brief escape to the City of Love.</p>
 
-    <ul>
-      <li><strong>Resolution:</strong> (16:9)</li>
-      <li><strong>File Size:</strong> 4.07MB</li>
-      <li><strong>Tags:</strong> Chill Guy, Chill Guy Wallpaper 4k PC, Paris, Eiffel Tower, sunset, cozy cartoon, romantic cityscape, 4K background</li>
-    </ul>
+<ul>
+  <li><strong>Resolution:</strong> (16:9)</li>
+  <li><strong>File Size:</strong> 1.19MB</li>
+  <li><strong>Tags:</strong> Chill Guy, Chill Guy Wallpaper 4k PC, Paris, Eiffel Tower, sunset, cozy cartoon, romantic cityscape, 4K background</li>
+</ul>
+
   `,
   },
 
   {
     id: 7,
-    title: 'Chill Guy Rooftop Paris Wallpaper 4k PC – Elegant City View Background',
+    title: 'Chill Guy Wallpaper 4K PC – Elegant City View Background',
     description:
-      'Download this Chill Guy Rooftop Paris Wallpaper 4k PC featuring the stylish cartoon dog overlooking the Eiffel Tower from a grand rooftop view.',
+      'Download this Chill Guy Wallpaper 4K PC featuring the stylish cartoon dog overlooking the Eiffel Tower from a grand rooftop view.',
     thumbnailUrl: '/images/Compress-images/wallpapers-07.png',
     detailImageUrl: '/images/Compress-images/wallpapers-07.png',
     addressBar: 'chill-guy-rooftop-paris-wallpaper',
@@ -309,26 +315,252 @@ export const wallpapers = [
     fileSize: '1.18MB',
     publishDate: '2025-05-16',
     seo: {
-      title: 'Chill Guy Rooftop Paris Wallpaper 4k PC – Eiffel Tower Cityscape',
+      title: 'Chill Guy Wallpaper 4K PC – Eiffel Tower Cityscape',
       description:
-        'Get the Chill Guy Rooftop Paris Wallpaper 4k PC – a stunning cartoon dog view from a Paris rooftop with the Eiffel Tower in the distance. Perfect for elegant desktop backgrounds.',
+        'Get the Chill Guy Wallpaper 4K PC – a stunning cartoon dog view from a Paris rooftop with the Eiffel Tower in the distance. Perfect for elegant backgrounds.',
       keywords:
-        'Chill Guy, Rooftop Paris wallpaper, Eiffel Tower, cartoon wallpaper, 4K Chill Guy Wallpaper PC, Paris cityscape, elegant cartoon dog',
+        'Chill Guy, Rooftop Paris wallpaper, Eiffel Tower, cartoon wallpaper, 4K Chill Guy Wallpaper PC',
     },
     detailsHtml: `
-    <h3>Chill Guy Rooftop Paris Wallpaper 4k PC – Eiffel Tower Cityscape</h3>
+   <h2>Chill Guy Wallpaper 4K PC – Eiffel Tower Cityscape</h2>
 
-    <p>Enjoy a majestic view of Paris rooftops and the iconic Eiffel Tower with this elegant <strong>Chill Guy Wallpaper 4k PC</strong>. Download the original high-quality version to see every detail clearly.</p>
+<p>Enjoy a majestic view of Paris rooftops and the iconic Eiffel Tower with this elegant <strong>Chill Guy Wallpaper 4k PC</strong>. Download the original high-quality <strong>Chill Guy Wallpaper 4k PC</strong> version to see every detail clearly.</p>
 
-    <p>Featuring <strong>Chill Guy</strong> standing confidently atop a Parisian rooftop, this wallpaper captures the romantic charm of the city with a stylized cartoon twist. The lighting and sweeping city view give it a cinematic, dreamy quality.</p>
+<p>Featuring <strong>Chill Guy</strong> standing confidently atop a Parisian rooftop, this <strong>Chill Guy Wallpaper 4k PC</strong> captures the romantic charm of the city with a stylized cartoon twist. The lighting and sweeping city view give this <strong>Chill Guy Wallpaper 4k PC</strong> a cinematic, dreamy quality.</p>
 
-    <p>If you're a fan of European architecture, cozy elegance, or Parisian atmospheres, this 4K desktop background brings sophistication and warmth to your setup.</p>
+<p>If you're a fan of European architecture, cozy elegance, or Parisian atmospheres, this <strong>Chill Guy Wallpaper 4k PC</strong> 4K desktop background brings sophistication and warmth to your setup.</p>
 
-    <ul>
-      <li><strong>Resolution:</strong> (16:9)</li>
-      <li><strong>File Size:</strong> 4.07MB</li>
-      <li><strong>Tags:</strong> Chill Guy, rooftop Paris, Eiffel Tower, 4K cartoon wallpaper, elegant city view, Chill Guy Wallpaper 4k PC</li>
-    </ul>
+<ul>
+  <li><strong>Resolution:</strong> (16:9)</li>
+  <li><strong>File Size:</strong> 4.07MB</li>
+  <li><strong>Tags:</strong> Chill Guy, rooftop Paris, Eiffel Tower, 4K cartoon wallpaper, elegant city view, Chill Guy Wallpaper 4k PC</li>
+</ul>
+  `,
+  },
+
+  {
+    id: 8,
+    title: 'Chill Guy wallpaper 4k phone – Peaceful Indoor Green Vibes',
+    description:
+      'Download this Chill Guy wallpaper 4k phone featuring our favorite Chill Guy standing in a cozy, plant-filled interior. This Chill Guy wallpaper phone blends relaxed charm and modern design.',
+    thumbnailUrl: '/images/Compress-images/wallpapers-ph_01.png',
+    detailImageUrl: '/images/Compress-images/wallpapers-ph_01.png',
+    addressBar: 'chill-guy-wallpaper-4k-phone',
+    category: 'Chill Guy Wallpaper 4k Phone',
+    downloadUrl: '/images/Original-Image/wallpapers-ph_01.png',
+    tags: [
+      'Chill Guy',
+      'Chill Guy wallpaper 4k phone',
+      'Chill Guy wallpaper phone',
+      'cozy cartoon background',
+      'indoor plant wallpaper',
+      'relaxed aesthetic wallpaper',
+      'Chill Guy aesthetic art',
+    ],
+    resolution: '9:16',
+    fileSize: '1.03MB',
+    publishDate: '2025-05-19',
+    seo: {
+      title: 'Chill Guy Wallpaper 4k Phone – Chill Aesthetic for Mobile',
+      description:
+        'Get the best Chill Guy wallpaper 4k phone with indoor plant vibes and cozy cartoon charm. Perfect as a Chill Guy wallpaper phone for aesthetic fans.',
+      keywords:
+        'Chill Guy, Chill Guy wallpaper 4k phone, Chill Guy wallpaper phone, cozy plant background',
+    },
+    detailsHtml: `
+    <h2>Chill Guy Wallpaper 4k Phone – Peaceful Indoor Green Vibes</h2> 
+
+<p>Bring tranquility to your device with this <strong>Chill Guy wallpaper 4k phone</strong>. This <strong>Chill Guy wallpaper 4k phone</strong> is set in a lush, indoor plant-filled space, featuring our calm and stylish character in a warm, peaceful setting.</p>
+
+<p>This <strong>Chill Guy wallpaper 4k phone</strong> is perfect for anyone who loves cozy vibes, greenery, and clean cartoon aesthetics. Whether you're relaxing or on the go, this <strong>Chill Guy wallpaper 4k phone</strong> keeps your screen fresh and stylish.</p>
+
+<p>Use this high-quality <strong>Chill Guy wallpaper 4k phone</strong> on any smartphone and enjoy a unique balance of nature and character design. It’s a must-have <strong>Chill Guy wallpaper 4k phone</strong> for aesthetic lovers looking for cozy cartoon backgrounds.</p>
+
+<ul>
+  <li><strong>Tags:</strong> Chill Guy, Chill Guy wallpaper 4k phone, Chill Guy wallpaper phone, cozy cartoon background, indoor plant wallpaper, relaxed aesthetic wallpaper, Chill Guy aesthetic art</li>
+</ul>
+
+  `,
+  },
+
+  {
+    id: 9,
+    title: 'Chill Guy Wallpaper 4k Phone – Nature-Inspired Cartoon Art',
+    description:
+      'Download this nature-themed Chill Guy wallpaper 4k phone featuring the relaxed cartoon character standing confidently near lush green plants. A perfect Chill Guy wallpaper phone for calming vibes.',
+    thumbnailUrl: '/images/Compress-images/wallpapers-ph_02.png',
+    detailImageUrl: '/images/Compress-images/wallpapers-ph_02.png',
+    addressBar: 'chill-guy-wallpaper-phone-nature-vibes',
+    category: 'Chill Guy Wallpaper 4k Phone',
+    downloadUrl: '/images/Original-Image/wallpapers-ph_02.png',
+    tags: [
+      'Chill Guy',
+      'Chill Guy wallpaper 4k phone',
+      'Chill Guy wallpaper phone',
+      'nature chill background',
+      'greenery cartoon wallpaper',
+      'calm aesthetic phone art',
+      'outdoor cartoon vibe',
+    ],
+    resolution: '9:16',
+    fileSize: '940KB',
+    publishDate: '2025-05-19',
+    seo: {
+      title: 'Chill Guy Wallpaper 4k Phone – Relaxed Nature Mood',
+      description:
+        'Explore this Chill Guy wallpaper 4k phone set in a peaceful nature scene. A serene Chill Guy wallpaper phone perfect for fans of greenery and cartoon charm.',
+      keywords:
+        'Chill Guy, Chill Guy wallpaper 4k phone, Chill Guy wallpaper phone, nature phone background',
+    },
+    detailsHtml: `
+    <h3>Chill Guy Wallpaper 4k Phone – Nature-Inspired Cartoon Art</h3>
+
+<p>Bring some leafy charm to your device with this peaceful <strong>Chill Guy wallpaper 4k phone</strong>. Set outdoors with lush green plants and soft lighting, this <strong>Chill Guy wallpaper 4k phone</strong> shows our iconic character enjoying a tranquil vibe, making this <strong>Chill Guy wallpaper 4k phone</strong> a perfect choice for nature lovers.</p>
+
+<p>This <strong>Chill Guy wallpaper 4k phone</strong> is great for fans of calm, nature-themed cartoon scenes. Whether you're relaxing at home or walking through the city, this <strong>Chill Guy wallpaper 4k phone</strong> will keep your screen peaceful and stylish.</p>
+
+<p>Perfect for anyone who loves nature, cartoons, or minimalist aesthetics, this <strong>Chill Guy wallpaper 4k phone</strong> adds a subtle and fresh look to your phone. A true must-have <strong>Chill Guy wallpaper 4k phone</strong> for a clean and cozy background.</p>
+
+<ul>
+  <li><strong>Tags:</strong> Chill Guy, Chill Guy wallpaper 4k phone, Chill Guy wallpaper phone, nature chill background, greenery cartoon wallpaper, calm aesthetic phone art, outdoor cartoon vibe</li>
+</ul>
+
+  `,
+  },
+
+  {
+    id: 10,
+    title: 'Chill Guy Wallpaper 4k Phone – Hidden Alley Aesthetic',
+    description:
+      'Download this Chill Guy wallpaper 4k phone featuring the cartoon dog walking through a charming alleyway. A moody and stylish Chill Guy wallpaper phone perfect for personal expression.',
+    thumbnailUrl: '/images/Compress-images/wallpapers-ph_03.png',
+    detailImageUrl: '/images/Compress-images/wallpapers-ph_03.png',
+    addressBar: 'chill-guy-wallpaper-phone-alley',
+    category: 'Chill Guy Wallpaper 4k Phone',
+    downloadUrl: '/images/Original-Image/wallpapers-ph_03.png',
+    tags: [
+      'Chill Guy',
+      'Chill Guy wallpaper 4k phone',
+      'Chill Guy wallpaper phone',
+      'moody alley wallpaper',
+      'urban cartoon phone background',
+      'alleyway aesthetic',
+      'calm phone screen vibe',
+    ],
+    resolution: '9:16',
+    fileSize: '1.08MB',
+    publishDate: '2025-05-19',
+    seo: {
+      title: 'Chill Guy Wallpaper 4k Phone – Hidden Alley Vibe',
+      description:
+        'Discover this Chill Guy wallpaper 4k phone in a moody alley setting. A stylish and laid-back Chill Guy wallpaper phone for fans of urban calm and cartoon art.',
+      keywords:
+        'Chill Guy, Chill Guy wallpaper 4k phone, Chill Guy wallpaper phone, alley cartoon phone wallpaper',
+    },
+    detailsHtml: `
+   <h3>Chill Guy Wallpaper 4k Phone – Hidden Alley Aesthetic</h3>
+
+<p>Explore the mysterious charm of this <strong>Chill Guy wallpaper 4k phone</strong> featuring a quiet alley lined with trees and old buildings. The cool color tones and peaceful atmosphere make this <strong>Chill Guy wallpaper 4k phone</strong> a standout <strong>Chill Guy wallpaper phone</strong> for any fan.</p>
+
+<p>This <strong>Chill Guy wallpaper 4k phone</strong> adds personality and subtle elegance to your screen, with the classic cartoon character blending seamlessly into the tranquil surroundings. A true gem in the <strong>Chill Guy wallpaper 4k phone</strong> collection for your phone background.</p>
+
+<p>Whether you’re into cozy alleys or relaxing vibes, this <strong>Chill Guy wallpaper 4k phone</strong> is a stylish, moody piece that fits a calm and aesthetic lifestyle. You can use this <strong>Chill Guy wallpaper 4k phone</strong> on any modern smartphone to create a serene screen experience. The perfect <strong>Chill Guy wallpaper phone</strong> for a peaceful everyday view.</p>
+
+<ul>
+  <li><strong>Tags:</strong> Chill Guy, Chill Guy wallpaper 4k phone, Chill Guy wallpaper phone, moody alley wallpaper, urban cartoon phone background, alleyway aesthetic, calm phone screen vibe</li>
+</ul>
+  `,
+  },
+
+  {
+    id: 11,
+    title: 'Chill Guy Wallpaper 4k Phone – Urban Jungle Mood',
+    description:
+      'Download this Chill Guy wallpaper 4k phone featuring the cartoon dog standing in an overgrown alley. A gritty and artistic Chill Guy wallpaper phone with urban nature vibes.',
+    thumbnailUrl: '/images/Compress-images/wallpapers-ph_04.png',
+    detailImageUrl: '/images/Compress-images/wallpapers-ph_04.png',
+    addressBar: 'chill-guy-wallpaper-phone-jungle',
+    category: 'Chill Guy Wallpaper 4k Phone',
+    downloadUrl: '/images/Original-Image/wallpapers-ph_04.png',
+    tags: [
+      'Chill Guy',
+      'Chill Guy wallpaper 4k phone',
+      'Chill Guy wallpaper phone',
+      'urban jungle',
+      'grunge wallpaper phone',
+      'cartoon forest alley',
+      'overgrown city vibe',
+    ],
+    resolution: '9:16',
+    fileSize: '1.12MB',
+    publishDate: '2025-05-19',
+    seo: {
+      title: 'Chill Guy Wallpaper 4k Phone – Urban Jungle Vibes',
+      description:
+        'Chill Guy wallpaper 4k phone featuring a cartoon dog in a rugged, plant-filled alleyway. A Chill Guy wallpaper phone perfect for edgy, nature-meets-city.',
+      keywords:
+        'Chill Guy, Chill Guy wallpaper 4k phone, alley cartoon phone wallpaper, moody background',
+    },
+    detailsHtml: `
+    <h2>Chill Guy Wallpaper 4k Phone – Urban Jungle Mood</h2>
+
+<p>Step into a gritty oasis with this <strong>Chill Guy wallpaper 4k phone</strong>, where crumbling brick and lush greenery collide. This <strong>Chill Guy wallpaper 4k phone</strong> brings a unique mix of raw urban texture and natural overgrowth, making the <strong>Chill Guy wallpaper 4k phone</strong> perfect for bold, artistic vibes.</p>
+
+<p>Perfect for fans of bold contrasts and artistic flair, this <strong>Chill Guy wallpaper 4k phone</strong> adds character and coolness to any mobile screen.</p>
+
+<p>Bring your phone to life with this moody <strong>Chill Guy wallpaper 4k phone</strong> that’s both edgy and chill — a true visual balance of rough and calm.</p>
+
+<ul>
+  <li><strong>Tags:</strong> Chill Guy, Chill Guy wallpaper 4k phone, Chill Guy wallpaper phone, urban jungle, grunge wallpaper phone, cartoon forest alley, overgrown city vibe</li>
+</ul>
+
+  `,
+  },
+
+  {
+    id: 12,
+    title: 'Chill Guy Wallpaper 4K Phone – Forest Light Vibes',
+    description:
+      'Download this Chill Guy wallpaper 4k phone featuring the cartoon dog standing confidently in a glowing forest path. A serene Chill Guy wallpaper phone for nature lovers.',
+    thumbnailUrl: '/images/Compress-images/wallpapers-ph_05.png',
+    detailImageUrl: '/images/Compress-images/wallpapers-ph_05.png',
+    addressBar: 'chill-guy-wallpaper-phone-forest-light',
+    category: 'Chill Guy Wallpaper 4k Phone',
+    downloadUrl: '/images/Original-Image/wallpapers-ph_05.png',
+    tags: [
+      'Chill Guy',
+      'Chill Guy wallpaper 4k phone',
+      'Chill Guy wallpaper phone',
+      'forest path',
+      'nature wallpaper phone',
+      'sunlight background',
+      'cartoon dog outdoors',
+    ],
+    resolution: '9:16',
+    fileSize: '1.31MB',
+    publishDate: '2025-05-19',
+    seo: {
+      title: 'Chill Guy Wallpaper 4k Phone – Glowing Forest Path',
+      description:
+        'Get the Chill Guy wallpaper 4k phone – light-filled forest scene with the iconic cartoon dog. This Chill Guy wallpaper phone is ideal for fans of natural.',
+      keywords:
+        'Chill Guy, Chill Guy wallpaper 4k phone, Chill Guy wallpaper phone, nature phone wallpaper.',
+    },
+    detailsHtml: `
+<h3>Chill Guy Wallpaper 4k Phone – Forest Light Vibes</h3>
+
+<p>Step into a dreamy forest escape with this <strong>Chill Guy wallpaper 4k phone</strong>, where golden rays filter through dense trees and gentle shadows play on the ground. This <strong>Chill Guy wallpaper 4k phone</strong> captures the perfect balance of nature and cozy cartoon charm, ideal for any peaceful mobile screen setup.</p>
+
+<p>Starring our iconic character in a serene moment, this <strong>Chill Guy wallpaper 4k phone</strong> offers more than just greenery — it delivers warmth, calm, and personality in a single image. Whether you’re a fan of nature, minimalism, or cartoon aesthetics, this <strong>Chill Guy wallpaper 4k phone</strong> fits your mood effortlessly.</p>
+
+<p>Let your phone reflect your chill lifestyle with this high-quality <strong>Chill Guy wallpaper 4k phone</strong>. The soft light, forest depth, and artistic tone make this <strong>Chill Guy wallpaper 4k phone</strong> a favorite among those who appreciate a little peace in their pocket.</p>
+
+<p>Refresh your screen with this beautifully composed <strong>Chill Guy wallpaper 4k phone</strong> — a visual retreat you can carry with you all day.</p>
+
+<ul>
+  <li><strong>Tags:</strong> Chill Guy, Chill Guy wallpaper 4k phone, Chill Guy wallpaper phone, forest path, nature wallpaper phone, sunlight background, cartoon dog outdoors</li>
+</ul>
+
   `,
   },
 ]

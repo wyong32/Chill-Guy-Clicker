@@ -5,10 +5,11 @@
         <div class="logo">
           <router-link to="/">
             <img
-              src="@/assets/logo-chill-guy-game.svg"
+              src="/images/logo.png"
               alt="Chill Guy Clicker"
               class="logo-image"
             />
+            <span>Chill Guy Clicker</span>
           </router-link>
         </div>
         <nav class="nav">
@@ -142,6 +143,7 @@ export default {
 .logo {
   display: flex;
   align-items: center;
+  color: #fff;
 }
 
 .logo a {
@@ -154,6 +156,14 @@ export default {
   height: 50px;
   margin-right: 10px;
   filter: drop-shadow(0 0 5px rgba(255, 204, 0, 0.5));
+}
+
+.logo span{
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .nav-list {

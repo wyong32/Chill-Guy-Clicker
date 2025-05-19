@@ -49,7 +49,6 @@
         </div>
 
         <div class="music-details-section" v-if="track.detailsHtml">
-          <h2 class="section-title">About This Track</h2>
           <div class="music-details content-html" v-html="track.detailsHtml"></div>
         </div>
       </div>
@@ -65,6 +64,7 @@
 
 <script>
 import { music } from '@/data/music.js'
+import { SITE_DOMAIN } from '@/config/site.js'
 
 export default {
   name: 'MusicDetailView',
@@ -114,6 +114,9 @@ export default {
             document.head.appendChild(metaKeywords)
           }
           metaKeywords.setAttribute('content', this.track.seo.keywords)
+
+          // 设置规范URL和社交媒体标签
+          this.updateCanonicalUrl()
         } else {
           // 兼容没有SEO字段的旧数据
           document.title = `${this.track.title} - ${this.track.artist || 'ChillGuy Music'} | Chill Guy Music`
@@ -126,9 +129,29 @@ export default {
             document.head.appendChild(metaDescription)
           }
           metaDescription.setAttribute('content', this.track.description)
+
+          // 设置规范URL和社交媒体标签
+          this.updateCanonicalUrl()
         }
       } else {
         document.title = 'Track Not Found | Chill Guy Music'
+      }
+    },
+    updateCanonicalUrl() {
+      // 确保使用addressBar而不是ID来生成规范URL
+      if (this.track && this.track.addressBar) {
+        const canonicalUrl = `${SITE_DOMAIN}/Chill-Guy-Music/${this.track.addressBar}`
+
+        // 获取或创建规范URL标签
+        let canonicalLink = document.querySelector('link[rel="canonical"]')
+        if (!canonicalLink) {
+          canonicalLink = document.createElement('link')
+          canonicalLink.setAttribute('rel', 'canonical')
+          document.head.appendChild(canonicalLink)
+        }
+
+        // 设置规范URL
+        canonicalLink.setAttribute('href', canonicalUrl)
       }
     }
   },

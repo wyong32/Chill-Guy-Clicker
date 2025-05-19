@@ -1,0 +1,12 @@
+# robots.txt for Chill Guy Games
+User-agent: *
+Allow: /
+
+# 站点地图
+Sitemap: https://chill-guy-clicker-two.vercel.app/sitemap.xml
+
+# 禁止访问管理页面
+Disallow: /admin/
+
+# 禁止访问API文档
+Disallow: /api/
