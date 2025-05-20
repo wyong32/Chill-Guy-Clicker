@@ -6,6 +6,7 @@
       <div v-for="skin in girlSkins" :key="skin.id" class="skin-card">
         <div class="skin-image">
           <img :src="skin.imageUrl" :alt="skin.imageAlt" />
+          <div class="skin-name">{{ skin.name }}</div>
         </div>
         <div class="skin-info">
           <h3 class="skin-title">{{ skin.title }}</h3>
@@ -89,6 +90,19 @@ export default {
   align-items: center;
   justify-content: center;
   background-color: #f5f5f5;
+  position: relative;
+}
+
+.skin-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .skin-image img {

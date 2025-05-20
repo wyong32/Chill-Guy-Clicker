@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Comment = require('../models/Comment');
 const auth = require('../middleware/auth');
+const { commentLimiter } = require('../middleware/rateLimit');
 
 /**
  * @route   GET /api/comments
@@ -155,7 +156,7 @@ router.get('/stats/game/:gameId', async (req, res) => {
  * @desc    Add a new comment
  * @access  Public
  */
-router.post('/', async (req, res) => {
+router.post('/', commentLimiter, async (req, res) => {
   try {
     // 创建新评论 - 验证会在 Comment 构造函数中进行
     const newComment = new Comment(req.body);

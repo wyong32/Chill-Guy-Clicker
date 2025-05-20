@@ -447,17 +447,20 @@ export default {
           body: JSON.stringify(commentData)
         });
 
+        const data = await response.json();
+
         if (!response.ok) {
-          throw new Error('添加评论失败');
+          if (response.status === 429) {
+            throw new Error(`Comments too frequently, please wait ${data.retryAfter} seconds before trying again`);
+          }
+          throw new Error(data.message || 'Failed to add comment');
         }
 
-        const newComment = await response.json();
-        this.comments.push(newComment);
-
+        this.comments.push(data);
         this.closeModals();
-        this.showNotification('success', '评论添加成功！');
+        this.showNotification('success', 'Comment added successfully!');
       } catch (error) {
-        this.showNotification('error', error.message || '添加评论时发生错误');
+        this.showNotification('error', error.message || 'An error occurred while adding your comment');
         console.error('Error adding comment:', error);
       }
     },

@@ -27,7 +27,9 @@ const getAllRoutes = () => {
     '/Chill-Guy-PNG',
     '/Chill-Guy-Wallpaper',
     '/privacy-policy',
-    '/terms-of-use'
+    '/terms-of-use',
+    '/about',
+    '/contact'
   ]);
 
   // 添加游戏路由

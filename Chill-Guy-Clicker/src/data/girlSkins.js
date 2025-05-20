@@ -3,6 +3,7 @@ export const girlSkins = [
   {
     id: 1,
     title: 'Chill Girl',
+    name: "Chill Guy Girl - 01",
     imageUrl: '/images/Chill-Girl/img-01.png',
     imageAlt: 'Chill Girl',
   },
@@ -10,6 +11,7 @@ export const girlSkins = [
   {
     id: 2,
     title: 'Hair Bow',
+    name: "Chill Guy Girl - 02",
     imageUrl: '/images/Chill-Girl/img-02.png',
     imageAlt: 'Hair Bow',
   },
@@ -17,6 +19,7 @@ export const girlSkins = [
   {
     id: 3,
     title: 'Glasses',
+    name: "Chill Guy Girl - 03",
     imageUrl: '/images/Chill-Girl/img-03.png',
     imageAlt: 'Glasses',
   },
@@ -24,6 +27,7 @@ export const girlSkins = [
   {
     id: 4,
     title: 'Chaiko',
+    name: "Chill Guy Girl - 04",
     imageUrl: '/images/Chill-Girl/img-04.png',
     imageAlt: 'Chaiko',
   },
@@ -31,6 +35,7 @@ export const girlSkins = [
   {
     id: 5,
     title: 'Floppy Hat',
+    name: "Chill Guy Girl - 05",
     imageUrl: '/images/Chill-Girl/img-05.png',
     imageAlt: 'Floppy Hat',
   },
@@ -38,6 +43,7 @@ export const girlSkins = [
   {
     id: 6,
     title: 'Yellow',
+    name: "Chill Guy Girl - 06",
     imageUrl: '/images/Chill-Girl/img-06.png',
     imageAlt: 'Yellow',
   },
@@ -45,6 +51,7 @@ export const girlSkins = [
   {
     id: 7,
     title: 'Headphone',
+    name: "Chill Guy Girl - 07",
     imageUrl: '/images/Chill-Girl/img-07.png',
     imageAlt: 'Headphone',
   },
@@ -52,6 +59,7 @@ export const girlSkins = [
   {
     id: 8,
     title: 'Wizard',
+    name: "Chill Guy Girl - 08",
     imageUrl: '/images/Chill-Girl/img-08.png',
     imageAlt: 'Wizard',
   },
@@ -59,6 +67,7 @@ export const girlSkins = [
   {
     id: 9,
     title: 'Cloche',
+    name: "Chill Guy Girl - 09",
     imageUrl: '/images/Chill-Girl/img-09.png',
     imageAlt: 'Cloche',
   },
@@ -66,6 +75,7 @@ export const girlSkins = [
   {
     id: 10,
     title: 'Flower',
+    name: "Chill Guy Girl - 10",
     imageUrl: '/images/Chill-Girl/img-10.png',
     imageAlt: 'Flower',
   },
@@ -73,6 +83,7 @@ export const girlSkins = [
   {
     id: 11,
     title: 'Blonde',
+    name: "Chill Guy Girl - 11",
     imageUrl: '/images/Chill-Girl/img-11.png',
     imageAlt: 'Blonde',
   },
@@ -80,6 +91,7 @@ export const girlSkins = [
   {
     id: 12,
     title: 'Fairy',
+    name: "Chill Guy Girl - 12",
     imageUrl: '/images/Chill-Girl/img-12.png',
     imageAlt: 'Fairy',
   },
@@ -87,6 +99,7 @@ export const girlSkins = [
   {
     id: 13,
     title: 'Princess',
+    name: "Chill Guy Girl - 13",
     imageUrl: '/images/Chill-Girl/img-13.png',
     imageAlt: 'Princess',
   },
@@ -94,6 +107,7 @@ export const girlSkins = [
   {
     id: 14,
     title: 'Queen',
+    name: "Chill Guy Girl - 14",
     imageUrl: '/images/Chill-Girl/img-14.png',
     imageAlt: 'Queen',
   },
@@ -101,6 +115,7 @@ export const girlSkins = [
   {
     id: 15,
     title: 'Golden',
+    name: "Chill Guy Girl - 15",
     imageUrl: '/images/Chill-Girl/img-15.png',
     imageAlt: 'Golden',
   },
@@ -108,6 +123,7 @@ export const girlSkins = [
   {
     id: 16,
     title: 'Super Diamond',
+    name: "Chill Guy Girl - 16",
     imageUrl: '/images/Chill-Girl/img-16.png',
     imageAlt: 'Super Diamond',
   },

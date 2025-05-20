@@ -70,6 +70,8 @@
           <ul class="footer-links">
             <li><router-link to="/privacy-policy" class="footer-link">Privacy Policy</router-link></li>
             <li><router-link to="/terms-of-use" class="footer-link">Terms of Use</router-link></li>
+            <li><router-link to="/about" class="footer-link">About</router-link></li>
+            <li><router-link to="/contact" class="footer-link">Contact</router-link></li>
           </ul>
         </div>
       </div>

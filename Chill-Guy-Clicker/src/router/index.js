@@ -9,6 +9,8 @@ import WallpaperDetailView from '../views/WallpaperDetailView.vue'
 import MusicDetailView from '../views/MusicDetailView.vue'
 import PrivacyPolicyView from '../views/PrivacyPolicyView.vue'
 import TermsOfUseView from '../views/TermsOfUseView.vue'
+import AboutView from '../views/AboutView.vue'
+import ContactView from '../views/ContactView.vue'
 
 import AdminLoginView from '../views/admin/LoginView.vue'
 import AdminDashboardView from '../views/admin/DashboardView.vue'
@@ -343,7 +345,30 @@ const router = createRouter({
         }
       }
     },
-
+    {
+      path: '/about',
+      name: 'about',
+      component: AboutView,
+      meta: {
+        seo: {
+          title: 'About Us - Chill Guy Games',
+          description: 'Learn about Chill Guy Games, our mission, values, and what we offer to our community of players. Discover our story and commitment to creating relaxing gaming experiences.',
+          keywords: 'about chill guy games, game development, online games, browser games, chill games, relaxing games, casual games'
+        }
+      }
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: ContactView,
+      meta: {
+        seo: {
+          title: 'Contact Us - Chill Guy Games',
+          description: 'Get in touch with the Chill Guy Games team. We welcome your feedback, suggestions, and questions about our games and services.',
+          keywords: 'contact chill guy games, support, feedback, game suggestions, help, customer service, game support'
+        }
+      }
+    },
 
     // 管理页面路由
     {
