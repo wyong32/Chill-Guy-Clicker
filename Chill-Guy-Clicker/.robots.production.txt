@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: http://chillguymemeclicker.com/sitemap.xml
+Sitemap: https://chillguymemeclicker.com/sitemap.xml
 
 # Disallow admin pages
 Disallow: /admin/

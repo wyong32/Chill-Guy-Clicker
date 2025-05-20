@@ -14,7 +14,7 @@ import { pngImages } from './src/data/png.js'
 import { wallpapers } from './src/data/wallpapers.js'
 
 // 网站域名
-const SITE_DOMAIN = 'http://chillguymemeclicker.com'
+const SITE_DOMAIN = 'https://chillguymemeclicker.com'
 
 // 获取所有路由（静态+动态）
 const getAllRoutes = () => {

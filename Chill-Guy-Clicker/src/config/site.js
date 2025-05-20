@@ -4,7 +4,7 @@
  */
 
 // 网站域名 - 当前使用临时域名，将来可以替换为正式域名
-export const SITE_DOMAIN = 'http://chillguymemeclicker.com'
+export const SITE_DOMAIN = 'https://chillguymemeclicker.com'
 
 // 网站名称
 export const SITE_NAME = 'Chill Guy Games'
