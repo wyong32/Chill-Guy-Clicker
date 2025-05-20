@@ -12,7 +12,7 @@ export const girlGames = [
     },
     addressBar: 'Chill-Girl-Clicker',
     publishDate: '2025-05-15',
-    imageUrl: '/images/game-02.png',
+    imageUrl: '/images/games/game-02.png',
     imageAlt: 'Chill Girl Clicker gameplay with cozy room and stylish character',
     iframeUrl: 'https://game.azgame.io/chill-girl-clicker/',
     isHot: true,

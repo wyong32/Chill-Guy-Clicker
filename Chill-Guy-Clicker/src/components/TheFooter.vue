@@ -75,7 +75,7 @@
       </div>
       <div class="footer-bottom">
         <div class="footer-bottom-content">
-          <p class="copyright">© 2023 Chill Guy Games. All rights reserved.</p>
+          <p class="copyright">© 2025 Chill Guy Games. All rights reserved.</p>
           <p class="disclaimer">
             Disclaimer: This website is for entertainment purposes only. All games, images, and content are either owned by Chill Guy Games or used with permission. We are not responsible for any external content linked from this site.
           </p>
