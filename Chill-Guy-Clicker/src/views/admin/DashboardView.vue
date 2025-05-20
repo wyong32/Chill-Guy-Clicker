@@ -23,9 +23,33 @@
       <div v-else-if="error" class="error-message">{{ error }}</div>
 
       <div v-else>
+        <!-- 分页控制 -->
+        <div class="pagination-controls">
+          <div class="pagination-info">
+            显示 {{ paginationStart }} - {{ paginationEnd }} 条，共 {{ games.length }} 条
+          </div>
+          <div class="pagination-buttons">
+            <button 
+              @click="currentPage--" 
+              :disabled="currentPage === 1"
+              class="pagination-button"
+            >
+              上一页
+            </button>
+            <span class="page-number">{{ currentPage }}</span>
+            <button 
+              @click="currentPage++" 
+              :disabled="currentPage >= totalPages"
+              class="pagination-button"
+            >
+              下一页
+            </button>
+          </div>
+        </div>
+
         <div class="games-container">
           <!-- 游戏评论管理卡片 -->
-          <div v-for="game in games" :key="game.id" class="game-card">
+          <div v-for="game in paginatedGames" :key="game.id" class="game-card">
             <div class="game-header">
               <h2>{{ game.pageTitle }}</h2>
               <div class="game-actions">
@@ -81,6 +105,30 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- 底部分页控制 -->
+        <div class="pagination-controls bottom">
+          <div class="pagination-info">
+            显示 {{ paginationStart }} - {{ paginationEnd }} 条，共 {{ games.length }} 条
+          </div>
+          <div class="pagination-buttons">
+            <button 
+              @click="currentPage--" 
+              :disabled="currentPage === 1"
+              class="pagination-button"
+            >
+              上一页
+            </button>
+            <span class="page-number">{{ currentPage }}</span>
+            <button 
+              @click="currentPage++" 
+              :disabled="currentPage >= totalPages"
+              class="pagination-button"
+            >
+              下一页
+            </button>
           </div>
         </div>
       </div>
@@ -199,7 +247,10 @@ export default {
         content: '',
         email: '',
         created_at: ''
-      }
+      },
+      // 分页相关状态
+      currentPage: 1,
+      itemsPerPage: 5
     };
   },
   created() {
@@ -212,6 +263,25 @@ export default {
     this.loadGameData();
   },
   computed: {
+    // 计算总页数
+    totalPages() {
+      return Math.ceil(this.games.length / this.itemsPerPage);
+    },
+    // 获取当前页的游戏
+    paginatedGames() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      return this.games.slice(start, end);
+    },
+    // 计算当前页的起始索引
+    paginationStart() {
+      return (this.currentPage - 1) * this.itemsPerPage + 1;
+    },
+    // 计算当前页的结束索引
+    paginationEnd() {
+      const end = this.currentPage * this.itemsPerPage;
+      return end > this.games.length ? this.games.length : end;
+    },
     // 获取已展开的游戏列表
     expandedGames() {
       return this.games.filter(game => this.isGameExpanded(game.id));
@@ -219,6 +289,16 @@ export default {
     // 获取已折叠的游戏列表
     collapsedGames() {
       return this.games.filter(game => !this.isGameExpanded(game.id));
+    }
+  },
+  watch: {
+    // 监听 currentPage 变化，确保页码在有效范围内
+    currentPage(newPage) {
+      if (newPage < 1) {
+        this.currentPage = 1;
+      } else if (newPage > this.totalPages) {
+        this.currentPage = this.totalPages;
+      }
     }
   },
   methods: {
@@ -933,6 +1013,61 @@ export default {
   cursor: pointer;
 }
 
+/* 分页控制样式 */
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.pagination-controls.bottom {
+  margin-top: 30px;
+}
+
+.pagination-info {
+  color: #666;
+  font-size: 14px;
+}
+
+.pagination-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pagination-button {
+  padding: 8px 15px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: #e0e0e0;
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-number {
+  padding: 8px 15px;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
 @media (max-width: 768px) {
   .admin-header {
     flex-direction: column;
@@ -958,6 +1093,15 @@ export default {
   .action-button {
     padding: 5px 8px;
     font-size: 12px;
+  }
+
+  .pagination-controls {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .pagination-info {
+    text-align: center;
   }
 }
 </style>
