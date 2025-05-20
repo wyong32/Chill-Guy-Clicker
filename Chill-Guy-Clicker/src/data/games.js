@@ -136,7 +136,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
 
 {
   id: 3,
-  pageTitle: 'Angry Chubby',
+  pageTitle: 'Chill Guy Clicker 3D',
   seo: {
     title: 'Angry Chubby - Chill Guy Clicker Goes Wild',
     description:
@@ -144,7 +144,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
     keywords:
       'chill guy clicker, angry chubby, rage clicker, funny game, destruction game, smash game, snack power',
   },
-  addressBar: 'Angry-Chubby',
+  addressBar: 'Chill-Guy-Clicker 3D',
   publishDate: '2025-05-15',
   imageUrl: '/images/games/game-03.png',
   imageAlt: 'Angry Chubby gameplay showing chubby character eating and smashing buildings in rage',
@@ -185,14 +185,14 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
 
 {
   id: 4,
-  pageTitle: 'Chill Guy Zombie',
+  pageTitle: 'Unchill Guy Clicker',
   seo: {
   title: 'Chill Guy Zombie - Idle Clicker Survival Game',
   description:
     'Play Unchill Guy Clicker, a fast-paced chaotic clicker where stress fuels your progress! Tap, scream, and upgrade through wild madness and crazy upgrades.',
   keywords: 'chill guy clicker, chill guy zombie, idle clicker, zombie survival, upgrades, idle game, chill fun',
 },
-  addressBar: 'Chill-Guy-Zombie',
+  addressBar: 'Unchill-Guy-Clicker',
   publishDate: '2025-05-15',
   imageUrl: '/images/games/game-04.png',
   imageAlt: 'Chill Guy Zombie gameplay showing chill dude fighting zombies',
