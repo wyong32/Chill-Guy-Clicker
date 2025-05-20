@@ -101,7 +101,7 @@
             If you have any questions about these Terms, please contact us at:
           </p>
           <p>
-           maieldilmie223321@gmail.com
+            delldremo9898@gmail.com
           </p>
         </section>
       </div>

@@ -16,8 +16,8 @@
           <h2>Email</h2>
           <div class="contact-method">
             <p class="contact-label">Support & General Inquiries:</p>
-            <a href="mailto:maieldilmie223321@gmail.com" class="contact-link">
-                maieldilmie223321@gmail.com
+            <a href="mailto:delldremo9898@gmail.com" class="contact-link">
+                delldremo9898@gmail.com
             </a>
           </div>
         </section>

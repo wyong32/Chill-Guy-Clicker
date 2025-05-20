@@ -95,7 +95,7 @@
             If you have any questions about this Privacy Policy, please contact us at:
           </p>
           <p>
-            maieldilmie223321@gmail.com
+            delldremo9898@gmail.com
           </p>
         </section>
       </div>

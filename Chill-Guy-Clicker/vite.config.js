@@ -29,7 +29,8 @@ const getAllRoutes = () => {
     '/privacy-policy',
     '/terms-of-use',
     '/about',
-    '/contact'
+    '/contact',
+    '/copyright'
   ]);
 
   // 添加游戏路由

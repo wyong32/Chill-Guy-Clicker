@@ -3,7 +3,7 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-section about">
-          <h3 class="footer-title">About Us</h3>
+          <h3 class="footer-title">Chill Guy Clicker</h3>
           <p class="footer-text">
             Chill Guy Games is a platform offering various fun casual games. We are dedicated to
             providing the best gaming experience for players.
@@ -70,17 +70,18 @@
           <ul class="footer-links">
             <li><router-link to="/privacy-policy" class="footer-link">Privacy Policy</router-link></li>
             <li><router-link to="/terms-of-use" class="footer-link">Terms of Use</router-link></li>
-            <li><router-link to="/about" class="footer-link">About</router-link></li>
-            <li><router-link to="/contact" class="footer-link">Contact</router-link></li>
+            <li><router-link to="/copyright" class="footer-link">Copyright</router-link></li>
+            <li><router-link to="/about" class="footer-link">About Us</router-link></li>
+            <li><router-link to="/contact" class="footer-link">Contact Us</router-link></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <div class="footer-bottom-content">
-          <p class="copyright">© 2025 Chill Guy Games. All rights reserved.</p>
-          <p class="disclaimer">
+          <p class="copyright">© 2025 chillguymemeclicker.com. All rights reserved.</p>
+          <!-- <p class="disclaimer">
             Disclaimer: This website is for entertainment purposes only. All games, images, and content are either owned by Chill Guy Games or used with permission. We are not responsible for any external content linked from this site.
-          </p>
+          </p> -->
         </div>
       </div>
     </div>

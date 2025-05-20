@@ -11,6 +11,7 @@ import PrivacyPolicyView from '../views/PrivacyPolicyView.vue'
 import TermsOfUseView from '../views/TermsOfUseView.vue'
 import AboutView from '../views/AboutView.vue'
 import ContactView from '../views/ContactView.vue'
+import CopyrightView from '../views/CopyrightView.vue'
 
 import AdminLoginView from '../views/admin/LoginView.vue'
 import AdminDashboardView from '../views/admin/DashboardView.vue'
@@ -366,6 +367,18 @@ const router = createRouter({
           title: 'Contact Us - Chill Guy Games',
           description: 'Get in touch with the Chill Guy Games team. We welcome your feedback, suggestions, and questions about our games and services.',
           keywords: 'contact chill guy games, support, feedback, game suggestions, help, customer service, game support'
+        }
+      }
+    },
+    {
+      path: '/copyright',
+      name: 'copyright',
+      component: CopyrightView,
+      meta: {
+        seo: {
+          title: 'Copyright Notice - Chill Guy Games',
+          description: 'Read our copyright notice to understand the intellectual property rights and usage terms for Chill Guy Games content.',
+          keywords: 'copyright notice, intellectual property, usage rights, fair use, chill guy games copyright'
         }
       }
     },
