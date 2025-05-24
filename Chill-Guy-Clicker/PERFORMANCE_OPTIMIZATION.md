@@ -13,7 +13,7 @@
 - **压缩优化**: JavaScript、CSS 和 HTML 文件压缩
 
 ### 2. 资源优化
-- **图片优化**: 
+- **图片优化**:
   - 支持 WebP 格式检测和自动切换
   - 图片懒加载和占位符
   - 响应式图片加载
@@ -28,10 +28,10 @@
 - **动态内容缓存**: 网络优先策略
 - **版本控制**: 自动缓存失效机制
 
-### 4. 性能监控
-- **Core Web Vitals**: 监控 LCP、FID、CLS 指标
-- **性能分析**: 自动生成性能报告
-- **设备适配**: 根据设备性能调整功能
+### 4. 设备适配
+- **设备检测**: 自动识别设备性能
+- **功能调整**: 根据设备能力调整动画和功能
+- **响应式优化**: 完全适配移动端和桌面端
 
 ## 📊 优化配置
 
@@ -100,14 +100,14 @@ npm run build
 # 性能分析构建
 npm run build:analyze
 
-# 性能测试
-npm run test:performance
+# 构建优化
+npm run optimize
 ```
 
-### 性能监控
-- 自动生成性能报告
-- 资源清单分析
-- 优化建议生成
+### 构建优化
+- 自动生成资源清单
+- 构建后优化处理
+- 文件压缩和整理
 
 ## 📈 预期性能提升
 
@@ -131,7 +131,7 @@ npm run test:performance
 ### 性能优化组件
 ```vue
 <!-- 使用优化的图片组件 -->
-<OptimizedImage 
+<OptimizedImage
   src="/images/logo.png"
   alt="Logo"
   :lazy-load="true"
@@ -146,8 +146,8 @@ import { performanceOptimizer } from '@/utils/performance.js'
 // 获取设备性能配置
 const config = performanceOptimizer.getAnimationConfig()
 
-// 预加载关键资源
-performanceOptimizer.preloadCriticalResources(resources)
+// 获取图片优化配置
+const imageConfig = performanceOptimizer.getImageConfig()
 ```
 
 ## 📝 最佳实践

@@ -23,7 +23,7 @@ const CACHE_PATTERNS = [
 // 安装事件 - 预缓存静态资源
 self.addEventListener('install', (event) => {
   console.log('Service Worker: Installing...')
-  
+
   event.waitUntil(
     caches.open(STATIC_CACHE)
       .then((cache) => {
@@ -43,7 +43,7 @@ self.addEventListener('install', (event) => {
 // 激活事件 - 清理旧缓存
 self.addEventListener('activate', (event) => {
   console.log('Service Worker: Activating...')
-  
+
   event.waitUntil(
     caches.keys()
       .then((cacheNames) => {
@@ -67,12 +67,12 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const { request } = event
   const url = new URL(request.url)
-  
+
   // 只处理同源请求
   if (url.origin !== location.origin) {
     return
   }
-  
+
   // 对于导航请求，使用网络优先策略
   if (request.mode === 'navigate') {
     event.respondWith(
@@ -100,7 +100,7 @@ self.addEventListener('fetch', (event) => {
     )
     return
   }
-  
+
   // 对于静态资源，使用缓存优先策略
   if (CACHE_PATTERNS.some(pattern => pattern.test(request.url))) {
     event.respondWith(
@@ -119,10 +119,10 @@ self.addEventListener('fetch', (event) => {
               .catch(() => {
                 // 网络请求失败，忽略
               })
-            
+
             return cachedResponse
           }
-          
+
           // 缓存中没有，从网络获取
           return fetch(request)
             .then((response) => {
@@ -137,7 +137,7 @@ self.addEventListener('fetch', (event) => {
     )
     return
   }
-  
+
   // 对于其他请求，使用网络优先策略
   event.respondWith(
     fetch(request)
@@ -165,33 +165,3 @@ if ('sync' in self.registration) {
     }
   })
 }
-
-// 推送通知（如果需要）
-self.addEventListener('push', (event) => {
-  if (event.data) {
-    const data = event.data.json()
-    const options = {
-      body: data.body,
-      icon: '/images/logo.png',
-      badge: '/images/logo.png',
-      vibrate: [100, 50, 100],
-      data: {
-        dateOfArrival: Date.now(),
-        primaryKey: data.primaryKey
-      }
-    }
-    
-    event.waitUntil(
-      self.registration.showNotification(data.title, options)
-    )
-  }
-})
-
-// 通知点击事件
-self.addEventListener('notificationclick', (event) => {
-  event.notification.close()
-  
-  event.waitUntil(
-    clients.openWindow('/')
-  )
-})

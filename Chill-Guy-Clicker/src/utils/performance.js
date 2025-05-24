@@ -172,12 +172,12 @@ export class PerformanceOptimizer {
    */
   preloadCriticalResources(resources) {
     const config = this.getImageConfig()
-    
+
     resources.forEach(resource => {
       if (resource.type === 'image') {
         const img = new Image()
         img.src = resource.src
-        
+
         // 如果是低质量模式，可以预加载缩略图
         if (config.quality === 'low' && resource.thumbnail) {
           const thumb = new Image()
@@ -195,42 +195,7 @@ export class PerformanceOptimizer {
     })
   }
 
-  /**
-   * 监控性能指标
-   */
-  monitorPerformance() {
-    if ('PerformanceObserver' in window) {
-      // 监控 LCP (Largest Contentful Paint)
-      const lcpObserver = new PerformanceObserver((list) => {
-        const entries = list.getEntries()
-        const lastEntry = entries[entries.length - 1]
-        console.log('LCP:', lastEntry.startTime)
-      })
-      lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] })
 
-      // 监控 FID (First Input Delay)
-      const fidObserver = new PerformanceObserver((list) => {
-        const entries = list.getEntries()
-        entries.forEach(entry => {
-          console.log('FID:', entry.processingStart - entry.startTime)
-        })
-      })
-      fidObserver.observe({ entryTypes: ['first-input'] })
-
-      // 监控 CLS (Cumulative Layout Shift)
-      const clsObserver = new PerformanceObserver((list) => {
-        let clsValue = 0
-        const entries = list.getEntries()
-        entries.forEach(entry => {
-          if (!entry.hadRecentInput) {
-            clsValue += entry.value
-          }
-        })
-        console.log('CLS:', clsValue)
-      })
-      clsObserver.observe({ entryTypes: ['layout-shift'] })
-    }
-  }
 }
 
 // 创建全局实例

@@ -10,7 +10,7 @@
     "build:production": "NODE_ENV=production vite build && node scripts/build-optimize.js",
     "preview": "vite preview",
     "test:unit": "vitest",
-    "test:performance": "lighthouse http://localhost:4173 --output=json --output-path=./performance-report.json",
+
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
     "optimize": "node scripts/build-optimize.js"

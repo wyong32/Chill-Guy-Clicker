@@ -154,8 +154,11 @@ Crawl-delay: 2`,
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,jpg,jpeg,webmanifest,txt,xml}'],
         cleanupOutdatedCaches: true,
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5MB
+        skipWaiting: true,
+        clientsClaim: true,
       },
-      includeAssets: ['images/favicon.ico', 'images/logo.png', 'images/**/*.{png,jpg,jpeg,webp}'],
+      includeAssets: ['images/favicon.ico', 'images/logo.png'],
       manifest: {
         name: 'Chill Guy Clicker Games',
         short_name: 'Chill Guy',
@@ -199,7 +202,7 @@ Crawl-delay: 2`,
             // Vue 核心库单独打包
             'vue-vendor': ['vue', 'vue-router', 'pinia'],
             // 游戏数据单独打包
-            'game-data': ['./src/data/games.js', './src/data/music.js', './src/data/png.js', './src/data/wallpapers.js'],
+            'game-data': ['./src/data/games.js', './src/data/music.js', './src/data/wallpapers.js'],
           },
           // 优化文件名
           chunkFileNames: 'js/[name]-[hash].js',
@@ -226,7 +229,9 @@ Crawl-delay: 2`,
       // 启用 CSS 代码分割
       cssCodeSplit: true,
       // 设置 chunk 大小警告限制
-      chunkSizeWarningLimit: 1000,
+      chunkSizeWarningLimit: 2000,
+      // 设置资源内联限制
+      assetsInlineLimit: 4096,
     },
     // 优化依赖预构建
     optimizeDeps: {

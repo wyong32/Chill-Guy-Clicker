@@ -74,16 +74,18 @@ export default {
     return {
       imageLoaded: false,
       hasError: false,
-      showPlaceholder: true,
-      imageConfig: {
+      showPlaceholder: true
+    }
+  },
+  computed: {
+    imageConfig() {
+      return {
         useWebP: this.supportsWebP(),
         quality: 'high',
         lazyLoad: true,
         placeholder: true
       }
-    }
-  },
-  computed: {
+    },
     optimizedSrc() {
       const { useWebP, quality } = this.imageConfig
       let src = this.src
