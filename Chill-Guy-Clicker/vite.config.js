@@ -4,8 +4,8 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import { robots } from 'vite-plugin-robots'
-import fs from 'fs'
-import path from 'path'
+// import ViteSitemapPlugin from 'vite-plugin-sitemap'
+import { VitePWA } from 'vite-plugin-pwa'
 
 // 导入数据文件
 import { games } from './src/data/games.js'
@@ -80,48 +80,157 @@ const generateSitemap = () => {
     sitemap += '  <url>\n';
     sitemap += `    <loc>${SITE_DOMAIN}${route}</loc>\n`;
     sitemap += `    <lastmod>${today}</lastmod>\n`;
-    sitemap += '    <changefreq>daily</changefreq>\n';
-    sitemap += '    <priority>1.0</priority>\n';
+    sitemap += '    <changefreq>weekly</changefreq>\n';
+    sitemap += '    <priority>0.8</priority>\n';
     sitemap += '  </url>\n';
   });
 
   sitemap += '</urlset>';
 
   // 确保dist目录存在
-  if (!fs.existsSync('dist')) {
-    fs.mkdirSync('dist');
-  }
-
-  // 写入站点地图文件
-  fs.writeFileSync('dist/sitemap.xml', sitemap);
-
-  console.log('✅ 站点地图生成成功！');
+  import('fs').then(fs => {
+    if (!fs.existsSync('dist')) {
+      fs.mkdirSync('dist');
+    }
+    // 写入站点地图文件
+    fs.writeFileSync('dist/sitemap.xml', sitemap);
+    console.log('✅ 站点地图生成成功！');
+  });
 }
 
 
 
+
+
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [
+export default defineConfig(({ command, mode }) => {
+  const isDev = command === 'serve' || mode === 'development'
+
+  const plugins = [
     vue(),
     vueJsx(),
-    vueDevTools(),
-    robots({
-      useProductionFile: true, // 使用.robots.production.txt文件
-      sitemap: `${SITE_DOMAIN}/sitemap.xml`,
-      disallow: ['/admin/', '/api/'],
-    }),
+    // 只在开发环境加载 DevTools
+    ...(isDev ? [vueDevTools()] : []),
+    // 手动生成sitemap的插件
     {
       name: 'generate-sitemap',
       closeBundle() {
         // 在构建完成后生成站点地图
         generateSitemap();
       }
-    }
-  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+    },
+    robots({
+      content: `# robots.txt for Chill Guy Clicker
+
+# Allow all crawlers access to all content by default
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: ${SITE_DOMAIN}/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /src/
+
+# --- Specific rules for search engine crawlers ---
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2`,
+    }),
+    VitePWA({
+      registerType: 'autoUpdate',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,jpg,jpeg,webmanifest,txt,xml}'],
+        cleanupOutdatedCaches: true,
+      },
+      includeAssets: ['images/favicon.ico', 'images/logo.png', 'images/**/*.{png,jpg,jpeg,webp}'],
+      manifest: {
+        name: 'Chill Guy Clicker Games',
+        short_name: 'Chill Guy',
+        description: 'Play relaxing Chill Guy clicker games online for free. Multiple games available!',
+        theme_color: '#41b883',
+        background_color: '#ffffff',
+        display: 'standalone',
+        scope: '/',
+        start_url: '/',
+        icons: [
+          {
+            src: '/images/logo.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'any',
+          },
+          {
+            src: '/images/logo.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any',
+          },
+        ],
+      },
+    }),
+  ]
+
+  return {
+    plugins,
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+      },
+    },
+    build: {
+      // 启用代码分割和优化
+      rollupOptions: {
+        output: {
+          // 手动分割代码块
+          manualChunks: {
+            // Vue 核心库单独打包
+            'vue-vendor': ['vue', 'vue-router', 'pinia'],
+            // 游戏数据单独打包
+            'game-data': ['./src/data/games.js', './src/data/music.js', './src/data/png.js', './src/data/wallpapers.js'],
+          },
+          // 优化文件名
+          chunkFileNames: 'js/[name]-[hash].js',
+          entryFileNames: 'js/[name]-[hash].js',
+          assetFileNames: (assetInfo) => {
+            const fileName = assetInfo.names?.[0] || 'asset'
+            const info = fileName.split('.')
+            const ext = info[info.length - 1]
+            if (/\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/i.test(fileName)) {
+              return `media/[name]-[hash].${ext}`
+            }
+            if (/\.(png|jpe?g|gif|svg|webp|avif)(\?.*)?$/i.test(fileName)) {
+              return `images/[name]-[hash].${ext}`
+            }
+            if (ext === 'css') {
+              return `css/[name]-[hash].${ext}`
+            }
+            return `assets/[name]-[hash].${ext}`
+          },
+        },
+      },
+      // 启用压缩
+      minify: true,
+      // 启用 CSS 代码分割
+      cssCodeSplit: true,
+      // 设置 chunk 大小警告限制
+      chunkSizeWarningLimit: 1000,
+    },
+    // 优化依赖预构建
+    optimizeDeps: {
+      include: ['vue', 'vue-router', 'pinia'],
     },
   }
 })

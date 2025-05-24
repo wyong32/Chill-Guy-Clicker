@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="/images/favicon.ico" />
@@ -10,6 +10,30 @@
       content="Play Chill Guy Clicker, a relaxing and fun clicking game where you earn points by clicking characters. Unlock new abilities and characters as you progress!"
     />
     <meta name="keywords" content="chill guy clicker, idle game, clicker game, relaxing game, online game, free game" />
+
+    <!-- 预加载关键资源 -->
+    <link
+      rel="preload"
+      href="/images/logo.png"
+      as="image"
+      type="image/png"
+      fetchpriority="high"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- 预加载关键字体，防止字体导致的布局偏移 -->
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/notosanssc/v36/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FnYxNbPzS5HE.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- DNS 预解析 -->
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
 
     <!-- 权限策略 -->
     <meta http-equiv="Permissions-Policy" content="autoplay=*, fullscreen=*, cross-origin-isolated=*" />
@@ -32,26 +56,97 @@
     <!-- 规范URL -->
     <link rel="canonical" href="https://chillguymemeclicker.com" />
 
-    <!-- 引入字体 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- 关键 CSS 内联 -->
+    <style>
+      /* 关键渲染路径 CSS - 只包含首屏必需的样式 */
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NM6JN6XG6J"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+      /* 字体优化，防止布局偏移 */
+      @font-face {
+        font-family: 'Noto Sans SC';
+        font-display: swap;
+        src: url('https://fonts.gstatic.com/s/notosanssc/v36/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FnYxNbPzS5HE.woff2')
+          format('woff2');
+      }
 
-  gtag('config', 'G-NM6JN6XG6J');
-</script>
+      body {
+        font-family: 'Noto Sans SC', 'Arial', sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #fff;
+        line-height: 1.6;
+        min-height: 100vh;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /* 防止字体加载导致的布局偏移 */
+        font-display: swap;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      /* 加载指示器 */
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #41b883;
+        animation: spin 1s ease-in-out infinite;
+        margin: 2rem auto;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* 防止布局偏移的占位样式 */
+      #app {
+        min-height: 100vh;
+        contain: layout style paint;
+      }
+    </style>
+
+    <!-- 延迟加载 Google Analytics -->
+    <script>
+      // 延迟加载 GTM，减少初始加载时间
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          // Google tag (gtag.js)
+          var script = document.createElement('script')
+          script.async = true
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NM6JN6XG6J'
+          document.head.appendChild(script)
+
+          window.dataLayer = window.dataLayer || []
+          function gtag() {
+            dataLayer.push(arguments)
+          }
+          gtag('js', new Date())
+          gtag('config', 'G-NM6JN6XG6J')
+
+          console.log('Google Analytics 已延迟加载')
+        }, 2000) // 页面加载后延迟2秒
+      })
+    </script>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <!-- 初始加载指示器 -->
+      <div class="loading-spinner"></div>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

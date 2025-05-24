@@ -1,20 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import GirlGamesView from '../views/GirlGamesView.vue'
-import MusicView from '../views/MusicView.vue'
-import PngView from '../views/PngView.vue'
-import PngDetailView from '../views/PngDetailView.vue'
-import WallpaperView from '../views/WallpaperView.vue'
-import WallpaperDetailView from '../views/WallpaperDetailView.vue'
-import MusicDetailView from '../views/MusicDetailView.vue'
-import PrivacyPolicyView from '../views/PrivacyPolicyView.vue'
-import TermsOfUseView from '../views/TermsOfUseView.vue'
-import AboutView from '../views/AboutView.vue'
-import ContactView from '../views/ContactView.vue'
-import CopyrightView from '../views/CopyrightView.vue'
 
-import AdminLoginView from '../views/admin/LoginView.vue'
-import AdminDashboardView from '../views/admin/DashboardView.vue'
+// 懒加载组件，提升初始加载性能
+const HomeView = () => import('../views/HomeView.vue')
+const GirlGamesView = () => import('../views/GirlGamesView.vue')
+const MusicView = () => import('../views/MusicView.vue')
+const PngView = () => import('../views/PngView.vue')
+const PngDetailView = () => import('../views/PngDetailView.vue')
+const WallpaperView = () => import('../views/WallpaperView.vue')
+const WallpaperDetailView = () => import('../views/WallpaperDetailView.vue')
+const MusicDetailView = () => import('../views/MusicDetailView.vue')
+const PrivacyPolicyView = () => import('../views/PrivacyPolicyView.vue')
+const TermsOfUseView = () => import('../views/TermsOfUseView.vue')
+const AboutView = () => import('../views/AboutView.vue')
+const ContactView = () => import('../views/ContactView.vue')
+const CopyrightView = () => import('../views/CopyrightView.vue')
+
+// 管理页面懒加载
+const AdminLoginView = () => import('../views/admin/LoginView.vue')
+const AdminDashboardView = () => import('../views/admin/DashboardView.vue')
 import { games } from '../data/games.js'
 import { music } from '../data/music.js'
 import { pngImages } from '../data/png.js'

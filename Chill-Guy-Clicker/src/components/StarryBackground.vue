@@ -24,6 +24,10 @@ export default {
   mounted() {
     // 检测设备性能
     this.detectPerformance()
+
+    // 使用 Intersection Observer 检测组件是否可见
+    this.setupVisibilityObserver()
+
     this.initBackground()
 
     // 设置一个定时器，每隔一段时间检查文档高度是否变化
@@ -36,6 +40,32 @@ export default {
     }, 2000); // 每2秒检查一次
   },
   methods: {
+    setupVisibilityObserver() {
+      // 使用 Intersection Observer 检测组件是否可见，优化性能
+      if ('IntersectionObserver' in window) {
+        this.visibilityObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                // 组件可见时恢复动画
+                if (!this.animationFrameId) {
+                  this.initBackground()
+                }
+              } else {
+                // 组件不可见时暂停动画
+                if (this.animationFrameId) {
+                  cancelAnimationFrame(this.animationFrameId)
+                  this.animationFrameId = null
+                }
+              }
+            })
+          },
+          { threshold: 0.1 }
+        )
+
+        this.visibilityObserver.observe(this.$el)
+      }
+    },
     detectPerformance() {
       // 更复杂的性能检测，考虑设备类型和硬件能力
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -378,6 +408,11 @@ export default {
     // 清理高度检查定时器
     if (this.heightCheckInterval) {
       clearInterval(this.heightCheckInterval);
+    }
+
+    // 清理 Intersection Observer
+    if (this.visibilityObserver) {
+      this.visibilityObserver.disconnect()
     }
   },
 }
