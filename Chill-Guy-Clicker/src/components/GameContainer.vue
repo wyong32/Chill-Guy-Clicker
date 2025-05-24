@@ -20,7 +20,14 @@
         <div class="glass-effect"></div>
         <!-- 游戏预览 -->
         <div class="game-preview">
-          <img :src="game.imageUrl" :alt="gameTitle" class="game-preview-image" />
+          <img
+            :src="game.imageUrl"
+            :alt="gameTitle"
+            class="game-preview-image"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
           <button class="play-now-button" @click="startGame" aria-label="Play Now">
             PLAY NOW
           </button>
@@ -219,9 +226,23 @@ export default {
       this.notificationTimeout = setTimeout(() => {
         this.showNotification = false
       }, duration)
+    },
+
+    // 预加载关键图片
+    preloadCriticalImages() {
+      if (this.game.imageUrl) {
+        const img = new Image()
+        img.src = this.game.imageUrl
+        // 设置高优先级
+        img.loading = 'eager'
+        img.fetchPriority = 'high'
+      }
     }
   },
   mounted() {
+    // 立即预加载关键图片
+    this.preloadCriticalImages()
+
     // 添加全屏变化事件监听
     document.addEventListener('fullscreenchange', this.handleFullscreenChange)
     document.addEventListener('webkitfullscreenchange', this.handleFullscreenChange)
@@ -397,6 +418,10 @@ export default {
   border: 2px solid rgba(255, 255, 255, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   z-index: 3;
+  /* 性能优化 */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .game-preview-image:hover {

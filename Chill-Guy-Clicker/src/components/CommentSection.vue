@@ -222,7 +222,9 @@ export default {
   },
   methods: {
     // 加载评论
-    async loadComments() {
+    async loadComments(retryCount = 0) {
+      const maxRetries = 1 // 最多重试1次
+
       // 重置状态
       this.isLoading = true
       this.error = null
@@ -243,7 +245,6 @@ export default {
         const response = await fetch(url, {
           method: 'GET',
           headers: {
-            'Content-Type': 'application/json',
             'Accept': 'application/json',
           },
           mode: 'cors',
@@ -264,6 +265,15 @@ export default {
       } catch (error) {
         // 错误日志在所有环境中都保留，便于调试
         console.error(`Failed to load comments for game ID ${this.gameId}:`, error)
+
+        // 如果是网络错误且还有重试次数，则重试
+        if (error.name === 'TypeError' && error.message.includes('fetch') && retryCount < maxRetries) {
+          console.log(`Retrying load comments (attempt ${retryCount + 1})...`)
+          // 等待500ms后重试
+          await new Promise(resolve => setTimeout(resolve, 500))
+          return this.loadComments(retryCount + 1)
+        }
+
         this.error = error.message || 'Failed to load comments'
       } finally {
         this.isLoading = false
@@ -271,7 +281,9 @@ export default {
     },
 
     // 添加新评论
-    async addComment(newComment) {
+    async addComment(newComment, retryCount = 0) {
+      const maxRetries = 1 // 最多重试1次
+
       try {
         // 只在开发环境中输出日志
         if (import.meta.env.DEV) {
@@ -282,10 +294,7 @@ export default {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Accept': 'application/json',
           },
-          mode: 'cors',
-          credentials: 'omit',
           body: JSON.stringify(newComment),
         })
 
@@ -307,6 +316,15 @@ export default {
         return savedComment
       } catch (error) {
         console.error('Error adding comment:', error)
+
+        // 如果是网络错误且还有重试次数，则重试
+        if (error.name === 'TypeError' && error.message.includes('fetch') && retryCount < maxRetries) {
+          console.log(`Retrying comment submission (attempt ${retryCount + 1})...`)
+          // 等待500ms后重试
+          await new Promise(resolve => setTimeout(resolve, 500))
+          return this.addComment(newComment, retryCount + 1)
+        }
+
         throw error
       }
     },

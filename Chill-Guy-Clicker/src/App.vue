@@ -69,13 +69,23 @@ export default {
       document.head.appendChild(link)
     },
 
-    async registerServiceWorker() {
+    registerServiceWorker() {
       if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
-        try {
-          const registration = await navigator.serviceWorker.register('/sw.js')
-          console.log('SW registered: ', registration)
-        } catch (registrationError) {
-          console.log('SW registration failed: ', registrationError)
+        // 使用 requestIdleCallback 延迟注册，避免阻塞主线程
+        const registerSW = () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('SW registered: ', registration)
+            })
+            .catch(registrationError => {
+              console.log('SW registration failed: ', registrationError)
+            })
+        }
+
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(registerSW, { timeout: 2000 })
+        } else {
+          setTimeout(registerSW, 1000)
         }
       }
     }
