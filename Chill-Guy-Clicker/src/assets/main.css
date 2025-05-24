@@ -29,6 +29,15 @@ body {
   font-family: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'Source Han Sans CN', 'WenQuanYi Micro Hei', Arial, sans-serif;
   background-color: var(--bg-color);
   font-display: swap;
+  /* 性能优化 */
+  contain: layout style paint;
+  will-change: auto;
+  /* 启用硬件加速 */
+  transform: translateZ(0);
+  /* 优化字体渲染 */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @media (max-width: 768px) {

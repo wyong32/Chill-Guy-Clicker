@@ -1,6 +1,6 @@
 /**
- * 性能优化工具类
- * 用于检测设备性能并提供相应的优化策略
+ * Performance optimization utility class
+ * Used to detect device performance and provide corresponding optimization strategies
  */
 
 export class PerformanceOptimizer {
@@ -10,7 +10,7 @@ export class PerformanceOptimizer {
   }
 
   /**
-   * 检测设备信息
+   * Detect device information
    */
   detectDevice() {
     const userAgent = navigator.userAgent
@@ -22,27 +22,27 @@ export class PerformanceOptimizer {
       isMobile,
       isTablet,
       isLowEndDevice,
-      deviceMemory: navigator.deviceMemory || 4, // 默认4GB
-      hardwareConcurrency: navigator.hardwareConcurrency || 4, // 默认4核
+      deviceMemory: navigator.deviceMemory || 4, // Default 4GB
+      hardwareConcurrency: navigator.hardwareConcurrency || 4, // Default 4 cores
       connection: navigator.connection || { effectiveType: '4g' }
     }
   }
 
   /**
-   * 检测是否为低端设备
+   * Detect if it's a low-end device
    */
   isLowEndDevice() {
-    // 检查设备内存
+    // Check device memory
     if (navigator.deviceMemory && navigator.deviceMemory < 4) {
       return true
     }
 
-    // 检查CPU核心数
+    // Check CPU cores
     if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
       return true
     }
 
-    // 检查网络连接
+    // Check network connection
     if (navigator.connection) {
       const slowConnections = ['slow-2g', '2g', '3g']
       if (slowConnections.includes(navigator.connection.effectiveType)) {
@@ -54,33 +54,33 @@ export class PerformanceOptimizer {
   }
 
   /**
-   * 计算性能等级
+   * Calculate performance level
    * @returns {string} 'high' | 'medium' | 'low'
    */
   calculatePerformanceLevel() {
     const { isMobile, isLowEndDevice, deviceMemory, hardwareConcurrency } = this.deviceInfo
 
-    // 低端设备直接返回低性能
+    // Low-end devices return low performance directly
     if (isLowEndDevice) {
       return 'low'
     }
 
-    // 高端设备判断
+    // High-end device detection
     if (!isMobile && deviceMemory >= 8 && hardwareConcurrency >= 8) {
       return 'high'
     }
 
-    // 中端移动设备
+    // Mid-range mobile devices
     if (isMobile && deviceMemory >= 6 && hardwareConcurrency >= 6) {
       return 'high'
     }
 
-    // 默认中等性能
+    // Default medium performance
     return 'medium'
   }
 
   /**
-   * 获取动画配置
+   * Get animation configuration
    */
   getAnimationConfig() {
     switch (this.performanceLevel) {
@@ -114,7 +114,7 @@ export class PerformanceOptimizer {
   }
 
   /**
-   * 获取图片优化配置
+   * Get image optimization configuration
    */
   getImageConfig() {
     const { isMobile, connection } = this.deviceInfo
@@ -129,7 +129,7 @@ export class PerformanceOptimizer {
   }
 
   /**
-   * 检测WebP支持
+   * Detect WebP support
    */
   supportsWebP() {
     const canvas = document.createElement('canvas')
@@ -139,7 +139,7 @@ export class PerformanceOptimizer {
   }
 
   /**
-   * 防抖函数
+   * Debounce function
    */
   debounce(func, wait) {
     let timeout
@@ -154,7 +154,7 @@ export class PerformanceOptimizer {
   }
 
   /**
-   * 节流函数
+   * Throttle function
    */
   throttle(func, limit) {
     let inThrottle
@@ -168,7 +168,7 @@ export class PerformanceOptimizer {
   }
 
   /**
-   * 预加载关键资源
+   * Preload critical resources
    */
   preloadCriticalResources(resources) {
     const config = this.getImageConfig()
@@ -178,7 +178,7 @@ export class PerformanceOptimizer {
         const img = new Image()
         img.src = resource.src
 
-        // 如果是低质量模式，可以预加载缩略图
+        // Preload thumbnails in low quality mode
         if (config.quality === 'low' && resource.thumbnail) {
           const thumb = new Image()
           thumb.src = resource.thumbnail
@@ -196,12 +196,13 @@ export class PerformanceOptimizer {
   }
 
 
+
 }
 
-// 创建全局实例
+// Create global instance
 export const performanceOptimizer = new PerformanceOptimizer()
 
-// 导出常用的优化配置
+// Export common optimization configurations
 export const PERFORMANCE_CONFIG = {
   ANIMATION: performanceOptimizer.getAnimationConfig(),
   IMAGE: performanceOptimizer.getImageConfig(),

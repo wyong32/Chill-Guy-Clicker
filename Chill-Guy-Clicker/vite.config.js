@@ -224,14 +224,29 @@ Crawl-delay: 2`,
           },
         },
       },
-      // 启用压缩
-      minify: true,
+      // 图片优化配置
+      assetsInclude: ['**/*.webp', '**/*.avif'],
+      // 启用高级压缩
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+          pure_funcs: ['console.log', 'console.info', 'console.debug'],
+          passes: 2
+        },
+        mangle: {
+          safari10: true
+        }
+      },
       // 启用 CSS 代码分割
       cssCodeSplit: true,
       // 设置 chunk 大小警告限制
-      chunkSizeWarningLimit: 2000,
+      chunkSizeWarningLimit: 1000,
       // 设置资源内联限制
-      assetsInlineLimit: 4096,
+      assetsInlineLimit: 2048,
+      // 启用源码映射（仅开发环境）
+      sourcemap: false,
     },
     // 优化依赖预构建
     optimizeDeps: {

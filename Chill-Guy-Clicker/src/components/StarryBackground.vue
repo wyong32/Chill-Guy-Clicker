@@ -16,7 +16,7 @@ export default {
       highPerformance: false,
       animationFrameId: null,
       lastFrameTime: 0,
-      frameDelay: 33, // 限制帧率，约30fps，提供更流畅的动画
+      frameDelay: 50, // 限制帧率，约20fps，减少CPU使用
       resizeObserver: null, // 用于监听文档高度变化
       documentHeight: 0, // 记录当前文档高度
     }
@@ -325,10 +325,10 @@ export default {
 
       // 移除了地形类，只保留星星和流星
 
-      // 初始化星星 - 更多小星星，填满整个星空
+      // 初始化星星 - 优化星星数量，减少计算负担
       const starCount = this.highPerformance
-        ? Math.min(1500, height * 2.0) // 高性能模式下更多星星
-        : Math.min(800, height * 1.2)  // 低性能模式下适量星星
+        ? Math.min(800, height * 1.0) // 高性能模式下适量星星
+        : Math.min(400, height * 0.6)  // 低性能模式下更少星星
       for (var i = 0; i < starCount; i++) {
         // 星星均匀分布在整个屏幕上
         const starY = Math.random() * height

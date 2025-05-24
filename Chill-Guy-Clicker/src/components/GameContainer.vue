@@ -27,6 +27,8 @@
             loading="eager"
             fetchpriority="high"
             decoding="async"
+            width="150"
+            height="150"
           />
           <button class="play-now-button" @click="startGame" aria-label="Play Now">
             PLAY NOW

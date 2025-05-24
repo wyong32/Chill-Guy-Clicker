@@ -28,7 +28,8 @@
 </template>
 
 <script>
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent, onMounted } from 'vue'
+import { updatePageSEO } from '@/utils/head'
 
 // 异步加载组件，提升初始加载性能
 const TheHeader = defineAsyncComponent(() => import('@/components/TheHeader.vue'))
@@ -42,21 +43,35 @@ export default {
     TheFooter,
     StarryBackground
   },
-  mounted() {
-    // 预加载关键资源
-    this.preloadCriticalResources()
+  setup() {
+    onMounted(() => {
+      // 设置基础 SEO
+      updatePageSEO({
+        title: 'Chill Guy Clicker - Best Clicker Game Experience',
+        description: 'Experience the most fun Chill Guy clicker game, easy to get started, endless fun awaits you!',
+        keywords: 'chill guy, clicker game, casual game, web game, online game'
+      })
 
-    // 注册 Service Worker
-    this.registerServiceWorker()
-  },
-  methods: {
-    preloadCriticalResources() {
-      // 预加载关键图片
-      const img = new Image()
-      img.src = '/images/logo.png'
-    },
+      // 预加载关键资源
+      preloadCriticalResources()
 
-    registerServiceWorker() {
+      // 注册 Service Worker
+      registerServiceWorker()
+    })
+
+    const preloadCriticalResources = () => {
+      const resources = [
+        '/images/logo.png',
+        '/images/chill-guy.png'
+      ]
+
+      resources.forEach(src => {
+        const img = new Image()
+        img.src = src
+      })
+    }
+
+    const registerServiceWorker = () => {
       if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
         // 使用 requestIdleCallback 延迟注册，避免阻塞主线程
         const registerSW = () => {
@@ -76,6 +91,8 @@ export default {
         }
       }
     }
+
+    return {}
   }
 }
 </script>

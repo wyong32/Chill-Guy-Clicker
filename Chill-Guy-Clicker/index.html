@@ -28,6 +28,10 @@
     <link rel="dns-prefetch" href="//www.googletagmanager.com" />
     <link rel="dns-prefetch" href="//www.google-analytics.com" />
 
+    <!-- 预加载关键资源 -->
+    <link rel="preload" href="/src/main.js" as="script" />
+    <link rel="preload" href="/src/assets/main.css" as="style" />
+
     <!-- 权限策略 -->
     <meta http-equiv="Permissions-Policy" content="autoplay=*, fullscreen=*, cross-origin-isolated=*" />
 
@@ -59,7 +63,20 @@
       }
 
       /* 字体优化，防止布局偏移 */
-      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+      @font-face {
+        font-family: 'Noto Sans SC';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Noto Sans SC Regular'), local('NotoSansSC-Regular'),
+             url('https://fonts.gstatic.com/s/notosanssc/v36/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FnYxNbPzS5HE.woff2') format('woff2');
+        unicode-range: U+4E00-9FFF, U+3400-4DBF, U+20000-2A6DF;
+      }
+
+      /* 预设字体尺寸，防止字体加载导致的布局偏移 */
+      * {
+        font-size-adjust: 0.5;
+      }
 
       body {
         font-family: 'Noto Sans SC', 'Arial', sans-serif;
