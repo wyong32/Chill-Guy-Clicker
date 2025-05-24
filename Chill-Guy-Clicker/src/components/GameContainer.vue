@@ -14,8 +14,12 @@
         :aria-label="gameTitle + ' Game Interface'"
       ></iframe>
       <div v-if="!gameStarted" class="game-overlay">
-        <!-- 背景图片 -->
-        <div class="game-background" :style="{ backgroundImage: `url(${game.imageUrl})` }"></div>
+        <!-- 优化的背景图片 - 使用懒加载 -->
+        <div
+          class="game-background"
+          :class="{ 'background-loaded': backgroundLoaded }"
+          ref="gameBackground"
+        ></div>
         <!-- 毛玻璃效果层 -->
         <div class="glass-effect"></div>
         <!-- 游戏预览 -->
@@ -29,6 +33,7 @@
             decoding="async"
             width="150"
             height="150"
+            @load="onPreviewImageLoad"
           />
           <button class="play-now-button" @click="startGame" aria-label="Play Now">
             PLAY NOW
@@ -120,6 +125,7 @@ export default {
       showNotification: false,
       notificationMessage: '',
       notificationTimeout: null,
+      backgroundLoaded: false,
     }
   },
   computed: {
@@ -185,7 +191,7 @@ export default {
         this.showNotification = false
         clearTimeout(this.notificationTimeout)
 
-        this.notificationMessage = '请先点击"PLAY NOW"开始游戏'
+        this.notificationMessage = 'Please click "PLAY NOW" to start the game first'
         this.showNotification = true
 
         this.notificationTimeout = setTimeout(() => {
@@ -204,7 +210,7 @@ export default {
         this.showNotification = false
         clearTimeout(this.notificationTimeout)
 
-        this.notificationMessage = '请先点击"PLAY NOW"开始游戏'
+        this.notificationMessage = 'Please click "PLAY NOW" to start the game first'
         this.showNotification = true
 
         this.notificationTimeout = setTimeout(() => {
@@ -228,6 +234,31 @@ export default {
       this.notificationTimeout = setTimeout(() => {
         this.showNotification = false
       }, duration)
+    },
+
+    // 预览图片加载完成后再加载背景图片
+    onPreviewImageLoad() {
+      // 延迟加载背景图片，避免阻塞 LCP
+      requestIdleCallback(() => {
+        this.loadBackgroundImage()
+      }, { timeout: 100 })
+    },
+
+    // 加载背景图片
+    loadBackgroundImage() {
+      if (!this.$refs.gameBackground || this.backgroundLoaded) return
+
+      const img = new Image()
+      img.onload = () => {
+        this.$refs.gameBackground.style.backgroundImage = `url(${this.game.imageUrl})`
+        this.backgroundLoaded = true
+      }
+      img.onerror = () => {
+        // 如果背景图片加载失败，使用渐变背景
+        this.$refs.gameBackground.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+        this.backgroundLoaded = true
+      }
+      img.src = this.game.imageUrl
     }
   },
   mounted() {
@@ -375,6 +406,14 @@ export default {
   filter: blur(10px);
   z-index: -2;
   transform: scale(1.1);
+  /* 默认渐变背景，避免空白 */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.game-background.background-loaded {
+  opacity: 1;
 }
 
 .glass-effect {

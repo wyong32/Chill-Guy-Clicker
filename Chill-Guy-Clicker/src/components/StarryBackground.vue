@@ -16,7 +16,7 @@ export default {
       highPerformance: false,
       animationFrameId: null,
       lastFrameTime: 0,
-      frameDelay: 50, // 限制帧率，约20fps，减少CPU使用
+      frameDelay: 66, // 限制帧率，约15fps，大幅减少CPU使用
       resizeObserver: null, // 用于监听文档高度变化
       documentHeight: 0, // 记录当前文档高度
     }
@@ -93,7 +93,9 @@ export default {
 
       // 根据性能调整帧率
       if (!this.highPerformance) {
-        this.frameDelay = 50; // 低性能设备使用20fps
+        this.frameDelay = 100; // 低性能设备使用10fps
+      } else {
+        this.frameDelay = 66; // 高性能设备使用15fps
       }
     },
     togglePerformanceMode() {
@@ -325,23 +327,43 @@ export default {
 
       // 移除了地形类，只保留星星和流星
 
-      // 初始化星星 - 优化星星数量，减少计算负担
+      // 大幅减少星星数量，优化性能
       const starCount = this.highPerformance
-        ? Math.min(800, height * 1.0) // 高性能模式下适量星星
-        : Math.min(400, height * 0.6)  // 低性能模式下更少星星
-      for (var i = 0; i < starCount; i++) {
-        // 星星均匀分布在整个屏幕上
-        const starY = Math.random() * height
-        entities.push(
-          new Star({
-            x: Math.random() * width,
-            y: starY,
-          }),
-        )
+        ? Math.min(300, height * 0.4) // 高性能模式下减少星星
+        : Math.min(150, height * 0.2)  // 低性能模式下大幅减少星星
+
+      // 分批创建星星，避免阻塞主线程
+      const createStarsInBatches = (count, batchSize = 50) => {
+        let created = 0
+        const createBatch = () => {
+          const batchEnd = Math.min(created + batchSize, count)
+          for (let i = created; i < batchEnd; i++) {
+            const starY = Math.random() * height
+            entities.push(
+              new Star({
+                x: Math.random() * width,
+                y: starY,
+              }),
+            )
+          }
+          created = batchEnd
+
+          if (created < count) {
+            // 使用 requestIdleCallback 或 setTimeout 继续创建
+            if ('requestIdleCallback' in window) {
+              requestIdleCallback(createBatch, { timeout: 16 })
+            } else {
+              setTimeout(createBatch, 0)
+            }
+          }
+        }
+        createBatch()
       }
 
-      // 添加更多流星
-      const shootingStarCount = this.highPerformance ? 10 : 5
+      createStarsInBatches(starCount)
+
+      // 减少流星数量
+      const shootingStarCount = this.highPerformance ? 3 : 2
       for (var i = 0; i < shootingStarCount; i++) {
         entities.push(new ShootingStar())
       }
