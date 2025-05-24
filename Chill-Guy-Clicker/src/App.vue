@@ -60,6 +60,12 @@ export default {
       link.type = 'font/woff2'
       link.crossOrigin = 'anonymous'
       link.href = 'https://fonts.gstatic.com/s/notosanssc/v36/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FnYxNbPzS5HE.woff2'
+
+      // 添加错误处理
+      link.onerror = () => {
+        console.warn('字体预加载失败，将使用系统字体')
+      }
+
       document.head.appendChild(link)
     },
 

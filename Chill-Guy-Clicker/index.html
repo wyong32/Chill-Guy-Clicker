@@ -28,7 +28,7 @@
       href="https://fonts.gstatic.com/s/notosanssc/v36/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FnYxNbPzS5HE.woff2"
       as="font"
       type="font/woff2"
-      crossorigin
+      crossorigin="anonymous"
     />
 
     <!-- DNS 预解析 -->
@@ -69,8 +69,11 @@
       @font-face {
         font-family: 'Noto Sans SC';
         font-display: swap;
-        src: url('https://fonts.gstatic.com/s/notosanssc/v36/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FnYxNbPzS5HE.woff2')
-          format('woff2');
+        font-weight: 400;
+        font-style: normal;
+        src: url('https://fonts.gstatic.com/s/notosanssc/v36/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FnYxNbPzS5HE.woff2') format('woff2'),
+             url('https://fonts.gstatic.com/s/notosanssc/v36/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FnYxNbPzS5HE.woff') format('woff');
+        unicode-range: U+4E00-9FFF, U+3400-4DBF, U+20000-2A6DF, U+2A700-2B73F, U+2B740-2B81F, U+2B820-2CEAF, U+2CEB0-2EBEF;
       }
 
       body {

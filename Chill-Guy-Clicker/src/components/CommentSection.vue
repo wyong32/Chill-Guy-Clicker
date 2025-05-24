@@ -240,7 +240,15 @@ export default {
           console.log(`Fetching from URL: ${url}`)
         }
 
-        const response = await fetch(url)
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          mode: 'cors',
+          credentials: 'omit'
+        })
 
         if (!response.ok) {
           throw new Error(`Failed to load comments: ${response.status} ${response.statusText}`)
@@ -262,8 +270,6 @@ export default {
       }
     },
 
-    // 此方法已移除，因为它未被使用
-
     // 添加新评论
     async addComment(newComment) {
       try {
@@ -276,7 +282,10 @@ export default {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'Accept': 'application/json',
           },
+          mode: 'cors',
+          credentials: 'omit',
           body: JSON.stringify(newComment),
         })
 
