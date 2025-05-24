@@ -9,7 +9,9 @@
         <KeepAlive :include="['HomeView']">
           <Suspense>
             <template #default>
-              <component :is="Component" :key="route.path" />
+              <div class="route-container">
+                <component :is="Component" :key="route.path" />
+              </div>
             </template>
             <template #fallback>
               <div class="loading-container">
@@ -52,21 +54,6 @@ export default {
       // 预加载关键图片
       const img = new Image()
       img.src = '/images/logo.png'
-
-      // 预加载关键字体
-      const link = document.createElement('link')
-      link.rel = 'preload'
-      link.as = 'font'
-      link.type = 'font/woff2'
-      link.crossOrigin = 'anonymous'
-      link.href = 'https://fonts.gstatic.com/s/notosanssc/v36/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FnYxNbPzS5HE.woff2'
-
-      // 添加错误处理
-      link.onerror = () => {
-        console.warn('字体预加载失败，将使用系统字体')
-      }
-
-      document.head.appendChild(link)
     },
 
     registerServiceWorker() {
@@ -141,6 +128,12 @@ body {
   isolation: isolate;
   /* 优化重绘性能 */
   contain: layout style paint;
+}
+
+.route-container {
+  /* 确保路由组件有正确的容器 */
+  width: 100%;
+  min-height: 100%;
 }
 
 /* 加载状态样式 */

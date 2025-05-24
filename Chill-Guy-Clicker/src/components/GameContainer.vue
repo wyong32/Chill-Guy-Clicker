@@ -226,23 +226,9 @@ export default {
       this.notificationTimeout = setTimeout(() => {
         this.showNotification = false
       }, duration)
-    },
-
-    // 预加载关键图片
-    preloadCriticalImages() {
-      if (this.game.imageUrl) {
-        const img = new Image()
-        img.src = this.game.imageUrl
-        // 设置高优先级
-        img.loading = 'eager'
-        img.fetchPriority = 'high'
-      }
     }
   },
   mounted() {
-    // 立即预加载关键图片
-    this.preloadCriticalImages()
-
     // 添加全屏变化事件监听
     document.addEventListener('fullscreenchange', this.handleFullscreenChange)
     document.addEventListener('webkitfullscreenchange', this.handleFullscreenChange)

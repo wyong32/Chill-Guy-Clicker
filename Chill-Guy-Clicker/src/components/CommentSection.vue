@@ -200,22 +200,15 @@ export default {
       return Number((sum / this.comments.length).toFixed(1))
     },
   },
-  created() {
-    // 组件创建时加载该游戏的评论
-    this.loadComments()
-  },
-
   // 监听 gameId 变化，当游戏切换时重新加载评论
   watch: {
     gameId: {
       handler(newGameId, oldGameId) {
-        if (newGameId !== oldGameId) {
-          // 只在开发环境中输出日志
-          if (import.meta.env.DEV) {
-            console.log(`Game changed from ${oldGameId} to ${newGameId}, reloading comments`)
-          }
-          this.loadComments()
+        // 只在开发环境中输出日志
+        if (import.meta.env.DEV) {
+          console.log(`Game changed from ${oldGameId} to ${newGameId}, reloading comments`)
         }
+        this.loadComments()
       },
       immediate: true
     }
