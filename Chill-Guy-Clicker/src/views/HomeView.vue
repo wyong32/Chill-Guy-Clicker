@@ -151,6 +151,11 @@ export default {
   color: #fff;
   position: relative;
   z-index: 0;
+  /* 防止布局偏移的关键属性 - 基于 Cookingdom */
+  contain: layout style paint;
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .container {
@@ -159,12 +164,21 @@ export default {
   padding: 0 15px;
   position: relative;
   z-index: 1;
+  /* 防止布局偏移 */
+  contain: layout style;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .main-content {
   flex: 1;
   padding-top: 30px;
   padding-bottom: 50px;
+  /* 防止布局偏移 */
+  contain: layout style;
+  min-height: calc(100vh - 380px); /* 减去 header 和 footer 的高度 */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .game-title {
@@ -174,6 +188,15 @@ export default {
   color: #fff;
   text-align: center;
   text-shadow: 0 0 10px rgba(65, 184, 131, 0.8);
+  /* 防止文字渲染导致的布局偏移 */
+  contain: layout style;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Game Layout */
@@ -181,14 +204,27 @@ export default {
   display: flex;
   gap: 30px;
   margin-bottom: 40px;
+  /* 防止布局偏移 */
+  contain: layout style;
+  min-height: 600px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .game-main {
   flex: 1;
+  /* 防止布局偏移 */
+  contain: layout style;
+  min-width: 0; /* 防止 flex 子项溢出 */
+  box-sizing: border-box;
 }
 
 .game-sidebar {
   width: 300px;
+  /* 防止布局偏移 */
+  contain: layout style;
+  flex-shrink: 0; /* 防止收缩 */
+  box-sizing: border-box;
 }
 
 /* Featured Game Area */
@@ -199,6 +235,14 @@ export default {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: #333;
+  /* 防止布局偏移 */
+  contain: layout style paint;
+  min-height: 500px;
+  width: 100%;
+  box-sizing: border-box;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .section-title {

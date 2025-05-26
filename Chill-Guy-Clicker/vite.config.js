@@ -111,6 +111,21 @@ export default defineConfig(({ command, mode }) => {
     vueJsx(),
     // 只在开发环境加载 DevTools
     ...(isDev ? [vueDevTools()] : []),
+    // 优化预加载的插件
+    {
+      name: 'optimize-preload',
+      transformIndexHtml: {
+        order: 'post',
+        handler(html, context) {
+          if (isDev) {
+            // 开发环境：移除可能导致警告的预加载
+            return html.replace(/<link[^>]*rel="preload"[^>]*>/g, '')
+          }
+          // 生产环境：保持原有的预加载逻辑
+          return html
+        }
+      }
+    },
     // 手动生成sitemap的插件
     {
       name: 'generate-sitemap',
@@ -223,6 +238,17 @@ Crawl-delay: 2`,
             return `assets/[name]-[hash].${ext}`
           },
         },
+      },
+      // 配置预加载策略
+      modulePreload: {
+        polyfill: false, // 禁用 polyfill，减少包大小
+        resolveDependencies: (filename, deps) => {
+          // 只预加载关键依赖
+          return deps.filter(dep => {
+            // 预加载 Vue 相关的核心模块
+            return dep.includes('vue-vendor') || dep.includes('main')
+          })
+        }
       },
       // 图片优化配置
       assetsInclude: ['**/*.webp', '**/*.avif'],

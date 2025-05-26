@@ -104,12 +104,21 @@ export default {
   position: relative;
   z-index: 1;
   backdrop-filter: blur(10px);
+  /* 防止布局偏移的关键属性 - 基于 Cookingdom */
+  contain: layout style paint;
+  min-height: 300px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
+  /* 防止布局偏移 */
+  contain: layout style;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .footer-content {
@@ -117,6 +126,11 @@ export default {
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   margin-bottom: 40px;
+  /* 防止布局偏移 */
+  contain: layout style;
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .footer-title {
@@ -195,6 +209,11 @@ export default {
 .footer-bottom {
   border-top: 1px solid var(--border-color);
   padding-top: 20px;
+  /* 防止布局偏移 */
+  contain: layout style;
+  min-height: 80px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .footer-bottom-content {
@@ -203,12 +222,17 @@ export default {
   align-items: center;
   text-align: center;
   gap: 15px;
+  /* 防止布局偏移 */
+  contain: layout style;
 }
 
 .copyright {
   color: #ccc;
   font-size: 14px;
   margin: 0;
+  /* 防止文字渲染导致的布局偏移 */
+  contain: layout style;
+  white-space: nowrap;
 }
 
 .disclaimer {
@@ -217,21 +241,67 @@ export default {
   line-height: 1.6;
   max-width: 800px;
   margin: 0;
+  /* 防止文字渲染导致的布局偏移 */
+  contain: layout style;
+}
+
+/* 社交链接优化 */
+.social-links {
+  display: flex;
+  gap: 15px;
+  /* 防止布局偏移 */
+  contain: layout style;
+  min-height: 36px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  color: white;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+  /* 防止布局偏移 */
+  contain: layout paint;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  flex-shrink: 0;
 }
 
 @media (max-width: 992px) {
   .footer-content {
     grid-template-columns: repeat(2, 1fr);
+    min-height: 250px; /* 调整移动端最小高度 */
+  }
+
+  .footer {
+    min-height: 350px; /* 调整移动端最小高度 */
   }
 }
 
 @media (max-width: 576px) {
   .footer-content {
     grid-template-columns: 1fr;
+    min-height: 300px; /* 调整移动端最小高度 */
+  }
+
+  .footer {
+    min-height: 400px; /* 调整移动端最小高度 */
   }
 
   .disclaimer {
     font-size: 11px;
+  }
+
+  .footer-bottom {
+    min-height: 60px; /* 调整移动端最小高度 */
   }
 }
 </style>

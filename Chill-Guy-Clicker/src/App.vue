@@ -16,7 +16,7 @@
             <template #fallback>
               <div class="loading-container">
                 <div class="loading-spinner"></div>
-                <p>加载中...</p>
+                <p>Loading...</p>
               </div>
             </template>
           </Suspense>
@@ -28,13 +28,13 @@
 </template>
 
 <script>
-import { defineAsyncComponent, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import { updatePageSEO } from '@/utils/head'
 
-// 异步加载组件，提升初始加载性能
-const TheHeader = defineAsyncComponent(() => import('@/components/TheHeader.vue'))
-const TheFooter = defineAsyncComponent(() => import('@/components/TheFooter.vue'))
-const StarryBackground = defineAsyncComponent(() => import('@/components/StarryBackground.vue'))
+// 同步加载关键组件，避免路由问题
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
+import StarryBackground from '@/components/StarryBackground.vue'
 
 export default {
   name: 'App',

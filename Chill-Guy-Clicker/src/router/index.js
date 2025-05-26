@@ -503,7 +503,8 @@ router.beforeEach((to, _from, next) => {
           contentType
         );
 
-        return; // 已经更新了SEO信息，不需要继续执行
+        next(); // 继续路由导航
+        return;
       } else if (item) {
         // 如果数据项没有SEO信息，但有标题和描述
         document.title = item.pageTitle || 'Chill Guy Games';
@@ -542,7 +543,8 @@ router.beforeEach((to, _from, next) => {
           contentType
         );
 
-        return; // 已经更新了SEO信息，不需要继续执行
+        next(); // 继续路由导航
+        return;
       }
     }
 

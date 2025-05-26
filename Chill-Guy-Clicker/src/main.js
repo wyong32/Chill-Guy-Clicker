@@ -18,22 +18,13 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-// 使用 requestIdleCallback 延迟应用初始化
-const initializeApp = () => {
-  const app = createApp(App)
+// 立即初始化应用，避免路由问题
+const app = createApp(App)
 
-  app.use(createPinia())
-  app.use(router)
+app.use(createPinia())
+app.use(router)
 
-  app.mount('#app')
+app.mount('#app')
 
-  // 延迟加载非关键资源
-  loadNonCriticalResources()
-}
-
-// 优化应用启动时机
-if ('requestIdleCallback' in window) {
-  requestIdleCallback(initializeApp, { timeout: 100 })
-} else {
-  setTimeout(initializeApp, 0)
-}
+// 延迟加载非关键资源
+loadNonCriticalResources()

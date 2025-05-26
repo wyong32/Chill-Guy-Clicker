@@ -4,11 +4,18 @@
       <div class="header-content">
         <div class="logo">
           <router-link to="/">
-            <img
-              src="/images/logo.png"
-              alt="Chill Guy Clicker"
-              class="logo-image"
-            />
+            <div class="logo-image-container">
+              <img
+                src="/images/logo.png"
+                alt="Chill Guy Clicker"
+                class="logo-image"
+                width="50"
+                height="50"
+                loading="eager"
+                fetchpriority="high"
+                decoding="sync"
+              />
+            </div>
             <span>Chill Guy Clicker</span>
           </router-link>
         </div>
@@ -125,12 +132,21 @@ export default {
   z-index: 100;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  /* 防止布局偏移的关键属性 */
+  contain: layout style paint;
+  min-height: 70px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
+  /* 防止布局偏移 */
+  contain: layout style;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .header-content {
@@ -138,24 +154,53 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 70px;
+  /* 防止布局偏移 */
+  contain: layout style;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .logo {
   display: flex;
   align-items: center;
   color: #fff;
+  /* 防止布局偏移 */
+  contain: layout style;
+  min-width: 200px; /* 设置最小宽度 */
 }
 
 .logo a {
   display: flex;
   align-items: center;
   text-decoration: none;
+  /* 防止布局偏移 */
+  contain: layout style;
+}
+
+.logo-image-container {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  /* 防止图片加载导致的布局偏移 */
+  contain: layout paint;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  flex-shrink: 0; /* 防止收缩 */
 }
 
 .logo-image {
-  height: 50px;
-  margin-right: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
   filter: drop-shadow(0 0 5px rgba(255, 204, 0, 0.5));
+  /* 防止图片渲染导致的布局偏移 */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 .logo span{
@@ -164,6 +209,9 @@ export default {
   font-weight: bold;
   letter-spacing: 2px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  /* 防止文字渲染导致的布局偏移 */
+  contain: layout style;
+  white-space: nowrap; /* 防止文字换行 */
 }
 
 .nav-list {
