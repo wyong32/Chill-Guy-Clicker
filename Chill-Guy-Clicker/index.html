@@ -56,11 +56,8 @@
     <link rel="preload" href="/images/logo.png" as="image" type="image/png" fetchpriority="high" />
     <link rel="preload" href="/images/games/game-01.webp" as="image" type="image/webp" fetchpriority="high" />
 
-    <!-- LCP 优化 - 预加载关键 JavaScript 模块 -->
+    <!-- LCP 优化 - 只预加载最关键的模块 -->
     <link rel="modulepreload" href="/src/main.js">
-    <link rel="modulepreload" href="/src/App.vue">
-    <link rel="modulepreload" href="/src/components/TheHeader.vue">
-    <link rel="modulepreload" href="/src/components/TheFooter.vue">
 
     <!-- DNS 预解析 -->
     <link rel="dns-prefetch" href="//www.googletagmanager.com" />
@@ -176,9 +173,8 @@
       }
     </style>
 
-    <!-- CLS 优化 CSS - 预加载关键样式 -->
-    <link rel="preload" href="/css/cls-optimize.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/css/cls-optimize.css"></noscript>
+    <!-- CLS 优化 CSS -->
+    <link rel="stylesheet" href="/css/cls-optimize.css" />
 
     <!-- 内联关键CSS防止CLS - 精确复制 Dreamy-Room-Level -->
     <style>
