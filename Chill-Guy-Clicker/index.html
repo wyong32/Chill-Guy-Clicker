@@ -451,8 +451,95 @@
       <div class="loading-spinner"></div>
     </div>
 
-    <!-- CLS 优化脚本 - 在主应用加载前运行 -->
-    <script src="/scripts/cls-optimize.js"></script>
+    <!-- CLS 优化脚本 - 内联版本避免 MIME 类型问题 -->
+    <script>
+      // 简化的 CLS 优化脚本 - 内联版本
+      (function() {
+        'use strict';
+
+        // 立即应用关键优化
+        applyImmediateOptimizations();
+
+        // DOM 加载完成后的优化
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initOptimizations);
+        } else {
+          initOptimizations();
+        }
+
+        function applyImmediateOptimizations() {
+          // 1. 强制设置 viewport 稳定性
+          const viewport = document.querySelector('meta[name="viewport"]');
+          if (viewport) {
+            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover');
+          }
+
+          // 2. 预设关键 CSS 变量
+          document.documentElement.style.setProperty('--viewport-height', window.innerHeight + 'px');
+
+          // 3. 立即应用关键样式
+          const style = document.createElement('style');
+          style.textContent = `
+            .app {
+              min-height: 100vh !important;
+              display: flex !important;
+              flex-direction: column !important;
+            }
+            .main-content {
+              flex: 1 !important;
+              min-height: 800px !important;
+              contain: layout style !important;
+            }
+            .footer, footer {
+              min-height: 420px !important;
+              contain: layout style paint !important;
+              flex-shrink: 0 !important;
+            }
+            .game-container {
+              min-height: 600px !important;
+              contain: layout style paint !important;
+            }
+            img {
+              background-color: #f0f0f0 !important;
+              display: block !important;
+            }
+          `;
+          document.head.appendChild(style);
+        }
+
+        function initOptimizations() {
+          // 预设图片尺寸
+          const images = document.querySelectorAll('img:not([width]):not([height])');
+          images.forEach(img => {
+            if (!img.width && !img.height) {
+              const container = img.closest('.game-preview, .lazy-image-container');
+              if (container) {
+                const rect = container.getBoundingClientRect();
+                if (rect.width > 0 && rect.height > 0) {
+                  img.style.width = rect.width + 'px';
+                  img.style.height = rect.height + 'px';
+                  img.style.objectFit = 'cover';
+                }
+              }
+            }
+          });
+
+          // 稳定化容器
+          const containers = document.querySelectorAll('.game-container, .header, .footer, .main-content');
+          containers.forEach(container => {
+            if (!container.style.minHeight) {
+              const rect = container.getBoundingClientRect();
+              if (rect.height > 0) {
+                container.style.minHeight = rect.height + 'px';
+                container.style.contain = 'layout style paint';
+              }
+            }
+          });
+
+          console.log('CLS optimizations applied');
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
