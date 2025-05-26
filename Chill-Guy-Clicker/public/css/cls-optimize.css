@@ -1,32 +1,52 @@
-/* CLS 优化 CSS - 专门用于减少累积布局偏移 */
+/* 终极 CLS 优化 CSS - 基于 Cookingdom 最佳实践 */
 
-/* 全局布局稳定性 */
+/* 全局布局稳定性 - 完全基于 Cookingdom */
 * {
-  /* 防止所有元素导致布局偏移 */
-  contain: layout style;
   box-sizing: border-box;
 }
 
-/* 图片布局稳定性 */
+/* 图片布局稳定性 - Cookingdom 风格 */
 img {
+  display: block;
+  max-width: 100%;
+  height: auto;
   /* 防止图片加载导致的布局偏移 */
   contain: layout paint;
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  /* 确保图片有默认尺寸 */
-  min-width: 1px;
-  min-height: 1px;
-  display: block;
 }
 
-/* 未设置尺寸的图片 */
+/* 未设置尺寸的图片 - 强制稳定 */
 img:not([width]):not([height]) {
-  aspect-ratio: 16 / 9; /* 默认宽高比 */
+  aspect-ratio: 16 / 9;
   width: 100%;
   height: auto;
+}
+
+/* 关键图片占位符 - 基于 Cookingdom */
+.game-image-placeholder,
+.guide-image-placeholder {
+  width: 100%;
+  height: 150px;
+  background-color: #f0f0f0;
+  position: relative;
+  overflow: hidden;
+  contain: layout paint;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.game-image-placeholder img,
+.guide-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateZ(0);
 }
 
 /* 系统字体稳定性 - 参考 Cookingdom */
@@ -39,14 +59,37 @@ img:not([width]):not([height]) {
   contain: layout style paint;
 }
 
-/* 游戏容器稳定性 */
-.game-container,
-.game-iframe-container {
-  /* 确保游戏容器有固定的宽高比 */
-  aspect-ratio: 16 / 9;
-  contain: layout paint;
+/* 游戏容器稳定性 - 基于 Cookingdom */
+.game-container {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #333;
+  min-height: 500px;
+  width: 100%;
+  contain: layout style paint;
   will-change: transform;
   transform: translateZ(0);
+}
+
+.game-iframe-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  contain: layout paint;
+  transform: translateZ(0);
+}
+
+.game-iframe-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
 }
 
 /* 评论区域稳定性 */
@@ -172,11 +215,21 @@ svg {
   100% { background-position: -200% 0; }
 }
 
-/* 响应式稳定性 */
+/* 移动端优化 - 基于 Cookingdom */
 @media (max-width: 768px) {
-  /* 移动端特殊优化 */
   .game-container {
-    aspect-ratio: 1 / 1; /* 移动端使用正方形 */
+    padding: 15px;
+    min-height: 400px;
+  }
+
+  .game-iframe-container {
+    aspect-ratio: 4 / 3; /* 移动端使用更适合的比例 */
+  }
+
+  .game-image-placeholder,
+  .guide-image-placeholder {
+    height: 120px;
+    aspect-ratio: 300 / 120;
   }
 
   .footer-content {

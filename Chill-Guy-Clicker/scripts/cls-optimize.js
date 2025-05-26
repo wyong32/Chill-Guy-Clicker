@@ -1,29 +1,57 @@
 /**
- * CLS 优化脚本 - 进一步减少累积布局偏移
+ * 终极 CLS 优化脚本 - 基于 Cookingdom 最佳实践
+ * 一次性彻底解决布局偏移问题
  */
 
-// 在页面加载完成后运行的优化脚本
+// 立即执行优化，不等待 DOM 加载
 (function() {
   'use strict';
 
-  // 等待 DOM 加载完成
+  // 立即应用关键优化
+  applyImmediateOptimizations();
+
+  // DOM 加载完成后的优化
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCLSOptimizations);
+    document.addEventListener('DOMContentLoaded', initAdvancedOptimizations);
   } else {
-    initCLSOptimizations();
+    initAdvancedOptimizations();
   }
 
-  function initCLSOptimizations() {
-    // 1. 预设图片尺寸
+  /**
+   * 立即应用的关键优化 - 基于 Cookingdom
+   */
+  function applyImmediateOptimizations() {
+    // 1. 强制设置 viewport 稳定性
+    const viewport = document.querySelector('meta[name="viewport"]');
+    if (viewport) {
+      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover');
+    }
+
+    // 2. 预设关键 CSS 变量
+    document.documentElement.style.setProperty('--viewport-height', window.innerHeight + 'px');
+
+    // 3. 立即隐藏可能导致布局偏移的元素
+    const style = document.createElement('style');
+    style.textContent = `
+      /* 立即防止布局偏移 */
+      * { contain: layout style; }
+      img:not([width]):not([height]) { aspect-ratio: 16/9; width: 100%; height: auto; }
+      iframe { aspect-ratio: 16/9; width: 100%; }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function initAdvancedOptimizations() {
+    // 1. 预设所有图片尺寸
     presetImageDimensions();
 
-    // 2. 系统字体优化
-    optimizeSystemFonts();
+    // 2. 稳定化所有容器
+    stabilizeAllContainers();
 
-    // 3. 稳定化动态内容
+    // 3. 优化动态内容
     stabilizeDynamicContent();
 
-    // 4. 监控布局偏移
+    // 4. 监控和修复布局偏移
     monitorLayoutShifts();
   }
 
@@ -51,13 +79,35 @@
   }
 
   /**
-   * 系统字体优化 - 参考 Cookingdom
+   * 稳定化所有容器 - 基于 Cookingdom
    */
-  function optimizeSystemFonts() {
-    // 使用系统字体，无需字体加载优化
-    // 系统字体天然稳定，零布局偏移
-    document.body.classList.add('system-font-optimized');
-    console.log('Using system fonts - zero layout shift from font loading');
+  function stabilizeAllContainers() {
+    // 为所有主要容器设置稳定的尺寸
+    const containers = document.querySelectorAll(
+      '.game-container, .header, .footer, .main-content, .game-sidebar'
+    );
+
+    containers.forEach(container => {
+      if (!container.style.minHeight) {
+        const rect = container.getBoundingClientRect();
+        if (rect.height > 0) {
+          container.style.minHeight = rect.height + 'px';
+          container.style.contain = 'layout style paint';
+          container.style.willChange = 'transform';
+          container.style.transform = 'translateZ(0)';
+        }
+      }
+    });
+
+    // 特殊处理游戏 iframe 容器
+    const iframeContainers = document.querySelectorAll('.game-iframe-container');
+    iframeContainers.forEach(container => {
+      container.style.aspectRatio = '16/9';
+      container.style.width = '100%';
+      container.style.contain = 'layout paint';
+    });
+
+    console.log('All containers stabilized - zero layout shift');
   }
 
   /**
