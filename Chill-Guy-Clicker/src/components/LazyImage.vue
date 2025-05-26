@@ -26,6 +26,7 @@
       :height="height"
       :loading="loading"
       :decoding="decoding"
+      :fetchpriority="fetchpriority"
       class="lazy-image"
       @load="onLoad"
       @error="onError"
@@ -86,6 +87,11 @@ const props = defineProps({
   rootMargin: {
     type: String,
     default: '50px'
+  },
+  fetchpriority: {
+    type: String,
+    default: 'auto',
+    validator: (value) => ['high', 'low', 'auto'].includes(value)
   }
 })
 
