@@ -33,6 +33,46 @@
                 />
               </svg>
             </a>
+            <!-- 1 -->
+            <a href="https://www.indiehackers.com/delldremo" class="social-link" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" alt="Indie Hackers logo glyph">
+                <path d="M0 0 H24 V24 H0 V6.8 H5.4 V17.2 H7.8 V6.8 H10.2 V17.2 H12.6 V13.2 H16.2 V17.2 H18.6 V6.8 H16.2 V10.9 H12.6 V6.8 H0z"></path>
+              </svg>
+            </a>
+            <!-- 2 -->
+            <a href="https://share.evernote.com/note/c880fa8a-a5b4-ca1b-23db-a0f6dfc9475f" class="social-link" target="_blank">
+              <img src="https://evernote.com/_next/static/media/evernote-logo.c443c65f.svg" alt="Evernote logo" width="24" height="24">
+            </a>
+            <!-- 3 -->
+            <a href="https://www.notion.so/ChillGuymemeClicker-com-1fb7ae35635d804e8a50fd5e971fd3b8" class="social-link" target="_blank">
+              <img src="https://www.notion.com/front-static/favicon.ico" alt="Notion logo" width="24" height="24">
+            </a>
+            <!-- 4 -->
+            <a href="https://ko-fi.com/post/Chill-Guy-meme-Clicker-D1D31FCJUT" class="social-link" target="_blank">
+              <img src="https://ko-fi.com/favicon.png" alt="Ko-fi logo" width="24" height="24">
+            </a>
+            <!-- 5 -->
+            <a href="https://substack.com/inbox/post/164135785?triedRedirect=true" class="social-link" target="_blank">
+              <svg role="img" style="transform: scale(1.4);" width="16" height="18" viewBox="0 0 16 18" fill="#ff6719" stroke-width="1.8" stroke="none" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M16 4H0V6H16V4Z"></path><path d="M0 8V18L7.9993 13.534L16 18V8H0Z"></path><path d="M16 0H0V2H16V0Z"></path></g></svg>
+            </a>
+            <!-- 6 -->
+            <a href="https://wenyong3.gumroad.com/l/chillguymemeclicker" class="social-link" target="_blank">
+              <img src="https://assets.gumroad.com/assets/pink-icon-c5f5013768a1da41246e70403f02afc8b34ac89c20f3ba2dd0a01f3973027700.png" alt="gumroad" width="24" height="24">
+            </a>
+            <!-- 7 -->
+            <a href="https://cookingdom.podia.com/blog/6d6cd40b-5af0-4659-b494-06f9fed4c072" class="social-link" target="_blank">
+              <img src="https://www.podia.com/favicon.ico" alt="podia" width="24" height="24">
+            </a>
+            <!-- 8 -->
+            <a href="https://jimmy11.kit.com/0a9818835d" class="social-link" target="_blank">
+              <img src="https://kit.com/favicon-32x32.png" alt="kit" width="24" height="24">
+            </a>
+            <!-- 9 -->
+            <a href="https://www.pinterest.com/wenyong3124/chill-guy" class="social-link" target="_blank">
+              <img src="https://s.pinimg.com/webapp/favicon_48x48-7470a30d.png" alt="pinimg" width="24" height="24">
+            </a>
+
+
           </div>
         </div>
         <div class="footer-section links">
@@ -189,6 +229,10 @@ export default {
   box-sizing: border-box;
 }
 
+.about{
+  width: 320px;
+}
+
 .footer-text {
   color: #fff;
   line-height: 1.6;
@@ -201,6 +245,7 @@ export default {
 .social-links {
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
   /* 防止布局偏移 */
   contain: layout style;
   min-height: 36px;
