@@ -62,9 +62,9 @@
     <!-- CLS 优化 CSS -->
     <link rel="stylesheet" href="/css/cls-optimize.css" />
 
-    <!-- 关键 CSS 内联 - 完全基于 Cookingdom 最佳实践 -->
+    <!-- 内联关键CSS防止CLS - 基于 Dreamy-Room-Level -->
     <style>
-      /* 关键渲染路径 CSS - 只包含首屏必需的样式 */
+      /* 防止CLS的最小样式 - 完全基于 Dreamy-Room-Level */
       * {
         padding: 0;
         margin: 0;
@@ -72,17 +72,29 @@
       }
 
       body {
-        /* 完全复制 Cookingdom 的字体栈 - 零布局偏移 */
-        font-family:
-          -apple-system, BlinkMacSystemFont, 'Segue UI', Roboto, Oxygen, Ubuntu, Cantarell,
-          'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        /* 防止字体加载导致的CLS - 完全复制 Dreamy-Room-Level */
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        font-display: swap;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: #fff;
         line-height: 1.6;
         min-height: 100vh;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* 预设关键图片尺寸，防止图片加载导致的CLS - 基于 Dreamy-Room-Level */
+      img {
+        background-color: #f0f0f0;
+        transition: opacity 0.3s ease;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        max-width: 100%;
+        height: auto;
+        display: block;
       }
 
       .container {
@@ -97,31 +109,38 @@
         box-sizing: border-box;
       }
 
-      /* 关键图片样式内联 - 完全基于 Cookingdom */
-      .game-image-placeholder {
-        width: 100%;
-        height: 150px;
-        background-color: #f0f0f0;
-        position: relative;
-        overflow: hidden;
-        contain: layout paint;
-        will-change: transform;
-        transform: translateZ(0);
-        backface-visibility: hidden;
+      /* 彻底固定所有关键容器尺寸 - 基于 Dreamy-Room-Level */
+      .app {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
       }
 
-      .game-image-placeholder img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        position: absolute;
+      .main-content {
+        flex: 1;
+        min-height: 800px; /* 参考 Dreamy-Room-Level，提高到800px */
+        contain: layout style;
+      }
+
+      .header {
+        height: 80px;
+        position: fixed;
         top: 0;
-        left: 0;
-        transform: translateZ(0);
+        width: 100%;
+        z-index: 100;
+        background-color: rgba(255, 255, 255, 0.9);
+        contain: layout style paint;
       }
 
-      /* 游戏容器关键样式 */
+      .footer {
+        min-height: 350px; /* 增加最小高度以显示内容 */
+        contain: layout style paint;
+        /* 防止文本重排 */
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      /* 游戏容器关键样式 - 基于 Dreamy-Room-Level */
       .game-container {
         background-color: rgba(255, 255, 255, 0.95);
         border-radius: 10px;
@@ -130,9 +149,19 @@
         border: 1px solid rgba(255, 255, 255, 0.3);
         color: #333;
         contain: layout style paint;
-        min-height: 500px;
+        min-height: 600px; /* 增加最小高度 */
         width: 100%;
         box-sizing: border-box;
+      }
+
+      /* 预设关键图片尺寸 - 基于 Dreamy-Room-Level */
+      .game-preview-image {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        background-color: #f0f0f0;
+        transform: translateZ(0);
+        backface-visibility: hidden;
       }
 
       /* Header 固定高度，防止布局偏移 */
@@ -143,13 +172,38 @@
         box-sizing: border-box;
       }
 
-      /* Footer 固定高度，防止布局偏移 */
-      .footer-placeholder {
-        min-height: 300px;
+      /* 预设footer关键文本样式 - 基于 Dreamy-Room-Level */
+      .footer-content {
+        min-height: 270px;
+        contain: layout style;
+      }
+
+      .footer-columns {
+        min-height: 200px;
+        contain: layout style;
+      }
+
+      .footer-logo {
+        min-height: 2rem;
+        font-size: 1.8rem;
+        line-height: 1.2;
+        contain: layout style;
+      }
+
+      .footer-desc {
+        max-height: 5rem;
+        contain: layout style;
+      }
+
+      .footer-nav {
+        max-height: 10rem;
+        contain: layout style;
+      }
+
+      /* 评论区域稳定性 - 基于 Dreamy-Room-Level */
+      .comment-section {
+        min-height: 400px;
         contain: layout style paint;
-        width: 100%;
-        box-sizing: border-box;
-        margin-top: auto;
       }
 
       /* 加载指示器 */

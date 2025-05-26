@@ -1,5 +1,5 @@
 /**
- * 终极 CLS 优化脚本 - 基于 Cookingdom 最佳实践
+ * 终极 CLS 优化脚本 - 基于 Dreamy-Room-Level 最佳实践
  * 一次性彻底解决布局偏移问题
  */
 
@@ -12,9 +12,9 @@
 
   // DOM 加载完成后的优化
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initAdvancedOptimizations);
+    document.addEventListener('DOMContentLoaded', initDreamyRoomOptimizations);
   } else {
-    initAdvancedOptimizations();
+    initDreamyRoomOptimizations();
   }
 
   /**
@@ -41,17 +41,20 @@
     document.head.appendChild(style);
   }
 
-  function initAdvancedOptimizations() {
-    // 1. 预设所有图片尺寸
+  function initDreamyRoomOptimizations() {
+    // 1. 预设所有图片尺寸 - Dreamy-Room-Level 风格
     presetImageDimensions();
 
-    // 2. 稳定化所有容器
+    // 2. 稳定化所有容器 - Dreamy-Room-Level 风格
     stabilizeAllContainers();
 
-    // 3. 优化动态内容
+    // 3. 智能预加载 - Dreamy-Room-Level 风格
+    setupIntelligentPreload();
+
+    // 4. 优化动态内容
     stabilizeDynamicContent();
 
-    // 4. 监控和修复布局偏移
+    // 5. 监控和修复布局偏移
     monitorLayoutShifts();
   }
 
@@ -231,29 +234,55 @@
   }
 
   /**
-   * 预加载关键资源
+   * 智能预加载 - 基于 Dreamy-Room-Level
    */
-  function preloadCriticalResources() {
-    const criticalImages = [
-      '/images/logo.png',
-      '/images/games/game-01.webp'
-    ];
+  function setupIntelligentPreload() {
+    // 使用Intersection Observer监听游戏部分
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // 用户即将看到游戏部分，开始预加载
+            const criticalImages = [
+              '/images/logo.png',
+              '/images/games/game-01.webp',
+              '/images/games/game-02.webp',
+              '/images/games/game-03.webp',
+            ]
 
-    criticalImages.forEach(src => {
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.as = 'image';
-      link.href = src;
-      link.fetchPriority = 'high';
-      document.head.appendChild(link);
-    });
+            criticalImages.forEach((src) => {
+              const link = document.createElement('link')
+              link.rel = 'preload'
+              link.as = 'image'
+              link.href = src
+              link.type = 'image/webp'
+              document.head.appendChild(link)
+            })
+
+            console.log('Intelligent preload activated - Dreamy-Room-Level style')
+            // 预加载完成后停止观察
+            observer.disconnect()
+          }
+        })
+      },
+      {
+        rootMargin: '200px', // 提前200px开始预加载
+      },
+    )
+
+    // 观察游戏容器
+    const gameContainer = document.querySelector('.game-container')
+    if (gameContainer) {
+      observer.observe(gameContainer)
+    }
   }
 
-  // 初始化所有优化
+  // 初始化所有优化 - 基于 Dreamy-Room-Level
   setTimeout(() => {
     deferNonCriticalResources();
     optimizeAnimations();
-    preloadCriticalResources();
+    // 智能预加载已经在 initDreamyRoomOptimizations 中调用
+    console.log('All Dreamy-Room-Level optimizations initialized');
   }, 100);
 
 })();
