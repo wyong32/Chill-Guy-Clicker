@@ -62,19 +62,13 @@
     <!-- CLS 优化 CSS -->
     <link rel="stylesheet" href="/css/cls-optimize.css" />
 
-    <!-- 内联关键CSS防止CLS - 基于 Dreamy-Room-Level -->
+    <!-- 内联关键CSS防止CLS - 精确复制 Dreamy-Room-Level -->
     <style>
-      /* 防止CLS的最小样式 - 完全基于 Dreamy-Room-Level */
-      * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-      }
-
+      /* 防止CLS的最小样式 - 精确复制 Dreamy-Room-Level */
       body {
         margin: 0;
         padding: 0;
-        /* 防止字体加载导致的CLS - 完全复制 Dreamy-Room-Level */
+        /* 防止字体加载导致的CLS */
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
         font-display: swap;
         text-rendering: optimizeLegibility;
@@ -86,15 +80,23 @@
         min-height: 100vh;
       }
 
-      /* 预设关键图片尺寸，防止图片加载导致的CLS - 基于 Dreamy-Room-Level */
+      /* 预设关键图片尺寸，防止图片加载导致的CLS */
       img {
         background-color: #f0f0f0;
         transition: opacity 0.3s ease;
         transform: translateZ(0);
         backface-visibility: hidden;
-        max-width: 100%;
-        height: auto;
-        display: block;
+      }
+
+      .logo-image {
+        width: 30px;
+        height: 30px;
+      }
+
+      .game-preview-image {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
       }
 
       .container {
@@ -258,33 +260,44 @@
         display: block;
       }
 
-      /* 移动端优化 - 基于 Cookingdom */
-      @media (max-width: 767px) {
-        .game-container {
-          padding: 15px;
-          min-height: 400px;
+      /* 移动端优化 - 精确复制 Dreamy-Room-Level */
+      @media (max-width: 992px) {
+        .footer {
+          min-height: 380px; /* 平板端增加高度 */
         }
-
-        .game-iframe-container {
-          aspect-ratio: 4 / 3; /* 移动端使用更适合的比例 */
+        .footer-content {
+          min-height: 300px;
         }
-
-        .game-image-placeholder {
-          height: 120px;
-          /* 防止移动端布局偏移 */
-          aspect-ratio: 300 / 120;
+        .footer-columns {
+          min-height: 240px;
         }
+      }
 
-        .header-placeholder {
-          min-height: 60px;
+      @media (max-width: 768px) {
+        .header {
+          height: 70px;
         }
-
-        .footer-placeholder {
-          min-height: 250px;
-        }
-
         .main-content {
-          min-height: calc(100vh - 310px);
+          min-height: 600px; /* 参考cookingdom，移动端也提高高度 */
+        }
+        .footer {
+          min-height: 320px; /* 移动端增加高度 */
+        }
+        .footer-content {
+          min-height: 240px;
+        }
+        .footer-columns {
+          min-height: 180px;
+        }
+        .footer-logo {
+          min-height: 1.8rem;
+          font-size: 1.4rem;
+        }
+        .footer-desc {
+          max-height: 4.5rem;
+        }
+        .footer-nav {
+          max-height: 8rem;
         }
       }
     </style>
