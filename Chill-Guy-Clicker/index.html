@@ -385,75 +385,32 @@
         display: block;
       }
 
-      /* 移动端优化 - 减少资源加载 */
-      @media (max-width: 992px) {
-        .footer {
-          min-height: 380px; /* 平板端增加高度 */
-        }
-        .footer-content {
-          min-height: 300px;
-        }
-        .footer-columns {
-          min-height: 240px;
-        }
-
-        /* 移动端图片优化 */
-        .game-preview-image {
-          width: 120px;
-          height: 120px;
-        }
-      }
-
+      /* 简化的移动端优化 */
       @media (max-width: 768px) {
         .header {
           height: 70px;
         }
         .main-content {
-          min-height: 500px; /* 移动端减少高度 */
+          min-height: 500px;
         }
         .footer {
-          min-height: 280px; /* 移动端减少高度 */
+          min-height: 300px;
         }
-        .footer-content {
-          min-height: 200px;
-        }
-        .footer-columns {
-          min-height: 160px;
-        }
-        .footer-logo {
-          min-height: 1.6rem;
-          font-size: 1.2rem;
-        }
-        .footer-desc {
-          max-height: 4rem;
-        }
-        .footer-nav {
-          max-height: 7rem;
-        }
-
-        /* 移动端进一步优化 */
         .game-preview-image {
-          width: 100px;
-          height: 100px;
+          width: 120px;
+          height: 120px;
         }
-
         .game-container {
-          min-height: 400px; /* 移动端减少高度 */
+          min-height: 450px;
           padding: 15px;
         }
       }
     </style>
 
-    <!-- Mobile-Optimized Google Analytics Loading -->
+    <!-- Simplified Google Analytics Loading -->
     <script>
-      // 移动端优化的 Google Analytics 加载
+      // 简化的 Google Analytics 加载
       window.addEventListener('load', function() {
-        // 检测是否为移动设备
-        var isMobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-        // 移动端延迟更长时间加载
-        var delay = isMobile ? 5000 : 2000;
-
         setTimeout(function() {
           var script = document.createElement('script')
           script.async = true
@@ -467,8 +424,8 @@
           gtag('js', new Date())
           gtag('config', 'G-NM6JN6XG6J')
 
-          console.log('Google Analytics loaded with delay (' + (isMobile ? 'mobile' : 'desktop') + ')')
-        }, delay)
+          console.log('Google Analytics loaded')
+        }, 3000) // 统一3秒延迟
       })
     </script>
   </head>
