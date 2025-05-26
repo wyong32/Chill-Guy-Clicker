@@ -176,7 +176,7 @@
   }
 
   /**
-   * 稳定化动态内容 - 简化版本
+   * 稳定化动态内容
    */
   function stabilizeDynamicContent() {
     // 为动态内容容器设置最小高度
@@ -192,6 +192,25 @@
         }
       }
     });
+
+    // 使用 ResizeObserver 监控容器尺寸变化
+    if ('ResizeObserver' in window) {
+      const resizeObserver = new ResizeObserver(entries => {
+        entries.forEach(entry => {
+          const element = entry.target;
+          const newHeight = entry.contentRect.height;
+
+          // 如果高度变化超过阈值，更新最小高度
+          if (Math.abs(newHeight - parseFloat(element.style.minHeight || 0)) > 50) {
+            element.style.minHeight = newHeight + 'px';
+          }
+        });
+      });
+
+      dynamicContainers.forEach(container => {
+        resizeObserver.observe(container);
+      });
+    }
   }
 
 
@@ -250,26 +269,47 @@
   }
 
   /**
-   * 简化的预加载 - 减少性能开销
+   * 智能预加载 - 基于 Dreamy-Room-Level
    */
   function setupIntelligentPreload() {
-    // 简单延迟预加载，不使用 IntersectionObserver
-    setTimeout(() => {
-      const criticalImages = [
-        '/images/logo.png',
-        '/images/games/game-01.webp'
-      ]
+    // 使用Intersection Observer监听游戏部分
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // 用户即将看到游戏部分，开始预加载
+            const criticalImages = [
+              '/images/logo.png',
+              '/images/games/game-01.webp',
+              '/images/games/game-02.webp',
+              '/images/games/game-03.webp',
+            ]
 
-      criticalImages.forEach((src) => {
-        const link = document.createElement('link')
-        link.rel = 'preload'
-        link.as = 'image'
-        link.href = src
-        document.head.appendChild(link)
-      })
+            criticalImages.forEach((src) => {
+              const link = document.createElement('link')
+              link.rel = 'preload'
+              link.as = 'image'
+              link.href = src
+              link.type = 'image/webp'
+              document.head.appendChild(link)
+            })
 
-      console.log('Simple preload activated')
-    }, 1000)
+            console.log('Intelligent preload activated - Dreamy-Room-Level style')
+            // 预加载完成后停止观察
+            observer.disconnect()
+          }
+        })
+      },
+      {
+        rootMargin: '200px', // 提前200px开始预加载
+      },
+    )
+
+    // 观察游戏容器
+    const gameContainer = document.querySelector('.game-container')
+    if (gameContainer) {
+      observer.observe(gameContainer)
+    }
   }
 
   // 初始化所有优化 - 基于 Dreamy-Room-Level

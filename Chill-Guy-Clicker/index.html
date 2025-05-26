@@ -56,10 +56,6 @@
     <link rel="preload" href="/images/logo.png" as="image" type="image/png" fetchpriority="high" />
     <link rel="preload" href="/images/games/game-01.webp" as="image" type="image/webp" fetchpriority="high" />
 
-    <!-- 优化 PNG 页面的关键图片 -->
-    <link rel="preload" href="/images/img_01.webp" as="image" type="image/webp" fetchpriority="high" />
-    <link rel="preload" href="/images/png/chill-guy-png-1.webp" as="image" type="image/webp" fetchpriority="high" />
-
 
 
     <!-- DNS 预解析 -->
@@ -385,31 +381,51 @@
         display: block;
       }
 
-      /* 简化的移动端优化 */
+      /* 移动端优化 - 精确复制 Dreamy-Room-Level */
+      @media (max-width: 992px) {
+        .footer {
+          min-height: 380px; /* 平板端增加高度 */
+        }
+        .footer-content {
+          min-height: 300px;
+        }
+        .footer-columns {
+          min-height: 240px;
+        }
+      }
+
       @media (max-width: 768px) {
         .header {
           height: 70px;
         }
         .main-content {
-          min-height: 500px;
+          min-height: 600px; /* 参考cookingdom，移动端也提高高度 */
         }
         .footer {
-          min-height: 300px;
+          min-height: 320px; /* 移动端增加高度 */
         }
-        .game-preview-image {
-          width: 120px;
-          height: 120px;
+        .footer-content {
+          min-height: 240px;
         }
-        .game-container {
-          min-height: 450px;
-          padding: 15px;
+        .footer-columns {
+          min-height: 180px;
+        }
+        .footer-logo {
+          min-height: 1.8rem;
+          font-size: 1.4rem;
+        }
+        .footer-desc {
+          max-height: 4.5rem;
+        }
+        .footer-nav {
+          max-height: 8rem;
         }
       }
     </style>
 
-    <!-- Simplified Google Analytics Loading -->
+    <!-- Simple Google Analytics Loading -->
     <script>
-      // 简化的 Google Analytics 加载
+      // 简单延迟加载 Google Analytics
       window.addEventListener('load', function() {
         setTimeout(function() {
           var script = document.createElement('script')
@@ -424,8 +440,8 @@
           gtag('js', new Date())
           gtag('config', 'G-NM6JN6XG6J')
 
-          console.log('Google Analytics loaded')
-        }, 3000) // 统一3秒延迟
+          console.log('Google Analytics loaded with delay')
+        }, 2000) // 2秒后加载
       })
     </script>
   </head>
