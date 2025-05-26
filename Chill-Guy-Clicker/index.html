@@ -52,9 +52,15 @@
     <!-- 规范URL -->
     <link rel="canonical" href="https://chillguymemeclicker.com" />
 
-    <!-- 预加载关键资源 - 防止布局偏移 -->
+    <!-- 预加载关键资源 - 防止布局偏移和优化 LCP -->
     <link rel="preload" href="/images/logo.png" as="image" type="image/png" fetchpriority="high" />
     <link rel="preload" href="/images/games/game-01.webp" as="image" type="image/webp" fetchpriority="high" />
+
+    <!-- LCP 优化 - 预加载关键 JavaScript 模块 -->
+    <link rel="modulepreload" href="/src/main.js">
+    <link rel="modulepreload" href="/src/App.vue">
+    <link rel="modulepreload" href="/src/components/TheHeader.vue">
+    <link rel="modulepreload" href="/src/components/TheFooter.vue">
 
     <!-- DNS 预解析 -->
     <link rel="dns-prefetch" href="//www.googletagmanager.com" />
@@ -170,8 +176,9 @@
       }
     </style>
 
-    <!-- CLS 优化 CSS -->
-    <link rel="stylesheet" href="/css/cls-optimize.css" />
+    <!-- CLS 优化 CSS - 预加载关键样式 -->
+    <link rel="preload" href="/css/cls-optimize.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/css/cls-optimize.css"></noscript>
 
     <!-- 内联关键CSS防止CLS - 精确复制 Dreamy-Room-Level -->
     <style>
@@ -421,27 +428,55 @@
       }
     </style>
 
-    <!-- Delayed Google Analytics Loading -->
+    <!-- Optimized Google Analytics Loading -->
     <script>
-      // Delay GTM loading to reduce initial load time
-      window.addEventListener('load', function () {
-        setTimeout(function () {
-          // Google tag (gtag.js)
-          var script = document.createElement('script')
-          script.async = true
-          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NM6JN6XG6J'
-          document.head.appendChild(script)
+      // 优化 Google Analytics 加载 - 减少主线程阻塞
+      function loadGoogleAnalytics() {
+        if (window.requestIdleCallback) {
+          requestIdleCallback(() => {
+            // Google tag (gtag.js)
+            var script = document.createElement('script')
+            script.async = true
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NM6JN6XG6J'
+            document.head.appendChild(script)
 
-          window.dataLayer = window.dataLayer || []
-          function gtag() {
-            dataLayer.push(arguments)
-          }
-          gtag('js', new Date())
-          gtag('config', 'G-NM6JN6XG6J')
+            window.dataLayer = window.dataLayer || []
+            function gtag() {
+              dataLayer.push(arguments)
+            }
+            gtag('js', new Date())
+            gtag('config', 'G-NM6JN6XG6J')
 
-          console.log('Google Analytics loaded with delay')
-        }, 2000) // Delay 2 seconds after page load
-      })
+            console.log('Google Analytics loaded with delay')
+          }, { timeout: 5000 });
+        } else {
+          // 降级方案
+          setTimeout(() => {
+            var script = document.createElement('script')
+            script.async = true
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NM6JN6XG6J'
+            document.head.appendChild(script)
+
+            window.dataLayer = window.dataLayer || []
+            function gtag() {
+              dataLayer.push(arguments)
+            }
+            gtag('js', new Date())
+            gtag('config', 'G-NM6JN6XG6J')
+
+            console.log('Google Analytics loaded with delay')
+          }, 3000);
+        }
+      }
+
+      // 页面完全加载后再加载分析工具
+      if (document.readyState === 'complete') {
+        loadGoogleAnalytics();
+      } else {
+        window.addEventListener('load', () => {
+          setTimeout(loadGoogleAnalytics, 1000);
+        });
+      }
     </script>
   </head>
   <body>
