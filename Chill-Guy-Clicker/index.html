@@ -56,8 +56,7 @@
     <link rel="preload" href="/images/logo.png" as="image" type="image/png" fetchpriority="high" />
     <link rel="preload" href="/images/games/game-01.webp" as="image" type="image/webp" fetchpriority="high" />
 
-    <!-- LCP 优化 - 只预加载最关键的模块 -->
-    <link rel="modulepreload" href="/src/main.js">
+
 
     <!-- DNS 预解析 -->
     <link rel="dns-prefetch" href="//www.googletagmanager.com" />
@@ -424,55 +423,26 @@
       }
     </style>
 
-    <!-- Optimized Google Analytics Loading -->
+    <!-- Simple Google Analytics Loading -->
     <script>
-      // 优化 Google Analytics 加载 - 减少主线程阻塞
-      function loadGoogleAnalytics() {
-        if (window.requestIdleCallback) {
-          requestIdleCallback(() => {
-            // Google tag (gtag.js)
-            var script = document.createElement('script')
-            script.async = true
-            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NM6JN6XG6J'
-            document.head.appendChild(script)
+      // 简单延迟加载 Google Analytics
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var script = document.createElement('script')
+          script.async = true
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NM6JN6XG6J'
+          document.head.appendChild(script)
 
-            window.dataLayer = window.dataLayer || []
-            function gtag() {
-              dataLayer.push(arguments)
-            }
-            gtag('js', new Date())
-            gtag('config', 'G-NM6JN6XG6J')
+          window.dataLayer = window.dataLayer || []
+          function gtag() {
+            dataLayer.push(arguments)
+          }
+          gtag('js', new Date())
+          gtag('config', 'G-NM6JN6XG6J')
 
-            console.log('Google Analytics loaded with delay')
-          }, { timeout: 5000 });
-        } else {
-          // 降级方案
-          setTimeout(() => {
-            var script = document.createElement('script')
-            script.async = true
-            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NM6JN6XG6J'
-            document.head.appendChild(script)
-
-            window.dataLayer = window.dataLayer || []
-            function gtag() {
-              dataLayer.push(arguments)
-            }
-            gtag('js', new Date())
-            gtag('config', 'G-NM6JN6XG6J')
-
-            console.log('Google Analytics loaded with delay')
-          }, 3000);
-        }
-      }
-
-      // 页面完全加载后再加载分析工具
-      if (document.readyState === 'complete') {
-        loadGoogleAnalytics();
-      } else {
-        window.addEventListener('load', () => {
-          setTimeout(loadGoogleAnalytics, 1000);
-        });
-      }
+          console.log('Google Analytics loaded with delay')
+        }, 2000) // 2秒后加载
+      })
     </script>
   </head>
   <body>
