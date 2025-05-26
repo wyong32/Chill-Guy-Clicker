@@ -141,6 +141,13 @@ export default {
   position: relative;
   padding-bottom: 10px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  /* 防止文字渲染导致的布局偏移 */
+  contain: layout style;
+  min-height: 28px;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .footer-title::after {
@@ -151,17 +158,34 @@ export default {
   width: 40px;
   height: 2px;
   background-color: var(--primary-color);
+  /* 防止伪元素导致的布局偏移 */
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.footer-section {
+  /* 防止布局偏移 */
+  contain: layout style;
+  min-height: 180px;
+  box-sizing: border-box;
 }
 
 .footer-text {
   color: #fff;
   line-height: 1.6;
   margin-bottom: 20px;
+  /* 防止文字渲染导致的布局偏移 */
+  contain: layout style;
+  min-height: 60px;
 }
 
 .social-links {
   display: flex;
   gap: 15px;
+  /* 防止布局偏移 */
+  contain: layout style;
+  min-height: 36px;
+  align-items: center;
 }
 
 .social-link {
@@ -177,27 +201,43 @@ export default {
     background-color 0.3s,
     transform 0.3s;
   box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+  /* 防止布局偏移 */
+  contain: layout paint;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  flex-shrink: 0;
 }
 
 .social-link:hover {
   background-color: var(--accent-color);
-  transform: scale(1.1);
+  transform: scale(1.1) translateZ(0);
 }
 
 .footer-links {
   list-style: none;
   padding: 0;
   margin: 0;
+  /* 防止布局偏移 */
+  contain: layout style;
+  min-height: 120px;
 }
 
 .footer-links li {
   margin-bottom: 10px;
+  /* 防止布局偏移 */
+  contain: layout style;
+  min-height: 20px;
 }
 
 .footer-link {
   color: #fff;
   text-decoration: none;
   transition: color 0.3s;
+  /* 防止文字渲染导致的布局偏移 */
+  contain: layout style;
+  display: block;
+  line-height: 1.4;
 }
 
 .footer-link:hover {
@@ -245,35 +285,7 @@ export default {
   contain: layout style;
 }
 
-/* 社交链接优化 */
-.social-links {
-  display: flex;
-  gap: 15px;
-  /* 防止布局偏移 */
-  contain: layout style;
-  min-height: 36px;
-}
 
-.social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background-color: var(--primary-color);
-  border-radius: 50%;
-  color: white;
-  transition:
-    background-color 0.3s,
-    transform 0.3s;
-  box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
-  /* 防止布局偏移 */
-  contain: layout paint;
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  flex-shrink: 0;
-}
 
 @media (max-width: 992px) {
   .footer-content {

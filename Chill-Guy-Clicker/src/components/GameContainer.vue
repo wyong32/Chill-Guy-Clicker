@@ -283,6 +283,11 @@ export default {
 .game-container {
   margin-bottom: 20px;
   position: relative;
+  /* 防止布局偏移的关键属性 */
+  contain: layout style paint;
+  min-height: 400px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .game-iframe-container {
@@ -298,6 +303,12 @@ export default {
   transition: all 0.3s ease;
   margin: 0 auto;
   max-width: 100%;
+  /* 防止布局偏移 */
+  contain: layout paint;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  aspect-ratio: 16 / 9;
 }
 
 .game-iframe-container iframe {
@@ -331,6 +342,10 @@ export default {
   background: rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  /* 防止布局偏移 */
+  contain: layout style;
+  min-height: 50px;
+  box-sizing: border-box;
 }
 
 .fullscreen-button {
@@ -347,6 +362,14 @@ export default {
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* 防止布局偏移 */
+  contain: layout paint;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  min-height: 36px;
+  min-width: 36px;
+  flex-shrink: 0;
 }
 
 .fullscreen-button svg {
@@ -433,6 +456,10 @@ export default {
   flex-direction: column;
   align-items: center;
   max-width: 80%;
+  /* 防止布局偏移 */
+  contain: layout style;
+  min-height: 220px;
+  justify-content: center;
 }
 
 .game-preview-image {
@@ -445,10 +472,13 @@ export default {
   border: 2px solid rgba(255, 255, 255, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   z-index: 3;
-  /* 性能优化 */
+  /* 性能优化和防止布局偏移 */
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
+  contain: layout paint;
+  flex-shrink: 0;
+  display: block;
 }
 
 .game-preview-image:hover {
@@ -471,6 +501,15 @@ export default {
   position: relative;
   overflow: hidden;
   z-index: 3;
+  /* 防止布局偏移 */
+  contain: layout paint;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  min-height: 48px;
+  min-width: 140px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .play-now-button::before {
