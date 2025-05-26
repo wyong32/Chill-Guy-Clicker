@@ -5,21 +5,11 @@
     <TheHeader />
     <main class="main-content">
       <RouterView v-slot="{ Component, route }">
-        <!-- 使用 KeepAlive 缓存组件，提升性能 -->
+        <!-- 移除 Suspense 组件，防止布局偏移 -->
         <KeepAlive :include="['HomeView']">
-          <Suspense>
-            <template #default>
-              <div class="route-container">
-                <component :is="Component" :key="route.path" />
-              </div>
-            </template>
-            <template #fallback>
-              <div class="loading-container">
-                <div class="loading-spinner"></div>
-                <p>Loading...</p>
-              </div>
-            </template>
-          </Suspense>
+          <div class="route-container">
+            <component :is="Component" :key="route.path" />
+          </div>
         </KeepAlive>
       </RouterView>
     </main>

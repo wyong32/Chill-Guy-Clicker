@@ -145,12 +145,15 @@ export default {
     }
   },
   mounted() {
-    // 如果不使用懒加载或者图片在视口内，立即开始加载
-    if (!this.lazyLoad) {
-      this.startLoading()
-    } else {
-      this.setupIntersectionObserver()
-    }
+    // 为了彻底消除 CLS，强制立即加载所有图片
+    this.startLoading()
+
+    // 注释掉懒加载逻辑，防止布局偏移
+    // if (!this.lazyLoad) {
+    //   this.startLoading()
+    // } else {
+    //   this.setupIntersectionObserver()
+    // }
   },
   methods: {
     setupIntersectionObserver() {

@@ -199,16 +199,17 @@ watch(() => props.src, () => {
 })
 
 onMounted(() => {
-  createObserver()
+  // 为了彻底消除 CLS，强制立即加载所有图片
+  loadImage()
 
-  if (imageRef.value && observer) {
-    observer.observe(imageRef.value.parentElement)
-  }
-
-  // 如果设置为 eager 加载，立即加载图片
-  if (props.loading === 'eager') {
-    loadImage()
-  }
+  // 注释掉懒加载逻辑，防止布局偏移
+  // createObserver()
+  // if (imageRef.value && observer) {
+  //   observer.observe(imageRef.value.parentElement)
+  // }
+  // if (props.loading === 'eager') {
+  //   loadImage()
+  // }
 })
 
 onUnmounted(() => {

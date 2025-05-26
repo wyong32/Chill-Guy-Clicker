@@ -30,13 +30,68 @@
     // 2. 预设关键 CSS 变量
     document.documentElement.style.setProperty('--viewport-height', window.innerHeight + 'px');
 
-    // 3. 立即隐藏可能导致布局偏移的元素
+    // 3. 立即隐藏可能导致布局偏移的元素 - 更激进的策略
     const style = document.createElement('style');
     style.textContent = `
-      /* 立即防止布局偏移 */
-      * { contain: layout style; }
-      img:not([width]):not([height]) { aspect-ratio: 16/9; width: 100%; height: auto; }
-      iframe { aspect-ratio: 16/9; width: 100%; }
+      /* 立即防止布局偏移 - 超激进策略 */
+      * {
+        contain: layout style paint !important;
+        will-change: transform !important;
+        transform: translateZ(0) !important;
+        backface-visibility: hidden !important;
+      }
+
+      img:not([width]):not([height]) {
+        aspect-ratio: 16/9 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 150px !important;
+        background-color: #f0f0f0 !important;
+      }
+
+      iframe {
+        aspect-ratio: 16/9 !important;
+        width: 100% !important;
+        min-height: 400px !important;
+        background-color: #f0f0f0 !important;
+      }
+
+      /* 强制所有动态组件有固定尺寸 */
+      .lazy-image-container,
+      .optimized-image-container {
+        min-height: 150px !important;
+        min-width: 150px !important;
+        background-color: #f0f0f0 !important;
+        contain: layout paint !important;
+      }
+
+      /* 强制 Suspense 组件稳定 */
+      .route-container {
+        min-height: 600px !important;
+        contain: layout style paint !important;
+      }
+
+      /* 强制背景组件稳定 */
+      .starry-background {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: -1 !important;
+        contain: layout paint !important;
+      }
+
+      /* 强制所有 Vue 组件稳定 */
+      [data-v-*] {
+        contain: layout style !important;
+      }
+
+      /* 强制评论区域稳定 */
+      .comment-section {
+        min-height: 500px !important;
+        contain: layout style paint !important;
+      }
     `;
     document.head.appendChild(style);
   }
