@@ -59,6 +59,117 @@
     <!-- DNS 预解析 -->
     <link rel="dns-prefetch" href="//www.googletagmanager.com" />
 
+    <!-- CLS 强力修复 CSS - 最高优先级 -->
+    <style>
+      /* Footer 强力修复 - 关键 */
+      .footer,
+      footer {
+        min-height: 420px !important;
+        height: auto !important;
+        position: relative !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        flex-shrink: 0 !important;
+        display: block !important;
+        visibility: visible !important;
+        contain: layout style paint !important;
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+        padding: 60px 0 20px !important;
+        background-color: rgba(17, 14, 25, 0.8) !important;
+        color: #fff !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+        z-index: 1 !important;
+        backdrop-filter: blur(10px) !important;
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+
+      /* 主容器强制稳定 */
+      .app {
+        min-height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+      }
+
+      .main-content {
+        flex: 1 !important;
+        min-height: 800px !important;
+      }
+
+
+
+      /* 防止动画导致的偏移 */
+      .footer *,
+      footer * {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+      }
+
+      /* 游戏内容区域稳定性 - 精确定位 */
+      .game-container {
+        min-height: 600px !important;
+        contain: layout style paint !important;
+      }
+
+      /* 游戏详情 HTML 内容稳定性 */
+      .game-details-html,
+      .content-html {
+        min-height: 400px !important;
+        contain: layout style !important;
+      }
+
+      .game-details-html ul,
+      .content-html ul {
+        min-height: 175px !important;
+        contain: layout style !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .game-details-html p,
+      .content-html p {
+        min-height: 50px !important;
+        contain: layout style !important;
+        margin: 0 0 1em 0 !important;
+      }
+
+      .game-details-html h3,
+      .content-html h3 {
+        min-height: 42px !important;
+        contain: layout style !important;
+        margin: 0 0 0.8em 0 !important;
+      }
+
+      .game-details-html h2,
+      .content-html h2 {
+        min-height: 50px !important;
+        contain: layout style !important;
+        margin: 0 0 0.8em 0 !important;
+      }
+
+      /* 游戏描述区域 */
+      .game-description,
+      .game-details {
+        min-height: 400px !important;
+        contain: layout style !important;
+      }
+
+      /* 评论区稳定性 - 防止游戏切换导致的 CLS */
+      .comment-section {
+        min-height: 500px !important;
+        contain: layout style !important;
+        position: relative !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+    </style>
+
     <!-- CLS 优化 CSS -->
     <link rel="stylesheet" href="/css/cls-optimize.css" />
 
@@ -135,12 +246,20 @@
       }
 
       .footer {
-        min-height: 350px; /* 增加最小高度以显示内容 */
-        contain: layout style paint;
+        min-height: 420px !important; /* 增加高度以显示所有内容 */
+        contain: layout style paint !important;
         /* 防止文本重排 */
-        font-size: 0.95rem;
-        line-height: 1.6;
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+        position: relative !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        flex-shrink: 0 !important;
+        display: block !important;
+        visibility: visible !important;
       }
+
+
 
       /* 游戏容器关键样式 - 基于 Dreamy-Room-Level */
       .game-container {

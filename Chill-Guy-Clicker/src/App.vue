@@ -33,6 +33,32 @@ export default {
     TheFooter,
     StarryBackground
   },
+  mounted() {
+    // 在 App 级别强制修复 Footer，防止路由切换导致的 CLS
+    this.$nextTick(() => {
+      this.fixAppFooter()
+    })
+  },
+  methods: {
+    fixAppFooter() {
+      // 查找所有 Footer 元素
+      const footers = document.querySelectorAll('.footer, footer')
+      footers.forEach(footer => {
+        footer.style.setProperty('min-height', '420px', 'important')
+        footer.style.setProperty('height', '420px', 'important')
+        footer.style.setProperty('max-height', '420px', 'important')
+        footer.style.setProperty('overflow', 'hidden', 'important')
+        footer.style.setProperty('flex-shrink', '0', 'important')
+        footer.style.setProperty('contain', 'layout style paint', 'important')
+        footer.style.setProperty('position', 'relative', 'important')
+        footer.style.setProperty('width', '100%', 'important')
+        footer.style.setProperty('box-sizing', 'border-box', 'important')
+        footer.style.setProperty('display', 'block', 'important')
+        footer.style.setProperty('visibility', 'visible', 'important')
+        console.log('App-level Footer fixed:', footer.getBoundingClientRect())
+      })
+    }
+  },
   setup() {
     onMounted(() => {
       // 设置基础 SEO

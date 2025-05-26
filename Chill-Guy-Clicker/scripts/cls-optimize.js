@@ -30,40 +30,58 @@
     // 2. 预设关键 CSS 变量
     document.documentElement.style.setProperty('--viewport-height', window.innerHeight + 'px');
 
-    // 3. 立即应用关键样式 - 精确复制 Dreamy-Room-Level
+    // 3. 立即应用关键样式 - 强化版本
     const style = document.createElement('style');
     style.textContent = `
-      /* 立即防止布局偏移 - 精确复制 Dreamy-Room-Level */
+      /* 立即防止布局偏移 - 强化版本 */
       .app {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
+        min-height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
       }
 
       .main-content {
-        flex: 1;
-        min-height: 800px;
-        contain: layout style;
+        flex: 1 !important;
+        min-height: 800px !important;
+        contain: layout style !important;
       }
 
-      .footer {
-        min-height: 350px;
-        contain: layout style paint;
-        font-size: 0.95rem;
-        line-height: 1.6;
+      .footer,
+      footer {
+        min-height: 420px !important;
+        contain: layout style paint !important;
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+        position: relative !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        flex-shrink: 0 !important;
       }
 
       .footer-content {
-        min-height: 270px;
+        min-height: 270px !important;
       }
 
       .footer-columns {
-        min-height: 200px;
+        min-height: 200px !important;
       }
 
       .game-container {
-        min-height: 600px;
-        contain: layout style paint;
+        min-height: 600px !important;
+        contain: layout style paint !important;
+      }
+
+      /* 强制所有图片有固定尺寸 */
+      img {
+        background-color: #f0f0f0 !important;
+        display: block !important;
+      }
+
+      img:not([width]):not([height]) {
+        aspect-ratio: 16/9 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 150px !important;
       }
     `;
     document.head.appendChild(style);
@@ -82,9 +100,12 @@
     // 4. 优化动态内容
     stabilizeDynamicContent();
 
-    // 5. 监控和修复布局偏移
-    monitorLayoutShifts();
+
+
+
   }
+
+
 
   /**
    * 预设图片尺寸，防止图片加载导致的布局偏移
@@ -128,6 +149,19 @@
           container.style.transform = 'translateZ(0)';
         }
       }
+    });
+
+    // 特别强化 Footer 稳定性
+    const footers = document.querySelectorAll('.footer, footer');
+    footers.forEach(footer => {
+      footer.style.setProperty('min-height', '420px', 'important');
+      footer.style.setProperty('position', 'relative', 'important');
+      footer.style.setProperty('width', '100%', 'important');
+      footer.style.setProperty('box-sizing', 'border-box', 'important');
+      footer.style.setProperty('flex-shrink', '0', 'important');
+      footer.style.setProperty('display', 'block', 'important');
+      footer.style.setProperty('visibility', 'visible', 'important');
+      footer.style.setProperty('contain', 'layout style paint', 'important');
     });
 
     // 特殊处理游戏 iframe 容器
@@ -179,34 +213,7 @@
     }
   }
 
-  /**
-   * 监控布局偏移
-   */
-  function monitorLayoutShifts() {
-    if ('PerformanceObserver' in window) {
-      const observer = new PerformanceObserver((list) => {
-        let clsValue = 0;
 
-        for (const entry of list.getEntries()) {
-          if (!entry.hadRecentInput) {
-            clsValue += entry.value;
-          }
-        }
-
-        if (clsValue > 0) {
-          console.log('Layout shift detected:', clsValue);
-
-          // 在开发环境中显示详细信息
-          if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            console.warn('CLS value:', clsValue);
-            console.log('Layout shift entries:', list.getEntries());
-          }
-        }
-      });
-
-      observer.observe({ type: 'layout-shift', buffered: true });
-    }
-  }
 
   /**
    * 延迟加载非关键资源

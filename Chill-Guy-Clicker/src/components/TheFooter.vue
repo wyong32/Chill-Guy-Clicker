@@ -91,6 +91,21 @@
 <script>
 export default {
   name: 'TheFooter',
+  mounted() {
+    // 强制设置 Footer 尺寸，防止 CLS
+    this.$nextTick(() => {
+      const footer = this.$el;
+      if (footer) {
+        footer.style.setProperty('min-height', '420px', 'important');
+        footer.style.setProperty('height', '420px', 'important');
+        footer.style.setProperty('max-height', '420px', 'important');
+        footer.style.setProperty('overflow', 'hidden', 'important');
+        footer.style.setProperty('flex-shrink', '0', 'important');
+        footer.style.setProperty('contain', 'layout style paint', 'important');
+        console.log('Footer dimensions locked:', footer.getBoundingClientRect());
+      }
+    });
+  }
 }
 </script>
 
@@ -104,11 +119,15 @@ export default {
   position: relative;
   z-index: 1;
   backdrop-filter: blur(10px);
-  /* 防止布局偏移的关键属性 - 基于 Cookingdom */
+  /* 防止布局偏移的关键属性 - 强化版本 */
   contain: layout style paint;
-  min-height: 300px;
+  min-height: 420px !important;
+  height: 420px !important;
+  max-height: 420px !important;
   width: 100%;
   box-sizing: border-box;
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
 .container {

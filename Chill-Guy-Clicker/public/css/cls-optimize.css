@@ -105,6 +105,21 @@ img:not([width]):not([height]) {
   flex-shrink: 0;
 }
 
+/* Footer 稳定性 - 关键优化 */
+.footer,
+footer {
+  min-height: 420px;
+  contain: layout style paint;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  display: block;
+  visibility: visible;
+}
+
 /* 按钮稳定性 */
 button,
 .btn {

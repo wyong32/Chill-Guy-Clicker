@@ -259,7 +259,9 @@ export default {
         this.backgroundLoaded = true
       }
       img.src = this.game.imageUrl
-    }
+    },
+
+
   },
   mounted() {
     // 添加全屏变化事件监听
@@ -267,6 +269,8 @@ export default {
     document.addEventListener('webkitfullscreenchange', this.handleFullscreenChange)
     document.addEventListener('mozfullscreenchange', this.handleFullscreenChange)
     document.addEventListener('MSFullscreenChange', this.handleFullscreenChange)
+
+
   },
   beforeUnmount() {
     // 移除全屏变化事件监听
@@ -553,6 +557,8 @@ export default {
   position: relative;
   overflow: hidden;
 }
+
+
 
 .game-details {
   margin-bottom: 20px;
