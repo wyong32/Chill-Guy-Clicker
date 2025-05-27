@@ -85,7 +85,10 @@ const updateMetaTag = (attrName, attrValue, content) => {
 
 // 根据 addressBar 查找游戏
 const findGameByAddressBar = (addressBarParam) => {
-  if (!addressBarParam) return null
+  // 如果 addressBarParam 为空或未定义，尝试查找 ID 为 1 的游戏（首页游戏）
+  if (!addressBarParam || addressBarParam === '') {
+    return games.find(game => game.id === 1);
+  }
 
   const lowerAddressBarParam = addressBarParam.toLowerCase()
   return games.find(
@@ -197,7 +200,14 @@ const router = createRouter({
 
         // 查找是否是游戏
         const game = findGameByAddressBar(addressBar);
-        if (!game) {
+
+        // 如果 addressBar 为空或未定义，并且游戏是 ID 为 1 的游戏（首页），则导航到 '/'
+        if ((!addressBar || addressBar === '') && game && game.id === 1) {
+          if (to.path !== '/') { // 避免无限重定向
+            next('/');
+            return;
+          }
+        } else if (!game) {
           // 如果找不到游戏，重定向到首页
           next('/');
           return;

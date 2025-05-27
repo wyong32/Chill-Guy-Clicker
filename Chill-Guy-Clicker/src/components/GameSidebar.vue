@@ -33,6 +33,9 @@ export default {
   },
   methods: {
     getGameRoute(game) {
+      if (game.id === 1 && game.addressBar === '') {
+        return '/'
+      }
       return '/' + (game.addressBar || game.id)
     }
   }

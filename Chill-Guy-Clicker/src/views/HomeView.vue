@@ -52,9 +52,15 @@ export default {
     // Get current game based on route parameter
     currentGame() {
       const addressBar = this.$route.params.addressBar
+      const isHomePage = this.$route.path === '/'
 
       // 获取默认游戏（Chill-Guy-Clicker，ID为1）
       const defaultGame = this.games.find(game => game.id === 1) || this.games[0]
+
+      // 如果在首页，并且 addressBar 为空或未定义，则显示默认游戏 (ID 1)
+      if (isHomePage && (!addressBar || addressBar === '')) {
+        return defaultGame;
+      }
 
       if (addressBar) {
         // Try to find game by addressBar or id

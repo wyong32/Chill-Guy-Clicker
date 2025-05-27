@@ -144,7 +144,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
     keywords:
       'chill guy clicker, angry chubby, rage clicker, funny game, destruction game, smash game, snack power',
   },
-  addressBar: 'Chill-Guy-Clicker 3D',
+  addressBar: 'Chill-Guy-Clicker-3D',
   publishDate: '2025-05-15',
   imageUrl: '/images/games/game-03.webp',
   imageAlt: 'Angry Chubby gameplay showing chubby character eating and smashing buildings in rage',

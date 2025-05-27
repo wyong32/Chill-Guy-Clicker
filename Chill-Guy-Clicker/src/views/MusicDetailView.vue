@@ -11,7 +11,12 @@
       <div class="music-detail-content">
         <div class="music-info-section">
           <div class="music-image">
-            <img :src="track.imageUrl" :alt="track.title" />
+            <img
+              :src="track.imageUrl"
+              :alt="track.title"
+              loading="lazy"
+              :style="{ width: '100%', height: '100%', objectFit: 'cover' }"
+            />
           </div>
           <div class="music-info">
             <h1 class="music-title">{{ track.title }}</h1>
@@ -36,19 +41,55 @@
         </div>
 
         <div class="music-player-section">
-          <h2 class="section-title">Listen Now</h2>
+          <h2 class="section-title" id="music-player">Listen Now</h2>
+          <!-- 跳过链接，用于屏幕阅读器用户 -->
+          <a href="#music-details" class="skip-link">跳过播放器，查看详情</a>
           <div class="music-player">
+            <!-- 延迟加载的 YouTube 播放器 -->
+            <button
+              v-if="!iframeLoaded && !iframeLoading"
+              class="iframe-placeholder"
+              @click="loadIframe"
+              :aria-label="`加载并播放 ${track.title} - ${track.artist}`"
+              type="button"
+            >
+              <div class="play-button" aria-hidden="true">
+                <svg width="68" height="48" viewBox="0 0 68 48" role="img" aria-label="播放按钮">
+                  <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
+                  <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+                </svg>
+              </div>
+              <div class="placeholder-text" aria-hidden="true">点击播放音乐</div>
+              <img v-if="track.imageUrl" :src="track.imageUrl" alt="" class="placeholder-image" aria-hidden="true" />
+            </button>
+
+            <!-- 加载状态 -->
+            <div
+              v-if="iframeLoading"
+              class="iframe-loading"
+              role="status"
+              :aria-label="`正在加载 ${track.title} 播放器`"
+              aria-live="polite"
+            >
+              <div class="loading-spinner" aria-hidden="true"></div>
+              <div class="loading-text">正在加载播放器...</div>
+            </div>
             <iframe
-              :src="track.iframeUrl"
+              v-if="iframeLoaded"
+              :src="getPrivacyFriendlyUrl(track.iframeUrl)"
               frameborder="0"
               allowfullscreen
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               class="music-iframe"
+              sandbox="allow-scripts allow-same-origin allow-presentation"
+              :title="`播放 ${track.title} - ${track.artist}`"
+              :aria-label="`音乐播放器: ${track.title}`"
+              role="application"
             ></iframe>
           </div>
         </div>
 
-        <div class="music-details-section" v-if="track.detailsHtml">
+        <div class="music-details-section" v-if="track.detailsHtml" id="music-details">
           <div class="music-details content-html" v-html="track.detailsHtml"></div>
         </div>
       </div>
@@ -80,10 +121,27 @@ export default {
   },
   data() {
     return {
-      track: null
+      track: null,
+      iframeLoaded: false,
+      iframeLoading: false
     }
   },
   methods: {
+    loadIframe() {
+      this.iframeLoading = true
+      // 延迟一小段时间显示加载状态
+      setTimeout(() => {
+        this.iframeLoaded = true
+        this.iframeLoading = false
+      }, 300)
+    },
+    getPrivacyFriendlyUrl(url) {
+      // 转换为 YouTube 无 Cookie 域名，减少跟踪
+      if (url && url.includes('youtube.com/embed/')) {
+        return url.replace('youtube.com', 'youtube-nocookie.com') + '?rel=0&modestbranding=1&controls=1'
+      }
+      return url
+    },
     formatDate(dateString) {
       const date = new Date(dateString)
       return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
@@ -174,10 +232,36 @@ export default {
 </script>
 
 <style scoped>
+/* CLS 优化 - 预设容器尺寸 */
+.music-detail-view {
+  min-height: 100vh;
+  contain: layout style;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
+  min-height: 800px;
+}
+
+/* 跳过链接样式 - 可访问性 */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #41b883;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
 }
 
 .back-link {
@@ -334,8 +418,100 @@ export default {
   border: none;
 }
 
-.music-details {
-  /* 使用全局 content-html 样式 */
+/* YouTube 延迟加载占位符样式 */
+.iframe-placeholder {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  background: linear-gradient(135deg, #000, #333);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+}
+
+.iframe-placeholder:hover,
+.iframe-placeholder:focus {
+  transform: scale(1.02);
+  outline: 3px solid #41b883;
+  outline-offset: 2px;
+}
+
+.iframe-placeholder:focus {
+  box-shadow: 0 0 0 3px rgba(65, 184, 131, 0.3);
+}
+
+.iframe-placeholder .placeholder-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.play-button {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.iframe-placeholder:hover .play-button {
+  transform: scale(1.1);
+}
+
+.placeholder-text {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 15px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* 加载状态样式 */
+.iframe-loading {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 2px dashed #ddd;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #41b883;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+.loading-text {
+  color: #666;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .not-found {
@@ -378,8 +554,15 @@ export default {
     font-size: 18px;
   }
 
-  .music-iframe {
+  .music-iframe,
+  .iframe-placeholder,
+  .iframe-loading {
     height: 300px;
+  }
+
+  .placeholder-text,
+  .loading-text {
+    font-size: 16px;
   }
 }
 </style>
