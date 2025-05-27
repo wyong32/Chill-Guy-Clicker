@@ -59,7 +59,7 @@
                   <path d="M 45,24 27,14 27,34" fill="#fff"></path>
                 </svg>
               </div>
-              <div class="placeholder-text" aria-hidden="true">点击播放音乐</div>
+              <!-- <div class="placeholder-text" aria-hidden="true">点击播放音乐</div> -->
               <img v-if="track.imageUrl" :src="track.imageUrl" alt="" class="placeholder-image" aria-hidden="true" />
             </button>
 
