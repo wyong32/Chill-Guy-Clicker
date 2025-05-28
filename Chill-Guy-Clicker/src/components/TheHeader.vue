@@ -1,5 +1,6 @@
 <template>
-  <header class="header">
+  <div class="header-wrapper">
+    <header class="header">
     <div class="container">
       <div class="header-content">
         <div class="logo">
@@ -38,43 +39,103 @@
             </li>
           </ul>
         </nav>
-        <div class="mobile-menu-toggle" @click="toggleMobileMenu">
+        <button
+          class="mobile-menu-toggle"
+          @click="toggleMobileMenu"
+          :aria-label="mobileMenuActive ? '关闭菜单' : '打开菜单'"
+          :aria-expanded="mobileMenuActive"
+          type="button"
+        >
           <div class="bar"></div>
           <div class="bar"></div>
           <div class="bar"></div>
-        </div>
+        </button>
+
+
       </div>
     </div>
-    <div class="mobile-menu" :class="{ active: mobileMenuActive }">
+
+  </header>
+
+  <!-- Simple Mobile Menu -->
+  <Teleport to="body">
+    <!-- Backdrop -->
+    <div
+      v-if="mobileMenuActive"
+      class="mobile-backdrop"
+      @click="closeMobileMenu"
+    ></div>
+
+    <!-- Menu Panel -->
+    <nav
+      class="mobile-menu"
+      :class="{ 'mobile-menu-open': mobileMenuActive }"
+    >
+      <!-- Close Button -->
+      <button
+        class="mobile-menu-close"
+        @click.stop="closeMobileMenu"
+        aria-label="Close menu"
+        type="button"
+      >
+        ×
+      </button>
+
       <ul class="mobile-nav-list">
         <li class="mobile-nav-item">
-          <router-link to="/" class="mobile-nav-link" :class="{ 'custom-active': isActive('home') }" @click="closeMobileMenu"
-            >Chill Guy Clicker</router-link
+          <router-link
+            to="/"
+            class="mobile-nav-link"
+            :class="{ 'active': isActive('home') }"
+            @click="closeMobileMenu"
           >
+            Chill Guy Clicker
+          </router-link>
         </li>
         <li class="mobile-nav-item">
-          <router-link to="/Chill-Guy-Girl" class="mobile-nav-link" :class="{ 'custom-active': isActive('girl') }" @click="closeMobileMenu"
-            >Chill Guy Girl</router-link
+          <router-link
+            to="/Chill-Guy-Girl"
+            class="mobile-nav-link"
+            :class="{ 'active': isActive('girl') }"
+            @click="closeMobileMenu"
           >
+            Chill Guy Girl
+          </router-link>
         </li>
         <li class="mobile-nav-item">
-          <router-link to="/Chill-Guy-Music" class="mobile-nav-link" :class="{ 'custom-active': isActive('music') }" @click="closeMobileMenu"
-            >Chill Guy Music</router-link
+          <router-link
+            to="/Chill-Guy-Music"
+            class="mobile-nav-link"
+            :class="{ 'active': isActive('music') }"
+            @click="closeMobileMenu"
           >
+            Chill Guy Music
+          </router-link>
         </li>
         <li class="mobile-nav-item">
-          <router-link to="/Chill-Guy-PNG" class="mobile-nav-link" :class="{ 'custom-active': isActive('png') }" @click="closeMobileMenu"
-            >Chill Guy PNG</router-link
+          <router-link
+            to="/Chill-Guy-PNG"
+            class="mobile-nav-link"
+            :class="{ 'active': isActive('png') }"
+            @click="closeMobileMenu"
           >
+            Chill Guy PNG
+          </router-link>
         </li>
         <li class="mobile-nav-item">
-          <router-link to="/Chill-Guy-Wallpaper" class="mobile-nav-link" :class="{ 'custom-active': isActive('wallpaper') }" @click="closeMobileMenu"
-            >Chill Guy Wallpaper</router-link
+          <router-link
+            to="/Chill-Guy-Wallpaper"
+            class="mobile-nav-link"
+            :class="{ 'active': isActive('wallpaper') }"
+            @click="closeMobileMenu"
           >
+            Chill Guy Wallpaper
+          </router-link>
         </li>
       </ul>
-    </div>
-  </header>
+    </nav>
+  </Teleport>
+  </div>
 </template>
 
 <script>
@@ -109,13 +170,15 @@ export default {
   methods: {
     toggleMobileMenu() {
       this.mobileMenuActive = !this.mobileMenuActive
+      // Prevent body scroll when menu is open
       document.body.style.overflow = this.mobileMenuActive ? 'hidden' : ''
     },
     closeMobileMenu() {
+      console.log('Close button clicked!')
       this.mobileMenuActive = false
       document.body.style.overflow = ''
     },
-    // 判断导航链接是否应该激活
+    // Check if navigation link should be active
     isActive(type) {
       return this.currentRouteType === type
     }
@@ -124,6 +187,11 @@ export default {
 </script>
 
 <style scoped>
+.header-wrapper {
+  /* 确保包装器不影响布局 */
+  display: contents;
+}
+
 .header {
   background-color: rgba(17, 14, 25, 0.8);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -263,9 +331,17 @@ export default {
   display: none;
   flex-direction: column;
   justify-content: space-between;
+  min-width: 30px;
+  min-height: 20px;
   width: 30px;
   height: 20px;
   cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 102;
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
 .bar {
@@ -274,51 +350,101 @@ export default {
   background-color: #fff;
   border-radius: 3px;
   transition: all 0.3s;
+  pointer-events: none;
+}
+
+.mobile-menu-toggle:hover .bar,
+.mobile-menu-toggle:focus .bar {
+  background-color: var(--accent-color);
+}
+
+.mobile-menu-toggle:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+
+
+/* Simple Mobile Menu - Performance Optimized */
+.mobile-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }
 
 .mobile-menu {
-  display: none;
   position: fixed;
-  top: 70px;
-  left: 0;
-  width: 100%;
-  height: calc(100vh - 70px);
-  background-color: var(--secondary-color);
-  z-index: 99;
-  transform: translateX(-100%);
-  transition: transform 0.3s;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100%;
+  background-color: #2c3e50;
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  will-change: transform;
+  contain: layout style paint;
 }
 
-.mobile-menu.active {
+.mobile-menu-open {
   transform: translateX(0);
+}
+
+.mobile-menu-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  line-height: 1;
+  transition: color 0.2s ease;
+  z-index: 1001;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-close:hover {
+  color: #3498db;
 }
 
 .mobile-nav-list {
   list-style: none;
-  padding: 20px;
+  padding: 80px 0 0 0;
   margin: 0;
 }
 
 .mobile-nav-item {
-  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mobile-nav-link {
+  display: block;
+  padding: 20px 30px;
   color: #fff;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
-  display: block;
-  padding: 10px 0;
-  transition: color 0.3s;
+  transition: background-color 0.2s ease;
 }
 
 .mobile-nav-link:hover {
-  color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.mobile-nav-link.custom-active {
-  color: var(--primary-color);
+.mobile-nav-link.active {
+  background-color: #3498db;
+  color: #fff;
 }
 
 @media (max-width: 768px) {
@@ -328,10 +454,6 @@ export default {
 
   .mobile-menu-toggle {
     display: flex;
-  }
-
-  .mobile-menu {
-    display: block;
   }
 }
 </style>

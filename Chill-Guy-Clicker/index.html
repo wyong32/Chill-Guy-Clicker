@@ -237,15 +237,7 @@
         contain: layout style;
       }
 
-      .header {
-        height: 80px;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 100;
-        background-color: rgba(255, 255, 255, 0.9);
-        contain: layout style paint;
-      }
+      /* Header 样式由 TheHeader.vue 组件控制，避免冲突 */
 
       .footer {
         min-height: 420px !important; /* 增加高度以显示所有内容 */
@@ -374,6 +366,9 @@
         transform: translateZ(0);
       }
 
+      /* 全屏模式样式已移至 GameContainer.vue 组件中统一管理 */
+      /* 避免样式冲突，由组件控制全屏行为 */
+
       .game-iframe-container iframe {
         width: 100%;
         height: 100%;
@@ -395,9 +390,6 @@
       }
 
       @media (max-width: 768px) {
-        .header {
-          height: 70px;
-        }
         .main-content {
           min-height: 600px; /* 参考cookingdom，移动端也提高高度 */
         }

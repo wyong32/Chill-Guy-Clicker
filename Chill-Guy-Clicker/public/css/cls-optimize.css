@@ -19,7 +19,7 @@ img {
 
 /* 未设置尺寸的图片 - 强制稳定 */
 img:not([width]):not([height]) {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 12;
   width: 100%;
   height: auto;
 }
@@ -84,6 +84,9 @@ img:not([width]):not([height]) {
   contain: layout paint;
   transform: translateZ(0);
 }
+
+/* 全屏模式下的游戏容器 - 移除冲突样式，由组件控制 */
+/* 此样式已移至 GameContainer.vue 组件中统一管理 */
 
 .game-iframe-container iframe {
   width: 100%;
@@ -240,6 +243,9 @@ svg {
   .game-iframe-container {
     aspect-ratio: 4 / 3; /* 移动端使用更适合的比例 */
   }
+
+  /* 移动端全屏模式 - 移除冲突样式，由组件控制 */
+  /* 此样式已移至 GameContainer.vue 组件中统一管理 */
 
   .game-image-placeholder,
   .guide-image-placeholder {

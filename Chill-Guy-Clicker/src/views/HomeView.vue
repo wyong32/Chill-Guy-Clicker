@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
+  <div class="home" :class="{ 'theater-mode': isTheaterMode }">
     <main class="main-content container">
-      <h1 class="game-title">{{ featuredGame.pageTitle || featuredGame.title }}</h1>
+      <h1 class="game-title" v-show="!isTheaterMode">{{ featuredGame.pageTitle || featuredGame.title }}</h1>
 
       <div class="game-layout">
         <!-- Main Game Area -->
@@ -11,18 +11,19 @@
               :game="featuredGame"
               :gameStarted="gameStarted"
               @start-game="startGame"
+              @theater-mode-changed="handleTheaterModeChanged"
             />
             <!-- GameInfo component removed -->
-            <CommentSection :gameId="featuredGame.id" />
+            <CommentSection :gameId="featuredGame.id" v-show="!isTheaterMode" />
           </article>
         </section>
 
         <!-- Hot Games Sidebar -->
-        <GameSidebar :games="hotGames" />
+        <GameSidebar :games="hotGames" v-show="!isTheaterMode" />
       </div>
 
       <!-- More Games Section -->
-      <MoreGames :games="moreGames" />
+      <MoreGames :games="moreGames" v-show="!isTheaterMode" />
     </main>
   </div>
 </template>
@@ -46,6 +47,7 @@ export default {
     return {
       games,
       gameStarted: false,
+      isTheaterMode: false,
     }
   },
   computed: {
@@ -95,6 +97,11 @@ export default {
   methods: {
     startGame() {
       this.gameStarted = true
+    },
+
+    // 处理 Theater 模式状态变化
+    handleTheaterModeChanged(isTheaterMode) {
+      this.isTheaterMode = isTheaterMode
     },
 
     // 更新SEO信息
@@ -271,6 +278,56 @@ export default {
   height: 20px;
   background-color: var(--primary-color);
   border-radius: 3px;
+}
+
+/* Theater 模式样式 */
+.home.theater-mode {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9998 !important;
+  background-color: #000 !important;
+  overflow: hidden !important;
+}
+
+.home.theater-mode .main-content {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: none !important;
+  height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.home.theater-mode .game-layout {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.home.theater-mode .game-main {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.home.theater-mode .featured-game {
+  width: 100% !important;
+  height: 100% !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 @media (max-width: 1024px) {

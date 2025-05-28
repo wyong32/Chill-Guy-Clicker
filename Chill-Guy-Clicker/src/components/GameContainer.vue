@@ -1,6 +1,6 @@
 <template>
-  <div class="game-container">
-    <div class="game-iframe-container" :class="{ 'iframe-fullscreen': isIframeFullscreen }" ref="gameContainer">
+  <div class="game-container" :class="{ 'theater-mode': isIframeFullscreen }">
+    <div class="game-iframe-container" ref="gameContainer">
       <iframe
         v-if="gameUrl && gameStarted"
         ref="gameIframe"
@@ -45,27 +45,44 @@
     </div>
 
     <!-- 全屏控制按钮 - 游戏主体下方 -->
-    <div class="fullscreen-controls-bottom">
+    <div class="fullscreen-controls-bottom" v-show="!isIframeFullscreen">
       <button
         class="fullscreen-button"
         @click="handleFullscreenClick"
-        title="Fullscreen"
-        aria-label="Fullscreen"
+        title="Browser Fullscreen"
+        aria-label="Browser Fullscreen"
       >
         <svg viewBox="0 0 24 24" width="20" height="20">
           <path fill="currentColor" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
         </svg>
+        Fullscreen
       </button>
 
       <button
         class="fullscreen-button"
         @click="handleIframeFullscreenClick"
-        title="Web Fullscreen"
-        aria-label="Web Fullscreen"
+        title="Theater Mode"
+        aria-label="Theater Mode"
       >
         <svg viewBox="0 0 24 24" width="20" height="20">
           <path fill="currentColor" d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H5V8h14v10z"/>
         </svg>
+        Theater
+      </button>
+    </div>
+
+    <!-- Theater 模式下的控制按钮 - 固定在右上角 -->
+    <div class="theater-controls-overlay" v-show="isIframeFullscreen">
+      <button
+        class="fullscreen-button exit-theater"
+        @click="handleIframeFullscreenClick"
+        title="Exit Theater Mode"
+        aria-label="Exit Theater Mode"
+      >
+        <svg viewBox="0 0 24 24" width="20" height="20">
+          <path fill="currentColor" d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/>
+        </svg>
+        Exit Theater
       </button>
     </div>
 
@@ -175,56 +192,90 @@ export default {
       }
     },
 
-    // 切换iframe网页全屏
+    // 切换网页全屏模式（Theater Mode）
     toggleIframeFullscreen() {
       this.isIframeFullscreen = !this.isIframeFullscreen
+
+      // 通知父组件 Theater 模式状态变化
+      this.$emit('theater-mode-changed', this.isIframeFullscreen)
+
+      // 使用 nextTick 确保 DOM 更新完成
+      this.$nextTick(() => {
+        if (this.isIframeFullscreen) {
+          // 进入 Theater 模式
+          document.body.style.overflow = 'hidden'
+          document.documentElement.style.overflow = 'hidden'
+        } else {
+          // 退出 Theater 模式
+          document.body.style.overflow = ''
+          document.documentElement.style.overflow = ''
+        }
+      })
     },
 
-    // 监听全屏变化事件
-    handleFullscreenChange() {
-      this.isFullscreen = !!document.fullscreenElement
-    },
-
-    // 处理全屏按钮点击
-    handleFullscreenClick() {
+    // 切换浏览器原生全屏
+    async toggleBrowserFullscreen() {
       if (!this.gameStarted) {
-        this.showNotification = false
-        clearTimeout(this.notificationTimeout)
-
-        this.notificationMessage = 'Please click "PLAY NOW" to start the game first'
-        this.showNotification = true
-
-        this.notificationTimeout = setTimeout(() => {
-          this.showNotification = false
-        }, 3000)
-
+        this.showNotificationMessage('Please click "PLAY NOW" to start the game first')
         return
       }
 
-      this.toggleFullscreen()
-    },
-
-    // 处理网页全屏按钮点击
-    handleIframeFullscreenClick() {
-      if (!this.gameStarted) {
-        this.showNotification = false
-        clearTimeout(this.notificationTimeout)
-
-        this.notificationMessage = 'Please click "PLAY NOW" to start the game first'
-        this.showNotification = true
-
-        this.notificationTimeout = setTimeout(() => {
-          this.showNotification = false
-        }, 3000)
-
-        return
+      try {
+        if (!document.fullscreenElement) {
+          await this.enterBrowserFullscreen()
+        } else {
+          await this.exitBrowserFullscreen()
+        }
+      } catch (error) {
+        console.error('Fullscreen error:', error)
+        this.showNotificationMessage('Fullscreen not supported or failed')
       }
-
-      this.toggleIframeFullscreen()
     },
 
-    // 显示通知
-    showNotificationMessage(message, duration = 3000) {
+    // 进入浏览器全屏
+    async enterBrowserFullscreen() {
+      const container = this.$refs.gameContainer
+      if (!container) return
+
+      try {
+        if (container.requestFullscreen) {
+          await container.requestFullscreen()
+        } else if (container.webkitRequestFullscreen) {
+          await container.webkitRequestFullscreen()
+        } else if (container.msRequestFullscreen) {
+          await container.msRequestFullscreen()
+        }
+
+        // 进入浏览器全屏后，退出 Theater 模式
+        if (this.isIframeFullscreen) {
+          this.isIframeFullscreen = false
+          document.body.style.overflow = ''
+          document.documentElement.style.overflow = ''
+        }
+      } catch (error) {
+        console.error('Error entering fullscreen:', error)
+        throw error
+      }
+    },
+
+    // 退出浏览器全屏
+    async exitBrowserFullscreen() {
+      try {
+        if (document.exitFullscreen) {
+          await document.exitFullscreen()
+        } else if (document.webkitExitFullscreen) {
+          await document.webkitExitFullscreen()
+        } else if (document.msExitFullscreen) {
+          await document.msExitFullscreen()
+        }
+      } catch (error) {
+        console.error('Error exiting fullscreen:', error)
+        throw error
+      }
+    },
+
+    // 显示通知消息
+    showNotificationMessage(message) {
       this.showNotification = false
       clearTimeout(this.notificationTimeout)
 
@@ -233,8 +284,30 @@ export default {
 
       this.notificationTimeout = setTimeout(() => {
         this.showNotification = false
-      }, duration)
+      }, 3000)
     },
+
+    // 监听全屏变化事件
+    handleFullscreenChange() {
+      this.isFullscreen = !!document.fullscreenElement
+    },
+
+    // 处理浏览器全屏按钮点击
+    handleFullscreenClick() {
+      this.toggleBrowserFullscreen()
+    },
+
+    // 处理 Theater 模式按钮点击
+    handleIframeFullscreenClick() {
+      if (!this.gameStarted) {
+        this.showNotificationMessage('Please click "PLAY NOW" to start the game first')
+        return
+      }
+
+      this.toggleIframeFullscreen()
+    },
+
+
 
     // 预览图片加载完成后再加载背景图片
     onPreviewImageLoad() {
@@ -278,6 +351,19 @@ export default {
     document.removeEventListener('webkitfullscreenchange', this.handleFullscreenChange)
     document.removeEventListener('mozfullscreenchange', this.handleFullscreenChange)
     document.removeEventListener('MSFullscreenChange', this.handleFullscreenChange)
+
+    // 清理全屏状态
+    if (this.isIframeFullscreen) {
+      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
+      document.removeEventListener('touchmove', this.preventScroll)
+      document.removeEventListener('wheel', this.preventScroll)
+    }
+
+    // 清理通知定时器
+    if (this.notificationTimeout) {
+      clearTimeout(this.notificationTimeout)
+    }
   }
 }
 </script>
@@ -315,6 +401,43 @@ export default {
   aspect-ratio: 16 / 9;
 }
 
+/* Theater 模式样式 */
+.game-container.theater-mode {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999 !important;
+  background-color: #000 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.game-container.theater-mode .game-iframe-container {
+  width: 90vw !important;
+  height: auto !important;
+  max-width: 1800px !important;
+  max-height: 98vh !important;
+  aspect-ratio: 16 / 9 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Theater 模式下隐藏其他内容 */
+.game-container.theater-mode .fullscreen-controls-bottom,
+.game-container.theater-mode .game-details-html,
+.game-container.theater-mode .game-details {
+  display: none !important;
+}
+
 .game-iframe-container iframe {
   position: absolute;
   top: 0;
@@ -322,20 +445,28 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 1;
+  border: none;
+  background-color: #000;
 }
 
-/* 网页全屏模式 */
-.game-iframe-container.iframe-fullscreen {
-  position: fixed;
-  top: 70px;
-  left: 0;
-  width: 100vw;
-  height: calc(100vh - 70px);
-  padding-bottom: 0;
-  z-index: 9999;
-  border-radius: 0;
-  border: none;
+/* 浏览器原生全屏样式 */
+.game-iframe-container:fullscreen {
+  max-width: none !important;
+  max-height: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  aspect-ratio: unset !important;
 }
+
+.game-iframe-container:-webkit-full-screen {
+  max-width: none !important;
+  max-height: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  aspect-ratio: unset !important;
+}
+
+/* 移除重复的全屏样式，已在上方统一定义 */
 
 /* 游戏主体下方全屏控制按钮 */
 .fullscreen-controls-bottom {
@@ -350,6 +481,21 @@ export default {
   contain: layout style;
   min-height: 50px;
   box-sizing: border-box;
+}
+
+/* 全屏模式下的控制按钮覆盖层 */
+.fullscreen-controls-overlay {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999999;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .fullscreen-button {
@@ -383,6 +529,61 @@ export default {
 
 .fullscreen-button:hover {
   background-color: #555;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 退出全屏按钮特殊样式 */
+.fullscreen-button.exit-fullscreen {
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.fullscreen-button.exit-fullscreen:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+}
+
+/* Theater 模式下的控制按钮 */
+.theater-controls-overlay {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10001;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.game-container.theater-mode .theater-controls-overlay {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 10001;
+}
+
+.fullscreen-button.exit-theater {
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.fullscreen-button.exit-theater:hover {
+  background-color: #c82333;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
@@ -618,6 +819,8 @@ export default {
     margin: 0 auto;
   }
 
+  /* 移动端全屏模式样式继承上方统一定义 */
+
   .fullscreen-controls-bottom {
     margin: 8px 0;
     padding: 8px;
@@ -632,6 +835,18 @@ export default {
   .fullscreen-button svg {
     width: 16px;
     height: 16px;
+  }
+
+  /* 移动端全屏控制按钮 */
+  .fullscreen-controls-overlay {
+    bottom: 10px;
+    right: 10px;
+    padding: 8px;
+  }
+
+  .fullscreen-button.exit-fullscreen {
+    padding: 8px 16px;
+    font-size: 13px;
   }
 
   .game-preview-image {
@@ -702,6 +917,8 @@ export default {
     margin: 0 auto;
   }
 
+  /* 小屏幕全屏模式样式继承上方统一定义 */
+
   .fullscreen-controls-bottom {
     margin: 6px 0;
     padding: 6px;
@@ -717,6 +934,18 @@ export default {
   .fullscreen-button svg {
     width: 25px;
     height: 25px;
+  }
+
+  /* 小屏幕全屏控制按钮 */
+  .fullscreen-controls-overlay {
+    bottom: 5px;
+    right: 5px;
+    padding: 6px;
+  }
+
+  .fullscreen-button.exit-fullscreen {
+    padding: 6px 12px;
+    font-size: 12px;
   }
 
   .game-preview-image {

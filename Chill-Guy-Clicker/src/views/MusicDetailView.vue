@@ -68,11 +68,11 @@
               v-if="iframeLoading"
               class="iframe-loading"
               role="status"
-              :aria-label="`正在加载 ${track.title} 播放器`"
+              :aria-label="`Loading ${track.title} video player`"
               aria-live="polite"
             >
               <div class="loading-spinner" aria-hidden="true"></div>
-              <div class="loading-text">正在加载播放器...</div>
+              <!-- <div class="loading-text">正在加载播放器...</div> -->
             </div>
             <iframe
               v-if="iframeLoaded"
