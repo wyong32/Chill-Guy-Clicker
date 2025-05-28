@@ -44,7 +44,7 @@ The reason behind the popularity of <strong>Chill Guy Clicker</strong> lies in i
 
 <h3>How to Play Chill Guy Clicker</h3>
 <ul>
-  <li>Go to <a href="https://chillguyclicker.io" target="_blank" rel="noopener">chillguyclicker.io</a></li>
+  <li>Go to <a href="https://chillguymemeclicker.com" target="_blank" rel="noopener">chillguymemeclicker.com</a></li>
   <li>Click or tap the Chill Guy to earn points</li>
   <li>Use points to buy upgrades that increase passive income</li>
   <li>Unlock special characters inspired by the <strong>chill guy meme</strong></li>
@@ -427,7 +427,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
       In a noisy world, <strong>Call Chill Guy</strong> offers calm sanctuary. Let Chill Guy's words recharge and brighten your day in this delightful <strong>chill guy clicker</strong> experience.
     </p>
     <p>
-      Try it now at <a href="https://chillguyclicker.io" target="_blank">chillguyclicker.io</a>.
+      Try it now at <a href="https://chillguymemeclicker.com" target="_blank">chillguymemeclicker.com</a>.
     </p>
   `
 },
@@ -491,7 +491,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
 
     <h3>More Chill Games Await</h3>
     <p>
-      Explore more in the <strong>Chill Guy</strong> universe at <a href="https://chillguyclicker.io" target="_blank">chillguyclicker.io</a> — including <em>Chill Guy Clicker</em>, <em>Call Chill Guy</em>, and <em>Cookie Clicker 2</em>.
+      Explore more in the <strong>Chill Guy</strong> universe at <a href="https://chillguymemeclicker.com" target="_blank">chillguymemeclicker.com</a> — including <em>Chill Guy Clicker</em>, <em>Call Chill Guy</em>, and <em>Cookie Clicker 2</em>.
     </p>
 
     <p>
@@ -562,7 +562,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
 
 <h3>Explore the Chill Guy Clicker Universe</h3>
 <p>
-  After you’ve perfected your look, continue the fun with more titles from the <strong>Chill Guy Clicker</strong> universe. Visit <a href="https://chillguyclicker.io" target="_blank">chillguyclicker.io</a> to try out fan-favorites like <em>Chill Guy Geometry Dash</em>, <em>Cookie Clicker 2</em>, and of course, the original <strong>Chill Guy Clicker</strong>.
+  After you’ve perfected your look, continue the fun with more titles from the <strong>Chill Guy Clicker</strong> universe. Visit <a href="https://chillguymemeclicker.com" target="_blank">chillguymemeclicker.com</a> to try out fan-favorites like <em>Chill Guy Geometry Dash</em>, <em>Cookie Clicker 2</em>, and of course, the original <strong>Chill Guy Clicker</strong>.
 </p>
 <p>
   Whether you’re dressing up or clicking for fun, the <strong>chill guy</strong> is here to bring mellow energy and style. Start your <strong>Dress Up Chill Guy</strong> journey now!
@@ -622,7 +622,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
 
     <h3>Explore More Chill Guy Clicker Games</h3>
     <p>
-      This title expands the <strong>Chill Guy Clicker</strong> world with puzzles. If you love memes and clever mazes, this one’s for you. Try other games like <em>Dress Up a Chill Guy</em> and the original <strong>Chill Guy Clicker</strong> at <a href="https://chillguyclicker.io" target="_blank">chillguyclicker.io</a>.
+      This title expands the <strong>Chill Guy Clicker</strong> world with puzzles. If you love memes and clever mazes, this one’s for you. Try other games like <em>Dress Up a Chill Guy</em> and the original <strong>Chill Guy Clicker</strong> at <a href="https://chillguymemeclicker.com" target="_blank">chillguymemeclicker.com</a>.
     </p>
   `
 },
@@ -681,7 +681,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
     </p>
 
     <p>
-      Start your engine and join the chase now! Play <strong>Escape Road</strong> for free at <a href="https://chillguyclicker.io" target="_blank">chillguyclicker.io</a>.
+      Start your engine and join the chase now! Play <strong>Escape Road</strong> for free at <a href="https://chillguymemeclicker.com" target="_blank">chillguymemeclicker.com</a>.
     </p>
   `
 },
@@ -746,7 +746,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
     </ul>
 
     <p>
-      Whether you're in for five minutes or five hours, <strong>Astro Robot Clicker</strong> will keep you entertained with its rewarding progression and lovable robotic companion. Play now at <a href="https://chillguyclicker.io" target="_blank">chillguyclicker.io</a> and start your journey to become the ultimate point-collecting hero!
+      Whether you're in for five minutes or five hours, <strong>Astro Robot Clicker</strong> will keep you entertained with its rewarding progression and lovable robotic companion. Play now at <a href="https://chillguymemeclicker.com" target="_blank">chillguymemeclicker.com</a> and start your journey to become the ultimate point-collecting hero!
     </p>
   `
 },
@@ -807,7 +807,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
     </p>
 
     <p>
-      Play now at <a href="https://chillguyclicker.io" target="_blank">chillguyclicker.io</a> and experience one of the most satisfying block puzzle games online!
+      Play now at <a href="https://chillguymemeclicker.com" target="_blank">chillguymemeclicker.com</a> and experience one of the most satisfying block puzzle games online!
     </p>
   `
 },
@@ -869,7 +869,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
     </p>
 
     <p>
-      Play now on <a href="https://chillguyclicker.io" target="_blank">chillguyclicker.io</a> and prove you’re the ultimate getaway master!
+      Play now on <a href="https://chillguymemeclicker.com" target="_blank">chillguymemeclicker.com</a> and prove you’re the ultimate getaway master!
     </p>
   `
 },
@@ -920,7 +920,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
 
     <h3>Play Cookie Clicker Unblocked</h3>
     <p>
-      Want to enjoy <strong>Cookie Clicker unblocked</strong>? Visit <a href="https://chillguyclicker.io" target="_blank">chillguyclicker.io</a> for free access to this classic clicker game — no downloads, no restrictions, just pure cookie-making fun.
+      Want to enjoy <strong>Cookie Clicker unblocked</strong>? Visit <a href="https://chillguymemeclicker.com" target="_blank">chillguymemeclicker.com</a> for free access to this classic clicker game — no downloads, no restrictions, just pure cookie-making fun.
     </p>
 
     <p>
@@ -981,7 +981,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
     </p>
 
     <p>
-      Play now at <a href="https://chillguyclicker.io" target="_blank">chillguyclicker.io</a> and see if you can beat all 100 crazy levels of Drive Mad!
+      Play now at <a href="https://chillguymemeclicker.com" target="_blank">chillguymemeclicker.com</a> and see if you can beat all 100 crazy levels of Drive Mad!
     </p>
   `
 },
@@ -1108,7 +1108,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
     </p>
 
     <p>
-      Play now at <a href="https://chillguyclicker.io" target="_blank">chillguyclicker.io</a> and bring the Sprunki universe to life with your clicks!
+      Play now at <a href="https://chillguymemeclicker.com" target="_blank">chillguymemeclicker.com</a> and bring the Sprunki universe to life with your clicks!
     </p>
   `
 },
@@ -1187,7 +1187,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
     </ul>
 
     <p>
-      Get ready for a non-stop meme-action ride. Play <strong>Bombardiro Crocodilo: Protect the Hangar!</strong> now for free at <a href="https://chillguyclicker.io" target="_blank">chillguyclicker.io</a>!
+      Get ready for a non-stop meme-action ride. Play <strong>Bombardiro Crocodilo: Protect the Hangar!</strong> now for free at <a href="https://chillguymemeclicker.com" target="_blank">chillguymemeclicker.com</a>!
     </p>
   `
 },
@@ -1243,7 +1243,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
 
     <p>
       Show off your reflexes and flying skills in <strong>Curve Rush</strong>. Available now for free at 
-      <a href="https://chillguyclicker.io" target="_blank">chillguyclicker.io</a> — how far can you glide?
+      <a href="https://chillguymemeclicker.com" target="_blank">chillguymemeclicker.com</a> — how far can you glide?
     </p>
   `
 },
@@ -1289,7 +1289,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
     Getting started with <strong>chill guy cliker</strong> is simple:
   </p>
   <ul>
-    <li>Visit <a href="https://chillguyclicker.io" target="_blank" rel="noopener">chillguyclicker.io</a> to launch the game</li>
+    <li>Visit <a href="https://chillguymemeclicker.com" target="_blank" rel="noopener">chillguymemeclicker.com</a> to launch the game</li>
     <li>Click on the chill guy to earn points instantly in <strong>chill guy cliker</strong></li>
     <li>Use points to buy upgrades and unlock idle bonuses</li>
     <li>Discover hidden chill guy forms only in <strong>chill guy cliker</strong></li>
