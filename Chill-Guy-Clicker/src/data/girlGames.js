@@ -17,7 +17,6 @@ export const girlGames = [
     iframeUrl: 'https://game.azgame.io/chill-girl-clicker/',
     isHot: true,
     isMore: true,
-    isPage: true,
     detailsHtml: `
 <h2>Chill Guy Girl Clicker – Your Calm, Aesthetic Idle Game</h2>
 <p>

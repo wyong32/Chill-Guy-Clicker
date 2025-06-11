@@ -19,7 +19,7 @@
         </section>
 
         <!-- Hot Games Sidebar -->
-        <GameSidebar :games="hotGames" v-show="!isTheaterMode" />
+        <GameSidebar :hotGames="hotGames" :newGames="newGames" v-show="!isTheaterMode" />
       </div>
 
       <!-- More Games Section -->
@@ -84,6 +84,13 @@ export default {
       return this.games
         .filter(
           (game) => game.isHot
+        )
+    },
+    // Get new games
+    newGames() {
+      return this.games
+        .filter(
+          (game) => game.isNew
         )
     },
     // Get more games (including current game if it's in more games)

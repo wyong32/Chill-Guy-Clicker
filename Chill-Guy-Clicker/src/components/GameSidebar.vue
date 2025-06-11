@@ -1,21 +1,44 @@
 <template>
   <aside class="game-sidebar">
+    <!-- Hot Games Section -->
     <section class="hot-games">
       <h2 class="section-title">Hot Games</h2>
-      <div class="hot-games-list">
+      <div class="games-list">
         <router-link
-          v-for="game in games"
-          :key="game.id"
-          class="hot-game-card"
+          v-for="game in hotGames"
+          :key="'hot-' + game.id"
+          class="game-card"
           :to="getGameRoute(game)"
           :aria-label="'Play ' + (game.pageTitle || game.title) + ' game'"
         >
           <img
             :src="game.thumbnail || game.imageUrl"
             :alt="game.imageAlt || game.title"
-            class="hot-game-img"
+            class="game-img"
           />
-          <h3 class="hot-game-title">{{ game.pageTitle || game.title }}</h3>
+          <h3 class="game-title">{{ game.pageTitle || game.title }}</h3>
+        </router-link>
+      </div>
+    </section>
+
+    <!-- New Games Section -->
+    <section v-if="newGames && newGames.length > 0" class="new-games">
+      <h2 class="section-title">New Games</h2>
+      <div class="games-list">
+        <router-link
+          v-for="game in newGames"
+          :key="'new-' + game.id"
+          class="game-card"
+          :to="getGameRoute(game)"
+          :aria-label="'Play ' + (game.pageTitle || game.title) + ' game'"
+        >
+          <img
+            :src="game.thumbnail || game.imageUrl"
+            :alt="game.imageAlt || game.title"
+            class="game-img"
+          />
+          <h3 class="game-title">{{ game.pageTitle || game.title }}</h3>
+          <span class="new-badge">NEW</span>
         </router-link>
       </div>
     </section>
@@ -26,10 +49,14 @@
 export default {
   name: 'GameSidebar',
   props: {
-    games: {
+    hotGames: {
       type: Array,
       required: true,
     },
+    newGames: {
+      type: Array,
+      default: () => []
+    }
   },
   methods: {
     getGameRoute(game) {
@@ -45,9 +72,13 @@ export default {
 <style scoped>
 .game-sidebar {
   width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.hot-games {
+.hot-games,
+.new-games {
   background-color: rgba(255, 255, 255, 0.95);
   padding: 20px;
   border-radius: 10px;
@@ -77,13 +108,13 @@ export default {
   border-radius: 3px;
 }
 
-.hot-games-list {
+.games-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 15px;
 }
 
-.hot-game-card {
+.game-card {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 8px;
   overflow: hidden;
@@ -93,20 +124,21 @@ export default {
   text-decoration: none;
   display: block;
   font-size: 0;
+  position: relative;
 }
 
-.hot-game-card:hover {
+.game-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.hot-game-img {
+.game-img {
   width: 100%;
   height: 100px;
   object-fit: cover;
 }
 
-.hot-game-title {
+.game-title {
   font-size: 12px;
   padding: 5px 10px;
   text-align: center;
@@ -114,18 +146,52 @@ export default {
   transition: color 0.3s;
 }
 
-.hot-game-card:hover .hot-game-title {
+.game-card:hover .game-title {
   color: var(--primary-color);
 }
 
+/* New Games 特有样式 */
+.new-games .section-title::before {
+  background-color: #ff6b6b; /* 红色表示新游戏 */
+}
+
+.new-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  color: white;
+  font-size: 8px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
 @media (max-width: 1024px) {
-  .hot-games-list {
+  .game-sidebar {
+    width: 100%;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .hot-games,
+  .new-games {
+    flex: 1;
+  }
+
+  .games-list {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .hot-games-list {
+  .game-sidebar {
+    flex-direction: column;
+  }
+
+  .games-list {
     grid-template-columns: repeat(2, 1fr);
   }
 }

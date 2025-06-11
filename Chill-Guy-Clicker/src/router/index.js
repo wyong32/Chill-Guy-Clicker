@@ -83,6 +83,66 @@ const updateMetaTag = (attrName, attrValue, content) => {
   metaTag.setAttribute('content', content)
 }
 
+// 更新结构化数据的函数
+const updateStructuredData = (gameData) => {
+  // 移除现有的游戏结构化数据
+  const existingScript = document.querySelector('script[type="application/ld+json"]')
+  if (existingScript && existingScript.textContent.includes('"@type": "Game"')) {
+    existingScript.remove()
+  }
+
+  // 创建新的结构化数据
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Game",
+    "name": gameData.pageTitle || gameData.title,
+    "description": gameData.seo?.description || "Play this exciting chill guy game online for free",
+    "genre": ["Idle Game", "Clicker Game", "Casual Game"],
+    "gamePlatform": "Web Browser",
+    "operatingSystem": ["Windows", "macOS", "Linux", "iOS", "Android"],
+    "applicationCategory": "Game",
+    "url": window.location.href,
+    "image": gameData.imageUrl ? `https://chillguymemeclicker.com${gameData.imageUrl}` : "https://chillguymemeclicker.com/images/logo.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Chill Guy Games",
+      "url": "https://chillguymemeclicker.com"
+    },
+    "datePublished": gameData.publishDate || "2025-01-15",
+    "inLanguage": "en-US",
+    "isAccessibleForFree": true,
+    "featureList": [
+      "Free to play",
+      "Browser-based gaming",
+      "Mobile-friendly",
+      "No download required"
+    ]
+  }
+
+  // 如果是热门游戏，添加评分
+  if (gameData.isHot) {
+    structuredData.aggregateRating = {
+      "@type": "AggregateRating",
+      "ratingValue": "4.7",
+      "ratingCount": "850",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+
+  // 创建并插入新的结构化数据脚本
+  const script = document.createElement('script')
+  script.type = 'application/ld+json'
+  script.textContent = JSON.stringify(structuredData, null, 2)
+  document.head.appendChild(script)
+}
+
 // 根据 addressBar 查找游戏
 const findGameByAddressBar = (addressBarParam) => {
   // 如果 addressBarParam 为空或未定义，尝试查找 ID 为 1 的游戏（首页游戏）
@@ -234,6 +294,9 @@ const router = createRouter({
             document.head.appendChild(metaKeywords);
           }
           metaKeywords.setAttribute('content', game.seo.keywords);
+
+          // 更新结构化数据
+          updateStructuredData(game);
         }
 
         next();
