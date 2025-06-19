@@ -1,7 +1,38 @@
 <template>
   <div class="home" :class="{ 'theater-mode': isTheaterMode }">
+    <!-- 桌面全插广告 -->
+    <!-- <div class="ad-full-width ad-isPc" v-show="!isTheaterMode">
+      <ins class="eas6a97888e35" data-zoneid="5647526"></ins>
+    </div> -->
+
+   
+
+    <!-- 左侧广告区域 -->
+    <aside class="ad-sidebar ad-left ad-isPc" v-show="!isTheaterMode">
+      <div class="ad-container">
+        <ins class="eas6a97888e17" data-zoneid="5647522"></ins>
+      </div>
+    </aside>
+
+    <!-- 右侧广告区域 -->
+    <aside class="ad-sidebar ad-right ad-isPc" v-show="!isTheaterMode">
+      <div class="ad-container">
+        <ins class="eas6a97888e17" data-zoneid="5647524"></ins>
+      </div>
+    </aside>
+
+    <!-- 移动端广告1 -->
+    <aside class="ad-ph-sidebar ad-isPh" v-show="!isTheaterMode">
+        <ins class="eas6a97888e10" data-zoneid="5647530"></ins> 
+    </aside>
+
     <main class="main-content container">
       <h1 class="game-title" v-show="!isTheaterMode">{{ featuredGame.pageTitle || featuredGame.title }}</h1>
+
+       <!-- 桌面上方广告1 -->
+    <aside class="ad-content ad-isPc" v-show="!isTheaterMode">
+      <ins class="eas6a97888e2" data-zoneid="5647518"></ins>
+    </aside>
 
       <div class="game-layout">
         <!-- Main Game Area -->
@@ -18,10 +49,19 @@
           </article>
         </section>
 
+        <!-- 移动端广告2 -->
+        <aside class="ad-ph ad-isPh" v-show="!isTheaterMode">
+          <ins class="eas6a97888e20" data-zoneid="5647528"></ins>
+        </aside>
+
         <!-- Hot Games Sidebar -->
         <GameSidebar :hotGames="hotGames" :newGames="newGames" v-show="!isTheaterMode" />
       </div>
-
+      
+      <!-- 移动端广告3 -->
+      <aside class="ad-ph ad-isPh" v-show="!isTheaterMode">
+        <ins class="eas6a97888e14" data-zoneid="5647534"></ins> 
+      </aside>
       <!-- More Games Section -->
       <MoreGames :games="moreGames" v-show="!isTheaterMode" />
     </main>
@@ -136,11 +176,34 @@ export default {
         }
         metaKeywords.setAttribute('content', game.seo.keywords);
       }
-    }
+    },
+
+    // 初始化广告
+    initAds() {
+      // 动态加载广告脚本
+      if (!window.AdProvider) {
+        const script = document.createElement('script');
+        script.async = true;
+        script.type = 'application/javascript';
+        script.src = 'https://a.magsrv.com/ad-provider.js';
+        script.onload = () => {
+          // 脚本加载完成后初始化广告
+          if (window.AdProvider) {
+            window.AdProvider.push({"serve": {}});
+          }
+        };
+        document.head.appendChild(script);
+      } else {
+        // 如果脚本已存在，直接初始化
+        window.AdProvider.push({"serve": {}});
+      }
+    },
   },
-  // 组件挂载时更新SEO信息
+
+  // 组件挂载时更新SEO信息和初始化广告
   mounted() {
     this.updateSEO();
+    this.initAds();
   },
 
   // Watch for route changes to reset game state and update SEO

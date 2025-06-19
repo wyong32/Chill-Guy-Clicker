@@ -1,425 +1,434 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="/images/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chill Guy Clicker - Relaxing Idle Game - Play Online Free</title>
-    <meta
-      name="description"
-      content="Play Chill Guy Clicker, a relaxing and fun clicking game where you earn points by clicking characters. Unlock new abilities and characters as you progress!"
-    />
-    <meta name="keywords" content="chill guy clicker, idle game, clicker game, relaxing game, online game, free game" />
 
-    <!-- 预加载关键资源 -->
-    <link
-      rel="preload"
-      href="/images/logo.png"
-      as="image"
-      type="image/png"
-      fetchpriority="high"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/images/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chill Guy Clicker - Relaxing Idle Game - Play Online Free</title>
+  <meta name="description"
+    content="Play Chill Guy Clicker, a relaxing and fun clicking game where you earn points by clicking characters. Unlock new abilities and characters as you progress!" />
+  <meta name="keywords" content="chill guy clicker, idle game, clicker game, relaxing game, online game, free game" />
 
-    <!-- DNS 预解析 -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+  <!-- 预加载关键资源 -->
+  <link rel="preload" href="/images/logo.png" as="image" type="image/png" fetchpriority="high" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- 移除开发环境中的预加载，避免警告 -->
-    <!-- 预加载将在生产环境中通过 Vite 自动处理 -->
+  <!-- DNS 预解析 -->
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="//www.google-analytics.com" />
 
-    <!-- 权限策略 -->
-    <meta http-equiv="Permissions-Policy" content="autoplay=*, fullscreen=*, cross-origin-isolated=*" />
+  <!-- 移除开发环境中的预加载，避免警告 -->
+  <!-- 预加载将在生产环境中通过 Vite 自动处理 -->
 
-    <!-- 默认社交媒体标签 - 会被路由守卫动态更新 -->
-    <!-- Open Graph 标签 (Facebook, 微信等) -->
-    <meta property="og:title" content="Chill Guy Games - Play Free Online Games" />
-    <meta property="og:description" content="chill guy clicker, idle game, clicker game, relaxing game, online game, free game" />
-    <meta property="og:image" content="https://chillguymemeclicker.com/images/logo.png" />
-    <meta property="og:url" content="https://chillguymemeclicker.com" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Chill Guy Games" />
+  <!-- 权限策略 -->
+  <meta http-equiv="Permissions-Policy" content="autoplay=*, fullscreen=*, cross-origin-isolated=*" />
 
-    <!-- Twitter Card 标签 -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Chill Guy Games - Play Free Online Games" />
-    <meta name="twitter:description" content="chill guy clicker, idle game, clicker game, relaxing game, online game, free game" />
-    <meta name="twitter:image" content="https://chillguymemeclicker.com/images/logo.png" />
+  <!-- 默认社交媒体标签 - 会被路由守卫动态更新 -->
+  <!-- Open Graph 标签 (Facebook, 微信等) -->
+  <meta property="og:title" content="Chill Guy Games - Play Free Online Games" />
+  <meta property="og:description"
+    content="chill guy clicker, idle game, clicker game, relaxing game, online game, free game" />
+  <meta property="og:image" content="https://chillguymemeclicker.com/images/logo.png" />
+  <meta property="og:url" content="https://chillguymemeclicker.com" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Chill Guy Games" />
 
-    <!-- 手动添加广告2 -->
-     <meta name="6a97888e-site-verification" content="b796207c8cfc90c72d58ca7815113b01"> 
+  <!-- Twitter Card 标签 -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Chill Guy Games - Play Free Online Games" />
+  <meta name="twitter:description"
+    content="chill guy clicker, idle game, clicker game, relaxing game, online game, free game" />
+  <meta name="twitter:image" content="https://chillguymemeclicker.com/images/logo.png" />
 
-    <!-- 规范URL -->
-    <link rel="canonical" href="https://chillguymemeclicker.com" />
+  <!-- 手动添加广告2 -->
+  <meta name="6a97888e-site-verification" content="b796207c8cfc90c72d58ca7815113b01">
 
-    <!-- 预加载关键资源 - 防止布局偏移和优化 LCP -->
-    <link rel="preload" href="/images/logo.png" as="image" type="image/png" fetchpriority="high" />
-    <link rel="preload" href="/images/games/game-01.webp" as="image" type="image/webp" fetchpriority="high" />
+  <!-- 规范URL -->
+  <link rel="canonical" href="https://chillguymemeclicker.com" />
+
+  <!-- 预加载关键资源 - 防止布局偏移和优化 LCP -->
+  <link rel="preload" href="/images/logo.png" as="image" type="image/png" fetchpriority="high" />
+  <link rel="preload" href="/images/games/game-01.webp" as="image" type="image/webp" fetchpriority="high" />
 
 
 
-    <!-- DNS 预解析 -->
-    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+  <!-- DNS 预解析 -->
+  <link rel="dns-prefetch" href="//www.googletagmanager.com" />
 
-    <!-- CLS 强力修复 CSS - 最高优先级 -->
-    <style>
-      /* Footer 强力修复 - 关键 */
-      .footer,
-      footer {
-        min-height: 420px !important;
-        height: auto !important;
-        position: relative !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        flex-shrink: 0 !important;
-        display: block !important;
-        visibility: visible !important;
-        contain: layout style paint !important;
-        font-size: 0.95rem !important;
-        line-height: 1.6 !important;
-        padding: 60px 0 20px !important;
-        background-color: rgba(17, 14, 25, 0.8) !important;
-        color: #fff !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-        z-index: 1 !important;
-        backdrop-filter: blur(10px) !important;
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
+  <!-- CLS 强力修复 CSS - 最高优先级 -->
+  <style>
+    /* Footer 强力修复 - 关键 */
+    .footer,
+    footer {
+      min-height: 420px !important;
+      height: auto !important;
+      position: relative !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      flex-shrink: 0 !important;
+      display: block !important;
+      visibility: visible !important;
+      contain: layout style paint !important;
+      font-size: 0.95rem !important;
+      line-height: 1.6 !important;
+      padding: 60px 0 20px !important;
+      background-color: rgba(17, 14, 25, 0.8) !important;
+      color: #fff !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+      z-index: 1 !important;
+      backdrop-filter: blur(10px) !important;
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+
+    /* 主容器强制稳定 */
+    .app {
+      min-height: 100vh !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+
+    .main-content {
+      flex: 1 !important;
+      min-height: 800px !important;
+    }
+
+
+
+    /* 防止动画导致的偏移 */
+    .footer *,
+    footer * {
+      transition: none !important;
+      animation: none !important;
+      transform: none !important;
+    }
+
+    /* 游戏内容区域稳定性 - 精确定位 */
+    .game-container {
+      min-height: 600px !important;
+      contain: layout style paint !important;
+    }
+
+    /* 游戏详情 HTML 内容稳定性 */
+    .game-details-html,
+    .content-html {
+      min-height: 400px !important;
+      contain: layout style !important;
+    }
+
+    .game-details-html ul,
+    .content-html ul {
+      min-height: 175px !important;
+      contain: layout style !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .game-details-html p,
+    .content-html p {
+      min-height: 50px !important;
+      contain: layout style !important;
+      margin: 0 0 1em 0 !important;
+    }
+
+    .game-details-html h3,
+    .content-html h3 {
+      min-height: 42px !important;
+      contain: layout style !important;
+      margin: 0 0 0.8em 0 !important;
+    }
+
+    .game-details-html h2,
+    .content-html h2 {
+      min-height: 50px !important;
+      contain: layout style !important;
+      margin: 0 0 0.8em 0 !important;
+    }
+
+    /* 游戏描述区域 */
+    .game-description,
+    .game-details {
+      min-height: 400px !important;
+      contain: layout style !important;
+    }
+
+    /* 评论区稳定性 - 防止游戏切换导致的 CLS */
+    .comment-section {
+      min-height: 500px !important;
+      contain: layout style !important;
+      position: relative !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+  </style>
+
+  <!-- CLS 优化 CSS -->
+  <link rel="stylesheet" href="/css/cls-optimize.css" />
+
+  <!-- 内联关键CSS防止CLS - 精确复制 Dreamy-Room-Level -->
+  <style>
+    /* 防止CLS的最小样式 - 精确复制 Dreamy-Room-Level */
+    body {
+      margin: 0;
+      padding: 0;
+      /* 防止字体加载导致的CLS */
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-display: swap;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* 预设关键图片尺寸，防止图片加载导致的CLS */
+    img {
+      background-color: #f0f0f0;
+      transition: opacity 0.3s ease;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
+
+    .logo-image {
+      width: 30px;
+      height: 30px;
+    }
+
+    .game-preview-image {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      /* 防止布局偏移 */
+      contain: layout style;
+      box-sizing: border-box;
+    }
+
+    /* 彻底固定所有关键容器尺寸 - 基于 Dreamy-Room-Level */
+    .app {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main-content {
+      flex: 1;
+      min-height: 800px;
+      /* 参考 Dreamy-Room-Level，提高到800px */
+      contain: layout style;
+    }
+
+    /* Header 样式由 TheHeader.vue 组件控制，避免冲突 */
+
+    .footer {
+      min-height: 420px !important;
+      /* 增加高度以显示所有内容 */
+      contain: layout style paint !important;
+      /* 防止文本重排 */
+      font-size: 0.95rem !important;
+      line-height: 1.6 !important;
+      position: relative !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      flex-shrink: 0 !important;
+      display: block !important;
+      visibility: visible !important;
+    }
+
+
+
+    /* 游戏容器关键样式 - 基于 Dreamy-Room-Level */
+    .game-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #333;
+      contain: layout style paint;
+      min-height: 600px;
+      /* 增加最小高度 */
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* 预设关键图片尺寸 - 基于 Dreamy-Room-Level */
+    .game-preview-image {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      background-color: #f0f0f0;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
+
+    /* Header 固定高度，防止布局偏移 */
+    .header-placeholder {
+      min-height: 80px;
+      contain: layout style paint;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* 预设footer关键文本样式 - 基于 Dreamy-Room-Level */
+    .footer-content {
+      min-height: 270px;
+      contain: layout style;
+    }
+
+    .footer-columns {
+      min-height: 200px;
+      contain: layout style;
+    }
+
+    .footer-logo {
+      min-height: 2rem;
+      font-size: 1.8rem;
+      line-height: 1.2;
+      contain: layout style;
+    }
+
+    .footer-desc {
+      max-height: 5rem;
+      contain: layout style;
+    }
+
+    .footer-nav {
+      max-height: 10rem;
+      contain: layout style;
+    }
+
+    /* 评论区域稳定性 - 基于 Dreamy-Room-Level */
+    .comment-section {
+      min-height: 400px;
+      contain: layout style paint;
+    }
+
+    /* 加载指示器 */
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #41b883;
+      animation: spin 1s ease-in-out infinite;
+      margin: 2rem auto;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
       }
+    }
 
-      /* 主容器强制稳定 */
-      .app {
-        min-height: 100vh !important;
-        display: flex !important;
-        flex-direction: column !important;
-      }
+    /* 防止布局偏移的占位样式 - 基于 Cookingdom */
+    #app {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      overflow-x: hidden;
+    }
 
-      .main-content {
-        flex: 1 !important;
-        min-height: 800px !important;
-      }
+    /* 主内容区域 */
+    .main-content {
+      flex: 1;
+      width: 100%;
+      min-height: calc(100vh - 380px);
+    }
 
+    /* 游戏 iframe 容器 - 防止布局偏移 */
+    .game-iframe-container {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-color: #f0f0f0;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      contain: layout paint;
+      transform: translateZ(0);
+    }
 
+    /* 全屏模式样式已移至 GameContainer.vue 组件中统一管理 */
+    /* 避免样式冲突，由组件控制全屏行为 */
 
-      /* 防止动画导致的偏移 */
-      .footer *,
-      footer * {
-        transition: none !important;
-        animation: none !important;
-        transform: none !important;
-      }
+    .game-iframe-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
 
-      /* 游戏内容区域稳定性 - 精确定位 */
-      .game-container {
-        min-height: 600px !important;
-        contain: layout style paint !important;
-      }
-
-      /* 游戏详情 HTML 内容稳定性 */
-      .game-details-html,
-      .content-html {
-        min-height: 400px !important;
-        contain: layout style !important;
-      }
-
-      .game-details-html ul,
-      .content-html ul {
-        min-height: 175px !important;
-        contain: layout style !important;
-        margin: 0 !important;
-        padding: 0 !important;
-      }
-
-      .game-details-html p,
-      .content-html p {
-        min-height: 50px !important;
-        contain: layout style !important;
-        margin: 0 0 1em 0 !important;
-      }
-
-      .game-details-html h3,
-      .content-html h3 {
-        min-height: 42px !important;
-        contain: layout style !important;
-        margin: 0 0 0.8em 0 !important;
-      }
-
-      .game-details-html h2,
-      .content-html h2 {
-        min-height: 50px !important;
-        contain: layout style !important;
-        margin: 0 0 0.8em 0 !important;
-      }
-
-      /* 游戏描述区域 */
-      .game-description,
-      .game-details {
-        min-height: 400px !important;
-        contain: layout style !important;
-      }
-
-      /* 评论区稳定性 - 防止游戏切换导致的 CLS */
-      .comment-section {
-        min-height: 500px !important;
-        contain: layout style !important;
-        position: relative !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-      }
-    </style>
-
-    <!-- CLS 优化 CSS -->
-    <link rel="stylesheet" href="/css/cls-optimize.css" />
-
-    <!-- 内联关键CSS防止CLS - 精确复制 Dreamy-Room-Level -->
-    <style>
-      /* 防止CLS的最小样式 - 精确复制 Dreamy-Room-Level */
-      body {
-        margin: 0;
-        padding: 0;
-        /* 防止字体加载导致的CLS */
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-        font-display: swap;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: #fff;
-        line-height: 1.6;
-        min-height: 100vh;
-      }
-
-      /* 预设关键图片尺寸，防止图片加载导致的CLS */
-      img {
-        background-color: #f0f0f0;
-        transition: opacity 0.3s ease;
-        transform: translateZ(0);
-        backface-visibility: hidden;
-      }
-
-      .logo-image {
-        width: 30px;
-        height: 30px;
-      }
-
-      .game-preview-image {
-        width: 150px;
-        height: 150px;
-        object-fit: cover;
-      }
-
-      .container {
-        width: 100%;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        /* 防止布局偏移 */
-        contain: layout style;
-        box-sizing: border-box;
-      }
-
-      /* 彻底固定所有关键容器尺寸 - 基于 Dreamy-Room-Level */
-      .app {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .main-content {
-        flex: 1;
-        min-height: 800px; /* 参考 Dreamy-Room-Level，提高到800px */
-        contain: layout style;
-      }
-
-      /* Header 样式由 TheHeader.vue 组件控制，避免冲突 */
-
+    /* 移动端优化 - 精确复制 Dreamy-Room-Level */
+    @media (max-width: 992px) {
       .footer {
-        min-height: 420px !important; /* 增加高度以显示所有内容 */
-        contain: layout style paint !important;
-        /* 防止文本重排 */
-        font-size: 0.95rem !important;
-        line-height: 1.6 !important;
-        position: relative !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        flex-shrink: 0 !important;
-        display: block !important;
-        visibility: visible !important;
+        min-height: 380px;
+        /* 平板端增加高度 */
       }
 
-
-
-      /* 游戏容器关键样式 - 基于 Dreamy-Room-Level */
-      .game-container {
-        background-color: rgba(255, 255, 255, 0.95);
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        color: #333;
-        contain: layout style paint;
-        min-height: 600px; /* 增加最小高度 */
-        width: 100%;
-        box-sizing: border-box;
-      }
-
-      /* 预设关键图片尺寸 - 基于 Dreamy-Room-Level */
-      .game-preview-image {
-        width: 150px;
-        height: 150px;
-        object-fit: cover;
-        background-color: #f0f0f0;
-        transform: translateZ(0);
-        backface-visibility: hidden;
-      }
-
-      /* Header 固定高度，防止布局偏移 */
-      .header-placeholder {
-        min-height: 80px;
-        contain: layout style paint;
-        width: 100%;
-        box-sizing: border-box;
-      }
-
-      /* 预设footer关键文本样式 - 基于 Dreamy-Room-Level */
       .footer-content {
-        min-height: 270px;
-        contain: layout style;
+        min-height: 300px;
       }
 
       .footer-columns {
-        min-height: 200px;
-        contain: layout style;
+        min-height: 240px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .main-content {
+        min-height: 600px;
+        /* 参考cookingdom，移动端也提高高度 */
+      }
+
+      .footer {
+        min-height: 320px;
+        /* 移动端增加高度 */
+      }
+
+      .footer-content {
+        min-height: 240px;
+      }
+
+      .footer-columns {
+        min-height: 180px;
       }
 
       .footer-logo {
-        min-height: 2rem;
-        font-size: 1.8rem;
-        line-height: 1.2;
-        contain: layout style;
+        min-height: 1.8rem;
+        font-size: 1.4rem;
       }
 
       .footer-desc {
-        max-height: 5rem;
-        contain: layout style;
+        max-height: 4.5rem;
       }
 
       .footer-nav {
-        max-height: 10rem;
-        contain: layout style;
+        max-height: 8rem;
       }
+    }
+  </style>
 
-      /* 评论区域稳定性 - 基于 Dreamy-Room-Level */
-      .comment-section {
-        min-height: 400px;
-        contain: layout style paint;
-      }
-
-      /* 加载指示器 */
-      .loading-spinner {
-        width: 40px;
-        height: 40px;
-        border: 4px solid rgba(255, 255, 255, 0.3);
-        border-radius: 50%;
-        border-top-color: #41b883;
-        animation: spin 1s ease-in-out infinite;
-        margin: 2rem auto;
-      }
-
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      /* 防止布局偏移的占位样式 - 基于 Cookingdom */
-      #app {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        overflow-x: hidden;
-      }
-
-      /* 主内容区域 */
-      .main-content {
-        flex: 1;
-        width: 100%;
-        min-height: calc(100vh - 380px);
-      }
-
-      /* 游戏 iframe 容器 - 防止布局偏移 */
-      .game-iframe-container {
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        background-color: #f0f0f0;
-        border-radius: 10px;
-        overflow: hidden;
-        position: relative;
-        contain: layout paint;
-        transform: translateZ(0);
-      }
-
-      /* 全屏模式样式已移至 GameContainer.vue 组件中统一管理 */
-      /* 避免样式冲突，由组件控制全屏行为 */
-
-      .game-iframe-container iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        display: block;
-      }
-
-      /* 移动端优化 - 精确复制 Dreamy-Room-Level */
-      @media (max-width: 992px) {
-        .footer {
-          min-height: 380px; /* 平板端增加高度 */
-        }
-        .footer-content {
-          min-height: 300px;
-        }
-        .footer-columns {
-          min-height: 240px;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .main-content {
-          min-height: 600px; /* 参考cookingdom，移动端也提高高度 */
-        }
-        .footer {
-          min-height: 320px; /* 移动端增加高度 */
-        }
-        .footer-content {
-          min-height: 240px;
-        }
-        .footer-columns {
-          min-height: 180px;
-        }
-        .footer-logo {
-          min-height: 1.8rem;
-          font-size: 1.4rem;
-        }
-        .footer-desc {
-          max-height: 4.5rem;
-        }
-        .footer-nav {
-          max-height: 8rem;
-        }
-      }
-    </style>
-
-    <!-- JSON-LD 结构化数据 -->
-    <script type="application/ld+json">
+  <!-- JSON-LD 结构化数据 -->
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
@@ -498,63 +507,83 @@
       }
     </script>
 
-    <!-- Simple Google Analytics Loading -->
-    <script>
-      // 简单延迟加载 Google Analytics
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          var script = document.createElement('script')
-          script.async = true
-          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NM6JN6XG6J'
-          document.head.appendChild(script)
+  <!-- Simple Google Analytics Loading -->
+  <script>
+    // 简单延迟加载 Google Analytics
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        var script = document.createElement('script')
+        script.async = true
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NM6JN6XG6J'
+        document.head.appendChild(script)
 
-          window.dataLayer = window.dataLayer || []
-          function gtag() {
-            dataLayer.push(arguments)
-          }
-          gtag('js', new Date())
-          gtag('config', 'G-NM6JN6XG6J')
+        window.dataLayer = window.dataLayer || []
+        function gtag() {
+          dataLayer.push(arguments)
+        }
+        gtag('js', new Date())
+        gtag('config', 'G-NM6JN6XG6J')
 
-          console.log('Google Analytics loaded with delay')
-        }, 2000) // 2秒后加载
-      })
-    </script>
-  </head>
-  <body>
-    <div id="app">
-      <!-- Initial loading indicator -->
-      <div class="loading-spinner"></div>
-    </div>
+        console.log('Google Analytics loaded with delay')
+      }, 2000) // 2秒后加载
+    })
+  </script>
+</head>
 
-    <!-- CLS 优化脚本 - 内联版本避免 MIME 类型问题 -->
-    <script>
-      // 简化的 CLS 优化脚本 - 内联版本
-      (function() {
-        'use strict';
+<body>
+  <!-- 广告 -->
+  <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
 
-        // 立即应用关键优化
-        applyImmediateOptimizations();
+  <!-- PC广告全插1 -->
+  <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script>
+  <div class="ad-full-width ad-isPc">
+    <ins class="eas6a97888e35" data-zoneid="5647526"></ins>
+  </div>
 
-        // DOM 加载完成后的优化
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', initOptimizations);
-        } else {
-          initOptimizations();
+  <!-- PH广告全插2 -->
+  <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script> 
+  <div class="ad-full-width ad-isPh">
+    <ins class="eas6a97888e33" data-zoneid="5647532"></ins> 
+  </div>
+
+  <!-- 广告 -->
+  <script>(AdProvider = window.AdProvider || []).push({ "serve": {} });</script>
+
+  <div id="app">
+    <!-- Initial loading indicator -->
+    <div class="loading-spinner"></div>
+  </div>
+
+
+  <!-- CLS 优化脚本 - 内联版本避免 MIME 类型问题 -->
+  <script>
+    // 简化的 CLS 优化脚本 - 内联版本
+    (function () {
+      'use strict';
+
+      // 立即应用关键优化
+      applyImmediateOptimizations();
+
+      // DOM 加载完成后的优化
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initOptimizations);
+      } else {
+        initOptimizations();
+      }
+
+      function applyImmediateOptimizations() {
+        // 1. 强制设置 viewport 稳定性
+        const viewport = document.querySelector('meta[name="viewport"]');
+        if (viewport) {
+          viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover');
         }
 
-        function applyImmediateOptimizations() {
-          // 1. 强制设置 viewport 稳定性
-          const viewport = document.querySelector('meta[name="viewport"]');
-          if (viewport) {
-            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover');
-          }
+        // 2. 预设关键 CSS 变量
+        document.documentElement.style.setProperty('--viewport-height', window.innerHeight + 'px');
 
-          // 2. 预设关键 CSS 变量
-          document.documentElement.style.setProperty('--viewport-height', window.innerHeight + 'px');
-
-          // 3. 立即应用关键样式
-          const style = document.createElement('style');
-          style.textContent = `
+        // 3. 立即应用关键样式
+        const style = document.createElement('style');
+        style.textContent = `
             .app {
               min-height: 100vh !important;
               display: flex !important;
@@ -579,42 +608,43 @@
               display: block !important;
             }
           `;
-          document.head.appendChild(style);
-        }
+        document.head.appendChild(style);
+      }
 
-        function initOptimizations() {
-          // 预设图片尺寸
-          const images = document.querySelectorAll('img:not([width]):not([height])');
-          images.forEach(img => {
-            if (!img.width && !img.height) {
-              const container = img.closest('.game-preview, .lazy-image-container');
-              if (container) {
-                const rect = container.getBoundingClientRect();
-                if (rect.width > 0 && rect.height > 0) {
-                  img.style.width = rect.width + 'px';
-                  img.style.height = rect.height + 'px';
-                  img.style.objectFit = 'cover';
-                }
-              }
-            }
-          });
-
-          // 稳定化容器
-          const containers = document.querySelectorAll('.game-container, .header, .footer, .main-content');
-          containers.forEach(container => {
-            if (!container.style.minHeight) {
+      function initOptimizations() {
+        // 预设图片尺寸
+        const images = document.querySelectorAll('img:not([width]):not([height])');
+        images.forEach(img => {
+          if (!img.width && !img.height) {
+            const container = img.closest('.game-preview, .lazy-image-container');
+            if (container) {
               const rect = container.getBoundingClientRect();
-              if (rect.height > 0) {
-                container.style.minHeight = rect.height + 'px';
-                container.style.contain = 'layout style paint';
+              if (rect.width > 0 && rect.height > 0) {
+                img.style.width = rect.width + 'px';
+                img.style.height = rect.height + 'px';
+                img.style.objectFit = 'cover';
               }
             }
-          });
+          }
+        });
 
-          console.log('CLS optimizations applied');
-        }
-      })();
-    </script>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+        // 稳定化容器
+        const containers = document.querySelectorAll('.game-container, .header, .footer, .main-content');
+        containers.forEach(container => {
+          if (!container.style.minHeight) {
+            const rect = container.getBoundingClientRect();
+            if (rect.height > 0) {
+              container.style.minHeight = rect.height + 'px';
+              container.style.contain = 'layout style paint';
+            }
+          }
+        });
+
+        console.log('CLS optimizations applied');
+      }
+    })();
+  </script>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>
