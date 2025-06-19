@@ -59,116 +59,7 @@
   <!-- DNS 预解析 -->
   <link rel="dns-prefetch" href="//www.googletagmanager.com" />
 
-  <!-- CLS 强力修复 CSS - 最高优先级 -->
-  <style>
-    /* Footer 强力修复 - 关键 */
-    .footer,
-    footer {
-      min-height: 420px !important;
-      height: auto !important;
-      position: relative !important;
-      width: 100% !important;
-      box-sizing: border-box !important;
-      flex-shrink: 0 !important;
-      display: block !important;
-      visibility: visible !important;
-      contain: layout style paint !important;
-      font-size: 0.95rem !important;
-      line-height: 1.6 !important;
-      padding: 60px 0 20px !important;
-      background-color: rgba(17, 14, 25, 0.8) !important;
-      color: #fff !important;
-      border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-      z-index: 1 !important;
-      backdrop-filter: blur(10px) !important;
-      opacity: 1 !important;
-      transform: none !important;
-      transition: none !important;
-    }
 
-    /* 主容器强制稳定 */
-    .app {
-      min-height: 100vh !important;
-      display: flex !important;
-      flex-direction: column !important;
-    }
-
-    .main-content {
-      flex: 1 !important;
-      min-height: 800px !important;
-    }
-
-
-
-    /* 防止动画导致的偏移 */
-    .footer *,
-    footer * {
-      transition: none !important;
-      animation: none !important;
-      transform: none !important;
-    }
-
-    /* 游戏内容区域稳定性 - 精确定位 */
-    .game-container {
-      min-height: 600px !important;
-      contain: layout style paint !important;
-    }
-
-    /* 游戏详情 HTML 内容稳定性 */
-    .game-details-html,
-    .content-html {
-      min-height: 400px !important;
-      contain: layout style !important;
-    }
-
-    .game-details-html ul,
-    .content-html ul {
-      min-height: 175px !important;
-      contain: layout style !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-
-    .game-details-html p,
-    .content-html p {
-      min-height: 50px !important;
-      contain: layout style !important;
-      margin: 0 0 1em 0 !important;
-    }
-
-    .game-details-html h3,
-    .content-html h3 {
-      min-height: 42px !important;
-      contain: layout style !important;
-      margin: 0 0 0.8em 0 !important;
-    }
-
-    .game-details-html h2,
-    .content-html h2 {
-      min-height: 50px !important;
-      contain: layout style !important;
-      margin: 0 0 0.8em 0 !important;
-    }
-
-    /* 游戏描述区域 */
-    .game-description,
-    .game-details {
-      min-height: 400px !important;
-      contain: layout style !important;
-    }
-
-    /* 评论区稳定性 - 防止游戏切换导致的 CLS */
-    .comment-section {
-      min-height: 500px !important;
-      contain: layout style !important;
-      position: relative !important;
-      width: 100% !important;
-      box-sizing: border-box !important;
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-  </style>
 
   <!-- CLS 优化 CSS -->
   <link rel="stylesheet" href="/css/cls-optimize.css" />
@@ -195,7 +86,7 @@
     img {
       background-color: #f0f0f0;
       transition: opacity 0.3s ease;
-      transform: translateZ(0);
+      /* transform: translateZ(0); */
       backface-visibility: hidden;
     }
 
@@ -236,24 +127,6 @@
       contain: layout style;
     }
 
-    /* Header 样式由 TheHeader.vue 组件控制，避免冲突 */
-
-    .footer {
-      min-height: 420px !important;
-      /* 增加高度以显示所有内容 */
-      contain: layout style paint !important;
-      /* 防止文本重排 */
-      font-size: 0.95rem !important;
-      line-height: 1.6 !important;
-      position: relative !important;
-      width: 100% !important;
-      box-sizing: border-box !important;
-      flex-shrink: 0 !important;
-      display: block !important;
-      visibility: visible !important;
-    }
-
-
 
     /* 游戏容器关键样式 - 基于 Dreamy-Room-Level */
     .game-container {
@@ -286,34 +159,6 @@
       contain: layout style paint;
       width: 100%;
       box-sizing: border-box;
-    }
-
-    /* 预设footer关键文本样式 - 基于 Dreamy-Room-Level */
-    .footer-content {
-      min-height: 270px;
-      contain: layout style;
-    }
-
-    .footer-columns {
-      min-height: 200px;
-      contain: layout style;
-    }
-
-    .footer-logo {
-      min-height: 2rem;
-      font-size: 1.8rem;
-      line-height: 1.2;
-      contain: layout style;
-    }
-
-    .footer-desc {
-      max-height: 5rem;
-      contain: layout style;
-    }
-
-    .footer-nav {
-      max-height: 10rem;
-      contain: layout style;
     }
 
     /* 评论区域稳定性 - 基于 Dreamy-Room-Level */
@@ -377,54 +222,6 @@
       display: block;
     }
 
-    /* 移动端优化 - 精确复制 Dreamy-Room-Level */
-    @media (max-width: 992px) {
-      .footer {
-        min-height: 380px;
-        /* 平板端增加高度 */
-      }
-
-      .footer-content {
-        min-height: 300px;
-      }
-
-      .footer-columns {
-        min-height: 240px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .main-content {
-        min-height: 600px;
-        /* 参考cookingdom，移动端也提高高度 */
-      }
-
-      .footer {
-        min-height: 320px;
-        /* 移动端增加高度 */
-      }
-
-      .footer-content {
-        min-height: 240px;
-      }
-
-      .footer-columns {
-        min-height: 180px;
-      }
-
-      .footer-logo {
-        min-height: 1.8rem;
-        font-size: 1.4rem;
-      }
-
-      .footer-desc {
-        max-height: 4.5rem;
-      }
-
-      .footer-nav {
-        max-height: 8rem;
-      }
-    }
   </style>
 
   <!-- JSON-LD 结构化数据 -->
@@ -531,23 +328,40 @@
 </head>
 
 <body>
-  <!-- 广告 -->
-  <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
-
-  <!-- PC广告全插1 -->
-  <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script>
-  <div class="ad-full-width ad-isPc">
-    <ins class="eas6a97888e35" data-zoneid="5647526"></ins>
+  <!-- 左侧PC广告1 -->
+  <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
+  <div class="ad-pc">
+    <ins class="eas6a97888e17" data-zoneid="5647522"></ins> 
   </div>
+  <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
 
-  <!-- PH广告全插2 -->
+  <!-- 右侧PC广告2 -->
+  <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
+  <div class="ad-pc">
+    <ins class="eas6a97888e17" data-zoneid="5647524"></ins> 
+  </div>
+  <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+  <!-- PC全插广告3 -->
+  <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script>
+  <div class="ad-pc">
+    <ins class="eas6a97888e35" data-zoneid="5647526"></ins> 
+  </div>
+  <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+  <!-- PH全插广告7 -->
   <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script> 
-  <div class="ad-full-width ad-isPh">
+  <div class="ad-ph">
     <ins class="eas6a97888e33" data-zoneid="5647532"></ins> 
   </div>
+  <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
 
-  <!-- 广告 -->
-  <script>(AdProvider = window.AdProvider || []).push({ "serve": {} });</script>
+  <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
+  <div class="ad-ph">
+    <ins class="eas6a97888e14" data-zoneid="5647534"></ins> 
+  </div>
+  <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
 
   <div id="app">
     <!-- Initial loading indicator -->
@@ -589,20 +403,6 @@
               display: flex !important;
               flex-direction: column !important;
             }
-            .main-content {
-              flex: 1 !important;
-              min-height: 800px !important;
-              contain: layout style !important;
-            }
-            .footer, footer {
-              min-height: 420px !important;
-              contain: layout style paint !important;
-              flex-shrink: 0 !important;
-            }
-            .game-container {
-              min-height: 600px !important;
-              contain: layout style paint !important;
-            }
             img {
               background-color: #f0f0f0 !important;
               display: block !important;
@@ -635,7 +435,7 @@
             const rect = container.getBoundingClientRect();
             if (rect.height > 0) {
               container.style.minHeight = rect.height + 'px';
-              container.style.contain = 'layout style paint';
+              /* container.style.contain = 'layout style paint'; */
             }
           }
         });

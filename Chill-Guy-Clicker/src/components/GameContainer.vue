@@ -381,24 +381,13 @@ export default {
 }
 
 .game-iframe-container {
-  position: relative;
   width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; /* 16:9 比例，在移动端会变成正方形 */
-  background-color: #000;
+  aspect-ratio: 16 / 9;
+  background-color: #f0f0f0;
   border-radius: 10px;
   overflow: hidden;
-  border: 2px solid var(--primary-color);
-  box-shadow: 0 0 20px rgba(65, 184, 131, 0.3);
-  transition: all 0.3s ease;
-  margin: 0 auto;
-  max-width: 100%;
-  /* 防止布局偏移 */
-  contain: layout paint;
-  will-change: transform;
-  transform: translateZ(0);
+  position: relative;
   backface-visibility: hidden;
-  aspect-ratio: 16 / 9;
 }
 
 /* Theater 模式样式 */
@@ -438,15 +427,12 @@ export default {
   display: none !important;
 }
 
-.game-iframe-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
+.game-iframe {
   width: 100%;
   height: 100%;
-  z-index: 1;
   border: none;
-  background-color: #000;
+  display: block;
+  backface-visibility: hidden;
 }
 
 /* 浏览器原生全屏样式 */
@@ -514,9 +500,6 @@ export default {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   /* 防止布局偏移 */
   contain: layout paint;
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
   min-height: 36px;
   min-width: 36px;
   flex-shrink: 0;
@@ -678,9 +661,6 @@ export default {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   z-index: 3;
   /* 性能优化和防止布局偏移 */
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
   contain: layout paint;
   flex-shrink: 0;
   display: block;
@@ -708,9 +688,6 @@ export default {
   z-index: 3;
   /* 防止布局偏移 */
   contain: layout paint;
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
   min-height: 48px;
   min-width: 140px;
   flex-shrink: 0;

@@ -115,10 +115,6 @@ const containerStyle = computed(() => ({
   overflow: 'hidden',
   // 防止布局偏移的关键属性
   contain: 'layout paint',
-  willChange: 'transform',
-  transform: 'translateZ(0)',
-  backfaceVisibility: 'hidden',
-  perspective: '1000px',
   contentVisibility: 'auto',
   containIntrinsicSize: `${typeof props.width === 'number' ? props.width : 300}px ${typeof props.height === 'number' ? props.height : 200}px`
 }))
@@ -226,10 +222,6 @@ onUnmounted(() => {
   transition: all 0.3s ease;
   /* 防止布局偏移的关键属性 - 基于 Cookingdom */
   contain: layout paint;
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
   box-sizing: border-box;
   /* 确保容器有固定尺寸 */
   min-width: 100px;
@@ -242,19 +234,9 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0;
   transition: opacity 0.3s ease;
-  /* 防止图片渲染导致的布局偏移 */
-  contain: layout paint;
-  will-change: transform;
-  transform: translateZ(0);
   backface-visibility: hidden;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  /* 确保图片不会改变容器尺寸 */
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
 }
 
 .placeholder {

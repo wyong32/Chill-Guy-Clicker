@@ -11,9 +11,6 @@ img {
   max-width: 100%;
   height: auto;
   /* 防止图片加载导致的布局偏移 */
-  contain: layout paint;
-  will-change: transform;
-  transform: translateZ(0);
   backface-visibility: hidden;
 }
 
@@ -32,9 +29,6 @@ img:not([width]):not([height]) {
   background-color: #f0f0f0;
   position: relative;
   overflow: hidden;
-  contain: layout paint;
-  will-change: transform;
-  transform: translateZ(0);
   backface-visibility: hidden;
 }
 
@@ -46,7 +40,6 @@ img:not([width]):not([height]) {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translateZ(0);
 }
 
 /* 系统字体稳定性 - 参考 Cookingdom */
@@ -56,7 +49,6 @@ img:not([width]):not([height]) {
 .dynamic-content {
   /* 为动态内容设置最小高度 */
   min-height: 100px;
-  contain: layout style paint;
 }
 
 /* 游戏容器稳定性 - 基于 Cookingdom */
@@ -69,9 +61,6 @@ img:not([width]):not([height]) {
   color: #333;
   min-height: 500px;
   width: 100%;
-  contain: layout style paint;
-  will-change: transform;
-  transform: translateZ(0);
 }
 
 .game-iframe-container {
@@ -81,8 +70,6 @@ img:not([width]):not([height]) {
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  contain: layout paint;
-  transform: translateZ(0);
 }
 
 /* 全屏模式下的游戏容器 - 移除冲突样式，由组件控制 */
@@ -98,13 +85,11 @@ img:not([width]):not([height]) {
 /* 评论区域稳定性 */
 .comment-section {
   min-height: 200px;
-  contain: layout style;
 }
 
 /* 侧边栏稳定性 */
 .game-sidebar {
   min-height: 400px;
-  contain: layout style;
   flex-shrink: 0;
 }
 
@@ -112,7 +97,6 @@ img:not([width]):not([height]) {
 .footer,
 footer {
   min-height: 420px;
-  contain: layout style paint;
   font-size: 0.95rem;
   line-height: 1.6;
   position: relative;
@@ -129,7 +113,6 @@ button,
   /* 防止按钮文字加载导致的布局偏移 */
   min-height: 36px;
   min-width: 80px;
-  contain: layout style;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -140,7 +123,6 @@ input,
 textarea,
 select {
   /* 防止表单元素导致的布局偏移 */
-  contain: layout style;
   box-sizing: border-box;
   min-height: 36px;
 }
@@ -149,20 +131,16 @@ select {
 ul,
 ol {
   /* 防止列表项动态加载导致的布局偏移 */
-  contain: layout style;
   min-height: 20px;
 }
 
 li {
-  contain: layout style;
   min-height: 20px;
 }
 
 /* 网格布局稳定性 */
 .grid,
 .footer-content {
-  /* 防止网格项目导致的布局偏移 */
-  contain: layout style;
   display: grid;
   grid-template-rows: minmax(auto, 1fr);
 }
@@ -171,8 +149,6 @@ li {
 .flex,
 .header-content,
 .fullscreen-controls-bottom {
-  /* 防止 flex 项目导致的布局偏移 */
-  contain: layout style;
   display: flex;
   min-height: 36px;
 }
@@ -185,8 +161,6 @@ h3,
 h4,
 h5,
 h6 {
-  /* 防止文字渲染导致的布局偏移 */
-  contain: layout style;
   line-height: 1.4;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -202,7 +176,6 @@ h6 { min-height: 1.1em; }
 
 /* 链接稳定性 */
 a {
-  contain: layout style;
   display: inline-block;
   min-height: 1.2em;
 }
@@ -211,9 +184,6 @@ a {
 .icon,
 svg {
   /* 防止图标加载导致的布局偏移 */
-  contain: layout paint;
-  will-change: transform;
-  transform: translateZ(0);
   flex-shrink: 0;
   display: block;
 }
@@ -222,7 +192,6 @@ svg {
 .loading,
 .skeleton {
   /* 加载状态的占位符 */
-  contain: layout paint;
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
@@ -310,8 +279,6 @@ svg {
 
 /* GPU 加速优化 */
 .gpu-accelerated {
-  will-change: transform;
-  transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000px;
 }

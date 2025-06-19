@@ -1,70 +1,45 @@
 <template>
-  <div class="home" :class="{ 'theater-mode': isTheaterMode }">
-    <!-- 桌面全插广告 -->
-    <!-- <div class="ad-full-width ad-isPc" v-show="!isTheaterMode">
-      <ins class="eas6a97888e35" data-zoneid="5647526"></ins>
-    </div> -->
-
-   
-
-    <!-- 左侧广告区域 -->
-    <aside class="ad-sidebar ad-left ad-isPc" v-show="!isTheaterMode">
-      <div class="ad-container">
-        <ins class="eas6a97888e17" data-zoneid="5647522"></ins>
-      </div>
-    </aside>
-
-    <!-- 右侧广告区域 -->
-    <aside class="ad-sidebar ad-right ad-isPc" v-show="!isTheaterMode">
-      <div class="ad-container">
-        <ins class="eas6a97888e17" data-zoneid="5647524"></ins>
-      </div>
-    </aside>
-
-    <!-- 移动端广告1 -->
-    <aside class="ad-ph-sidebar ad-isPh" v-show="!isTheaterMode">
-        <ins class="eas6a97888e10" data-zoneid="5647530"></ins> 
-    </aside>
-
-    <main class="main-content container">
-      <h1 class="game-title" v-show="!isTheaterMode">{{ featuredGame.pageTitle || featuredGame.title }}</h1>
-
-       <!-- 桌面上方广告1 -->
-    <aside class="ad-content ad-isPc" v-show="!isTheaterMode">
-      <ins class="eas6a97888e2" data-zoneid="5647518"></ins>
-    </aside>
-
-      <div class="game-layout">
-        <!-- Main Game Area -->
-        <section class="game-main">
-          <article class="featured-game">
-            <GameContainer
-              :game="featuredGame"
-              :gameStarted="gameStarted"
-              @start-game="startGame"
-              @theater-mode-changed="handleTheaterModeChanged"
-            />
-            <!-- GameInfo component removed -->
-            <CommentSection :gameId="featuredGame.id" v-show="!isTheaterMode" />
-          </article>
-        </section>
-
-        <!-- 移动端广告2 -->
-        <aside class="ad-ph ad-isPh" v-show="!isTheaterMode">
-          <ins class="eas6a97888e20" data-zoneid="5647528"></ins>
+  <div class="home-wrapper">
+    <div class="home" :class="{ 'theater-mode': isTheaterMode }">
+      <main class="main-content container">
+         <!-- PC广告4 -->
+         <aside class="ad-content ad-pc" v-show="!isTheaterMode">
+          <ins class="eas6a97888e2" data-zoneid="5647518"></ins>
         </aside>
 
-        <!-- Hot Games Sidebar -->
-        <GameSidebar :hotGames="hotGames" :newGames="newGames" v-show="!isTheaterMode" />
-      </div>
-      
-      <!-- 移动端广告3 -->
-      <aside class="ad-ph ad-isPh" v-show="!isTheaterMode">
-        <ins class="eas6a97888e14" data-zoneid="5647534"></ins> 
-      </aside>
-      <!-- More Games Section -->
-      <MoreGames :games="moreGames" v-show="!isTheaterMode" />
-    </main>
+        <!-- PH广告6 -->
+        <aside class="ad-content ad-ph" v-show="!isTheaterMode">
+          <ins class="eas6a97888e10" data-zoneid="5647530"></ins>
+        </aside>
+        <h1 class="game-title" v-show="!isTheaterMode">{{ featuredGame.pageTitle || featuredGame.title }}</h1>
+        <div class="game-layout">
+          <!-- Main Game Area -->
+          <section class="game-main">
+            <article class="featured-game">
+              <GameContainer
+                :game="featuredGame"
+                :gameStarted="gameStarted"
+                @start-game="startGame"
+                @theater-mode-changed="handleTheaterModeChanged"
+              />
+              <!-- GameInfo component removed -->
+              <CommentSection :gameId="featuredGame.id" v-show="!isTheaterMode" />
+            </article>
+          </section>
+
+          <!-- Hot Games Sidebar -->
+          <GameSidebar :hotGames="hotGames" :newGames="newGames" v-show="!isTheaterMode" />
+        </div>
+
+        <!-- PC广告5 -->
+        <aside class="ad-content" v-show="!isTheaterMode">
+          <ins class="eas6a97888e20" data-zoneid="5647528"></ins>
+        </aside>
+        
+        <!-- More Games Section -->
+        <MoreGames :games="moreGames" v-show="!isTheaterMode" />
+      </main>
+    </div>
   </div>
 </template>
 
@@ -227,15 +202,20 @@ export default {
 </script>
 
 <style scoped>
+/* 包装器样式 */
+.home-wrapper {
+  width: 100%;
+  min-height: 100vh;
+}
+
 .home {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   color: #fff;
-  position: relative;
   z-index: 0;
   /* 防止布局偏移的关键属性 - 基于 Cookingdom */
-  contain: layout style paint;
+  /* contain: layout style paint; */
   width: 100%;
   overflow-x: hidden;
   box-sizing: border-box;
@@ -248,7 +228,7 @@ export default {
   position: relative;
   z-index: 1;
   /* 防止布局偏移 */
-  contain: layout style;
+  /* contain: layout style; */
   width: 100%;
   box-sizing: border-box;
 }
@@ -258,7 +238,7 @@ export default {
   padding-top: 30px;
   padding-bottom: 50px;
   /* 防止布局偏移 */
-  contain: layout style;
+  /* contain: layout style; */
   min-height: calc(100vh - 380px); /* 减去 header 和 footer 的高度 */
   width: 100%;
   box-sizing: border-box;
@@ -272,7 +252,7 @@ export default {
   text-align: center;
   text-shadow: 0 0 10px rgba(65, 184, 131, 0.8);
   /* 防止文字渲染导致的布局偏移 */
-  contain: layout style;
+  /* contain: layout style; */
   min-height: 50px;
   display: flex;
   align-items: center;
@@ -288,7 +268,7 @@ export default {
   gap: 30px;
   margin-bottom: 40px;
   /* 防止布局偏移 */
-  contain: layout style;
+  /* contain: layout style; */
   min-height: 600px;
   width: 100%;
   box-sizing: border-box;
@@ -297,7 +277,7 @@ export default {
 .game-main {
   flex: 1;
   /* 防止布局偏移 */
-  contain: layout style;
+  /* contain: layout style; */
   min-width: 0; /* 防止 flex 子项溢出 */
   box-sizing: border-box;
 }
@@ -305,7 +285,7 @@ export default {
 .game-sidebar {
   width: 300px;
   /* 防止布局偏移 */
-  contain: layout style;
+  /* contain: layout style; */
   flex-shrink: 0; /* 防止收缩 */
   box-sizing: border-box;
 }
@@ -319,12 +299,12 @@ export default {
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: #333;
   /* 防止布局偏移 */
-  contain: layout style paint;
+  /* contain: layout style paint; */
   min-height: 500px;
   width: 100%;
   box-sizing: border-box;
-  will-change: transform;
-  transform: translateZ(0);
+  /* will-change: transform; */
+  /* transform: translateZ(0); */
   backface-visibility: hidden;
 }
 
@@ -398,6 +378,18 @@ export default {
   border-radius: 0 !important;
   padding: 0 !important;
   margin: 0 !important;
+}
+
+/* 强制广告固定定位 - 覆盖父级影响 */
+.ad-sidebar.ad-left.ad-isPc {
+  position: fixed !important;
+  top: 90px !important;
+  left: 10px !important;
+  width: 200px !important;
+  min-height: 600px !important;
+  z-index: 9999 !important;
+  transform: none !important;
+  will-change: auto !important;
 }
 
 @media (max-width: 1024px) {

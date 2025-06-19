@@ -46,26 +46,6 @@
         contain: layout style !important;
       }
 
-      .footer,
-      footer {
-        min-height: 420px !important;
-        contain: layout style paint !important;
-        font-size: 0.95rem !important;
-        line-height: 1.6 !important;
-        position: relative !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        flex-shrink: 0 !important;
-      }
-
-      .footer-content {
-        min-height: 270px !important;
-      }
-
-      .footer-columns {
-        min-height: 200px !important;
-      }
-
       .game-container {
         min-height: 600px !important;
         contain: layout style paint !important;

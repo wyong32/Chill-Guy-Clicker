@@ -189,19 +189,19 @@ export default {
 <style scoped>
 .header-wrapper {
   /* 确保包装器不影响布局 */
-  display: contents;
+  display: block;
 }
 
 .header {
   background-color: rgba(17, 14, 25, 0.8);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  position: sticky;
+  /* position: fixed; */
   top: 0;
   z-index: 100;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   /* 防止布局偏移的关键属性 */
-  contain: layout style paint;
+  /* contain: layout style paint; */
   min-height: 70px;
   width: 100%;
   box-sizing: border-box;
@@ -212,7 +212,7 @@ export default {
   margin: 0 auto;
   padding: 0 15px;
   /* 防止布局偏移 */
-  contain: layout style;
+  /* contain: layout style; */
   box-sizing: border-box;
   width: 100%;
 }
@@ -223,7 +223,7 @@ export default {
   align-items: center;
   height: 70px;
   /* 防止布局偏移 */
-  contain: layout style;
+  /* contain: layout style; */
   width: 100%;
   box-sizing: border-box;
 }
@@ -233,7 +233,7 @@ export default {
   align-items: center;
   color: #fff;
   /* 防止布局偏移 */
-  contain: layout style;
+  /* contain: layout style; */
   min-width: 200px; /* 设置最小宽度 */
 }
 
@@ -242,20 +242,17 @@ export default {
   align-items: center;
   text-decoration: none;
   /* 防止布局偏移 */
-  contain: layout style;
+  /* contain: layout style; */
 }
 
 .logo-image-container {
   width: 50px;
   height: 50px;
   margin-right: 10px;
-  /* 防止图片加载导致的布局偏移 */
-  contain: layout paint;
-  will-change: transform;
-  transform: translateZ(0);
+  /* contain: layout paint; */
   backface-visibility: hidden;
   perspective: 1000px;
-  flex-shrink: 0; /* 防止收缩 */
+  flex-shrink: 0;
 }
 
 .logo-image {
@@ -264,8 +261,6 @@ export default {
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 0 5px rgba(255, 204, 0, 0.5));
-  /* 防止图片渲染导致的布局偏移 */
-  transform: translateZ(0);
   backface-visibility: hidden;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
@@ -278,7 +273,7 @@ export default {
   letter-spacing: 2px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   /* 防止文字渲染导致的布局偏移 */
-  contain: layout style;
+  /* contain: layout style; */
   white-space: nowrap; /* 防止文字换行 */
 }
 
@@ -386,8 +381,7 @@ export default {
   z-index: 1000;
   transform: translateX(100%);
   transition: transform 0.3s ease;
-  will-change: transform;
-  contain: layout style paint;
+  /* will-change: transform; */
 }
 
 .mobile-menu-open {
