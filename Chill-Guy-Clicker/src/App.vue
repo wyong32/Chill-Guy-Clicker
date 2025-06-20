@@ -72,10 +72,10 @@ export default {
         const registerSW = () => {
           navigator.serviceWorker.register('/sw.js')
             .then(registration => {
-              console.log('SW registered: ', registration)
+              // Service Worker registered successfully
             })
             .catch(registrationError => {
-              console.log('SW registration failed: ', registrationError)
+              // Service Worker registration failed
             })
         }
 

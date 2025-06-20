@@ -22,44 +22,35 @@ const CACHE_PATTERNS = [
 
 // 安装事件 - 预缓存静态资源
 self.addEventListener('install', (event) => {
-  console.log('Service Worker: Installing...')
-
   event.waitUntil(
-    caches.open(STATIC_CACHE)
+    caches.open(CACHE_NAME)
       .then((cache) => {
-        console.log('Service Worker: Caching static assets')
         return cache.addAll(STATIC_ASSETS)
       })
       .then(() => {
-        console.log('Service Worker: Static assets cached')
-        return self.skipWaiting()
+        // 静态资源缓存完成
       })
       .catch((error) => {
-        console.error('Service Worker: Failed to cache static assets', error)
+        // 缓存失败处理
       })
   )
 })
 
 // 激活事件 - 清理旧缓存
 self.addEventListener('activate', (event) => {
-  console.log('Service Worker: Activating...')
-
   event.waitUntil(
-    caches.keys()
-      .then((cacheNames) => {
-        return Promise.all(
-          cacheNames.map((cacheName) => {
-            if (cacheName !== STATIC_CACHE && cacheName !== DYNAMIC_CACHE) {
-              console.log('Service Worker: Deleting old cache', cacheName)
-              return caches.delete(cacheName)
-            }
-          })
-        )
-      })
-      .then(() => {
-        console.log('Service Worker: Activated')
-        return self.clients.claim()
-      })
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (cacheName !== CACHE_NAME) {
+            return caches.delete(cacheName)
+          }
+        })
+      )
+    }).then(() => {
+      // 旧缓存清理完成
+      return self.clients.claim()
+    })
   )
 })
 
@@ -154,14 +145,12 @@ self.addEventListener('message', (event) => {
   }
 })
 
-// 后台同步（如果支持）
-if ('sync' in self.registration) {
-  self.addEventListener('sync', (event) => {
-    if (event.tag === 'background-sync') {
-      event.waitUntil(
-        // 执行后台同步任务
-        console.log('Service Worker: Background sync triggered')
-      )
-    }
-  })
-}
+// 后台同步事件
+self.addEventListener('sync', (event) => {
+  if (event.tag === 'background-sync') {
+    event.waitUntil(
+      // 执行后台同步任务
+      Promise.resolve()
+    )
+  }
+})

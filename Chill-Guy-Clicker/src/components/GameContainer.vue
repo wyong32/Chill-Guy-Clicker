@@ -164,31 +164,10 @@ export default {
 
     // 切换游戏容器全屏
     toggleFullscreen() {
-      if (!document.fullscreenElement) {
-        // 进入全屏模式
-        const container = this.$refs.gameContainer
-        if (container.requestFullscreen) {
-          container.requestFullscreen()
-        } else if (container.mozRequestFullScreen) { // Firefox
-          container.mozRequestFullScreen()
-        } else if (container.webkitRequestFullscreen) { // Chrome, Safari, Opera
-          container.webkitRequestFullscreen()
-        } else if (container.msRequestFullscreen) { // IE/Edge
-          container.msRequestFullscreen()
-        }
-        this.isFullscreen = true
+      if (!this.isFullscreen) {
+        this.enterFullscreen()
       } else {
-        // 退出全屏模式
-        if (document.exitFullscreen) {
-          document.exitFullscreen()
-        } else if (document.mozCancelFullScreen) {
-          document.mozCancelFullScreen()
-        } else if (document.webkitExitFullscreen) {
-          document.webkitExitFullscreen()
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen()
-        }
-        this.isFullscreen = false
+        this.exitFullscreen()
       }
     },
 
@@ -227,8 +206,7 @@ export default {
           await this.exitBrowserFullscreen()
         }
       } catch (error) {
-        console.error('Fullscreen error:', error)
-        this.showNotificationMessage('Fullscreen not supported or failed')
+        throw error
       }
     },
 
@@ -253,7 +231,6 @@ export default {
           document.documentElement.style.overflow = ''
         }
       } catch (error) {
-        console.error('Error entering fullscreen:', error)
         throw error
       }
     },
@@ -269,7 +246,6 @@ export default {
           await document.msExitFullscreen()
         }
       } catch (error) {
-        console.error('Error exiting fullscreen:', error)
         throw error
       }
     },

@@ -68,24 +68,11 @@
   }
 
   function initDreamyRoomOptimizations() {
-    // 1. 预设所有图片尺寸 - Dreamy-Room-Level 风格
-    presetImageDimensions();
-
-    // 2. 稳定化所有容器 - Dreamy-Room-Level 风格
-    stabilizeAllContainers();
-
-    // 3. 智能预加载 - Dreamy-Room-Level 风格
-    setupIntelligentPreload();
-
-    // 4. 优化动态内容
-    stabilizeDynamicContent();
-
-
-
-
+    // 基于 Dreamy-Room-Level 的优化策略
+    deferNonCriticalResources()
+    optimizeAnimations()
+    activateIntelligentPreload()
   }
-
-
 
   /**
    * 预设图片尺寸，防止图片加载导致的布局偏移
@@ -131,19 +118,6 @@
       }
     });
 
-    // 特别强化 Footer 稳定性
-    const footers = document.querySelectorAll('.footer, footer');
-    footers.forEach(footer => {
-      footer.style.setProperty('min-height', '420px', 'important');
-      footer.style.setProperty('position', 'relative', 'important');
-      footer.style.setProperty('width', '100%', 'important');
-      footer.style.setProperty('box-sizing', 'border-box', 'important');
-      footer.style.setProperty('flex-shrink', '0', 'important');
-      footer.style.setProperty('display', 'block', 'important');
-      footer.style.setProperty('visibility', 'visible', 'important');
-      footer.style.setProperty('contain', 'layout style paint', 'important');
-    });
-
     // 特殊处理游戏 iframe 容器
     const iframeContainers = document.querySelectorAll('.game-iframe-container');
     iframeContainers.forEach(container => {
@@ -151,8 +125,6 @@
       container.style.width = '100%';
       container.style.contain = 'layout paint';
     });
-
-    console.log('All containers stabilized - zero layout shift');
   }
 
   /**
@@ -192,8 +164,6 @@
       });
     }
   }
-
-
 
   /**
    * 延迟加载非关键资源
@@ -252,52 +222,57 @@
    * 智能预加载 - 基于 Dreamy-Room-Level
    */
   function setupIntelligentPreload() {
-    // 使用Intersection Observer监听游戏部分
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // 用户即将看到游戏部分，开始预加载
-            const criticalImages = [
-              '/images/logo.png',
-              '/images/games/game-01.webp',
-              '/images/games/game-02.webp',
-              '/images/games/game-03.webp',
-            ]
-
-            criticalImages.forEach((src) => {
-              const link = document.createElement('link')
-              link.rel = 'preload'
-              link.as = 'image'
-              link.href = src
-              link.type = 'image/webp'
-              document.head.appendChild(link)
-            })
-
-            console.log('Intelligent preload activated - Dreamy-Room-Level style')
-            // 预加载完成后停止观察
-            observer.disconnect()
-          }
-        })
-      },
-      {
-        rootMargin: '200px', // 提前200px开始预加载
-      },
-    )
-
-    // 观察游戏容器
-    const gameContainer = document.querySelector('.game-container')
-    if (gameContainer) {
-      observer.observe(gameContainer)
+    // 智能预加载设置
+    const preloadQueue = []
+    
+    function processPreloadQueue() {
+      if (preloadQueue.length === 0) return
+      
+      const resource = preloadQueue.shift()
+      if (resource && resource.href) {
+        const link = document.createElement('link')
+        link.rel = 'preload'
+        link.href = resource.href
+        link.as = resource.as || 'fetch'
+        document.head.appendChild(link)
+      }
+      
+      requestIdleCallback(processPreloadQueue, { timeout: 50 })
     }
+    
+    requestIdleCallback(processPreloadQueue, { timeout: 100 })
   }
 
-  // 初始化所有优化 - 基于 Dreamy-Room-Level
-  setTimeout(() => {
-    deferNonCriticalResources();
-    optimizeAnimations();
-    // 智能预加载已经在 initDreamyRoomOptimizations 中调用
-    console.log('All Dreamy-Room-Level optimizations initialized');
-  }, 100);
+  // 初始化所有优化
+  function initializeOptimizations() {
+    stabilizeContainers()
+    activateIntelligentPreload()
+    
+    // 所有优化初始化完成
+  }
+
+  function activateIntelligentPreload() {
+    // 智能预加载激活
+    const preloadQueue = []
+    
+    function processPreloadQueue() {
+      if (preloadQueue.length === 0) return
+      
+      const resource = preloadQueue.shift()
+      if (resource && resource.href) {
+        const link = document.createElement('link')
+        link.rel = 'preload'
+        link.href = resource.href
+        link.as = resource.as || 'fetch'
+        document.head.appendChild(link)
+      }
+      
+      // 继续处理队列
+      requestIdleCallback(processPreloadQueue, { timeout: 50 })
+    }
+    
+    // 开始处理预加载队列
+    requestIdleCallback(processPreloadQueue, { timeout: 100 })
+  }
 
 })();

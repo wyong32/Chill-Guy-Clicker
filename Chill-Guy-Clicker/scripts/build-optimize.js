@@ -11,96 +11,114 @@ import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-const distDir = path.join(__dirname, '../dist')
 
-console.log('🚀 开始构建后优化...')
+// 开始构建后优化
+async function optimizeBuild() {
+  try {
+    const distPath = path.join(__dirname, '..', 'dist')
+    
+    if (!fs.existsSync(distPath)) {
+      throw new Error('dist 目录不存在，请先运行构建命令')
+    }
+
+    // 优化HTML文件
+    await optimizeHtmlFiles(distPath)
+    
+    // 生成资源清单
+    await generateAssetManifest(distPath)
+    
+    // 生成性能报告
+    await generatePerformanceReport(distPath)
+    
+  } catch (error) {
+    throw error
+  }
+}
 
 /**
  * 压缩HTML文件
  */
-function optimizeHTML() {
-  console.log('📄 优化HTML文件...')
+async function optimizeHtmlFiles(distPath) {
+  const htmlFiles = fs.readdirSync(distPath).filter(file => file.endsWith('.html'))
   
-  const htmlFiles = fs.readdirSync(distDir).filter(file => file.endsWith('.html'))
-  
-  htmlFiles.forEach(file => {
-    const filePath = path.join(distDir, file)
+  for (const file of htmlFiles) {
+    const filePath = path.join(distPath, file)
     let content = fs.readFileSync(filePath, 'utf8')
     
-    // 移除多余的空白字符
+    // 优化HTML内容
     content = content
-      .replace(/\s+/g, ' ')
-      .replace(/>\s+</g, '><')
-      .replace(/\s+>/g, '>')
-      .replace(/<\s+/g, '<')
-      .trim()
+      .replace(/\s+/g, ' ') // 压缩空白字符
+      .replace(/>\s+</g, '><') // 移除标签间空白
+      .replace(/<!--[\s\S]*?-->/g, '') // 移除注释
     
     fs.writeFileSync(filePath, content)
-    console.log(`✅ 优化完成: ${file}`)
-  })
+  }
 }
 
 /**
  * 生成资源清单
  */
-function generateAssetManifest() {
-  console.log('📋 生成资源清单...')
-  
+async function generateAssetManifest(distPath) {
   const manifest = {
     version: Date.now(),
     assets: {},
-    critical: [],
-    preload: []
+    summary: {
+      totalFiles: 0,
+      totalSize: 0,
+      categories: {}
+    }
   }
   
-  function scanDirectory(dir, basePath = '') {
-    const items = fs.readdirSync(dir)
+  // 扫描所有文件
+  function scanDirectory(dir, relativePath = '') {
+    const files = fs.readdirSync(dir)
     
-    items.forEach(item => {
-      const itemPath = path.join(dir, item)
-      const relativePath = path.join(basePath, item).replace(/\\/g, '/')
+    for (const file of files) {
+      const fullPath = path.join(dir, file)
+      const relativeFilePath = path.join(relativePath, file)
       
-      if (fs.statSync(itemPath).isDirectory()) {
-        scanDirectory(itemPath, relativePath)
+      if (fs.statSync(fullPath).isDirectory()) {
+        scanDirectory(fullPath, relativeFilePath)
       } else {
-        const stats = fs.statSync(itemPath)
-        const ext = path.extname(item).toLowerCase()
+        const stats = fs.statSync(fullPath)
+        const size = stats.size
+        const ext = path.extname(file).toLowerCase()
         
-        manifest.assets[relativePath] = {
-          size: stats.size,
-          type: getAssetType(ext),
-          critical: isCriticalAsset(relativePath),
-          preload: shouldPreload(relativePath, ext)
+        manifest.assets[relativeFilePath] = {
+          size,
+          lastModified: stats.mtime.toISOString(),
+          type: getFileType(ext)
         }
         
-        if (manifest.assets[relativePath].critical) {
-          manifest.critical.push(relativePath)
-        }
+        manifest.summary.totalFiles++
+        manifest.summary.totalSize += size
         
-        if (manifest.assets[relativePath].preload) {
-          manifest.preload.push(relativePath)
+        // 按类型统计
+        const category = getFileCategory(ext)
+        if (!manifest.summary.categories[category]) {
+          manifest.summary.categories[category] = { count: 0, size: 0 }
         }
+        manifest.summary.categories[category].count++
+        manifest.summary.categories[category].size += size
       }
-    })
+    }
   }
   
-  scanDirectory(distDir)
+  scanDirectory(distPath)
   
-  fs.writeFileSync(
-    path.join(distDir, 'asset-manifest.json'),
-    JSON.stringify(manifest, null, 2)
-  )
-  
-  console.log(`✅ 资源清单生成完成，共 ${Object.keys(manifest.assets).length} 个文件`)
+  // 写入清单文件
+  const manifestPath = path.join(distPath, 'asset-manifest.json')
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2))
 }
 
 /**
  * 获取资源类型
  */
-function getAssetType(ext) {
-  const types = {
+function getFileType(ext) {
+  const typeMap = {
     '.js': 'script',
     '.css': 'style',
+    '.html': 'html',
     '.png': 'image',
     '.jpg': 'image',
     '.jpeg': 'image',
@@ -111,8 +129,7 @@ function getAssetType(ext) {
     '.ttf': 'font',
     '.eot': 'font'
   }
-  
-  return types[ext] || 'other'
+  return typeMap[ext] || 'other'
 }
 
 /**
@@ -150,103 +167,55 @@ function shouldPreload(filePath, ext) {
 /**
  * 生成性能报告
  */
-function generatePerformanceReport() {
-  console.log('📊 生成性能报告...')
+async function generatePerformanceReport(distPath) {
+  const manifestPath = path.join(distPath, 'asset-manifest.json')
   
-  const manifestPath = path.join(distDir, 'asset-manifest.json')
   if (!fs.existsSync(manifestPath)) {
-    console.log('❌ 资源清单不存在，跳过性能报告生成')
     return
   }
   
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'))
-  const assets = manifest.assets
   
   const report = {
-    timestamp: new Date().toISOString(),
     summary: {
-      totalAssets: Object.keys(assets).length,
-      totalSize: 0,
-      criticalAssets: manifest.critical.length,
-      preloadAssets: manifest.preload.length
-    },
-    breakdown: {
-      scripts: { count: 0, size: 0 },
-      styles: { count: 0, size: 0 },
-      images: { count: 0, size: 0 },
-      fonts: { count: 0, size: 0 },
-      other: { count: 0, size: 0 }
+      totalAssets: manifest.summary.totalFiles,
+      totalSize: manifest.summary.totalSize,
+      criticalAssets: 0,
+      preloadAssets: 0
     },
     recommendations: []
   }
   
-  // 统计各类型资源
-  Object.entries(assets).forEach(([filePath, asset]) => {
-    const type = asset.type
-    report.summary.totalSize += asset.size
-    
-    if (report.breakdown[type]) {
-      report.breakdown[type].count++
-      report.breakdown[type].size += asset.size
-    } else {
-      report.breakdown.other.count++
-      report.breakdown.other.size += asset.size
+  // 分析资源并生成建议
+  Object.entries(manifest.assets).forEach(([path, info]) => {
+    if (info.size > 1024 * 1024) { // 大于1MB
+      report.recommendations.push(`Consider optimizing large file: ${path} (${(info.size / 1024 / 1024).toFixed(2)}MB)`)
     }
   })
   
-  // 生成建议
-  if (report.breakdown.scripts.size > 500 * 1024) {
-    report.recommendations.push('JavaScript 文件较大，建议进一步代码分割')
-  }
-  
-  if (report.breakdown.images.size > 2 * 1024 * 1024) {
-    report.recommendations.push('图片文件较大，建议使用 WebP 格式或压缩图片')
-  }
-  
-  if (report.summary.totalSize > 5 * 1024 * 1024) {
-    report.recommendations.push('总文件大小较大，建议启用 Gzip 压缩')
-  }
-  
-  fs.writeFileSync(
-    path.join(distDir, 'performance-report.json'),
-    JSON.stringify(report, null, 2)
-  )
-  
-  // 输出简要报告
-  console.log('📊 性能报告:')
-  console.log(`   总文件数: ${report.summary.totalAssets}`)
-  console.log(`   总大小: ${(report.summary.totalSize / 1024 / 1024).toFixed(2)} MB`)
-  console.log(`   关键资源: ${report.summary.criticalAssets} 个`)
-  console.log(`   预加载资源: ${report.summary.preloadAssets} 个`)
-  
-  if (report.recommendations.length > 0) {
-    console.log('💡 优化建议:')
-    report.recommendations.forEach(rec => console.log(`   - ${rec}`))
-  }
+  // 写入性能报告
+  const reportPath = path.join(distPath, 'performance-report.json')
+  fs.writeFileSync(reportPath, JSON.stringify(report, null, 2))
 }
 
-/**
- * 主函数
- */
-async function main() {
-  try {
-    if (!fs.existsSync(distDir)) {
-      console.log('❌ dist 目录不存在，请先运行构建命令')
-      process.exit(1)
-    }
-    
-    // 执行优化步骤
-    optimizeHTML()
-    generateAssetManifest()
-    generatePerformanceReport()
-    
-    console.log('✅ 构建优化完成！')
-    
-  } catch (error) {
-    console.error('❌ 构建优化失败:', error)
-    process.exit(1)
+// 辅助函数
+function getFileCategory(ext) {
+  const categoryMap = {
+    '.js': 'scripts',
+    '.css': 'styles',
+    '.html': 'html',
+    '.png': 'images',
+    '.jpg': 'images',
+    '.jpeg': 'images',
+    '.webp': 'images',
+    '.svg': 'images',
+    '.woff': 'fonts',
+    '.woff2': 'fonts',
+    '.ttf': 'fonts',
+    '.eot': 'fonts'
   }
+  return categoryMap[ext] || 'other'
 }
 
 // 运行主函数
-main()
+optimizeBuild()

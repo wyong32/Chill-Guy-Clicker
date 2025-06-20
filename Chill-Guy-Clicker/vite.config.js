@@ -94,7 +94,6 @@ const generateSitemap = () => {
     }
     // 写入站点地图文件
     fs.writeFileSync('dist/sitemap.xml', sitemap);
-    console.log('✅ 站点地图生成成功！');
   });
 }
 

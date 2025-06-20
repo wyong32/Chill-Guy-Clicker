@@ -174,7 +174,6 @@ export default {
       document.body.style.overflow = this.mobileMenuActive ? 'hidden' : ''
     },
     closeMobileMenu() {
-      console.log('Close button clicked!')
       this.mobileMenuActive = false
       document.body.style.overflow = ''
     },

@@ -344,10 +344,8 @@ export default {
 
         this.comments = await response.json();
       } catch (error) {
-        this.error = error.message || '加载数据时发生错误';
-        console.error('Error loading data:', error);
-      } finally {
         this.isLoading = false;
+        this.error = 'Failed to load data';
       }
     },
 
@@ -461,7 +459,6 @@ export default {
         this.showNotification('success', 'Comment added successfully!');
       } catch (error) {
         this.showNotification('error', error.message || 'An error occurred while adding your comment');
-        console.error('Error adding comment:', error);
       }
     },
 
@@ -508,7 +505,6 @@ export default {
         this.showNotification('success', '评论更新成功！');
       } catch (error) {
         this.showNotification('error', error.message || '更新评论时发生错误');
-        console.error('Error updating comment:', error);
       }
     },
 
@@ -542,7 +538,6 @@ export default {
         this.showNotification('success', '评论已成功删除');
       } catch (error) {
         this.showNotification('error', error.message || '删除评论时发生错误');
-        console.error('Error deleting comment:', error);
       }
     },
 

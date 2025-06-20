@@ -86,10 +86,8 @@ export default {
         // 重定向到管理面板
         this.$router.push('/admin/dashboard');
       } catch (error) {
-        this.error = error.message || '登录时发生错误';
-        console.error('Login error:', error);
-      } finally {
         this.isLoading = false;
+        this.error = 'Login failed';
       }
     }
   }

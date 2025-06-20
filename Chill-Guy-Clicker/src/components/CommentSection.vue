@@ -199,15 +199,13 @@ export default {
       return Number((sum / this.comments.length).toFixed(1))
     },
   },
-  // 监听 gameId 变化，当游戏切换时重新加载评论
+  // 监听游戏ID变化，重新加载评论
   watch: {
     gameId: {
       handler(newGameId, oldGameId) {
-        // 只在开发环境中输出日志
-        if (import.meta.env.DEV) {
-          console.log(`Game changed from ${oldGameId} to ${newGameId}, reloading comments`)
+        if (newGameId !== oldGameId) {
+          this.loadComments()
         }
-        this.loadComments()
       },
       immediate: true
     }
@@ -228,13 +226,15 @@ export default {
         })
 
         if (!response.ok) {
-          throw new Error(`Failed to load comments: ${response.status}`)
+          throw new Error(`HTTP error! status: ${response.status}`)
         }
 
         const data = await response.json()
-        this.comments = data
+        this.comments = data.comments || []
+        this.ratingStats = data.ratingStats || { average: 0, total: 0 }
       } catch (error) {
-        console.error(`Failed to load comments:`, error)
+        this.comments = []
+        this.ratingStats = { average: 0, total: 0 }
         this.error = 'Failed to load comments'
       } finally {
         this.isLoading = false
@@ -265,28 +265,20 @@ export default {
       }
     },
     formatDate(dateString) {
-      // 检查日期字符串是否有效
-      if (!dateString) return 'No date';
-
       try {
-        // 尝试创建日期对象
-        const date = new Date(dateString);
-
-        // 检查日期是否有效
+        const date = new Date(dateString)
         if (isNaN(date.getTime())) {
-          console.warn('Invalid date:', dateString);
-          return 'Invalid Date';
+          return 'Invalid date'
         }
-
-        // 格式化日期
         return date.toLocaleDateString('en-US', {
           year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        });
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        })
       } catch (error) {
-        console.error('Error formatting date:', error);
-        return 'Invalid Date';
+        return 'Invalid date'
       }
     },
 
@@ -410,7 +402,6 @@ export default {
           'Your review has been successfully added!'
         )
       } catch (error) {
-        console.error('Error submitting comment:', error)
         this.showNotification(
           'error',
           null,

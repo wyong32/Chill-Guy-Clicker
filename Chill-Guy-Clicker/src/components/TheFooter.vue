@@ -114,7 +114,6 @@ export default {
         footer.style.setProperty('overflow', 'hidden', 'important');
         footer.style.setProperty('flex-shrink', '0', 'important');
         footer.style.setProperty('contain', 'layout style paint', 'important');
-        console.log('Footer dimensions locked:', footer.getBoundingClientRect());
       }
     });
   }
