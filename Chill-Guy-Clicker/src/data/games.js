@@ -2353,7 +2353,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
   iframeUrl: 'https://azgame.io/game/wacky-nursery',
   isHot: false,
   isMore: true,
-  isNew: true,
+  isNew: false,
   detailsHtml: `
     <h2>Wacky Nursery Unlocked – Chaos, Comedy, and Baby Mayhem Await!</h2>
     <p>
@@ -2430,7 +2430,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
   iframeUrl: 'https://st.8games.net/7/igra-kliker-mertvetsov/',
   isHot: false,
   isMore: true,
-  isNew: true,
+  isNew: false,
   detailsHtml: `
     <h2>Necro Clicker Unlocked – Command the Dead in the Ultimate Dark Idle Game</h2>
     <p>
@@ -3059,7 +3059,141 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
       Ready to face your fears before dawn? Then prepare yourself for the sahur of nightmares in <strong>Tung Sahur Horror Unlocked</strong>.
     </p>
   `
+},
+
+{
+  id: 51,
+  pageTitle: 'Slope 3',
+  seo: {
+    title: 'Slope 3 - Fast-Paced 3D Ball Game - Play Online Free',
+    description:
+      'Play Slope 3, a thrilling 3D ball-rolling game where you dodge obstacles, race down an endless slope, and test your reflexes to the limit. Play online for free!',
+    keywords: 'slope 3, slope game, 3d running game, ball game, fast reflex game, online game, free game',
+  },
+  addressBar: 'slope-3',
+  publishDate: '2025-06-24',
+  imageUrl: '/images/games/game-51.webp',
+  imageAlt: 'Slope 3 game screenshot showing a rolling ball on neon slope',
+  iframeUrl: 'https://example.com/game/slope-3',
+  isHot: false,
+  isMore: true,
+  isNew: true,
+  detailsHtml: `
+    <h2>Slope 3 – Speed, Reflexes, and Pure Focus in a 3D Rolling Game</h2>
+    <p>
+      If you're into games that challenge your reflexes, <strong>Slope 3</strong> delivers pure adrenaline. As a fast-paced 3D running game, <strong>Slope 3</strong> lets you control a rolling ball down an endless neon slope filled with sharp turns, obstacles, and sudden drops. With increasing speed and randomly generated paths, every round is unpredictable and thrilling.
+    </p>
+
+    <h3>What is Slope 3?</h3>
+    <p>
+      <strong>Slope 3</strong> is a reflex-based endless runner game where you guide a ball down a steep track without falling or crashing. As you move forward, the ball gets faster and the difficulty ramps up. There are no levels—just you, gravity, and your skill to keep the ball alive as long as possible. Simple mechanics meet a high-skill ceiling in this classic web game experience.
+    </p>
+
+    <h3>Slope 3 Game Features</h3>
+    <ul>
+      <li>Fast-paced, endless 3D gameplay</li>
+      <li>Easy to play, hard to master</li>
+      <li>Progressively increasing speed and difficulty</li>
+      <li>Dynamic neon environments with randomized tracks</li>
+      <li>Minimalist design focused on reflex and timing</li>
+    </ul>
+
+    <h3>Why is Slope 3 So Popular?</h3>
+    <p>
+      The popularity of <strong>Slope 3</strong> comes from its perfect mix of challenge and simplicity. You don’t need to learn complex rules—just press left or right and avoid falling. Its unpredictable terrain and ever-increasing speed keep players coming back for one more run. It’s also perfect for short sessions or competitive high-score chasing.
+    </p>
+
+    <h3>How to Play Slope 3</h3>
+    <ul>
+      <li>Use the Left or A key to steer left</li>
+      <li>Use the Right or D key to steer right</li>
+      <li>Avoid red blocks and barriers at all costs</li>
+      <li>Stay on the track—falling off ends the game</li>
+      <li>The farther you go, the faster the ball rolls</li>
+    </ul>
+
+    <h3>Who Will Love Slope 3?</h3>
+    <p>
+      <strong>Slope 3</strong> is ideal for players who enjoy fast reflex games and endless challenges. It’s also a great pick for fans of minimalistic design and arcade-style gameplay. Whether you want a quick distraction or a long high-score grind, <strong>Slope 3</strong> delivers endless entertainment.
+    </p>
+
+    <h3>Final Thoughts on Slope 3</h3>
+    <p>
+      With sleek visuals, intuitive controls, and nonstop action, <strong>Slope 3</strong> remains one of the most addicting 3D browser games out there. No downloads, no waiting—just hit start and see how far you can roll. Whether you're aiming for a new high score or just enjoying the thrill, <strong>Slope 3</strong> keeps the momentum going.
+    </p>
+    <p>
+      Get ready to dodge, roll, and survive in <strong>Slope 3</strong>!
+    </p>
+  `,
+},
+
+{
+  id: 52,
+  pageTitle: 'Smash Karts',
+  seo: {
+    title: 'Smash Karts - Multiplayer Battle Kart Game - Play Online Free',
+    description:
+      'Smash Karts is a real-time multiplayer battle game where players race in karts, collect weapons, and eliminate opponents. Drive, shoot, and survive in chaotic 3-minute matches!',
+    keywords: 'smash karts, smash karts game, smash karts unblocked, multiplayer kart game, battle kart game, online game, free game',
+  },
+  addressBar: 'smash-karts',
+  publishDate: '2025-06-24',
+  imageUrl: '/images/games/game-52.webp',
+  imageAlt: 'Smash Karts game screenshot showing karts battling with weapons',
+  iframeUrl: 'https://example.com/game/smash-karts',
+  isHot: false,
+  isMore: true,
+  isNew: true,
+  detailsHtml: `
+    <h2>Smash Karts – Real-Time Multiplayer Kart Battle Action</h2>
+    <p>
+      <strong>Smash Karts</strong> throws you into explosive 3-minute multiplayer kart battles where skill, speed, and chaos collide. Hop into your kart, collect crazy weapons, and take down your opponents on a variety of action-packed maps. <strong>Smash Karts</strong> delivers fun, fast-paced gameplay that’s easy to pick up but hard to master.
+    </p>
+
+    <h3>What is Smash Karts?</h3>
+    <p>
+      <strong>Smash Karts</strong> is an online arena-style battle game where players compete in real-time matches using go-karts. Collect random weapons, dodge enemy fire, and score eliminations to win. The game is filled with hilarious power-ups, unique characters, and exciting arenas, making every match unpredictable and exciting.
+    </p>
+
+    <h3>Smash Karts Game Features</h3>
+    <ul>
+      <li>3-minute fast-paced multiplayer battles</li>
+      <li>Collect and use weapons like rockets, mines, and machine guns</li>
+      <li>Earn XP to unlock characters, hats, and kart skins</li>
+      <li>Simple controls with WASD and spacebar for weapons</li>
+      <li>Colorful 3D arenas and chaotic action</li>
+    </ul>
+
+    <h3>Why is Smash Karts So Popular?</h3>
+    <p>
+      <strong>Smash Karts</strong> combines the thrill of racing with the unpredictability of battle royale mechanics. Its short match length and instant matchmaking make it perfect for quick sessions or longer gaming sprees. With cosmetic upgrades and unlockables, players are motivated to keep coming back for more chaos and fun.
+    </p>
+
+    <h3>How to Play Smash Karts</h3>
+    <ul>
+      <li>Use W/A/S/D or Arrow Keys to drive your kart</li>
+      <li>Press Spacebar to use your current weapon</li>
+      <li>Drive through mystery boxes to collect new items</li>
+      <li>Avoid enemy attacks and eliminate other players</li>
+      <li>Earn points and level up to unlock new characters and karts</li>
+    </ul>
+
+    <h3>Who Will Love Smash Karts?</h3>
+    <p>
+      <strong>Smash Karts</strong> is ideal for fans of kart racing, battle games, and fast-paced multiplayer chaos. Whether you’re a casual player or a competitive gamer, the quick gameplay and wacky weaponry make it endlessly entertaining.
+    </p>
+
+    <h3>Final Thoughts on Smash Karts</h3>
+    <p>
+      If you’re looking for explosive fun in short bursts, <strong>Smash Karts</strong> is your game. With unique characters, hilarious combat, and easy controls, it’s perfect for players of all ages. Jump into the action, grab your power-ups, and become the top racer in the arena.
+    </p>
+    <p>
+      Ready to smash your way to the top? Start racing and blasting in <strong>Smash Karts</strong> today!
+    </p>
+  `,
 }
+
+
 
 
 
