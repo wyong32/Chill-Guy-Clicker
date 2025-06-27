@@ -86,45 +86,12 @@
       </button>
     </div>
 
-    <!-- Game Details Content -->
-    <div v-if="game.detailsHtml" class="game-details-html content-html" v-html="game.detailsHtml"></div>
-
-    <!-- 提示消息 -->
-    <div v-if="showNotification" class="notification" :class="{ 'show': showNotification }">
-      {{ notificationMessage }}
-    </div>
-
-    <!-- Game Metadata -->
-    <div v-if="hasGameMeta" class="game-details">
-      <div class="game-meta">
-        <div v-if="game.rating" class="game-rating" :aria-label="'Game Rating: ' + game.rating">
-          <span class="rating-value">{{ game.rating }}</span>
-          <div class="stars" role="img" :aria-label="game.rating + ' star rating'">
-            <i
-              v-for="n in 5"
-              :key="n"
-              class="star"
-              :class="{ filled: n <= Math.floor(game.rating) }"
-            ></i>
-          </div>
-        </div>
-        <div v-if="game.playCount" class="game-plays">
-          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-            <path
-              fill="currentColor"
-              d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
-            />
-          </svg>
-          <span>{{ game.playCount.toLocaleString() }} plays</span>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'GameContainer',
+  name: 'GamePlayer',
   props: {
     game: {
       type: Object,
@@ -151,10 +118,6 @@ export default {
     },
     gameTitle() {
       return this.game.pageTitle || this.game.title || 'Game'
-    },
-    // Check if game has metadata
-    hasGameMeta() {
-      return this.game.rating || this.game.playCount
     },
   },
   methods: {
@@ -283,8 +246,6 @@ export default {
       this.toggleIframeFullscreen()
     },
 
-
-
     // 预览图片加载完成后再加载背景图片
     onPreviewImageLoad() {
       // 延迟加载背景图片，避免阻塞 LCP
@@ -309,8 +270,6 @@ export default {
       }
       img.src = this.game.imageUrl
     },
-
-
   },
   mounted() {
     // 添加全屏变化事件监听
@@ -318,8 +277,6 @@ export default {
     document.addEventListener('webkitfullscreenchange', this.handleFullscreenChange)
     document.addEventListener('mozfullscreenchange', this.handleFullscreenChange)
     document.addEventListener('MSFullscreenChange', this.handleFullscreenChange)
-
-
   },
   beforeUnmount() {
     // 移除全屏变化事件监听
@@ -695,73 +652,6 @@ export default {
 
 .play-now-button:hover::before {
   left: 100%;
-}
-
-.game-details-html {
-  margin: 35px 0;
-  line-height: 1.8;
-  color: #333;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(250, 250, 250, 0.9));
-  border-radius: 16px;
-  padding: 30px;
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.08),
-    0 1px 3px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  position: relative;
-  overflow: hidden;
-}
-
-
-
-.game-details {
-  margin-bottom: 20px;
-}
-
-.game-meta {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  gap: 20px;
-}
-
-.game-rating {
-  display: flex;
-  align-items: center;
-}
-
-.rating-value {
-  font-weight: bold;
-  margin-right: 5px;
-  color: var(--accent-color);
-}
-
-.stars {
-  display: flex;
-}
-
-.star {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  margin-right: 2px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ddd' d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E");
-  background-size: contain;
-}
-
-.star.filled {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23FFD700' d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E");
-}
-
-.game-plays {
-  display: flex;
-  align-items: center;
-  color: #333;
-}
-
-.game-plays svg {
-  margin-right: 5px;
-  color: var(--accent-color);
 }
 
 @media (max-width: 768px) {

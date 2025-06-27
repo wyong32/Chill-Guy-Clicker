@@ -2,37 +2,45 @@
   <div class="home-wrapper">
     <div class="home" :class="{ 'theater-mode': isTheaterMode }">
       <main class="main-content container">
-         <!-- PC广告4 -->
-         <aside class="ad-content ad-pc" v-show="!isTheaterMode">
+         <!-- 顶部广告-PC -->
+        <aside class="ad-content" v-show="!isTheaterMode" v-if="!isMobile" :key="'top-pc-ad-' + featuredGame.id">
           <ins class="eas6a97888e2" data-zoneid="5647518"></ins>
         </aside>
 
-        <!-- PH广告6 -->
-        <aside class="ad-content ad-ph" v-show="!isTheaterMode">
+        <!-- 顶部广告-PH -->
+        <aside class="ad-content" v-show="!isTheaterMode" v-if="isMobile" :key="'top-ph-ad-' + featuredGame.id">
           <ins class="eas6a97888e10" data-zoneid="5647530"></ins>
         </aside>
+
         <h1 class="game-title" v-show="!isTheaterMode">{{ featuredGame.pageTitle || featuredGame.title }}</h1>
         <div class="game-layout">
           <!-- Main Game Area -->
           <section class="game-main">
             <article class="featured-game">
-              <GameContainer
+              <GamePlayer
                 :game="featuredGame"
                 :gameStarted="gameStarted"
                 @start-game="startGame"
                 @theater-mode-changed="handleTheaterModeChanged"
               />
-              <!-- GameInfo component removed -->
+              <!-- 中间广告-PH -->
+              <aside class="ad-content" v-show="!isTheaterMode" v-if="isMobile" :key="'middle-ph-ad-' + featuredGame.id">
+                <ins class="eas6a97888e10" data-zoneid="5657040"></ins>
+              </aside>
+              <GameInfo :game="featuredGame" v-if="featuredGame.detailsHtml || featuredGame.rating" />
+              
               <CommentSection :gameId="featuredGame.id" v-show="!isTheaterMode" />
             </article>
           </section>
+
+          
 
           <!-- Hot Games Sidebar -->
           <GameSidebar :hotGames="hotGames" :newGames="newGames" v-show="!isTheaterMode" />
         </div>
 
-        <!-- PC广告5 -->
-        <aside class="ad-content" v-show="!isTheaterMode">
+        <!-- 底部广告 -->
+        <aside class="ad-content ad-pc" v-show="!isTheaterMode" :key="'bottom-ad-' + featuredGame.id">
           <ins class="eas6a97888e20" data-zoneid="5647528"></ins>
         </aside>
         
@@ -43,162 +51,137 @@
   </div>
 </template>
 
-<script>
-import CommentSection from '@/components/CommentSection.vue'
-import GameContainer from '@/components/GameContainer.vue'
-import GameSidebar from '@/components/GameSidebar.vue'
-import MoreGames from '@/components/MoreGames.vue'
-import { games } from '@/data/games.js'
+<script setup>
+import { ref, computed, watch, nextTick } from 'vue';
+import { useRoute } from 'vue-router';
+// Component imports
+import GamePlayer from '@/components/GamePlayer.vue';
+import GameInfo from '@/components/GameInfo.vue';
+import GameSidebar from '@/components/GameSidebar.vue';
+import MoreGames from '@/components/MoreGames.vue';
+import CommentSection from '@/components/CommentSection.vue';
+// Composable and data imports
+import { useDeviceDetection } from '@/utils/useDeviceDetection.js';
+import { games } from '@/data/games.js';
 
-export default {
-  name: 'HomeView',
-  components: {
-    CommentSection,
-    GameContainer,
-    GameSidebar,
-    MoreGames,
-  },
-  data() {
-    return {
-      games,
-      gameStarted: false,
-      isTheaterMode: false,
-    }
-  },
-  computed: {
-    // Get current game based on route parameter
-    currentGame() {
-      const addressBar = this.$route.params.addressBar
-      const isHomePage = this.$route.path === '/'
+// --- State and Route ---
+const { isMobile } = useDeviceDetection();
+const route = useRoute();
+const gameStarted = ref(false);
+const isTheaterMode = ref(false);
 
-      // 获取默认游戏（Chill-Guy-Clicker，ID为1）
-      const defaultGame = this.games.find(game => game.id === 1) || this.games[0]
+// --- Computed Properties ---
+const currentGame = computed(() => {
+  const addressBar = route.params.addressBar;
+  const isHomePage = route.path === '/';
+  const defaultGame = games.find(game => game.id === 1) || games[0];
 
-      // 如果在首页，并且 addressBar 为空或未定义，则显示默认游戏 (ID 1)
-      if (isHomePage && (!addressBar || addressBar === '')) {
-        return defaultGame;
-      }
+  if (isHomePage && (!addressBar || addressBar === '')) {
+    return defaultGame;
+  }
 
-      if (addressBar) {
-        // Try to find game by addressBar or id
-        const game = this.games.find(
-          (g) =>
-            (g.addressBar && g.addressBar.toLowerCase() === addressBar.toLowerCase()) ||
-            (g.id && String(g.id).toLowerCase() === addressBar.toLowerCase()),
-        )
-        return game || defaultGame // If not found, return default game
-      }
-      return defaultGame // Default to Chill-Guy-Clicker
-    },
-    // Get featured game (current game)
-    featuredGame() {
-      return this.currentGame
-    },
-    // Get hot games (including current game if it's hot)
-    hotGames() {
-      return this.games
-        .filter(
-          (game) => game.isHot
-        )
-    },
-    // Get new games
-    newGames() {
-      return this.games
-        .filter(
-          (game) => game.isNew
-        )
-    },
-    // Get more games (including current game if it's in more games)
-    moreGames() {
-      return this.games
-        .filter(
-          (game) => (game.isMore || game.isRecommended)
-        )
-    },
-  },
-  methods: {
-    startGame() {
-      this.gameStarted = true
-    },
+  if (addressBar) {
+    const game = games.find(
+      (g) =>
+        (g.addressBar && g.addressBar.toLowerCase() === addressBar.toLowerCase()) ||
+        (g.id && String(g.id).toLowerCase() === addressBar.toLowerCase()),
+    );
+    return game || defaultGame;
+  }
+  return defaultGame;
+});
 
-    // 处理 Theater 模式状态变化
-    handleTheaterModeChanged(isTheaterMode) {
-      this.isTheaterMode = isTheaterMode
-    },
+const featuredGame = computed(() => currentGame.value);
+const hotGames = computed(() => games.filter(game => game.isHot));
+const newGames = computed(() => games.filter(game => game.isNew));
+const moreGames = computed(() => games.filter(game => (game.isMore || game.isRecommended)));
 
-    // 更新SEO信息
-    updateSEO() {
-      const game = this.currentGame;
-      if (game && game.seo) {
-        // 更新标题
-        document.title = game.seo.title;
+// --- Methods ---
+const startGame = () => {
+  gameStarted.value = true;
+};
 
-        // 更新描述
-        let metaDescription = document.querySelector('meta[name="description"]');
-        if (!metaDescription) {
-          metaDescription = document.createElement('meta');
-          metaDescription.setAttribute('name', 'description');
-          document.head.appendChild(metaDescription);
-        }
-        metaDescription.setAttribute('content', game.seo.description);
+const handleTheaterModeChanged = (value) => {
+  isTheaterMode.value = value;
+};
 
-        // 更新关键词
-        let metaKeywords = document.querySelector('meta[name="keywords"]');
-        if (!metaKeywords) {
-          metaKeywords = document.createElement('meta');
-          metaKeywords.setAttribute('name', 'keywords');
-          document.head.appendChild(metaKeywords);
-        }
-        metaKeywords.setAttribute('content', game.seo.keywords);
-      }
-    },
+const updateSEO = () => {
+  const game = currentGame.value;
+  if (!game || !game.seo) return;
 
-    // 初始化广告
-    initAds() {
-      // 动态加载广告脚本
-      if (!window.AdProvider) {
-        const script = document.createElement('script');
-        script.async = true;
-        script.type = 'application/javascript';
-        script.src = 'https://a.magsrv.com/ad-provider.js';
-        script.onload = () => {
-          // 脚本加载完成后初始化广告
-          if (window.AdProvider) {
-            window.AdProvider.push({"serve": {}});
-          }
-        };
-        document.head.appendChild(script);
+  document.title = game.seo.title;
+
+  let metaDescription = document.querySelector('meta[name="description"]');
+  if (!metaDescription) {
+    metaDescription = document.createElement('meta');
+    metaDescription.setAttribute('name', 'description');
+    document.head.appendChild(metaDescription);
+  }
+  metaDescription.setAttribute('content', game.seo.description);
+
+  let metaKeywords = document.querySelector('meta[name="keywords"]');
+  if (!metaKeywords) {
+    metaKeywords = document.createElement('meta');
+    metaKeywords.setAttribute('name', 'keywords');
+    document.head.appendChild(metaKeywords);
+  }
+  metaKeywords.setAttribute('content', game.seo.keywords);
+};
+
+const reloadAds = () => {
+  // 1. 尝试全局应用 passive 事件监听器来解决性能警告
+  // 这是一种 hacky 的方法，因为我们无法控制第三方脚本
+  try {
+    const originalAddEventListener = EventTarget.prototype.addEventListener;
+    EventTarget.prototype.addEventListener = function (type, listener, options) {
+      if (type === 'touchstart' || type === 'touchmove') {
+        const newOptions = typeof options === 'boolean' ? { capture: options, passive: true } : { ...options, passive: true };
+        originalAddEventListener.call(this, type, listener, newOptions);
       } else {
-        // 如果脚本已存在，直接初始化
-        window.AdProvider.push({"serve": {}});
+        originalAddEventListener.call(this, type, listener, options);
       }
-    },
-  },
+    };
+  } catch (e) {
+    console.error('Failed to apply passive event listener patch:', e);
+  }
 
-  // 组件挂载时更新SEO信息和初始化广告
-  mounted() {
-    this.updateSEO();
-    this.initAds();
-  },
+  // 2. 清理旧的广告脚本和全局变量
+  const oldScript = document.querySelector('script[src="https://a.magsrv.com/ad-provider.js"]');
+  if (oldScript) {
+    oldScript.remove();
+  }
+  if (window.AdProvider) {
+    delete window.AdProvider;
+  }
 
-  // Watch for route changes to reset game state and update SEO
-  watch: {
-    '$route.params.addressBar'() {
-      this.gameStarted = false
-      this.updateSEO();
-    },
-
-    // 监听当前游戏变化，更新SEO信息
-    currentGame: {
-      immediate: true,
-      handler(newGame) {
-        if (newGame) {
-          this.updateSEO();
-        }
+  // 3. 在DOM更新后，重新加载脚本并初始化
+  nextTick(() => {
+    const script = document.createElement('script');
+    script.async = true;
+    script.type = 'application/javascript';
+    script.src = 'https://a.magsrv.com/ad-provider.js';
+    script.onload = () => {
+      if (window.AdProvider) {
+        window.AdProvider.push({ serve: {} });
       }
+    };
+    document.head.appendChild(script);
+  });
+};
+
+// --- Watcher ---
+// 监听当前游戏的变化，并在首次加载时立即执行
+watch(
+  currentGame,
+  (newGame) => {
+    if (newGame) {
+      gameStarted.value = false;
+      updateSEO();
+      reloadAds();
     }
   },
-}
+  { immediate: true }
+);
 </script>
 
 <style scoped>
