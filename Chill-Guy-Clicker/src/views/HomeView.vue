@@ -40,7 +40,7 @@
         </div>
 
         <!-- 底部广告 -->
-        <aside class="ad-content ad-pc" v-show="!isTheaterMode" :key="'bottom-ad-' + featuredGame.id">
+        <aside class="ad-content" v-show="!isTheaterMode" :key="'bottom-ad-' + featuredGame.id">
           <ins class="eas6a97888e20" data-zoneid="5647528"></ins>
         </aside>
         
