@@ -1,15 +1,48 @@
 <template>
   <div class="home-wrapper">
     <div class="home" :class="{ 'theater-mode': isTheaterMode }">
-      <main class="main-content container">
-         <!-- 顶部广告-PC -->
-        <aside class="ad-content" v-show="!isTheaterMode" v-if="!isMobile" :key="'top-pc-ad-' + featuredGame.id">
-          <ins class="eas6a97888e2" data-zoneid="5647518"></ins>
+
+      <!-- 左侧广告-PC -->
+      <aside class="ads-wrapper ads-left" v-if="!isMobile">
+          <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4638984121333143"
+     data-ad-slot="6904540807"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
         </aside>
 
-        <!-- 顶部广告-PH -->
-        <aside class="ad-content" v-show="!isTheaterMode" v-if="isMobile" :key="'top-ph-ad-' + featuredGame.id">
-          <ins class="eas6a97888e10" data-zoneid="5647530"></ins>
+        <!-- 右侧广告-PC -->
+        <aside class="ads-wrapper ads-right" v-if="!isMobile">
+          <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4638984121333143"
+     data-ad-slot="5591459134"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+        </aside>
+
+      <main class="main-content container">
+
+        <!-- 头部横幅广告-PC -->
+        <aside class="ads-wrapper" v-if="!isMobile">
+          <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4638984121333143"
+     data-ad-slot="3707198686"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+        </aside>
+
+
+        <!-- 移动端横幅广告1 -->
+        <aside class="ads-wrapper" v-if="isMobile">
+          <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4638984121333143"
+     data-ad-slot="3423077907"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
         </aside>
 
         <h1 class="game-title" v-show="!isTheaterMode">{{ featuredGame.pageTitle || featuredGame.title }}</h1>
@@ -23,27 +56,37 @@
                 @start-game="startGame"
                 @theater-mode-changed="handleTheaterModeChanged"
               />
-              <!-- 中间广告-PH -->
-              <aside class="ad-content" v-show="!isTheaterMode" v-if="isMobile" :key="'middle-ph-ad-' + featuredGame.id">
-                <ins class="eas6a97888e10" data-zoneid="5657040"></ins>
-              </aside>
               <GameInfo :game="featuredGame" v-if="featuredGame.detailsHtml || featuredGame.rating" />
               
+
+                      <!-- 移动端横幅广告2 -->
+        <aside class="ads-wrapper" v-if="isMobile">
+          <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4638984121333143"
+     data-ad-slot="5857669556"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+        </aside>
+
               <CommentSection :gameId="featuredGame.id" v-show="!isTheaterMode" />
             </article>
           </section>
 
-          
+                                <!-- 移动端横幅广告3 -->
+        <aside class="ads-wrapper" v-if="isMobile">
+          <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4638984121333143"
+     data-ad-slot="8919996910"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+        </aside>
 
           <!-- Hot Games Sidebar -->
           <GameSidebar :hotGames="hotGames" :newGames="newGames" v-show="!isTheaterMode" />
         </div>
 
-        <!-- 底部广告 -->
-        <aside class="ad-content" v-show="!isTheaterMode" :key="'bottom-ad-' + featuredGame.id">
-          <ins class="eas6a97888e20" data-zoneid="5647528"></ins>
-        </aside>
-        
         <!-- More Games Section -->
         <MoreGames :games="moreGames" v-show="!isTheaterMode" />
       </main>
@@ -52,7 +95,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, nextTick } from 'vue';
+import { ref, computed, watch, nextTick, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 // Component imports
 import GamePlayer from '@/components/GamePlayer.vue';
@@ -128,46 +171,35 @@ const updateSEO = () => {
   metaKeywords.setAttribute('content', game.seo.keywords);
 };
 
-const reloadAds = () => {
-  // 1. 尝试全局应用 passive 事件监听器来解决性能警告
-  // 这是一种 hacky 的方法，因为我们无法控制第三方脚本
-  try {
-    const originalAddEventListener = EventTarget.prototype.addEventListener;
-    EventTarget.prototype.addEventListener = function (type, listener, options) {
-      if (type === 'touchstart' || type === 'touchmove') {
-        const newOptions = typeof options === 'boolean' ? { capture: options, passive: true } : { ...options, passive: true };
-        originalAddEventListener.call(this, type, listener, newOptions);
-      } else {
-        originalAddEventListener.call(this, type, listener, options);
-      }
-    };
-  } catch (e) {
-    console.error('Failed to apply passive event listener patch:', e);
+// 手动触发广告加载
+const loadAds = () => {
+  if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
+    try {
+      // 直接处理所有广告元素，但添加错误处理
+      const adElements = document.querySelectorAll('.adsbygoogle')
+      adElements.forEach((el) => {
+        try {
+          ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+        } catch (pushError) {
+          // 忽略重复加载错误
+          if (!pushError.message.includes('already have ads')) {
+            console.error('广告加载失败:', pushError)
+          }
+        }
+      })
+    } catch (e) {
+      console.error('广告加载失败:', e)
+    }
+  } else {
+    // 如果 adsbygoogle 还没加载，延迟重试
+    setTimeout(loadAds, 1000)
   }
+}
 
-  // 2. 清理旧的广告脚本和全局变量
-  const oldScript = document.querySelector('script[src="https://a.magsrv.com/ad-provider.js"]');
-  if (oldScript) {
-    oldScript.remove();
-  }
-  if (window.AdProvider) {
-    delete window.AdProvider;
-  }
-
-  // 3. 在DOM更新后，重新加载脚本并初始化
-  nextTick(() => {
-    const script = document.createElement('script');
-    script.async = true;
-    script.type = 'application/javascript';
-    script.src = 'https://a.magsrv.com/ad-provider.js';
-    script.onload = () => {
-      if (window.AdProvider) {
-        window.AdProvider.push({ serve: {} });
-      }
-    };
-    document.head.appendChild(script);
-  });
-};
+onMounted(() => {
+  // 延迟加载广告
+  setTimeout(loadAds, 2000)
+})
 
 // --- Watcher ---
 // 监听当前游戏的变化，并在首次加载时立即执行
@@ -177,7 +209,6 @@ watch(
     if (newGame) {
       gameStarted.value = false;
       updateSEO();
-      reloadAds();
     }
   },
   { immediate: true }
@@ -197,6 +228,7 @@ watch(
   flex-direction: column;
   color: #fff;
   z-index: 0;
+  position: relative;
   /* 防止布局偏移的关键属性 - 基于 Cookingdom */
   /* contain: layout style paint; */
   width: 100%;

@@ -1,26 +1,29 @@
-.ad-content{
-  margin: 1rem;
-  text-align: center;
+.ads-wrapper{
   width: 100%;
-  overflow: hidden;
+  max-width: 100%;
+  overflow: visible;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+  text-align: center; 
 }
 
-.ad-pc{
-  display: block !important;
+.ads-left{
+  width: 160px;
+  min-height: 500px;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  z-index: 999999999;
 }
 
-.ad-ph{
-  display: none !important;
+.ads-right{
+  width: 160px;
+  min-height: 500px;
+  position: absolute;
+  top: 0;
+  right: 20px;
+  z-index: 999999999;
 }
-
-@media screen and (max-width: 767px) {
-  .ad-pc {
-    display: none !important;
-  }
-  .ad-ph{
-    display: block !important;
-  }
-}
-
-
-

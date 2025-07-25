@@ -44,8 +44,6 @@
     content="chill guy clicker, idle game, clicker game, relaxing game, online game, free game" />
   <meta name="twitter:image" content="https://chillguymemeclicker.com/images/logo.png" />
 
-  <!-- 手动添加广告2 -->
-  <meta name="6a97888e-site-verification" content="b796207c8cfc90c72d58ca7815113b01">
 
   <!-- 规范URL -->
   <link rel="canonical" href="https://chillguymemeclicker.com" />
@@ -54,15 +52,15 @@
   <link rel="preload" href="/images/logo.png" as="image" type="image/png" fetchpriority="high" />
   <link rel="preload" href="/images/games/game-01.webp" as="image" type="image/webp" fetchpriority="high" />
 
-
-
   <!-- DNS 预解析 -->
   <link rel="dns-prefetch" href="//www.googletagmanager.com" />
 
-
-
   <!-- CLS 优化 CSS -->
   <link rel="stylesheet" href="/css/cls-optimize.css" />
+
+  <!-- 广告脚本 -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4638984121333143"
+  crossorigin="anonymous"></script>
 
   <!-- 内联关键CSS防止CLS - 精确复制 Dreamy-Room-Level -->
   <style>
@@ -303,66 +301,9 @@
         }
       }
     </script>
-
-  <!-- Simple Google Analytics Loading -->
-  <script>
-    // 简单延迟加载 Google Analytics
-    window.addEventListener('load', function () {
-      setTimeout(function () {
-        var script = document.createElement('script')
-        script.async = true
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NM6JN6XG6J'
-        document.head.appendChild(script)
-
-        window.dataLayer = window.dataLayer || []
-        function gtag() {
-          dataLayer.push(arguments)
-        }
-        gtag('js', new Date())
-        gtag('config', 'G-NM6JN6XG6J')
-
-        console.log('Google Analytics loaded with delay')
-      }, 2000) // 2秒后加载
-    })
-  </script>
 </head>
 
 <body>
-  <!-- 左侧PC广告1 -->
-  <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
-  <div class="ad-pc">
-    <ins class="eas6a97888e17" data-zoneid="5647522"></ins> 
-  </div>
-  <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-
-  <!-- 右侧PC广告2 -->
-  <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
-  <div class="ad-pc">
-    <ins class="eas6a97888e17" data-zoneid="5647524"></ins> 
-  </div>
-  <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-
-  <!-- PC全插广告3 -->
-  <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script>
-  <div class="ad-pc">
-    <ins class="eas6a97888e35" data-zoneid="5647526"></ins> 
-  </div>
-  <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-
-  <!-- PH全插广告7 -->
-  <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script> 
-  <div class="ad-ph">
-    <ins class="eas6a97888e33" data-zoneid="5647532"></ins> 
-  </div>
-  <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-
-  <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
-  <div class="ad-ph">
-    <ins class="eas6a97888e14" data-zoneid="5647534"></ins> 
-  </div>
-  <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-
-
   <div id="app">
     <!-- Initial loading indicator -->
     <div class="loading-spinner"></div>
