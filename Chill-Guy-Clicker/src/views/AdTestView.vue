@@ -86,20 +86,41 @@ function loadAds() {
 
   if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
     try {
-      const adElements = document.querySelectorAll('.adsbygoogle:not([data-ad-status])')
-      log(`找到 ${adElements.length} 个未处理的广告元素`, 'info')
-
-      adElements.forEach((el, index) => {
-        try {
-          el.setAttribute('data-ad-status', 'loading')
-          const adSlot = el.getAttribute('data-ad-slot')
-          log(`正在加载广告 ${index + 1} (广告位: ${adSlot})`, 'info')
-          ;(window.adsbygoogle = window.adsbygoogle || []).push({})
-        } catch (error) {
-          log(`广告 ${index + 1} 加载失败: ${error.message}`, 'error')
-          el.removeAttribute('data-ad-status')
-        }
+      // 清除所有广告元素的状态，重新开始
+      const allAdElements = document.querySelectorAll('.adsbygoogle')
+      allAdElements.forEach((el) => {
+        el.removeAttribute('data-ad-status')
+        el.innerHTML = ''
       })
+
+      log('已清除所有广告元素状态', 'info')
+
+      // 等待一下让DOM更新
+      setTimeout(() => {
+        const adElements = document.querySelectorAll('.adsbygoogle')
+        log(`找到 ${adElements.length} 个广告元素`, 'info')
+
+        adElements.forEach((el, index) => {
+          try {
+            const adSlot = el.getAttribute('data-ad-slot')
+            log(`正在加载广告 ${index + 1} (广告位: ${adSlot})`, 'info')
+
+            // 确保元素有正确的尺寸
+            if (el.offsetWidth === 0) {
+              log(`警告: 广告 ${index + 1} 宽度为0，设置最小宽度`, 'warning')
+              el.style.minWidth = '300px'
+              el.style.minHeight = '250px'
+            }
+
+            ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+
+            // 标记为已处理
+            el.setAttribute('data-ad-status', 'loading')
+          } catch (error) {
+            log(`广告 ${index + 1} 加载失败: ${error.message}`, 'error')
+          }
+        })
+      }, 100)
     } catch (error) {
       log(`广告加载过程中发生错误: ${error.message}`, 'error')
     }
@@ -131,11 +152,20 @@ function checkStatus() {
     const adSlot = el.getAttribute('data-ad-slot')
     const adStatus = el.getAttribute('data-ad-status')
     const hasContent = el.children.length > 0
+    const width = el.offsetWidth
+    const height = el.offsetHeight
+    const computedStyle = window.getComputedStyle(el)
 
-    log(
-      `广告 ${index + 1} (广告位: ${adSlot}): 状态=${adStatus || '未处理'}, 有内容=${hasContent}`,
-      hasContent ? 'success' : 'error',
-    )
+    log(`广告 ${index + 1} (广告位: ${adSlot}):`, 'info')
+    log(`  - 状态: ${adStatus || '未处理'}`, 'info')
+    log(`  - 有内容: ${hasContent}`, hasContent ? 'success' : 'error')
+    log(`  - 尺寸: ${width}x${height}px`, width > 0 ? 'success' : 'error')
+    log(`  - 显示: ${computedStyle.display}`, 'info')
+    log(`  - 可见性: ${computedStyle.visibility}`, 'info')
+
+    if (width === 0) {
+      log(`  - 警告: 宽度为0，这会导致广告无法显示`, 'warning')
+    }
   })
 
   // 检查网络连接
@@ -163,17 +193,21 @@ function clearAds() {
 onMounted(() => {
   log('页面加载完成', 'success')
 
-  // 等待广告脚本加载
-  const waitForAdScript = () => {
-    if (window.adsbygoogle) {
-      log('Google AdSense 脚本已加载', 'success')
-      setTimeout(loadAds, 1000)
-    } else {
-      setTimeout(waitForAdScript, 100)
+  // 等待页面完全渲染后再加载广告
+  setTimeout(() => {
+    // 等待广告脚本加载
+    const waitForAdScript = () => {
+      if (window.adsbygoogle) {
+        log('Google AdSense 脚本已加载', 'success')
+        // 延迟更长时间确保页面完全渲染
+        setTimeout(loadAds, 2000)
+      } else {
+        setTimeout(waitForAdScript, 100)
+      }
     }
-  }
 
-  waitForAdScript()
+    waitForAdScript()
+  }, 500)
 })
 </script>
 
@@ -244,14 +278,15 @@ onMounted(() => {
   border-radius: 8px;
   text-align: center;
   min-height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   background-color: #f8f9fa;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .ad-test.banner {
   min-height: 90px;
+  width: 100%;
 }
 
 .ad-layout {
