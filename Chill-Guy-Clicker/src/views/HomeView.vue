@@ -247,20 +247,20 @@ const loadAds = () => {
   let info = '=== HomeView 广告加载诊断 ===\n'
   info += `设备类型: ${isMobile.value ? '移动设备' : '桌面设备'}\n`
 
-  console.log(info)
-  debugInfo.value = info
-
   if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
+    info += '✓ AdSense 脚本已加载\n'
+
     try {
       // 只处理当前页面中的广告元素
       const homeContainer = document.querySelector('.home-wrapper')
       if (!homeContainer) {
-        console.log('未找到 .home-wrapper 容器')
+        info += '✗ 未找到 .home-wrapper 容器\n'
+        debugInfo.value = info
         return
       }
 
       const adElements = homeContainer.querySelectorAll('.adsbygoogle')
-      console.log('HomeView找到广告元素数量:', adElements.length)
+      info += `找到 ${adElements.length} 个广告元素\n`
 
       // 详细检查每个广告元素
       adElements.forEach((el, index) => {
@@ -270,13 +270,13 @@ const loadAds = () => {
         const isVisible = el.offsetWidth > 0 && el.offsetHeight > 0
         const computedStyle = window.getComputedStyle(el)
 
-        console.log(`广告 ${index + 1} (${adSlot}):`)
-        console.log(`  - 状态: ${status || '未处理'}`)
-        console.log(`  - 有内容: ${hasContent}`)
-        console.log(`  - 可见: ${isVisible}`)
-        console.log(`  - 显示: ${computedStyle.display}`)
-        console.log(`  - 尺寸: ${el.offsetWidth}x${el.offsetHeight}`)
-        console.log(`  - 父元素: ${el.parentElement?.className}`)
+        info += `\n广告 ${index + 1} (${adSlot}):\n`
+        info += `  - 状态: ${status || '未处理'}\n`
+        info += `  - 有内容: ${hasContent}\n`
+        info += `  - 可见: ${isVisible}\n`
+        info += `  - 显示: ${computedStyle.display}\n`
+        info += `  - 尺寸: ${el.offsetWidth}x${el.offsetHeight}\n`
+        info += `  - 父元素: ${el.parentElement?.className}\n`
       })
 
       // 检查哪些广告需要重新加载
@@ -288,40 +288,38 @@ const loadAds = () => {
         if (!status || status === 'unfilled' || !hasContent) {
           adsToReload.push({ element: el, index })
         } else {
-          console.log(`HomeView广告 ${index + 1} 已有内容，跳过重新加载`)
+          info += `\n广告 ${index + 1} 已有内容，跳过重新加载\n`
         }
       })
 
       if (adsToReload.length === 0) {
-        console.log('HomeView所有广告都已加载完成，无需重新加载')
+        info += '\n所有广告都已加载完成，无需重新加载\n'
+        debugInfo.value = info
         return
       }
 
-      console.log(`HomeView需要重新加载 ${adsToReload.length} 个广告`)
+      info += `\n需要重新加载 ${adsToReload.length} 个广告\n`
 
       adsToReload.forEach(({ element, index }) => {
         try {
           // 标记广告元素已处理
           element.setAttribute('data-ad-status', 'loading')
-          console.log(`正在加载HomeView广告 ${index + 1}:`, element.getAttribute('data-ad-slot'))
+          info += `正在加载广告 ${index + 1}: ${element.getAttribute('data-ad-slot')}\n`
           ;(window.adsbygoogle = window.adsbygoogle || []).push({})
         } catch (pushError) {
-          // 忽略重复加载错误
-          if (!pushError.message.includes('already have ads')) {
-            console.error('HomeView广告加载失败:', pushError)
-          }
-          // 移除标记，允许重试
+          info += `广告 ${index + 1} 加载失败: ${pushError.message}\n`
           element.removeAttribute('data-ad-status')
         }
       })
     } catch (e) {
-      console.error('HomeView广告加载失败:', e)
+      info += `广告加载失败: ${e.message}\n`
     }
   } else {
-    // 如果 adsbygoogle 还没加载，延迟重试
-    console.log('广告脚本未加载，延迟重试...')
-    setTimeout(loadAds, 1000)
+    info += '✗ AdSense 脚本未加载或不可用\n'
   }
+
+  debugInfo.value = info
+  console.log(info)
 }
 
 // 监听广告脚本加载完成
