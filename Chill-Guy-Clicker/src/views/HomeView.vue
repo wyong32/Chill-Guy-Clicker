@@ -188,27 +188,30 @@ const updateSEO = () => {
 const loadAds = () => {
   if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
     try {
-      // 正确处理每个广告元素
-      const adElements = document.querySelectorAll('.adsbygoogle:not([data-ad-status])')
-      console.log('找到广告元素数量:', adElements.length)
+      // 只处理当前页面中的广告元素
+      const homeContainer = document.querySelector('.home-wrapper')
+      if (!homeContainer) return // 如果不在HomeView页面，不处理广告
+
+      const adElements = homeContainer.querySelectorAll('.adsbygoogle:not([data-ad-status])')
+      console.log('HomeView找到广告元素数量:', adElements.length)
 
       adElements.forEach((el, index) => {
         try {
           // 标记广告元素已处理
           el.setAttribute('data-ad-status', 'loading')
-          console.log(`正在加载广告 ${index + 1}:`, el.getAttribute('data-ad-slot'))
+          console.log(`正在加载HomeView广告 ${index + 1}:`, el.getAttribute('data-ad-slot'))
           ;(window.adsbygoogle = window.adsbygoogle || []).push({})
         } catch (pushError) {
           // 忽略重复加载错误
           if (!pushError.message.includes('already have ads')) {
-            console.error('广告加载失败:', pushError)
+            console.error('HomeView广告加载失败:', pushError)
           }
           // 移除标记，允许重试
           el.removeAttribute('data-ad-status')
         }
       })
     } catch (e) {
-      console.error('广告加载失败:', e)
+      console.error('HomeView广告加载失败:', e)
     }
   } else {
     // 如果 adsbygoogle 还没加载，延迟重试
