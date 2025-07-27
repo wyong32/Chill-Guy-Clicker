@@ -13,12 +13,18 @@
       "
     >
       设备类型: {{ isMobile ? '移动设备' : '桌面设备' }}<br />
-      AdSense: {{ typeof window !== 'undefined' && window.adsbygoogle ? '已加载' : '未加载' }}<br />
+      AdSense: {{ adsenseStatus }}<br />
       <button
         @click="loadAds"
         style="background: blue; color: white; border: none; padding: 5px; margin-top: 5px"
       >
         手动加载广告
+      </button>
+      <button
+        @click="checkAdsense"
+        style="background: green; color: white; border: none; padding: 5px; margin-top: 5px"
+      >
+        检查AdSense
       </button>
     </div>
 
@@ -148,6 +154,7 @@ const { isMobile } = useDeviceDetection()
 const route = useRoute()
 const gameStarted = ref(false)
 const isTheaterMode = ref(false)
+const adsenseStatus = ref('检查中...')
 
 // --- Computed Properties ---
 const currentGame = computed(() => {
@@ -182,6 +189,20 @@ const startGame = () => {
 
 const handleTheaterModeChanged = (value) => {
   isTheaterMode.value = value
+}
+
+const checkAdsense = () => {
+  console.log('检查 AdSense 状态...')
+  console.log('window.adsbygoogle:', window.adsbygoogle)
+  console.log('typeof window.adsbygoogle:', typeof window.adsbygoogle)
+
+  if (window.adsbygoogle) {
+    console.log('adsbygoogle.push:', typeof window.adsbygoogle.push)
+    adsenseStatus.value = '已加载'
+  } else {
+    console.log('AdSense 脚本未加载')
+    adsenseStatus.value = '未加载'
+  }
 }
 
 const updateSEO = () => {
@@ -309,6 +330,11 @@ const handleVisibilityChange = () => {
 
 onMounted(() => {
   console.log('HomeView onMounted 被调用')
+
+  // 初始化 AdSense 状态检查
+  setTimeout(() => {
+    checkAdsense()
+  }, 1000)
 
   // 等待广告脚本加载完成后立即加载广告
   waitForAdScript()
