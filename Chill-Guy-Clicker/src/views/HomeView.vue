@@ -186,14 +186,37 @@ const updateSEO = () => {
 
 // 手动触发广告加载
 const loadAds = () => {
+  console.log('=== HomeView 广告加载诊断 ===')
+  console.log('设备类型:', isMobile.value ? '移动设备' : '桌面设备')
+
   if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
     try {
       // 只处理当前页面中的广告元素
       const homeContainer = document.querySelector('.home-wrapper')
-      if (!homeContainer) return // 如果不在HomeView页面，不处理广告
+      if (!homeContainer) {
+        console.log('未找到 .home-wrapper 容器')
+        return
+      }
 
       const adElements = homeContainer.querySelectorAll('.adsbygoogle')
       console.log('HomeView找到广告元素数量:', adElements.length)
+
+      // 详细检查每个广告元素
+      adElements.forEach((el, index) => {
+        const adSlot = el.getAttribute('data-ad-slot')
+        const status = el.getAttribute('data-ad-status')
+        const hasContent = el.children.length > 0
+        const isVisible = el.offsetWidth > 0 && el.offsetHeight > 0
+        const computedStyle = window.getComputedStyle(el)
+
+        console.log(`广告 ${index + 1} (${adSlot}):`)
+        console.log(`  - 状态: ${status || '未处理'}`)
+        console.log(`  - 有内容: ${hasContent}`)
+        console.log(`  - 可见: ${isVisible}`)
+        console.log(`  - 显示: ${computedStyle.display}`)
+        console.log(`  - 尺寸: ${el.offsetWidth}x${el.offsetHeight}`)
+        console.log(`  - 父元素: ${el.parentElement?.className}`)
+      })
 
       // 检查哪些广告需要重新加载
       const adsToReload = []
