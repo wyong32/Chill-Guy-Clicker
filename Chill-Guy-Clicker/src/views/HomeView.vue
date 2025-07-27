@@ -1,8 +1,24 @@
 <template>
   <div class="home-wrapper">
+    <!-- 广告测试信息 -->
+    <div
+      style="
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        background: red;
+        color: white;
+        padding: 10px;
+        z-index: 999999;
+      "
+    >
+      设备类型: {{ isMobile ? '移动设备' : '桌面设备' }}
+    </div>
+
     <div class="home" :class="{ 'theater-mode': isTheaterMode }">
       <!-- 左侧广告-PC -->
       <aside class="ads-wrapper ads-left" v-if="!isMobile">
+        <div style="background: yellow; padding: 10px; margin: 5px">左侧广告容器</div>
         <ins
           class="adsbygoogle"
           style="display: block"
@@ -265,11 +281,13 @@ const loadAds = () => {
 
 // 监听广告脚本加载完成
 const waitForAdScript = () => {
+  console.log('waitForAdScript 被调用，检查 adsbygoogle...')
   if (window.adsbygoogle) {
     console.log('Google AdSense 脚本已加载')
     // 延迟加载广告，确保页面完全渲染
     setTimeout(loadAds, 3000)
   } else {
+    console.log('adsbygoogle 还未加载，100ms后重试...')
     setTimeout(waitForAdScript, 100)
   }
 }
@@ -283,6 +301,8 @@ const handleVisibilityChange = () => {
 }
 
 onMounted(() => {
+  console.log('HomeView onMounted 被调用')
+
   // 等待广告脚本加载完成后立即加载广告
   waitForAdScript()
 
@@ -300,6 +320,7 @@ onMounted(() => {
 
   // 清理监听器
   onUnmounted(() => {
+    console.log('HomeView onUnmounted 被调用')
     document.removeEventListener('visibilitychange', handleVisibilityChange)
     unwatch()
   })
