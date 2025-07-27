@@ -10,10 +10,6 @@
      data-ad-slot="6904540807"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
-          <!-- 调试信息 -->
-          <div v-if="process.env.NODE_ENV === 'development'" style="font-size: 12px; color: #ccc; margin-top: 5px;">
-            PC左侧广告 - Slot: 6904540807
-          </div>
         </aside>
 
         <!-- 右侧广告-PC -->
@@ -24,10 +20,6 @@
      data-ad-slot="5591459134"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
-          <!-- 调试信息 -->
-          <div v-if="process.env.NODE_ENV === 'development'" style="font-size: 12px; color: #ccc; margin-top: 5px;">
-            PC右侧广告 - Slot: 5591459134
-          </div>
         </aside>
 
       <main class="main-content container">
@@ -40,10 +32,6 @@
      data-ad-slot="3707198686"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
-          <!-- 调试信息 -->
-          <div v-if="process.env.NODE_ENV === 'development'" style="font-size: 12px; color: #ccc; margin-top: 5px;">
-            PC头部横幅广告 - Slot: 3707198686
-          </div>
         </aside>
 
 
@@ -55,10 +43,6 @@
      data-ad-slot="3423077907"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
-          <!-- 调试信息 -->
-          <div v-if="process.env.NODE_ENV === 'development'" style="font-size: 12px; color: #ccc; margin-top: 5px;">
-            移动端广告1 - Slot: 3423077907
-          </div>
         </aside>
 
         <h1 class="game-title" v-show="!isTheaterMode">{{ featuredGame.pageTitle || featuredGame.title }}</h1>
@@ -83,10 +67,6 @@
      data-ad-slot="5857669556"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
-          <!-- 调试信息 -->
-          <div v-if="process.env.NODE_ENV === 'development'" style="font-size: 12px; color: #ccc; margin-top: 5px;">
-            移动端广告2 - Slot: 5857669556
-          </div>
         </aside>
 
               <CommentSection :gameId="featuredGame.id" v-show="!isTheaterMode" />
@@ -101,10 +81,6 @@
      data-ad-slot="8919996910"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
-          <!-- 调试信息 -->
-          <div v-if="process.env.NODE_ENV === 'development'" style="font-size: 12px; color: #ccc; margin-top: 5px;">
-            移动端广告3 - Slot: 8919996910
-          </div>
         </aside>
 
           <!-- Hot Games Sidebar -->
@@ -170,15 +146,6 @@ const startGame = () => {
 
 const handleTheaterModeChanged = (value) => {
   isTheaterMode.value = value;
-  
-  // 剧院模式切换时重新加载广告
-  if (!value) {
-    // 退出剧院模式后，延迟重新加载广告
-    setTimeout(() => {
-      console.log('退出剧院模式，重新加载广告...')
-      loadAds()
-    }, 1000)
-  }
 };
 
 const updateSEO = () => {
@@ -204,113 +171,34 @@ const updateSEO = () => {
   metaKeywords.setAttribute('content', game.seo.keywords);
 };
 
-// 广告诊断工具
-const diagnoseAds = () => {
-  console.log('🔍 开始广告诊断...')
-  
-  // 检查AdSense脚本
-  if (window.adsbygoogle) {
-    console.log('✅ AdSense脚本已加载')
-  } else {
-    console.error('❌ AdSense脚本未加载')
-    return
-  }
-  
-  // 检查所有广告元素
-  const allAdElements = document.querySelectorAll('.adsbygoogle')
-  console.log(`📊 找到 ${allAdElements.length} 个广告元素`)
-  
-  allAdElements.forEach((el, index) => {
-    const slot = el.getAttribute('data-ad-slot')
-    const status = el.getAttribute('data-adsbygoogle-status')
-    const isVisible = el.offsetParent !== null
-    const rect = el.getBoundingClientRect()
-    
-    console.log(`📋 广告 ${index + 1} (Slot: ${slot}):`)
-    console.log(`   - 状态: ${status}`)
-    console.log(`   - 可见: ${isVisible}`)
-    console.log(`   - 尺寸: ${rect.width}x${rect.height}`)
-    console.log(`   - 位置: ${rect.top}, ${rect.left}`)
-    
-    // 检查是否有内容
-    if (el.children.length > 0) {
-      console.log(`   - 内容: 有 ${el.children.length} 个子元素`)
-    } else {
-      console.log(`   - 内容: 无子元素`)
-    }
-  })
-  
-  // 检查剧院模式
-  if (isTheaterMode.value) {
-    console.log('⚠️ 当前处于剧院模式，广告可能被隐藏')
-  }
-}
-
 // 手动触发广告加载
 const loadAds = () => {
-  // 确保页面完全加载后再加载广告
-  if (document.readyState === 'complete') {
-    if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
-      try {
-        // 获取所有广告元素
-        const adElements = document.querySelectorAll('.adsbygoogle:not([data-adsbygoogle-status="done"])')
-        
-        if (adElements.length > 0) {
-          console.log(`找到 ${adElements.length} 个广告元素，开始加载...`)
-          
-          adElements.forEach((el, index) => {
-            try {
-              // 确保元素可见且不在剧院模式下
-              if (el.offsetParent !== null && !isTheaterMode.value) {
-                console.log(`加载广告 ${index + 1}:`, el.getAttribute('data-ad-slot'))
-                ;(window.adsbygoogle = window.adsbygoogle || []).push({})
-              }
-            } catch (pushError) {
-              // 忽略重复加载错误
-              if (!pushError.message.includes('already have ads')) {
-                console.error(`广告 ${index + 1} 加载失败:`, pushError)
-              }
-            }
-          })
-        } else {
-          console.log('没有找到需要加载的广告元素')
+  if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
+    try {
+      // 直接处理所有广告元素，但添加错误处理
+      const adElements = document.querySelectorAll('.adsbygoogle')
+      adElements.forEach((el) => {
+        try {
+          ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+        } catch (pushError) {
+          // 忽略重复加载错误
+          if (!pushError.message.includes('already have ads')) {
+            console.error('广告加载失败:', pushError)
+          }
         }
-        
-        // 延迟诊断
-        setTimeout(diagnoseAds, 3000)
-      } catch (e) {
-        console.error('广告加载失败:', e)
-      }
-    } else {
-      console.log('AdSense 脚本未加载，等待中...')
-      // 如果 adsbygoogle 还没加载，延迟重试
-      setTimeout(loadAds, 2000)
+      })
+    } catch (e) {
+      console.error('广告加载失败:', e)
     }
   } else {
-    // 页面未完全加载，等待
+    // 如果 adsbygoogle 还没加载，延迟重试
     setTimeout(loadAds, 1000)
   }
 }
 
-// 监听页面加载完成
-const handlePageLoad = () => {
-  console.log('页面加载完成，开始加载广告...')
-  loadAds()
-}
-
 onMounted(() => {
-  // 如果页面已经加载完成，立即加载广告
-  if (document.readyState === 'complete') {
-    handlePageLoad()
-  } else {
-    // 否则等待页面加载完成
-    window.addEventListener('load', handlePageLoad)
-  }
-  
-  // 清理事件监听器
-  return () => {
-    window.removeEventListener('load', handlePageLoad)
-  }
+  // 延迟加载广告
+  setTimeout(loadAds, 2000)
 })
 
 // --- Watcher ---
