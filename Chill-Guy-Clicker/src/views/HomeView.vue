@@ -9,7 +9,8 @@
      data-ad-client="ca-pub-4638984121333143"
      data-ad-slot="6904540807"
      data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+     data-full-width-responsive="true"
+     data-ad-status="unfilled"></ins>
         </aside>
 
         <!-- 右侧广告-PC -->
@@ -19,7 +20,8 @@
      data-ad-client="ca-pub-4638984121333143"
      data-ad-slot="5591459134"
      data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+     data-full-width-responsive="true"
+     data-ad-status="unfilled"></ins>
         </aside>
 
       <main class="main-content container">
@@ -31,7 +33,8 @@
      data-ad-client="ca-pub-4638984121333143"
      data-ad-slot="3707198686"
      data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+     data-full-width-responsive="true"
+     data-ad-status="unfilled"></ins>
         </aside>
 
 
@@ -42,7 +45,8 @@
      data-ad-client="ca-pub-4638984121333143"
      data-ad-slot="3423077907"
      data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+     data-full-width-responsive="true"
+     data-ad-status="unfilled"></ins>
         </aside>
 
         <h1 class="game-title" v-show="!isTheaterMode">{{ featuredGame.pageTitle || featuredGame.title }}</h1>
@@ -66,7 +70,8 @@
      data-ad-client="ca-pub-4638984121333143"
      data-ad-slot="5857669556"
      data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+     data-full-width-responsive="true"
+     data-ad-status="unfilled"></ins>
         </aside>
 
               <CommentSection :gameId="featuredGame.id" v-show="!isTheaterMode" />
@@ -80,7 +85,8 @@
      data-ad-client="ca-pub-4638984121333143"
      data-ad-slot="8919996910"
      data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+     data-full-width-responsive="true"
+     data-ad-status="unfilled"></ins>
         </aside>
 
           <!-- Hot Games Sidebar -->
@@ -89,6 +95,13 @@
 
         <!-- More Games Section -->
         <MoreGames :games="moreGames" v-show="!isTheaterMode" />
+        
+        <!-- 调试按钮 - 仅在开发环境显示 -->
+        <div v-if="import.meta.env.DEV" style="margin-top: 20px; text-align: center;">
+          <button @click="reloadAds" style="padding: 10px 20px; background: #41b883; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            重新加载广告 (调试)
+          </button>
+        </div>
       </main>
     </div>
   </div>
@@ -171,16 +184,82 @@ const updateSEO = () => {
   metaKeywords.setAttribute('content', game.seo.keywords);
 };
 
+// 检查AdSense脚本是否加载完成
+const waitForAdSense = (callback, maxAttempts = 30) => {
+  let attempts = 0
+  
+  const checkAdSense = () => {
+    attempts++
+    
+    if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
+      console.log('AdSense 脚本加载完成')
+      callback()
+    } else if (attempts < maxAttempts) {
+      console.log(`等待 AdSense 脚本加载... (${attempts}/${maxAttempts})`)
+      setTimeout(checkAdSense, 1000)
+    } else {
+      console.error('AdSense 脚本加载超时')
+      // 即使超时也尝试加载广告
+      callback()
+    }
+  }
+  
+  checkAdSense()
+}
+
 // 手动触发广告加载
 const loadAds = () => {
+  console.log('开始加载手动广告...')
+  
   if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
     try {
-      // 直接处理所有广告元素，但添加错误处理
+      // 获取所有广告元素
       const adElements = document.querySelectorAll('.adsbygoogle')
-      adElements.forEach((el) => {
+      console.log(`找到 ${adElements.length} 个广告元素`)
+      
+      if (adElements.length === 0) {
+        console.warn('未找到任何广告元素，可能是页面还未完全加载')
+        setTimeout(loadAds, 1000)
+        return
+      }
+      
+      adElements.forEach((el, index) => {
         try {
+          // 检查广告元素是否已经被处理过
+          if (el.getAttribute('data-adsbygoogle-status') === 'done') {
+            console.log(`广告元素 ${index + 1} 已经加载过，跳过`)
+            return
+          }
+          
+          // 确保广告元素有正确的属性
+          if (!el.getAttribute('data-ad-client') || !el.getAttribute('data-ad-slot')) {
+            console.error(`广告元素 ${index + 1} 缺少必要属性`)
+            return
+          }
+          
+          // 检查广告元素是否可见
+          const rect = el.getBoundingClientRect()
+          if (rect.width === 0 || rect.height === 0) {
+            console.warn(`广告元素 ${index + 1} 不可见，跳过`)
+            return
+          }
+          
+          console.log(`正在加载广告元素 ${index + 1}:`, {
+            client: el.getAttribute('data-ad-client'),
+            slot: el.getAttribute('data-ad-slot'),
+            format: el.getAttribute('data-ad-format'),
+            width: rect.width,
+            height: rect.height
+          })
+          
+          // 推送广告到 AdSense
           ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+          
+          // 标记为已处理
+          el.setAttribute('data-adsbygoogle-status', 'loading')
+          
         } catch (pushError) {
+          console.error(`广告元素 ${index + 1} 加载失败:`, pushError)
           // 忽略重复加载错误
           if (!pushError.message.includes('already have ads')) {
             console.error('广告加载失败:', pushError)
@@ -188,17 +267,72 @@ const loadAds = () => {
         }
       })
     } catch (e) {
-      console.error('广告加载失败:', e)
+      console.error('广告加载过程中发生错误:', e)
     }
   } else {
+    console.log('AdSense 脚本未加载，延迟重试...')
     // 如果 adsbygoogle 还没加载，延迟重试
     setTimeout(loadAds, 1000)
   }
 }
 
+// 监听广告加载状态
+const checkAdStatus = () => {
+  const adElements = document.querySelectorAll('.adsbygoogle')
+  let loadedCount = 0
+  let failedCount = 0
+  
+  adElements.forEach((el, index) => {
+    const status = el.getAttribute('data-adsbygoogle-status')
+    const adStatus = el.getAttribute('data-ad-status')
+    
+    if (status === 'done' || adStatus === 'filled') {
+      console.log(`广告元素 ${index + 1} 加载完成`)
+      loadedCount++
+    } else if (status === 'loading') {
+      console.log(`广告元素 ${index + 1} 正在加载中...`)
+    } else if (adStatus === 'unfilled') {
+      console.warn(`广告元素 ${index + 1} 未填充`)
+      failedCount++
+    }
+  })
+  
+  console.log(`广告加载统计: 成功 ${loadedCount} 个, 失败 ${failedCount} 个`)
+  
+  // 如果有失败的广告，尝试重新加载
+  if (failedCount > 0) {
+    console.log('检测到失败的广告，尝试重新加载...')
+    setTimeout(loadAds, 2000)
+  }
+}
+
+// 强制重新加载广告
+const reloadAds = () => {
+  console.log('强制重新加载所有广告...')
+  const adElements = document.querySelectorAll('.adsbygoogle')
+  adElements.forEach(el => {
+    el.removeAttribute('data-adsbygoogle-status')
+    el.setAttribute('data-ad-status', 'unfilled')
+  })
+  loadAds()
+}
+
 onMounted(() => {
-  // 延迟加载广告
-  setTimeout(loadAds, 2000)
+  // 等待AdSense脚本加载完成后再加载广告
+  waitForAdSense(() => {
+    loadAds()
+    // 定期检查广告状态
+    setInterval(checkAdStatus, 5000)
+    
+    // 10秒后再次检查，如果还有未加载的广告，强制重新加载
+    setTimeout(() => {
+      const unfilledAds = document.querySelectorAll('.adsbygoogle[data-ad-status="unfilled"]')
+      if (unfilledAds.length > 0) {
+        console.log(`发现 ${unfilledAds.length} 个未填充的广告，强制重新加载`)
+        reloadAds()
+      }
+    }, 10000)
+  })
 })
 
 // --- Watcher ---

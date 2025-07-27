@@ -8,6 +8,8 @@
   justify-content: center;
   margin: 1rem auto;
   text-align: center; 
+  /* 确保广告容器有最小高度 */
+  min-height: 90px;
 }
 
 .ads-left{
@@ -17,6 +19,8 @@
   top: 0;
   left: 20px;
   z-index: 999999999;
+  /* 确保广告可见 */
+  background: transparent;
 }
 
 .ads-right{
@@ -26,4 +30,26 @@
   top: 0;
   right: 20px;
   z-index: 999999999;
+  /* 确保广告可见 */
+  background: transparent;
+}
+
+/* 确保广告元素本身有正确的样式 */
+.adsbygoogle {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 90px !important;
+  background: transparent !important;
+}
+
+/* 移动端广告样式 */
+@media (max-width: 768px) {
+  .ads-wrapper {
+    min-height: 50px;
+  }
+  
+  .adsbygoogle {
+    min-height: 50px !important;
+  }
 }
