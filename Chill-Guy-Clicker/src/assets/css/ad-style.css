@@ -1,4 +1,4 @@
-.ads-wrapper{
+.ads-wrapper {
   width: 100%;
   max-width: 100%;
   overflow: visible;
@@ -7,10 +7,12 @@
   align-items: center;
   justify-content: center;
   margin: 1rem auto;
-  text-align: center; 
+  text-align: center;
+  min-height: 90px; /* 确保横幅广告有足够的高度 */
+  position: relative;
 }
 
-.ads-left{
+.ads-left {
   width: 160px;
   min-height: 500px;
   position: absolute;
@@ -19,7 +21,7 @@
   z-index: 999999999;
 }
 
-.ads-right{
+.ads-right {
   width: 160px;
   min-height: 500px;
   position: absolute;

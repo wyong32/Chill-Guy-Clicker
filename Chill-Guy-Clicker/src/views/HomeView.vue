@@ -1,51 +1,58 @@
 <template>
   <div class="home-wrapper">
     <div class="home" :class="{ 'theater-mode': isTheaterMode }">
-
       <!-- 左侧广告-PC -->
       <aside class="ads-wrapper ads-left" v-if="!isMobile">
-          <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-4638984121333143"
-     data-ad-slot="6904540807"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-        </aside>
+        <ins
+          class="adsbygoogle"
+          style="display: block"
+          data-ad-client="ca-pub-4638984121333143"
+          data-ad-slot="6904540807"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+      </aside>
 
-        <!-- 右侧广告-PC -->
-        <aside class="ads-wrapper ads-right" v-if="!isMobile">
-          <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-4638984121333143"
-     data-ad-slot="5591459134"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-        </aside>
+      <!-- 右侧广告-PC -->
+      <aside class="ads-wrapper ads-right" v-if="!isMobile">
+        <ins
+          class="adsbygoogle"
+          style="display: block"
+          data-ad-client="ca-pub-4638984121333143"
+          data-ad-slot="5591459134"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+      </aside>
 
       <main class="main-content container">
-
         <!-- 头部横幅广告-PC -->
         <aside class="ads-wrapper" v-if="!isMobile">
-          <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-4638984121333143"
-     data-ad-slot="3707198686"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-4638984121333143"
+            data-ad-slot="3707198686"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
         </aside>
-
 
         <!-- 移动端横幅广告1 -->
         <aside class="ads-wrapper" v-if="isMobile">
-          <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-4638984121333143"
-     data-ad-slot="3423077907"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-4638984121333143"
+            data-ad-slot="3423077907"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
         </aside>
 
-        <h1 class="game-title" v-show="!isTheaterMode">{{ featuredGame.pageTitle || featuredGame.title }}</h1>
+        <h1 class="game-title" v-show="!isTheaterMode">
+          {{ featuredGame.pageTitle || featuredGame.title }}
+        </h1>
         <div class="game-layout">
           <!-- Main Game Area -->
           <section class="game-main">
@@ -56,32 +63,38 @@
                 @start-game="startGame"
                 @theater-mode-changed="handleTheaterModeChanged"
               />
-              <GameInfo :game="featuredGame" v-if="featuredGame.detailsHtml || featuredGame.rating" />
-              
+              <GameInfo
+                :game="featuredGame"
+                v-if="featuredGame.detailsHtml || featuredGame.rating"
+              />
 
-                      <!-- 移动端横幅广告2 -->
-        <aside class="ads-wrapper" v-if="isMobile">
-          <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-4638984121333143"
-     data-ad-slot="5857669556"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-        </aside>
+              <!-- 移动端横幅广告2 -->
+              <aside class="ads-wrapper" v-if="isMobile">
+                <ins
+                  class="adsbygoogle"
+                  style="display: block"
+                  data-ad-client="ca-pub-4638984121333143"
+                  data-ad-slot="5857669556"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"
+                ></ins>
+              </aside>
 
               <CommentSection :gameId="featuredGame.id" v-show="!isTheaterMode" />
             </article>
           </section>
 
-                                <!-- 移动端横幅广告3 -->
-        <aside class="ads-wrapper" v-if="isMobile">
-          <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-4638984121333143"
-     data-ad-slot="8919996910"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-        </aside>
+          <!-- 移动端横幅广告3 -->
+          <aside class="ads-wrapper" v-if="isMobile">
+            <ins
+              class="adsbygoogle"
+              style="display: block"
+              data-ad-client="ca-pub-4638984121333143"
+              data-ad-slot="8919996910"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            ></ins>
+          </aside>
 
           <!-- Hot Games Sidebar -->
           <GameSidebar :hotGames="hotGames" :newGames="newGames" v-show="!isTheaterMode" />
@@ -95,32 +108,32 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, nextTick, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref, computed, watch, nextTick, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 // Component imports
-import GamePlayer from '@/components/GamePlayer.vue';
-import GameInfo from '@/components/GameInfo.vue';
-import GameSidebar from '@/components/GameSidebar.vue';
-import MoreGames from '@/components/MoreGames.vue';
-import CommentSection from '@/components/CommentSection.vue';
+import GamePlayer from '@/components/GamePlayer.vue'
+import GameInfo from '@/components/GameInfo.vue'
+import GameSidebar from '@/components/GameSidebar.vue'
+import MoreGames from '@/components/MoreGames.vue'
+import CommentSection from '@/components/CommentSection.vue'
 // Composable and data imports
-import { useDeviceDetection } from '@/utils/useDeviceDetection.js';
-import { games } from '@/data/games.js';
+import { useDeviceDetection } from '@/utils/useDeviceDetection.js'
+import { games } from '@/data/games.js'
 
 // --- State and Route ---
-const { isMobile } = useDeviceDetection();
-const route = useRoute();
-const gameStarted = ref(false);
-const isTheaterMode = ref(false);
+const { isMobile } = useDeviceDetection()
+const route = useRoute()
+const gameStarted = ref(false)
+const isTheaterMode = ref(false)
 
 // --- Computed Properties ---
 const currentGame = computed(() => {
-  const addressBar = route.params.addressBar;
-  const isHomePage = route.path === '/';
-  const defaultGame = games.find(game => game.id === 1) || games[0];
+  const addressBar = route.params.addressBar
+  const isHomePage = route.path === '/'
+  const defaultGame = games.find((game) => game.id === 1) || games[0]
 
   if (isHomePage && (!addressBar || addressBar === '')) {
-    return defaultGame;
+    return defaultGame
   }
 
   if (addressBar) {
@@ -128,63 +141,70 @@ const currentGame = computed(() => {
       (g) =>
         (g.addressBar && g.addressBar.toLowerCase() === addressBar.toLowerCase()) ||
         (g.id && String(g.id).toLowerCase() === addressBar.toLowerCase()),
-    );
-    return game || defaultGame;
+    )
+    return game || defaultGame
   }
-  return defaultGame;
-});
+  return defaultGame
+})
 
-const featuredGame = computed(() => currentGame.value);
-const hotGames = computed(() => games.filter(game => game.isHot));
-const newGames = computed(() => games.filter(game => game.isNew));
-const moreGames = computed(() => games.filter(game => (game.isMore || game.isRecommended)));
+const featuredGame = computed(() => currentGame.value)
+const hotGames = computed(() => games.filter((game) => game.isHot))
+const newGames = computed(() => games.filter((game) => game.isNew))
+const moreGames = computed(() => games.filter((game) => game.isMore || game.isRecommended))
 
 // --- Methods ---
 const startGame = () => {
-  gameStarted.value = true;
-};
+  gameStarted.value = true
+}
 
 const handleTheaterModeChanged = (value) => {
-  isTheaterMode.value = value;
-};
+  isTheaterMode.value = value
+}
 
 const updateSEO = () => {
-  const game = currentGame.value;
-  if (!game || !game.seo) return;
+  const game = currentGame.value
+  if (!game || !game.seo) return
 
-  document.title = game.seo.title;
+  document.title = game.seo.title
 
-  let metaDescription = document.querySelector('meta[name="description"]');
+  let metaDescription = document.querySelector('meta[name="description"]')
   if (!metaDescription) {
-    metaDescription = document.createElement('meta');
-    metaDescription.setAttribute('name', 'description');
-    document.head.appendChild(metaDescription);
+    metaDescription = document.createElement('meta')
+    metaDescription.setAttribute('name', 'description')
+    document.head.appendChild(metaDescription)
   }
-  metaDescription.setAttribute('content', game.seo.description);
+  metaDescription.setAttribute('content', game.seo.description)
 
-  let metaKeywords = document.querySelector('meta[name="keywords"]');
+  let metaKeywords = document.querySelector('meta[name="keywords"]')
   if (!metaKeywords) {
-    metaKeywords = document.createElement('meta');
-    metaKeywords.setAttribute('name', 'keywords');
-    document.head.appendChild(metaKeywords);
+    metaKeywords = document.createElement('meta')
+    metaKeywords.setAttribute('name', 'keywords')
+    document.head.appendChild(metaKeywords)
   }
-  metaKeywords.setAttribute('content', game.seo.keywords);
-};
+  metaKeywords.setAttribute('content', game.seo.keywords)
+}
 
 // 手动触发广告加载
 const loadAds = () => {
   if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
     try {
-      // 直接处理所有广告元素，但添加错误处理
-      const adElements = document.querySelectorAll('.adsbygoogle')
-      adElements.forEach((el) => {
+      // 正确处理每个广告元素
+      const adElements = document.querySelectorAll('.adsbygoogle:not([data-ad-status])')
+      console.log('找到广告元素数量:', adElements.length)
+
+      adElements.forEach((el, index) => {
         try {
+          // 标记广告元素已处理
+          el.setAttribute('data-ad-status', 'loading')
+          console.log(`正在加载广告 ${index + 1}:`, el.getAttribute('data-ad-slot'))
           ;(window.adsbygoogle = window.adsbygoogle || []).push({})
         } catch (pushError) {
           // 忽略重复加载错误
           if (!pushError.message.includes('already have ads')) {
             console.error('广告加载失败:', pushError)
           }
+          // 移除标记，允许重试
+          el.removeAttribute('data-ad-status')
         }
       })
     } catch (e) {
@@ -192,13 +212,23 @@ const loadAds = () => {
     }
   } else {
     // 如果 adsbygoogle 还没加载，延迟重试
+    console.log('广告脚本未加载，延迟重试...')
     setTimeout(loadAds, 1000)
   }
 }
 
+// 监听广告脚本加载完成
+const waitForAdScript = () => {
+  if (window.adsbygoogle) {
+    loadAds()
+  } else {
+    setTimeout(waitForAdScript, 100)
+  }
+}
+
 onMounted(() => {
-  // 延迟加载广告
-  setTimeout(loadAds, 2000)
+  // 等待广告脚本加载完成后立即加载广告
+  waitForAdScript()
 })
 
 // --- Watcher ---
@@ -207,12 +237,12 @@ watch(
   currentGame,
   (newGame) => {
     if (newGame) {
-      gameStarted.value = false;
-      updateSEO();
+      gameStarted.value = false
+      updateSEO()
     }
   },
-  { immediate: true }
-);
+  { immediate: true },
+)
 </script>
 
 <style scoped>
@@ -430,14 +460,14 @@ watch(
 }
 
 @media (max-width: 480px) {
-  .container{
+  .container {
     padding: 0 10px;
   }
-  .main-content{
+  .main-content {
     padding-top: 30px;
   }
 
-  .featured-game{
+  .featured-game {
     padding: 20px 10px;
   }
 
