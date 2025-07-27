@@ -61,6 +61,20 @@
   <!-- 广告脚本 -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4638984121333143"
   crossorigin="anonymous"></script>
+  
+  <!-- AdSense 加载状态检测 -->
+  <script>
+    // 检测 AdSense 脚本是否加载成功
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        if (window.adsbygoogle) {
+          console.log('✅ AdSense 脚本加载成功');
+        } else {
+          console.error('❌ AdSense 脚本加载失败');
+        }
+      }, 3000);
+    });
+  </script>
 
   <!-- 内联关键CSS防止CLS - 精确复制 Dreamy-Room-Level -->
   <style>
