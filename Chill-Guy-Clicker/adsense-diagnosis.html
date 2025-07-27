@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AdSense 全面诊断</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f5f5f5;
+      }
+      .diagnosis-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .diagnosis-section {
+        margin: 20px 0;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .diagnosis-section h3 {
+        margin-top: 0;
+        color: #333;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 5px;
+      }
+      .result {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+      .result.success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+      .result.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+      .result.warning {
+        background-color: #fff3cd;
+        color: #856404;
+        border: 1px solid #ffeaa7;
+      }
+      .result.info {
+        background-color: #d1ecf1;
+        color: #0c5460;
+        border: 1px solid #bee5eb;
+      }
+      .ad-test {
+        margin: 20px 0;
+        padding: 20px;
+        border: 2px dashed #007bff;
+        border-radius: 8px;
+        min-height: 100px;
+        text-align: center;
+        background-color: #f8f9fa;
+      }
+      .ad-test.empty {
+        border-color: #dc3545;
+        background-color: #f8d7da;
+      }
+      .ad-test.loaded {
+        border-color: #28a745;
+        background-color: #d4edda;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .code-block {
+        background-color: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 4px;
+        padding: 10px;
+        font-family: monospace;
+        font-size: 12px;
+        margin: 10px 0;
+        overflow-x: auto;
+      }
+      .suggestion {
+        background-color: #e7f3ff;
+        border: 1px solid #b3d9ff;
+        border-radius: 4px;
+        padding: 15px;
+        margin: 15px 0;
+      }
+      .suggestion h4 {
+        margin-top: 0;
+        color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="diagnosis-container">
+      <h1>Google AdSense 全面诊断工具</h1>
+
+      <div class="diagnosis-section">
+        <h3>1. 基本信息检查</h3>
+        <div id="basic-info"></div>
+      </div>
+
+      <div class="diagnosis-section">
+        <h3>2. 网络连接检查</h3>
+        <div id="network-info"></div>
+      </div>
+
+      <div class="diagnosis-section">
+        <h3>3. 广告脚本检查</h3>
+        <div id="script-info"></div>
+      </div>
+
+      <div class="diagnosis-section">
+        <h3>4. 广告元素检查</h3>
+        <div id="element-info"></div>
+      </div>
+
+      <div class="diagnosis-section">
+        <h3>5. 浏览器环境检查</h3>
+        <div id="browser-info"></div>
+      </div>
+
+      <div class="diagnosis-section">
+        <h3>6. 广告加载测试</h3>
+        <div class="ad-test" id="test-ad">
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-4638984121333143"
+            data-ad-slot="3707198686"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+        </div>
+        <button onclick="runFullDiagnosis()">运行完整诊断</button>
+        <button onclick="loadTestAd()">加载测试广告</button>
+      </div>
+
+      <div class="diagnosis-section">
+        <h3>7. 诊断结果和建议</h3>
+        <div id="diagnosis-results"></div>
+      </div>
+    </div>
+
+    <!-- Google AdSense 脚本 -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4638984121333143"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      let diagnosisResults = []
+
+      function addResult(section, message, type = 'info') {
+        const resultDiv = document.createElement('div')
+        resultDiv.className = `result ${type}`
+        resultDiv.innerHTML = message
+        document.getElementById(section).appendChild(resultDiv)
+
+        diagnosisResults.push({ section, message, type })
+      }
+
+      function checkBasicInfo() {
+        addResult('basic-info', '开始检查基本信息...', 'info')
+
+        // 检查广告客户端ID
+        addResult('basic-info', '✓ 广告客户端ID: ca-pub-4638984121333143', 'success')
+
+        // 检查当前URL
+        const currentUrl = window.location.href
+        addResult('basic-info', `✓ 当前页面URL: ${currentUrl}`, 'success')
+
+        // 检查是否为本地环境
+        if (currentUrl.includes('localhost') || currentUrl.includes('127.0.0.1')) {
+          addResult('basic-info', '⚠️ 警告: 当前在本地环境，AdSense可能无法正常工作', 'warning')
+        }
+
+        // 检查是否为HTTPS
+        if (currentUrl.startsWith('https://')) {
+          addResult('basic-info', '✓ 使用HTTPS协议', 'success')
+        } else {
+          addResult('basic-info', '✗ 未使用HTTPS协议，AdSense需要HTTPS', 'error')
+        }
+      }
+
+      function checkNetwork() {
+        addResult('network-info', '开始检查网络连接...', 'info')
+
+        const testUrls = [
+          'https://pagead2.googlesyndication.com',
+          'https://googleads.g.doubleclick.net',
+          'https://www.google.com',
+        ]
+
+        testUrls.forEach((url) => {
+          fetch(url, { mode: 'no-cors' })
+            .then(() => {
+              addResult('network-info', `✓ ${url} - 可访问`, 'success')
+            })
+            .catch((error) => {
+              addResult('network-info', `✗ ${url} - 不可访问: ${error.message}`, 'error')
+            })
+        })
+      }
+
+      function checkAdScript() {
+        addResult('script-info', '开始检查广告脚本...', 'info')
+
+        // 检查脚本标签
+        const adScript = document.querySelector('script[src*="adsbygoogle.js"]')
+        if (adScript) {
+          addResult('script-info', '✓ 广告脚本标签存在', 'success')
+          addResult('script-info', `✓ 脚本URL: ${adScript.src}`, 'success')
+        } else {
+          addResult('script-info', '✗ 广告脚本标签不存在', 'error')
+        }
+
+        // 检查 adsbygoogle 对象
+        if (window.adsbygoogle) {
+          addResult('script-info', '✓ adsbygoogle 对象存在', 'success')
+
+          if (typeof window.adsbygoogle.push === 'function') {
+            addResult('script-info', '✓ adsbygoogle.push 方法可用', 'success')
+          } else {
+            addResult('script-info', '✗ adsbygoogle.push 方法不可用', 'error')
+          }
+        } else {
+          addResult('script-info', '✗ adsbygoogle 对象不存在', 'error')
+        }
+      }
+
+      function checkAdElements() {
+        addResult('element-info', '开始检查广告元素...', 'info')
+
+        const adElements = document.querySelectorAll('.adsbygoogle')
+        addResult('element-info', `✓ 找到 ${adElements.length} 个广告元素`, 'success')
+
+        adElements.forEach((el, index) => {
+          const adSlot = el.getAttribute('data-ad-slot')
+          const adClient = el.getAttribute('data-ad-client')
+          const adFormat = el.getAttribute('data-ad-format')
+
+          addResult('element-info', `广告 ${index + 1}:`, 'info')
+          addResult('element-info', `  - 广告位ID: ${adSlot}`, 'info')
+          addResult('element-info', `  - 客户端ID: ${adClient}`, 'info')
+          addResult('element-info', `  - 格式: ${adFormat}`, 'info')
+
+          // 检查是否有内容
+          const hasContent = el.children.length > 0
+          if (hasContent) {
+            addResult('element-info', `  ✓ 有内容 (${el.children.length} 个子元素)`, 'success')
+          } else {
+            addResult('element-info', `  ✗ 无内容`, 'error')
+          }
+        })
+      }
+
+      function checkBrowser() {
+        addResult('browser-info', '开始检查浏览器环境...', 'info')
+
+        // 检查用户代理
+        const userAgent = navigator.userAgent
+        addResult('browser-info', `✓ 用户代理: ${userAgent.substring(0, 100)}...`, 'success')
+
+        // 检查是否为移动设备
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          userAgent,
+        )
+        if (isMobile) {
+          addResult('browser-info', '✓ 检测到移动设备', 'success')
+        } else {
+          addResult('browser-info', '✓ 检测到桌面设备', 'success')
+        }
+
+        // 检查是否支持fetch
+        if (typeof fetch !== 'undefined') {
+          addResult('browser-info', '✓ 支持fetch API', 'success')
+        } else {
+          addResult('browser-info', '✗ 不支持fetch API', 'error')
+        }
+
+        // 检查是否支持async/await
+        try {
+          eval('async function test() {}')
+          addResult('browser-info', '✓ 支持async/await', 'success')
+        } catch (e) {
+          addResult('browser-info', '✗ 不支持async/await', 'error')
+        }
+      }
+
+      function loadTestAd() {
+        addResult('diagnosis-results', '开始加载测试广告...', 'info')
+
+        if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
+          try {
+            const adElement = document.querySelector('.adsbygoogle')
+            if (adElement) {
+              addResult('diagnosis-results', '✓ 找到广告元素，调用push方法', 'success')
+              ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+              addResult('diagnosis-results', '✓ push方法调用成功', 'success')
+
+              // 3秒后检查结果
+              setTimeout(() => {
+                const hasContent = adElement.children.length > 0
+                const testContainer = document.getElementById('test-ad')
+
+                if (hasContent) {
+                  testContainer.classList.add('loaded')
+                  testContainer.classList.remove('empty')
+                  addResult('diagnosis-results', '✓ 广告加载成功！', 'success')
+                } else {
+                  testContainer.classList.add('empty')
+                  testContainer.classList.remove('loaded')
+                  addResult('diagnosis-results', '✗ 广告加载失败，ins标签内无内容', 'error')
+                }
+              }, 3000)
+            } else {
+              addResult('diagnosis-results', '✗ 未找到广告元素', 'error')
+            }
+          } catch (error) {
+            addResult('diagnosis-results', `✗ 加载广告时发生错误: ${error.message}`, 'error')
+          }
+        } else {
+          addResult('diagnosis-results', '✗ Google AdSense脚本未加载或不可用', 'error')
+        }
+      }
+
+      function generateSuggestions() {
+        addResult('diagnosis-results', '<h4>诊断建议:</h4>', 'info')
+
+        const suggestions = []
+
+        // 检查是否有错误
+        const errors = diagnosisResults.filter((r) => r.type === 'error')
+        const warnings = diagnosisResults.filter((r) => r.type === 'warning')
+
+        if (errors.length > 0) {
+          suggestions.push('发现错误，需要解决以下问题:')
+          errors.forEach((error) => {
+            suggestions.push(`- ${error.message}`)
+          })
+        }
+
+        if (warnings.length > 0) {
+          suggestions.push('发现警告，建议注意以下问题:')
+          warnings.forEach((warning) => {
+            suggestions.push(`- ${warning.message}`)
+          })
+        }
+
+        // 常见问题建议
+        suggestions.push('')
+        suggestions.push('常见解决方案:')
+        suggestions.push('1. 确保Google AdSense账户已完全审核通过')
+        suggestions.push('2. 确保网站已通过AdSense审核')
+        suggestions.push('3. 确保网站内容符合AdSense政策')
+        suggestions.push('4. 等待24-48小时让广告开始显示')
+        suggestions.push('5. 检查广告单元是否正确配置')
+        suggestions.push('6. 确保网站有足够的流量')
+
+        suggestions.forEach((suggestion) => {
+          addResult('diagnosis-results', suggestion, 'info')
+        })
+      }
+
+      function runFullDiagnosis() {
+        // 清除之前的结果
+        diagnosisResults = []
+        ;[
+          'basic-info',
+          'network-info',
+          'script-info',
+          'element-info',
+          'browser-info',
+          'diagnosis-results',
+        ].forEach((id) => {
+          document.getElementById(id).innerHTML = ''
+        })
+
+        // 运行所有检查
+        checkBasicInfo()
+        checkNetwork()
+        checkAdScript()
+        checkAdElements()
+        checkBrowser()
+
+        // 延迟生成建议
+        setTimeout(() => {
+          generateSuggestions()
+        }, 2000)
+      }
+
+      // 页面加载完成后自动运行诊断
+      window.addEventListener('load', function () {
+        addResult('diagnosis-results', '页面加载完成，开始自动诊断...', 'info')
+        setTimeout(runFullDiagnosis, 1000)
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>广告调试页面</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f5f5f5;
+      }
+      .debug-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .debug-section {
+        margin: 20px 0;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .debug-section h3 {
+        margin-top: 0;
+        color: #333;
+      }
+      .ad-container {
+        margin: 15px 0;
+        padding: 15px;
+        border: 2px dashed #007bff;
+        border-radius: 5px;
+        min-height: 100px;
+        background-color: #f8f9fa;
+      }
+      .ad-container.empty {
+        border-color: #dc3545;
+        background-color: #f8d7da;
+      }
+      .ad-container.loaded {
+        border-color: #28a745;
+        background-color: #d4edda;
+      }
+      .log {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        padding: 10px;
+        margin: 10px 0;
+        font-family: monospace;
+        font-size: 12px;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+      .log.error {
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        color: #721c24;
+      }
+      .log.success {
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        color: #155724;
+      }
+      .log.info {
+        background-color: #d1ecf1;
+        border-color: #bee5eb;
+        color: #0c5460;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+        font-size: 14px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      button.danger {
+        background-color: #dc3545;
+      }
+      button.danger:hover {
+        background-color: #c82333;
+      }
+      .status-indicator {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+      .status-indicator.success {
+        background-color: #28a745;
+      }
+      .status-indicator.error {
+        background-color: #dc3545;
+      }
+      .status-indicator.warning {
+        background-color: #ffc107;
+      }
+      .status-indicator.info {
+        background-color: #17a2b8;
+      }
+      .network-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 10px 0;
+      }
+      .network-item {
+        padding: 8px;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+        border: 1px solid #dee2e6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="debug-container">
+      <h1>Google AdSense 详细调试页面</h1>
+
+      <div class="debug-section">
+        <h3>基本信息</h3>
+        <div class="network-info">
+          <div class="network-item"><strong>广告客户端ID:</strong> ca-pub-4638984121333143</div>
+          <div class="network-item"><strong>当前时间:</strong> <span id="current-time"></span></div>
+          <div class="network-item"><strong>用户代理:</strong> <span id="user-agent"></span></div>
+          <div class="network-item"><strong>页面URL:</strong> <span id="page-url"></span></div>
+        </div>
+      </div>
+
+      <div class="debug-section">
+        <h3>控制按钮</h3>
+        <button onclick="checkAdScript()">检查广告脚本</button>
+        <button onclick="loadAds()">加载广告</button>
+        <button onclick="checkAdStatus()">检查广告状态</button>
+        <button onclick="clearAds()">清除广告</button>
+        <button onclick="testNetwork()">测试网络连接</button>
+        <button onclick="clearLog()" class="danger">清除日志</button>
+      </div>
+
+      <div class="debug-section">
+        <h3>广告脚本状态</h3>
+        <div id="script-status"></div>
+      </div>
+
+      <div class="debug-section">
+        <h3>网络连接测试</h3>
+        <div id="network-status"></div>
+      </div>
+
+      <div class="debug-section">
+        <h3>广告元素状态</h3>
+        <div id="ad-elements-status"></div>
+      </div>
+
+      <div class="debug-section">
+        <h3>横幅广告测试 (广告位: 3707198686)</h3>
+        <div class="ad-container" id="banner-ad">
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-4638984121333143"
+            data-ad-slot="3707198686"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+        </div>
+      </div>
+
+      <div class="debug-section">
+        <h3>侧边栏广告测试 (广告位: 6904540807)</h3>
+        <div class="ad-container" id="sidebar-ad">
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-4638984121333143"
+            data-ad-slot="6904540807"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+        </div>
+      </div>
+
+      <div class="debug-section">
+        <h3>移动端广告测试 (广告位: 3423077907)</h3>
+        <div class="ad-container" id="mobile-ad">
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-4638984121333143"
+            data-ad-slot="3423077907"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+        </div>
+      </div>
+
+      <div class="debug-section">
+        <h3>调试日志</h3>
+        <div id="debug-log" class="log"></div>
+      </div>
+    </div>
+
+    <!-- Google AdSense 脚本 -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4638984121333143"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // 调试日志系统
+      const debugLog = document.getElementById('debug-log')
+
+      function log(message, type = 'info') {
+        const timestamp = new Date().toLocaleTimeString()
+        const logEntry = document.createElement('div')
+        logEntry.className = `log ${type}`
+        logEntry.innerHTML = `<strong>[${timestamp}]</strong> ${message}`
+        debugLog.appendChild(logEntry)
+        debugLog.scrollTop = debugLog.scrollHeight
+        console.log(`[${timestamp}] ${message}`)
+      }
+
+      // 初始化基本信息
+      function initBasicInfo() {
+        document.getElementById('current-time').textContent = new Date().toLocaleString()
+        document.getElementById('user-agent').textContent =
+          navigator.userAgent.substring(0, 100) + '...'
+        document.getElementById('page-url').textContent = window.location.href
+      }
+
+      // 检查广告脚本状态
+      function checkAdScript() {
+        log('检查广告脚本状态...', 'info')
+
+        const scriptStatus = document.getElementById('script-status')
+        let statusHtml = ''
+
+        // 检查 adsbygoogle 对象
+        if (window.adsbygoogle) {
+          statusHtml +=
+            '<div><span class="status-indicator success"></span>adsbygoogle 对象存在</div>'
+          log('adsbygoogle 对象存在', 'success')
+
+          if (typeof window.adsbygoogle.push === 'function') {
+            statusHtml +=
+              '<div><span class="status-indicator success"></span>adsbygoogle.push 方法可用</div>'
+            log('adsbygoogle.push 方法可用', 'success')
+          } else {
+            statusHtml +=
+              '<div><span class="status-indicator error"></span>adsbygoogle.push 方法不可用</div>'
+            log('adsbygoogle.push 方法不可用', 'error')
+          }
+        } else {
+          statusHtml +=
+            '<div><span class="status-indicator error"></span>adsbygoogle 对象不存在</div>'
+          log('adsbygoogle 对象不存在', 'error')
+        }
+
+        // 检查脚本标签
+        const adScript = document.querySelector('script[src*="adsbygoogle.js"]')
+        if (adScript) {
+          statusHtml += '<div><span class="status-indicator success"></span>广告脚本标签存在</div>'
+          log('广告脚本标签存在', 'success')
+        } else {
+          statusHtml += '<div><span class="status-indicator error"></span>广告脚本标签不存在</div>'
+          log('广告脚本标签不存在', 'error')
+        }
+
+        scriptStatus.innerHTML = statusHtml
+      }
+
+      // 测试网络连接
+      function testNetwork() {
+        log('测试网络连接...', 'info')
+
+        const networkStatus = document.getElementById('network-status')
+        let statusHtml = ''
+
+        // 测试 Google AdSense 域名
+        const testUrls = [
+          'https://pagead2.googlesyndication.com',
+          'https://googleads.g.doubleclick.net',
+          'https://www.google.com',
+        ]
+
+        testUrls.forEach((url) => {
+          fetch(url, { mode: 'no-cors' })
+            .then(() => {
+              statusHtml += `<div><span class="status-indicator success"></span>${url} - 可访问</div>`
+              log(`${url} - 可访问`, 'success')
+            })
+            .catch((error) => {
+              statusHtml += `<div><span class="status-indicator error"></span>${url} - 不可访问: ${error.message}</div>`
+              log(`${url} - 不可访问: ${error.message}`, 'error')
+            })
+            .finally(() => {
+              networkStatus.innerHTML = statusHtml
+            })
+        })
+      }
+
+      // 加载广告
+      function loadAds() {
+        log('开始加载广告...', 'info')
+
+        if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
+          try {
+            const adElements = document.querySelectorAll('.adsbygoogle:not([data-ad-status])')
+            log(`找到 ${adElements.length} 个未处理的广告元素`, 'info')
+
+            adElements.forEach((el, index) => {
+              try {
+                el.setAttribute('data-ad-status', 'loading')
+                const adSlot = el.getAttribute('data-ad-slot')
+                log(`正在加载广告 ${index + 1} (广告位: ${adSlot})`, 'info')
+
+                // 调用 push 方法
+                ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+
+                // 监听广告加载状态
+                setTimeout(() => {
+                  checkAdElementStatus(el, adSlot)
+                }, 3000)
+              } catch (error) {
+                log(`广告 ${index + 1} 加载失败: ${error.message}`, 'error')
+                el.removeAttribute('data-ad-status')
+              }
+            })
+          } catch (error) {
+            log(`广告加载过程中发生错误: ${error.message}`, 'error')
+          }
+        } else {
+          log('Google AdSense 脚本未加载或不可用', 'error')
+        }
+      }
+
+      // 检查广告元素状态
+      function checkAdElementStatus(element, adSlot) {
+        const hasContent = element.children.length > 0
+        const adStatus = element.getAttribute('data-ad-status')
+        const container = element.closest('.ad-container')
+
+        if (hasContent) {
+          element.setAttribute('data-ad-status', 'loaded')
+          container.classList.remove('empty')
+          container.classList.add('loaded')
+          log(`广告位 ${adSlot} 加载成功，有内容`, 'success')
+        } else {
+          container.classList.add('empty')
+          container.classList.remove('loaded')
+          log(`广告位 ${adSlot} 加载失败，无内容`, 'error')
+        }
+      }
+
+      // 检查所有广告状态
+      function checkAdStatus() {
+        log('检查所有广告状态...', 'info')
+
+        const adElementsStatus = document.getElementById('ad-elements-status')
+        let statusHtml = ''
+
+        const adElements = document.querySelectorAll('.adsbygoogle')
+        log(`总共有 ${adElements.length} 个广告元素`, 'info')
+
+        adElements.forEach((el, index) => {
+          const adSlot = el.getAttribute('data-ad-slot')
+          const adStatus = el.getAttribute('data-ad-status')
+          const hasContent = el.children.length > 0
+          const hasIframe = el.querySelector('iframe')
+          const hasDiv = el.querySelector('div')
+
+          const status = hasContent ? 'success' : 'error'
+          const indicator = hasContent ? 'success' : 'error'
+
+          statusHtml += `
+                    <div>
+                        <span class="status-indicator ${indicator}"></span>
+                        广告 ${index + 1} (广告位: ${adSlot}): 
+                        状态=${adStatus || '未处理'}, 
+                        有内容=${hasContent}, 
+                        有iframe=${!!hasIframe}, 
+                        有div=${!!hasDiv}
+                    </div>
+                `
+
+          log(
+            `广告 ${index + 1} (广告位: ${adSlot}): 状态=${adStatus || '未处理'}, 有内容=${hasContent}`,
+            status,
+          )
+        })
+
+        adElementsStatus.innerHTML = statusHtml
+      }
+
+      // 清除广告
+      function clearAds() {
+        log('清除所有广告...', 'info')
+
+        const adElements = document.querySelectorAll('.adsbygoogle')
+        adElements.forEach((el) => {
+          el.removeAttribute('data-ad-status')
+          el.innerHTML = ''
+        })
+
+        // 清除容器样式
+        document.querySelectorAll('.ad-container').forEach((container) => {
+          container.classList.remove('loaded', 'empty')
+        })
+
+        log('广告已清除', 'success')
+      }
+
+      // 清除日志
+      function clearLog() {
+        debugLog.innerHTML = ''
+        log('日志已清除', 'info')
+      }
+
+      // 监听广告相关事件
+      window.addEventListener('message', function (event) {
+        if (event.data && event.data.type === 'adsbygoogle') {
+          log(`收到广告消息: ${event.data.type}`, 'info')
+        }
+      })
+
+      // 监听页面可见性变化
+      document.addEventListener('visibilitychange', function () {
+        if (!document.hidden) {
+          log('页面变为可见，重新检查广告状态', 'info')
+          setTimeout(checkAdStatus, 1000)
+        }
+      })
+
+      // 页面加载完成后初始化
+      window.addEventListener('load', function () {
+        log('页面加载完成', 'success')
+        initBasicInfo()
+
+        // 等待广告脚本加载
+        const waitForAdScript = () => {
+          if (window.adsbygoogle) {
+            log('Google AdSense 脚本已加载', 'success')
+            checkAdScript()
+            setTimeout(loadAds, 2000) // 延迟2秒加载广告
+          } else {
+            setTimeout(waitForAdScript, 100)
+          }
+        }
+
+        waitForAdScript()
+      })
+
+      // 定期检查广告状态
+      setInterval(() => {
+        const adElements = document.querySelectorAll('.adsbygoogle[data-ad-status="loading"]')
+        if (adElements.length > 0) {
+          adElements.forEach((el) => {
+            const adSlot = el.getAttribute('data-ad-slot')
+            checkAdElementStatus(el, adSlot)
+          })
+        }
+      }, 5000)
+    </script>
+  </body>
+</html>

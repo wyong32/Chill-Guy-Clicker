@@ -220,15 +220,43 @@ const loadAds = () => {
 // 监听广告脚本加载完成
 const waitForAdScript = () => {
   if (window.adsbygoogle) {
-    loadAds()
+    console.log('Google AdSense 脚本已加载')
+    // 延迟加载广告，确保页面完全渲染
+    setTimeout(loadAds, 3000)
   } else {
     setTimeout(waitForAdScript, 100)
+  }
+}
+
+// 监听页面可见性变化，重新加载广告
+const handleVisibilityChange = () => {
+  if (!document.hidden) {
+    console.log('页面变为可见，重新检查广告')
+    setTimeout(loadAds, 1000)
   }
 }
 
 onMounted(() => {
   // 等待广告脚本加载完成后立即加载广告
   waitForAdScript()
+
+  // 监听页面可见性变化
+  document.addEventListener('visibilitychange', handleVisibilityChange)
+
+  // 监听路由变化
+  const unwatch = watch(
+    () => route.path,
+    () => {
+      console.log('路由变化，重新加载广告')
+      setTimeout(loadAds, 2000)
+    },
+  )
+
+  // 清理监听器
+  onUnmounted(() => {
+    document.removeEventListener('visibilitychange', handleVisibilityChange)
+    unwatch()
+  })
 })
 
 // --- Watcher ---
