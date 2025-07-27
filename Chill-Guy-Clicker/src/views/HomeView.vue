@@ -12,7 +12,14 @@
         z-index: 999999;
       "
     >
-      设备类型: {{ isMobile ? '移动设备' : '桌面设备' }}
+      设备类型: {{ isMobile ? '移动设备' : '桌面设备' }}<br />
+      AdSense: {{ typeof window !== 'undefined' && window.adsbygoogle ? '已加载' : '未加载' }}<br />
+      <button
+        @click="loadAds"
+        style="background: blue; color: white; border: none; padding: 5px; margin-top: 5px"
+      >
+        手动加载广告
+      </button>
     </div>
 
     <div class="home" :class="{ 'theater-mode': isTheaterMode }">
