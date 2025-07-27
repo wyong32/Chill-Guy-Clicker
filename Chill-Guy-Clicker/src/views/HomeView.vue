@@ -40,7 +40,7 @@
         <div style="background: yellow; padding: 10px; margin: 5px">左侧广告容器</div>
         <ins
           class="adsbygoogle"
-          style="display: block"
+          style="display: block; width: 160px; min-height: 250px"
           data-ad-client="ca-pub-4638984121333143"
           data-ad-slot="6904540807"
           data-ad-format="auto"
@@ -52,7 +52,7 @@
       <aside class="ads-wrapper ads-right" v-if="!isMobile">
         <ins
           class="adsbygoogle"
-          style="display: block"
+          style="display: block; width: 160px; min-height: 250px"
           data-ad-client="ca-pub-4638984121333143"
           data-ad-slot="5591459134"
           data-ad-format="auto"
@@ -62,10 +62,14 @@
 
       <main class="main-content container">
         <!-- 头部横幅广告-PC -->
-        <aside class="ads-wrapper" v-if="!isMobile">
+        <aside
+          class="ads-wrapper"
+          v-if="!isMobile"
+          style="width: 100%; min-height: 90px; margin: 10px 0"
+        >
           <ins
             class="adsbygoogle"
-            style="display: block"
+            style="display: block; width: 100%; min-height: 90px"
             data-ad-client="ca-pub-4638984121333143"
             data-ad-slot="3707198686"
             data-ad-format="auto"

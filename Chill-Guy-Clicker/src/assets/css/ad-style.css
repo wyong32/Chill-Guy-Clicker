@@ -3,9 +3,7 @@
   max-width: 100%;
   overflow: visible;
   box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   margin: 1rem auto;
   text-align: center;
   min-height: 90px; /* 确保横幅广告有足够的高度 */
@@ -15,17 +13,17 @@
 .ads-left {
   width: 160px;
   min-height: 500px;
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 90px;
   left: 20px;
-  z-index: 999999999;
+  z-index: 999999;
 }
 
 .ads-right {
   width: 160px;
   min-height: 500px;
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 90px;
   right: 20px;
-  z-index: 999999999;
+  z-index: 999999;
 }
