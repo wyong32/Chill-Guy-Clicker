@@ -14,6 +14,7 @@ const TermsOfUseView = () => import('../views/TermsOfUseView.vue')
 const AboutView = () => import('../views/AboutView.vue')
 const ContactView = () => import('../views/ContactView.vue')
 const CopyrightView = () => import('../views/CopyrightView.vue')
+const AdDiagnosticView = () => import('../views/AdDiagnosticView.vue')
 
 // 管理页面懒加载
 const AdminLoginView = () => import('../views/admin/LoginView.vue')
@@ -455,6 +456,19 @@ const router = createRouter({
           title: 'Copyright Notice - Chill Guy Games',
           description: 'Read our copyright notice to understand the intellectual property rights and usage terms for Chill Guy Games content.',
           keywords: 'copyright notice, intellectual property, usage rights, fair use, chill guy games copyright'
+        }
+      }
+    },
+    {
+      path: '/ad-diagnostic',
+      name: 'adDiagnostic',
+      component: AdDiagnosticView,
+      meta: {
+        title: 'AdSense 诊断工具',
+        seo: {
+          title: 'AdSense Diagnostic Tool - Chill Guy Games',
+          description: 'Diagnose and troubleshoot AdSense issues on Chill Guy Games.',
+          keywords: 'adsense diagnostic, ad troubleshooting, google adsense help'
         }
       }
     },

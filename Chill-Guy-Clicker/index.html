@@ -69,6 +69,33 @@
       setTimeout(function() {
         if (window.adsbygoogle) {
           console.log('✅ AdSense 脚本加载成功');
+          
+          // 添加测试广告功能
+          window.testAdSense = function() {
+            console.log('🧪 开始测试AdSense...');
+            
+            // 创建测试广告元素
+            const testAd = document.createElement('ins');
+            testAd.className = 'adsbygoogle';
+            testAd.style.display = 'block';
+            testAd.setAttribute('data-ad-client', 'ca-pub-4638984121333143');
+            testAd.setAttribute('data-ad-slot', '6904540807');
+            testAd.setAttribute('data-ad-format', 'auto');
+            testAd.setAttribute('data-full-width-responsive', 'true');
+            
+            // 添加到页面
+            document.body.appendChild(testAd);
+            
+            // 尝试加载广告
+            try {
+              (window.adsbygoogle = window.adsbygoogle || []).push({});
+              console.log('✅ 测试广告已推送');
+            } catch (e) {
+              console.error('❌ 测试广告推送失败:', e);
+            }
+          };
+          
+          console.log('💡 在控制台输入 testAdSense() 来测试广告');
         } else {
           console.error('❌ AdSense 脚本加载失败');
         }

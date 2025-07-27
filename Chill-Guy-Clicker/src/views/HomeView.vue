@@ -10,6 +10,10 @@
      data-ad-slot="6904540807"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
+          <!-- 调试信息 -->
+          <div v-if="process.env.NODE_ENV === 'development'" style="font-size: 12px; color: #ccc; margin-top: 5px;">
+            PC左侧广告 - Slot: 6904540807
+          </div>
         </aside>
 
         <!-- 右侧广告-PC -->
@@ -20,6 +24,10 @@
      data-ad-slot="5591459134"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
+          <!-- 调试信息 -->
+          <div v-if="process.env.NODE_ENV === 'development'" style="font-size: 12px; color: #ccc; margin-top: 5px;">
+            PC右侧广告 - Slot: 5591459134
+          </div>
         </aside>
 
       <main class="main-content container">
@@ -32,6 +40,10 @@
      data-ad-slot="3707198686"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
+          <!-- 调试信息 -->
+          <div v-if="process.env.NODE_ENV === 'development'" style="font-size: 12px; color: #ccc; margin-top: 5px;">
+            PC头部横幅广告 - Slot: 3707198686
+          </div>
         </aside>
 
 
@@ -71,6 +83,10 @@
      data-ad-slot="5857669556"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
+          <!-- 调试信息 -->
+          <div v-if="process.env.NODE_ENV === 'development'" style="font-size: 12px; color: #ccc; margin-top: 5px;">
+            移动端广告2 - Slot: 5857669556
+          </div>
         </aside>
 
               <CommentSection :gameId="featuredGame.id" v-show="!isTheaterMode" />
@@ -85,6 +101,10 @@
      data-ad-slot="8919996910"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
+          <!-- 调试信息 -->
+          <div v-if="process.env.NODE_ENV === 'development'" style="font-size: 12px; color: #ccc; margin-top: 5px;">
+            移动端广告3 - Slot: 8919996910
+          </div>
         </aside>
 
           <!-- Hot Games Sidebar -->
@@ -184,6 +204,48 @@ const updateSEO = () => {
   metaKeywords.setAttribute('content', game.seo.keywords);
 };
 
+// 广告诊断工具
+const diagnoseAds = () => {
+  console.log('🔍 开始广告诊断...')
+  
+  // 检查AdSense脚本
+  if (window.adsbygoogle) {
+    console.log('✅ AdSense脚本已加载')
+  } else {
+    console.error('❌ AdSense脚本未加载')
+    return
+  }
+  
+  // 检查所有广告元素
+  const allAdElements = document.querySelectorAll('.adsbygoogle')
+  console.log(`📊 找到 ${allAdElements.length} 个广告元素`)
+  
+  allAdElements.forEach((el, index) => {
+    const slot = el.getAttribute('data-ad-slot')
+    const status = el.getAttribute('data-adsbygoogle-status')
+    const isVisible = el.offsetParent !== null
+    const rect = el.getBoundingClientRect()
+    
+    console.log(`📋 广告 ${index + 1} (Slot: ${slot}):`)
+    console.log(`   - 状态: ${status}`)
+    console.log(`   - 可见: ${isVisible}`)
+    console.log(`   - 尺寸: ${rect.width}x${rect.height}`)
+    console.log(`   - 位置: ${rect.top}, ${rect.left}`)
+    
+    // 检查是否有内容
+    if (el.children.length > 0) {
+      console.log(`   - 内容: 有 ${el.children.length} 个子元素`)
+    } else {
+      console.log(`   - 内容: 无子元素`)
+    }
+  })
+  
+  // 检查剧院模式
+  if (isTheaterMode.value) {
+    console.log('⚠️ 当前处于剧院模式，广告可能被隐藏')
+  }
+}
+
 // 手动触发广告加载
 const loadAds = () => {
   // 确保页面完全加载后再加载广告
@@ -213,6 +275,9 @@ const loadAds = () => {
         } else {
           console.log('没有找到需要加载的广告元素')
         }
+        
+        // 延迟诊断
+        setTimeout(diagnoseAds, 3000)
       } catch (e) {
         console.error('广告加载失败:', e)
       }
