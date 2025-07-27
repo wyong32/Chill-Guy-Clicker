@@ -192,6 +192,7 @@ const handleTheaterModeChanged = (value) => {
 }
 
 const checkAdsense = () => {
+  alert('检查AdSense按钮被点击了！')
   console.log('检查 AdSense 状态...')
   console.log('window.adsbygoogle:', window.adsbygoogle)
   console.log('typeof window.adsbygoogle:', typeof window.adsbygoogle)
@@ -230,6 +231,7 @@ const updateSEO = () => {
 
 // 手动触发广告加载
 const loadAds = () => {
+  alert('手动加载广告按钮被点击了！')
   console.log('=== HomeView 广告加载诊断 ===')
   console.log('设备类型:', isMobile.value ? '移动设备' : '桌面设备')
 
