@@ -1,43 +1,8 @@
 <template>
   <div class="home-wrapper">
-    <!-- 广告测试信息 -->
-    <div
-      style="
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        background: red;
-        color: white;
-        padding: 10px;
-        z-index: 999999;
-        max-width: 300px;
-        max-height: 400px;
-        overflow: auto;
-      "
-    >
-      设备类型: {{ isMobile ? '移动设备' : '桌面设备' }}<br />
-      AdSense: {{ adsenseStatus }}<br />
-      <button
-        @click="loadAds"
-        style="background: blue; color: white; border: none; padding: 5px; margin-top: 5px"
-      >
-        手动加载广告
-      </button>
-      <button
-        @click="checkAdsense"
-        style="background: green; color: white; border: none; padding: 5px; margin-top: 5px"
-      >
-        检查AdSense
-      </button>
-      <div style="margin-top: 10px; font-size: 12px; white-space: pre-line">
-        {{ debugInfo }}
-      </div>
-    </div>
-
     <div class="home" :class="{ 'theater-mode': isTheaterMode }">
       <!-- 左侧广告-PC -->
       <aside class="ads-wrapper ads-left" v-if="!isMobile">
-        <div style="background: yellow; padding: 10px; margin: 5px">左侧广告容器</div>
         <ins
           class="adsbygoogle"
           style="display: block; width: 160px; min-height: 250px"
@@ -164,8 +129,6 @@ const { isMobile } = useDeviceDetection()
 const route = useRoute()
 const gameStarted = ref(false)
 const isTheaterMode = ref(false)
-const adsenseStatus = ref('检查中...')
-const debugInfo = ref('')
 
 // --- Computed Properties ---
 const currentGame = computed(() => {
@@ -202,25 +165,6 @@ const handleTheaterModeChanged = (value) => {
   isTheaterMode.value = value
 }
 
-const checkAdsense = () => {
-  alert('检查AdSense按钮被点击了！')
-
-  let info = '检查 AdSense 状态...\n'
-  info += `window.adsbygoogle: ${window.adsbygoogle}\n`
-  info += `typeof window.adsbygoogle: ${typeof window.adsbygoogle}\n`
-
-  if (window.adsbygoogle) {
-    info += `adsbygoogle.push: ${typeof window.adsbygoogle.push}\n`
-    adsenseStatus.value = '已加载'
-  } else {
-    info += 'AdSense 脚本未加载\n'
-    adsenseStatus.value = '未加载'
-  }
-
-  debugInfo.value = info
-  console.log(info)
-}
-
 const updateSEO = () => {
   const game = currentGame.value
   if (!game || !game.seo) return
@@ -246,42 +190,13 @@ const updateSEO = () => {
 
 // 手动触发广告加载
 const loadAds = () => {
-  alert('手动加载广告按钮被点击了！')
-
-  let info = '=== HomeView 广告加载诊断 ===\n'
-  info += `设备类型: ${isMobile.value ? '移动设备' : '桌面设备'}\n`
-
   if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
-    info += '✓ AdSense 脚本已加载\n'
-
     try {
       // 只处理当前页面中的广告元素
       const homeContainer = document.querySelector('.home-wrapper')
-      if (!homeContainer) {
-        info += '✗ 未找到 .home-wrapper 容器\n'
-        debugInfo.value = info
-        return
-      }
+      if (!homeContainer) return
 
       const adElements = homeContainer.querySelectorAll('.adsbygoogle')
-      info += `找到 ${adElements.length} 个广告元素\n`
-
-      // 详细检查每个广告元素
-      adElements.forEach((el, index) => {
-        const adSlot = el.getAttribute('data-ad-slot')
-        const status = el.getAttribute('data-ad-status')
-        const hasContent = el.children.length > 0
-        const isVisible = el.offsetWidth > 0 && el.offsetHeight > 0
-        const computedStyle = window.getComputedStyle(el)
-
-        info += `\n广告 ${index + 1} (${adSlot}):\n`
-        info += `  - 状态: ${status || '未处理'}\n`
-        info += `  - 有内容: ${hasContent}\n`
-        info += `  - 可见: ${isVisible}\n`
-        info += `  - 显示: ${computedStyle.display}\n`
-        info += `  - 尺寸: ${el.offsetWidth}x${el.offsetHeight}\n`
-        info += `  - 父元素: ${el.parentElement?.className}\n`
-      })
 
       // 检查哪些广告需要重新加载
       const adsToReload = []
@@ -291,50 +206,42 @@ const loadAds = () => {
 
         if (!status || status === 'unfilled' || !hasContent) {
           adsToReload.push({ element: el, index })
-        } else {
-          info += `\n广告 ${index + 1} 已有内容，跳过重新加载\n`
         }
       })
 
       if (adsToReload.length === 0) {
-        info += '\n所有广告都已加载完成，无需重新加载\n'
-        debugInfo.value = info
         return
       }
-
-      info += `\n需要重新加载 ${adsToReload.length} 个广告\n`
 
       adsToReload.forEach(({ element, index }) => {
         try {
           // 标记广告元素已处理
           element.setAttribute('data-ad-status', 'loading')
-          info += `正在加载广告 ${index + 1}: ${element.getAttribute('data-ad-slot')}\n`
           ;(window.adsbygoogle = window.adsbygoogle || []).push({})
         } catch (pushError) {
-          info += `广告 ${index + 1} 加载失败: ${pushError.message}\n`
+          // 忽略重复加载错误
+          if (!pushError.message.includes('already have ads')) {
+            console.error('HomeView广告加载失败:', pushError)
+          }
+          // 移除标记，允许重试
           element.removeAttribute('data-ad-status')
         }
       })
     } catch (e) {
-      info += `广告加载失败: ${e.message}\n`
+      console.error('HomeView广告加载失败:', e)
     }
   } else {
-    info += '✗ AdSense 脚本未加载或不可用\n'
+    // 如果 adsbygoogle 还没加载，延迟重试
+    setTimeout(loadAds, 1000)
   }
-
-  debugInfo.value = info
-  console.log(info)
 }
 
 // 监听广告脚本加载完成
 const waitForAdScript = () => {
-  console.log('waitForAdScript 被调用，检查 adsbygoogle...')
   if (window.adsbygoogle) {
-    console.log('Google AdSense 脚本已加载')
     // 延迟加载广告，确保页面完全渲染
     setTimeout(loadAds, 3000)
   } else {
-    console.log('adsbygoogle 还未加载，100ms后重试...')
     setTimeout(waitForAdScript, 100)
   }
 }
@@ -342,19 +249,11 @@ const waitForAdScript = () => {
 // 监听页面可见性变化，重新加载广告
 const handleVisibilityChange = () => {
   if (!document.hidden) {
-    console.log('页面变为可见，重新检查广告')
     setTimeout(loadAds, 1000)
   }
 }
 
 onMounted(() => {
-  console.log('HomeView onMounted 被调用')
-
-  // 初始化 AdSense 状态检查
-  setTimeout(() => {
-    checkAdsense()
-  }, 1000)
-
   // 等待广告脚本加载完成后立即加载广告
   waitForAdScript()
 
@@ -365,14 +264,12 @@ onMounted(() => {
   const unwatch = watch(
     () => route.path,
     () => {
-      console.log('路由变化，重新加载广告')
       setTimeout(loadAds, 2000)
     },
   )
 
   // 清理监听器
   onUnmounted(() => {
-    console.log('HomeView onUnmounted 被调用')
     document.removeEventListener('visibilitychange', handleVisibilityChange)
     unwatch()
   })
