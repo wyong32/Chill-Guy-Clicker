@@ -86,23 +86,32 @@ function loadAds() {
 
   if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
     try {
-      // 清除所有广告元素的状态，重新开始
-      const allAdElements = document.querySelectorAll('.adsbygoogle')
-      allAdElements.forEach((el) => {
+      // 只处理当前测试页面中的广告元素
+      const testContainer = document.querySelector('.test-container')
+      const adElements = testContainer.querySelectorAll('.adsbygoogle')
+
+      log(`找到 ${adElements.length} 个测试广告元素`, 'info')
+
+      // 清除这些广告元素的状态
+      adElements.forEach((el) => {
         el.removeAttribute('data-ad-status')
         el.innerHTML = ''
       })
 
-      log('已清除所有广告元素状态', 'info')
+      log('已清除测试广告元素状态', 'info')
 
       // 等待一下让DOM更新
       setTimeout(() => {
-        const adElements = document.querySelectorAll('.adsbygoogle')
-        log(`找到 ${adElements.length} 个广告元素`, 'info')
-
         adElements.forEach((el, index) => {
           try {
             const adSlot = el.getAttribute('data-ad-slot')
+
+            // 只处理有正确广告位ID的元素
+            if (!adSlot) {
+              log(`跳过广告 ${index + 1}: 没有广告位ID`, 'warning')
+              return
+            }
+
             log(`正在加载广告 ${index + 1} (广告位: ${adSlot})`, 'info')
 
             // 确保元素有正确的尺寸
@@ -145,8 +154,9 @@ function checkStatus() {
   }
 
   // 检查广告元素
-  const adElements = document.querySelectorAll('.adsbygoogle')
-  log(`总共有 ${adElements.length} 个广告元素`, 'info')
+  const testContainer = document.querySelector('.test-container')
+  const adElements = testContainer.querySelectorAll('.adsbygoogle')
+  log(`测试页面中有 ${adElements.length} 个广告元素`, 'info')
 
   adElements.forEach((el, index) => {
     const adSlot = el.getAttribute('data-ad-slot')
@@ -179,15 +189,16 @@ function checkStatus() {
 }
 
 function clearAds() {
-  log('清除所有广告...', 'info')
+  log('清除测试页面广告...', 'info')
 
-  const adElements = document.querySelectorAll('.adsbygoogle')
+  const testContainer = document.querySelector('.test-container')
+  const adElements = testContainer.querySelectorAll('.adsbygoogle')
   adElements.forEach((el) => {
     el.removeAttribute('data-ad-status')
     el.innerHTML = ''
   })
 
-  log('广告已清除', 'success')
+  log(`已清除 ${adElements.length} 个测试广告`, 'success')
 }
 
 onMounted(() => {
