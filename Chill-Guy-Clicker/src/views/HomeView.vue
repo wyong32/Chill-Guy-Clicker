@@ -10,6 +10,9 @@
         color: white;
         padding: 10px;
         z-index: 999999;
+        max-width: 300px;
+        max-height: 400px;
+        overflow: auto;
       "
     >
       设备类型: {{ isMobile ? '移动设备' : '桌面设备' }}<br />
@@ -26,6 +29,9 @@
       >
         检查AdSense
       </button>
+      <div style="margin-top: 10px; font-size: 12px; white-space: pre-line">
+        {{ debugInfo }}
+      </div>
     </div>
 
     <div class="home" :class="{ 'theater-mode': isTheaterMode }">
@@ -155,6 +161,7 @@ const route = useRoute()
 const gameStarted = ref(false)
 const isTheaterMode = ref(false)
 const adsenseStatus = ref('检查中...')
+const debugInfo = ref('')
 
 // --- Computed Properties ---
 const currentGame = computed(() => {
@@ -193,17 +200,21 @@ const handleTheaterModeChanged = (value) => {
 
 const checkAdsense = () => {
   alert('检查AdSense按钮被点击了！')
-  console.log('检查 AdSense 状态...')
-  console.log('window.adsbygoogle:', window.adsbygoogle)
-  console.log('typeof window.adsbygoogle:', typeof window.adsbygoogle)
+
+  let info = '检查 AdSense 状态...\n'
+  info += `window.adsbygoogle: ${window.adsbygoogle}\n`
+  info += `typeof window.adsbygoogle: ${typeof window.adsbygoogle}\n`
 
   if (window.adsbygoogle) {
-    console.log('adsbygoogle.push:', typeof window.adsbygoogle.push)
+    info += `adsbygoogle.push: ${typeof window.adsbygoogle.push}\n`
     adsenseStatus.value = '已加载'
   } else {
-    console.log('AdSense 脚本未加载')
+    info += 'AdSense 脚本未加载\n'
     adsenseStatus.value = '未加载'
   }
+
+  debugInfo.value = info
+  console.log(info)
 }
 
 const updateSEO = () => {
@@ -232,8 +243,12 @@ const updateSEO = () => {
 // 手动触发广告加载
 const loadAds = () => {
   alert('手动加载广告按钮被点击了！')
-  console.log('=== HomeView 广告加载诊断 ===')
-  console.log('设备类型:', isMobile.value ? '移动设备' : '桌面设备')
+
+  let info = '=== HomeView 广告加载诊断 ===\n'
+  info += `设备类型: ${isMobile.value ? '移动设备' : '桌面设备'}\n`
+
+  console.log(info)
+  debugInfo.value = info
 
   if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
     try {
