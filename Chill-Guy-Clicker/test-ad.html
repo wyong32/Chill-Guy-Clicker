@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdSense Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f0f0f0;
+        }
+        .ad-container {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .ad-label {
+            background: #e0e0e0;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>AdSense 测试页面</h1>
+    
+    <div class="ad-container">
+        <div class="ad-label">测试广告 1</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4638984121333143"
+             data-ad-slot="6904540807"
+             data-ad-format="auto"></ins>
+    </div>
+    
+    <div class="ad-container">
+        <div class="ad-label">测试广告 2</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4638984121333143"
+             data-ad-slot="5591459134"
+             data-ad-format="auto"></ins>
+    </div>
+    
+    <div class="ad-container">
+        <div class="ad-label">测试广告 3</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4638984121333143"
+             data-ad-slot="3707198686"
+             data-ad-format="auto"></ins>
+    </div>
+    
+    <button onclick="loadAds()" style="padding: 10px 20px; background: #007cba; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        手动加载广告
+    </button>
+    
+    <div id="status" style="margin-top: 20px; padding: 10px; background: #f9f9f9;"></div>
+
+    <!-- AdSense 脚本 -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4638984121333143"
+    crossorigin="anonymous"></script>
+    
+    <script>
+        function loadAds() {
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerHTML = '正在加载广告...';
+            
+            if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
+                try {
+                    console.log('AdSense 脚本已加载，开始加载广告...');
+                    (window.adsbygoogle = window.adsbygoogle || []).push({});
+                    statusDiv.innerHTML = '广告加载命令已发送';
+                    
+                    // 检查广告状态
+                    setTimeout(() => {
+                        const ads = document.querySelectorAll('.adsbygoogle');
+                        let loaded = 0;
+                        ads.forEach((ad, index) => {
+                            const status = ad.getAttribute('data-adsbygoogle-status');
+                            if (status === 'done') {
+                                loaded++;
+                                console.log(`广告 ${index + 1} 加载完成`);
+                            } else {
+                                console.log(`广告 ${index + 1} 状态: ${status}`);
+                            }
+                        });
+                        statusDiv.innerHTML = `广告状态检查完成: ${loaded}/${ads.length} 个广告已加载`;
+                    }, 5000);
+                    
+                } catch (e) {
+                    console.error('加载广告时出错:', e);
+                    statusDiv.innerHTML = '加载广告时出错: ' + e.message;
+                }
+            } else {
+                statusDiv.innerHTML = 'AdSense 脚本未加载';
+                console.error('AdSense 脚本未加载');
+            }
+        }
+        
+        // 页面加载完成后自动加载广告
+        window.addEventListener('load', () => {
+            setTimeout(loadAds, 2000);
+        });
+    </script>
+</body>
+</html> 
