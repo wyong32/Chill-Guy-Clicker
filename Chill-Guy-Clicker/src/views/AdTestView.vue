@@ -92,19 +92,39 @@ function loadAds() {
 
       log(`找到 ${adElements.length} 个测试广告元素`, 'info')
 
-      // 清除这些广告元素的状态
-      adElements.forEach((el) => {
-        el.removeAttribute('data-ad-status')
-        el.innerHTML = ''
+      // 检查哪些广告需要重新加载
+      const adsToReload = []
+      adElements.forEach((el, index) => {
+        const status = el.getAttribute('data-ad-status')
+        const hasContent = el.children.length > 0
+
+        if (!status || status === 'unfilled' || !hasContent) {
+          adsToReload.push({ element: el, index })
+        } else {
+          log(`广告 ${index + 1} 已有内容，跳过重新加载`, 'info')
+        }
       })
 
-      log('已清除测试广告元素状态', 'info')
+      if (adsToReload.length === 0) {
+        log('所有广告都已加载完成，无需重新加载', 'success')
+        return
+      }
+
+      log(`需要重新加载 ${adsToReload.length} 个广告`, 'info')
+
+      // 清除需要重新加载的广告元素状态
+      adsToReload.forEach(({ element }) => {
+        element.removeAttribute('data-ad-status')
+        element.innerHTML = ''
+      })
+
+      log('已清除需要重新加载的广告元素状态', 'info')
 
       // 等待一下让DOM更新
       setTimeout(() => {
-        adElements.forEach((el, index) => {
+        adsToReload.forEach(({ element, index }) => {
           try {
-            const adSlot = el.getAttribute('data-ad-slot')
+            const adSlot = element.getAttribute('data-ad-slot')
 
             // 只处理有正确广告位ID的元素
             if (!adSlot) {
@@ -115,16 +135,16 @@ function loadAds() {
             log(`正在加载广告 ${index + 1} (广告位: ${adSlot})`, 'info')
 
             // 确保元素有正确的尺寸
-            if (el.offsetWidth === 0) {
+            if (element.offsetWidth === 0) {
               log(`警告: 广告 ${index + 1} 宽度为0，设置最小宽度`, 'warning')
-              el.style.minWidth = '300px'
-              el.style.minHeight = '250px'
+              element.style.minWidth = '300px'
+              element.style.minHeight = '250px'
             }
 
             ;(window.adsbygoogle = window.adsbygoogle || []).push({})
 
             // 标记为已处理
-            el.setAttribute('data-ad-status', 'loading')
+            element.setAttribute('data-ad-status', 'loading')
           } catch (error) {
             log(`广告 ${index + 1} 加载失败: ${error.message}`, 'error')
           }
