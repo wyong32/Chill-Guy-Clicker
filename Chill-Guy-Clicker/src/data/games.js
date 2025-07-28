@@ -2501,7 +2501,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
   imageAlt: 'Noob Basketball Clicker Unlocked game showing a pixel noob shooting hoops with upgrades and stats',
   iframeUrl: 'https://st1.8games.net/7/igra-basketbolnyj-kliker-nubika/',
   isHot: false,
-  isNew: true,
+  isNew: false,
   isMore: true,
   detailsHtml: `
     <h2>Noob Basketball Clicker Unlocked – Help the Noob Become a Hoop Hero!</h2>
@@ -2573,7 +2573,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
   imageAlt: 'Red Rush Unlocked gameplay showing fast red trails and timed obstacle dodging',
   iframeUrl: 'https://game.azgame.io/red-rush/ ',
   isHot: false,
-  isNew: true,
+  isNew: false,
   isMore: true,
   detailsHtml: `
     <h2>Red Rush Unlocked – Speed Meets Survival</h2>
@@ -2932,7 +2932,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
   imageAlt: 'Monster Tracks Unlocked gameplay with big trucks jumping over obstacles',
   iframeUrl: 'https://monstertracks.github.io/file/ ',
   isHot: false,
-  isNew: true,
+  isNew: false,
   isMore: true,
   detailsHtml: `
     <h2>Monster Tracks Unlocked – The Ultimate Monster Truck Challenge</h2>
@@ -3143,7 +3143,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
   iframeUrl: 'https://example.com/game/smash-karts',
   isHot: false,
   isMore: true,
-  isNew: true,
+  isNew: false,
   detailsHtml: `
     <h2>Smash Karts – Real-Time Multiplayer Kart Battle Action</h2>
     <p>
@@ -3321,7 +3321,144 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
       Are you ready to create the ultimate chaos? Jump into <strong>Merge Fellas Italian Brainrot</strong> now and start merging!
     </p>
   `
-}
+},
+
+{
+  "id": 55,
+  "pageTitle": "Wacky Flip",
+  "seo": {
+    "title": "Wacky Flip - Hilarious Physics Flipping Chaos - Play Online Free",
+    "description": "Wacky Flip is a ragdoll stunt game where parkour chaos meets outrageous physics. Master impossible flips, land hilarious tricks, and challenge gravity itself. Play online now!",
+    "keywords": "wacky flip, flip game, physics game, ragdoll stunts, parkour flip, online flipping game, free stunt game, wacky flip gameplay"
+  },
+  "addressBar": "wacky-flip",
+  "publishDate": "2025-07-28",
+  "imageUrl": "/images/games/game-55.webp",
+  "imageAlt": "Wacky Flip game screenshot showing ragdoll flips in urban environments",
+  "iframeUrl": "https://1games.io/game/wacky-flip/",
+  "isHot": false,
+  "isMore": true,
+  "isNew": true,
+  "detailsHtml": `
+    <h2>Wacky Flip – Physics-Driven Chaos with Wild Flips</h2>
+    <p>
+      <strong>Wacky Flip</strong> takes ragdoll stunt action to the next level. Experience pure parkour chaos as you launch, flip, and land your way across insane stunt zones. From rooftop dives to basketball hoop tricks, this game is all about style, skill, and spectacular crashes.
+    </p>
+
+    <h3>What is Wacky Flip?</h3>
+    <p>
+      <strong>Wacky Flip</strong> is a hilarious and skill-based flipping game where physics meets creativity. Use momentum, timing, and quick reflexes to execute jaw-dropping flips and land perfectly on target zones. Each level challenges your control as you attempt increasingly complex stunts.
+    </p>
+
+    <h3>Wacky Flip Game Features</h3>
+    <ul>
+      <li>Realistic ragdoll physics that make every jump unpredictable</li>
+      <li>Multiple stunt zones including rooftops, hoops, and towers</li>
+      <li>Stylish tricks like pike, layout, and double backflips for score multipliers</li>
+      <li>Simple tap-and-release controls for easy but challenging gameplay</li>
+      <li>Hilarious crash landings that keep the fun going even when you fail</li>
+    </ul>
+
+    <h3>Why is Wacky Flip So Fun?</h3>
+    <p>
+      <strong>Wacky Flip</strong> offers a unique mix of ragdoll chaos and skill-based stunt gameplay. Whether you stick the perfect landing or wipe out in hilarious fashion, every moment is entertaining. Players love the combination of quick sessions, creative stunt zones, and endless laugh-out-loud physics mishaps.
+    </p>
+
+    <h3>How to Play Wacky Flip</h3>
+    <ul>
+      <li>Hold your mouse to build jump power and choose the launch angle</li>
+      <li>Release to jump and start flipping midair</li>
+      <li>Tap to rotate and lock your position before landing</li>
+      <li>Earn higher scores with advanced trick combos and clean landings</li>
+      <li>Progress through diverse levels with unique stunt setups</li>
+    </ul>
+
+    <h3>Who Will Enjoy Wacky Flip?</h3>
+    <p>
+      If you love physics-based challenges, ragdoll stunts, or just want to laugh at spectacular crash landings, <strong>Wacky Flip</strong> is for you. Perfect for casual players who enjoy fast, fun, and chaotic action with endless replayability.
+    </p>
+
+    <h3>Final Thoughts on Wacky Flip</h3>
+    <p>
+      Jump into <strong>Wacky Flip</strong> and test your skills against gravity itself. From clean professional landings to ridiculous fails, this game delivers nonstop fun. Start flipping, crashing, and laughing today!
+    </p>
+  `
+},
+
+{
+  "id": 56,
+  "pageTitle": "Fury Chase 2",
+  "seo": {
+    "title": "Fury Chase 2 - Extreme Driving Chaos Returns - Play Online Free",
+    "description": "Fury Chase 2 brings back blazing wheels, heavy weapons, and nonstop post-apocalyptic car combat. Dominate the wasteland and crush your enemies in this high-speed sequel!",
+    "keywords": "fury chase 2, car chase game, post-apocalyptic racing, combat driving game, online car game, free driving game, action car chase, fury chase sequel"
+  },
+  "addressBar": "fury-chase-2",
+  "publishDate": "2025-07-28",
+  "imageUrl": "/images/games/game-56.webp",
+  "imageAlt": "Fury Chase 2 game screenshot showing high-speed car combat",
+  "iframeUrl": "https://1games.io/game/fury-chase-2/",
+  "isHot": false,
+  "isMore": true,
+  "isNew": true,
+  "detailsHtml": `
+    <h2>Fury Chase 2 – Blazing Wheels Return with More Chaos</h2>
+    <p>
+      <strong>Fury Chase 2</strong> is the explosive sequel that turns up every dial—faster speeds, hotter weapons, and a wilder world. Step into a post-apocalyptic wasteland where driving is survival and firepower is your lifeline. Fight through scavenger hordes, dodge ambushes, and turn every chase into a blazing spectacle.
+    </p>
+
+    <h3>What Makes Fury Chase 2 Different?</h3>
+    <p>
+      Compared to the first game, <strong>Fury Chase 2</strong> introduces expanded maps, advanced vehicles, and devastating weapon systems. Whether you’re escaping death traps or turning enemies into scrap metal, each mission pushes your skills and instincts to the edge.
+    </p>
+
+    <h3>Fury Chase 2 Features</h3>
+    <ul>
+      <li>Expanded post-apocalyptic maps with ramps, cliffs, and secret routes</li>
+      <li>Upgradeable weapons including turrets, shockwave rams, and flamethrowers</li>
+      <li>Dynamic enemy AI with ambush tactics and pursuit strategies</li>
+      <li>New vehicles and mods for speed, armor, and firepower boosts</li>
+      <li>Nonstop chase missions with escalating difficulty and cinematic action</li>
+    </ul>
+
+    <h3>Gameplay: Survival at High Speed</h3>
+    <p>
+      <strong>Fury Chase 2</strong> begins with your vehicle dropped into hostile territory, hunted by spiked buggies and flamethrower trucks. Every mile tests your ability to balance driving precision with relentless firepower. Collect fuel barrels, unlock upgrades, and master new areas full of tight turns, high ramps, and deadly choke points.
+    </p>
+
+    <h3>Controls</h3>
+    <ul>
+      <li><strong>[↑] or [W]:</strong> Accelerate</li>
+      <li><strong>[↓] or [S]:</strong> Brake / Reverse</li>
+      <li><strong>[←] or [A]:</strong> Steer Left</li>
+      <li><strong>[→] or [D]:</strong> Steer Right</li>
+      <li><strong>Spacebar:</strong> Fire weapon / take action</li>
+    </ul>
+
+    <h3>Pro Tips</h3>
+    <ul>
+      <li>Use ramps to dodge enemy fire or crush pursuers from above</li>
+      <li>Target heavy trucks first—they block routes and deal massive damage</li>
+      <li>Keep moving laterally to avoid turret lock-ons and surprise attacks</li>
+    </ul>
+
+    <h3>Who Should Play Fury Chase 2?</h3>
+    <p>
+      If you loved the first game or enjoy fast-paced vehicular combat, <strong>Fury Chase 2</strong> is a must-play. With its balance of driving precision, intense combat, and pure cinematic chaos, this sequel is perfect for thrill-seekers who live for speed and destruction.
+    </p>
+
+    <h3>Final Thoughts on Fury Chase 2</h3>
+    <p>
+      <strong>Fury Chase 2</strong> is all about action without brakes. Jump into your ride, upgrade your arsenal, and dominate every road. Whether you aim to survive or destroy, this game delivers pure adrenaline. Play online now and bring the fury back to the chase!
+    </p>
+  `
+},
+
+
+
+
+
+
 
 
 
