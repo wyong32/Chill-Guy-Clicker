@@ -3570,6 +3570,125 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
       <strong>Arcade Volley</strong> brings back the spirit of old-school sports arcades with a modern, fast-paced twist. Ready to jump, block, and spike your way to victory? Play online for free and experience the thrill of retro-style volleyball now!
     </p>
   `
+},
+
+{
+  "id": 59,
+  "pageTitle": "Icy Dash",
+  "seo": {
+    "title": "Icy Dash - Fast-Paced Stickman Snowboarding Game Online",
+    "description": "Icy Dash is an exciting, high-speed snowboarding game. Race down icy slopes, dodge obstacles, and perform tricks to become the ultimate stickman racer!",
+    "keywords": "icy dash, snowboarding game, stickman game, downhill racing, arcade sports, free online game, mountain racing"
+  },
+  "addressBar": "icy-dash",
+  "publishDate": "2025-08-05",
+  "imageUrl": "/images/games/game-59.webp",
+  "imageAlt": "Icy Dash game screenshot featuring a stickman snowboarding down a mountain",
+  "iframeUrl": "https://game.azgame.io/icy-dash/",
+  "isHot": false,
+  "isMore": true,
+  "isNew": true,
+  "detailsHtml": `
+    <h2>Icy Dash – High-Speed Stickman Snowboarding Fun</h2>
+    <p>
+      <strong>Icy Dash</strong> is a thrilling downhill racing game where you control a stickman on a snowboard, hurtling down snowy mountain slopes. Your goal is to be the first to cross the finish line while navigating a treacherous course filled with obstacles and performing impressive tricks along the way.
+    </p>
+
+    <h3>Key Features of Icy Dash</h3>
+    <ul>
+      <li>Fast-paced downhill racing action</li>
+      <li>Simple controls for smooth steering and stunts</li>
+      <li>Challenging tracks with various obstacles</li>
+      <li>Perform mid-air tricks for points and speed boosts</li>
+      <li>Collect coins to upgrade your stickman and unlock new gear</li>
+      <li>Compete against AI opponents for competitive fun</li>
+    </ul>
+
+    <h3>Gameplay Overview</h3>
+    <p>
+      In <strong>Icy Dash</strong>, you'll race against other competitors down a series of intense mountain courses. The key to victory is not just speed, but also precision. You must skillfully dodge obstacles like trees and snowmen while finding the perfect moments to launch off ramps and perform flips and spins. Landing tricks successfully gives you a temporary speed boost, but a botched landing can lead to a crash, ending your run instantly.
+    </p>
+
+    <h3>How to Play Icy Dash</h3>
+    <ul>
+      <li><strong>Steering:</strong> Use the arrow keys to smoothly guide your stickman left and right down the slope.</li>
+      <li><strong>Jumping and Tricks:</strong> Use the spacebar to jump off ramps. While in the air, use the arrow keys to perform tricks like flips and spins.</li>
+      <li><strong>Upgrades:</strong> Collect the coins scattered on the tracks to visit the in-game shop. Here you can upgrade your stickman’s speed, control, and other attributes to stay ahead of the competition.</li>
+    </ul>
+
+    <h3>Why Play Icy Dash?</h3>
+    <p>
+      If you're looking for a quick, adrenaline-fueled game with a satisfying sense of progression, <strong>Icy Dash</strong> is the perfect choice. The combination of high-speed racing, strategic trick-performing, and character upgrades makes for an engaging and replayable experience.
+    </p>
+
+    <h3>Final Thoughts</h3>
+    <p>
+      Get ready to hit the slopes and feel the rush! <strong>Icy Dash</strong> is an easy-to-learn but hard-to-master game that will test your reflexes and timing. Think you have what it takes to be the fastest stickman on the mountain? Play Icy Dash online for free now!
+    </p>
+  `
+},
+
+{
+  "id": 60,
+  "pageTitle": "Run 3",
+  "seo": {
+    "title": "Run 3 - The Ultimate Space Tunnel Running Adventure Online",
+    "description": "Run 3 is a thrilling endless runner where you race through ever-changing space tunnels. Unlock new characters, explore different game modes, and test your skills in this classic online game!",
+    "keywords": "run 3, space runner, endless runner, tunnel game, online arcade, free game, platformer, run game"
+  },
+  "addressBar": "run-3",
+  "publishDate": "2025-08-11",
+  "imageUrl": "/images/games/game-60.webp",
+  "imageAlt": "Run 3 game screenshot showing a character running on a space tunnel",
+  "iframeUrl": "https://azgames.io/run-3.embed",
+  "isHot": false,
+  "isMore": true,
+  "isNew": true,
+  "detailsHtml": `
+    <h2>Run 3 – The Classic Space Running Challenge</h2>
+    <p>
+      <strong>Run 3</strong> is an iconic endless runner game that takes you on a high-speed journey through a series of intricate space tunnels. Your mission is to guide your character through a challenging, ever-changing environment, jumping over gaps, and running along walls to avoid falling into the void. This latest installment introduces new characters with unique skills and more game modes to keep the excitement going.
+    </p>
+
+    <h3>Key Features of Run 3</h3>
+    <ul>
+      <li>Fast-paced, challenging gameplay</li>
+      <li>Multiple characters to unlock, each with special abilities</li>
+      <li>Two distinct game modes: Explore and Infinite</li>
+      <li>Dynamic tunnels that change as you play</li>
+      <li>Simple yet precise controls for skillful navigation</li>
+      <li>Unlockable power cells to extend your run and unlock content</li>
+    </ul>
+
+    <h3>Gameplay Overview</h3>
+    <p>
+      In <strong>Run 3</strong>, you'll find yourself running endlessly through a 3D tunnel in outer space. The controls are simple: use the arrow keys to move and the spacebar to jump. What makes the game unique is the ability to run on the walls of the tunnel, which you'll need to master to navigate complex turns and huge gaps. Along the way, you'll collect power cells, which are essential for unlocking new characters like The Rabbit and The Duplicator, as well as accessing new levels and content.
+    </p>
+
+    <h3>Game Modes</h3>
+    <ul>
+      <li><strong>Explore Mode:</strong> Dive into a story-driven adventure where you progress through a series of levels, uncovering new challenges and characters. Each completed level brings you closer to the end of the tunnel network.</li>
+      <li><strong>Infinite Mode:</strong> For those who love a true challenge, this mode offers an endless run. Test your reflexes and endurance as you race on a never-ending track, aiming to beat your high score.</li>
+    </ul>
+
+    <h3>Controls</h3>
+    <ul>
+      <li><strong>Arrow Keys [←] [→]:</strong> Steer your character left and right.</li>
+      <li><strong>Spacebar:</strong> Jump over gaps.</li>
+    </ul>
+
+    <h3>Tips for Success</h3>
+    <ul>
+      <li><strong>Master your jumps:</strong> The longer you hold the spacebar, the higher you'll jump. Learn to time your presses perfectly.</li>
+      <li><strong>Look ahead:</strong> Always keep an eye on the path in front of you to anticipate upcoming gaps and turns.</li>
+      <li><strong>Practice makes perfect:</strong> The more you play, the better you'll get at navigating the tunnels and collecting power cells to unlock new adventures.</li>
+    </ul>
+
+    <h3>Final Thoughts</h3>
+    <p>
+      <strong>Run 3</strong> is more than just a running game—it’s an addictive test of skill and a thrilling space adventure. With its simple premise and deep, challenging gameplay, it's easy to see why it has become a fan favorite. Ready to defy gravity and run through the cosmos? Play Run 3 for free now and discover your favorite character!
+    </p>
+  `
 }
 
 
