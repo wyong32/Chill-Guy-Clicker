@@ -3689,7 +3689,132 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
       <strong>Run 3</strong> is more than just a running game—it’s an addictive test of skill and a thrilling space adventure. With its simple premise and deep, challenging gameplay, it's easy to see why it has become a fan favorite. Ready to defy gravity and run through the cosmos? Play Run 3 for free now and discover your favorite character!
     </p>
   `
+},
+
+{
+  "id": 61,
+  "pageTitle": "TriMerge",
+  "seo": {
+    "title": "TriMerge - Addictive Number Merging Puzzle Online",
+    "description": "TriMerge is a strategic tile-sliding puzzle where you merge numbers on a grid to create higher multiples of 3. Start with 1 + 2 = 3, combine identical tiles, and aim for the highest score possible!",
+    "keywords": "trimerge, number merge, puzzle game, math puzzle, sliding tiles, brain training, 2048 style, online strategy game"
+  },
+  "addressBar": "trimerge",
+  "publishDate": "2025-08-18",
+  "imageUrl": "/images/games/game-61.webp",
+  "imageAlt": "TriMerge puzzle game screenshot showing number tiles merging",
+  "iframeUrl": "https://game.azgame.io/trimerge/",
+  "isHot": false,
+  "isMore": true,
+  "isNew": true,
+  "detailsHtml": `
+    <h2>About TriMerge</h2>
+    <p>
+      <strong>TriMerge</strong> is a clever number-merging puzzle game where you slide tiles across a 4×4 grid to combine values and form larger multiples of 3. The game begins with the unique rule of merging <em>1 + 2 = 3</em>, after which only identical multiples of 3 can be combined. It’s simple to pick up, but mastering it requires strategy and forward planning.
+    </p>
+
+    <h3>TriMerge: Rules and Objectives</h3>
+    <ul>
+      <li>1 merges only with 2, and 2 merges only with 1.</li>
+      <li>From 3 onward, tiles merge only with identical values.</li>
+      <li>Each move adds a new tile to the board.</li>
+      <li>The game ends when no merges are possible.</li>
+      <li>The goal is to build the largest multiples of 3 and achieve the highest score.</li>
+    </ul>
+
+    <h3>Gameplay Overview</h3>
+    <p>
+      On every turn, you’ll see a mix of 1s, 2s, and 3s on the board. Swipe in one direction on mobile, or use arrow keys on PC, to slide all tiles. Tiles that can merge will combine into a higher number, freeing up space on the grid. Bigger numbers such as 12, 24, 48, and beyond will boost your score dramatically. Strategic merges are essential to prevent the grid from filling too quickly.
+    </p>
+
+    <h3>Game Modes</h3>
+    <ul>
+      <li><strong>Classic Mode:</strong> Play the standard 4×4 grid puzzle and aim for the highest score possible.</li>
+      <li><strong>Challenge Mode:</strong> Test your merging skills with special conditions or limited moves.</li>
+    </ul>
+
+    <h3>Controls</h3>
+    <ul>
+      <li><strong>Arrow Keys [↑ ↓ ← →]:</strong> Slide tiles across the board.</li>
+      <li><strong>Swipe (Mobile):</strong> Move all tiles in one direction with a finger swipe.</li>
+    </ul>
+
+    <h3>Tips for Success</h3>
+    <ul>
+      <li><strong>Plan ahead:</strong> Anticipate where new tiles will spawn before making a move.</li>
+      <li><strong>Prioritize 1s and 2s:</strong> Merge them quickly to avoid cluttering the board.</li>
+      <li><strong>Chain merges:</strong> Aim for moves that trigger multiple merges at once.</li>
+      <li><strong>Keep space open:</strong> Don’t let the board fill—always leave room for the next tile.</li>
+    </ul>
+
+    <h3>Final Thoughts</h3>
+    <p>
+      <strong>TriMerge</strong> is more than just a puzzle—it’s a test of patience, logic, and foresight. With its unique merging rules and simple mechanics, it offers endless replay value. Whether you’re aiming to beat your personal best or challenge friends, TriMerge guarantees hours of addictive fun. Start sliding and merging today to see how high you can climb!
+    </p>
+  `
+},
+
+{
+  "id": 62,
+  "pageTitle": "Curve Rush 2",
+  "seo": {
+    "title": "Curve Rush 2 - The Momentum Rolling Sequel Online",
+    "description": "Curve Rush 2 continues the addictive rolling ball adventure with new environments, obstacles, and legendary balls. Master slopes, maintain momentum, and test your rhythm in this exciting sequel!",
+    "keywords": "curve rush 2, rolling ball game, momentum game, endless runner, slope game, arcade ball, dragoball, online ball racing"
+  },
+  "addressBar": "curve-rush-2",
+  "publishDate": "2025-08-18",
+  "imageUrl": "/images/games/game-62.webp",
+  "imageAlt": "Curve Rush 2 gameplay screenshot with rolling ball on slopes",
+  "iframeUrl": "https://game.azgame.io/curve-rush-2/",
+  "isHot": false,
+  "isMore": true,
+  "isNew": true,
+  "detailsHtml": `
+    <h2>About Curve Rush 2</h2>
+    <p>
+      <strong>Curve Rush 2</strong> is the fresh sequel to the original Curve Rush, keeping the addictive formula of timing, momentum, and smooth landings intact. Guide a rolling ball across endless sandy hills and dynamic environments, maintaining rhythm and speed while avoiding crashes. With new features and visual upgrades, this sequel offers an even more exciting challenge.
+    </p>
+
+    <h3>What’s New in Curve Rush 2?</h3>
+    <p>
+      The core gameplay is still about mastering slopes and building momentum: your ball speeds up as it rolls downhill and slows down on climbs. The objective is to stay in flow and rack up points by traveling long distances and soaring above the horizon line. But this time, new elements add more depth and variety to your runs:
+    </p>
+    <ul>
+      <li><strong>Dynamic environment transitions</strong> to keep every run visually fresh.</li>
+      <li><strong>More obstacles</strong> and unique map features that challenge precision and timing.</li>
+      <li><strong>Diverse ball categories</strong>, including legendary ones with unique abilities.</li>
+      <li>Two new special balls: the fiery <em>Dragoball</em> and a ball with snowy visual effects.</li>
+    </ul>
+
+    <h3>How to Play Curve Rush 2</h3>
+    <ul>
+      <li><strong>Press and hold</strong> to gain momentum when descending slopes.</li>
+      <li><strong>Release</strong> at the right moment to launch into the air for bonus points.</li>
+      <li>Maintain rhythm to avoid losing speed and crashing.</li>
+      <li>Survive as long as possible and aim for the highest score.</li>
+    </ul>
+
+    <h3>Gameplay Objectives</h3>
+    <p>
+      The goal is simple: keep your ball rolling smoothly through endless hills, dodging obstacles, and maximizing your distance. The further you go and the more airtime you achieve, the higher your score. Legendary balls with special effects can also give you a fresh twist on the challenge.
+    </p>
+
+    <h3>Tips for Success</h3>
+    <ul>
+      <li><strong>Time your presses carefully:</strong> Smooth landings are crucial for maintaining momentum.</li>
+      <li><strong>Watch the terrain ahead:</strong> Anticipating slopes and obstacles gives you an advantage.</li>
+      <li><strong>Try different balls:</strong> Experiment with ball categories to discover unique abilities and effects.</li>
+    </ul>
+
+    <h3>Final Thoughts</h3>
+    <p>
+      With its mix of familiar mechanics and brand-new features, <strong>Curve Rush 2</strong> is the ultimate rolling ball experience for arcade fans. Whether you’re a veteran of the original game or a newcomer, this sequel offers endless hours of fast-paced, momentum-based fun. Jump in, roll smoothly, and see how far you can go!
+    </p>
+  `
 }
+
+
 
 
 
