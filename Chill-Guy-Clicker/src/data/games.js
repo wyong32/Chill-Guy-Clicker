@@ -2645,7 +2645,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
   imageAlt: 'Tralalero Tralala Clicker Unlocked gameplay with funny singers and music effects',
   iframeUrl: 'https://1games.io/game/tralalero-tralala-clicker/',
   isHot: false,
-  isNew: true,
+  isNew: false,
   isMore: true,
   detailsHtml: `
     <h2>Tralalero Tralala Clicker Unlocked – The Most Ridiculously Fun Clicker Game</h2>
@@ -2717,7 +2717,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
   imageAlt: 'Merge Brainrot Unlocked gameplay showing creepy items merging into mutated forms',
   iframeUrl: 'https://game.azgame.io/merge-brainrot/',
   isHot: false,
-  isNew: true,
+  isNew: false,
   isMore: true,
   detailsHtml: `
     <h2>Merge Brainrot Unlocked – The Strangest Merge Puzzle Game You'll Ever Play</h2>
@@ -3812,7 +3812,121 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
       With its mix of familiar mechanics and brand-new features, <strong>Curve Rush 2</strong> is the ultimate rolling ball experience for arcade fans. Whether you’re a veteran of the original game or a newcomer, this sequel offers endless hours of fast-paced, momentum-based fun. Jump in, roll smoothly, and see how far you can go!
     </p>
   `
+},
+
+{
+  "id": 63,
+  "pageTitle": "Slope Rider",
+  "seo": {
+    "title": "Slope Rider - High-Speed Winter Sledding Adventure Online",
+    "description": "Slope Rider lets you race down icy slopes in an endless sledding challenge. Dodge obstacles, collect gifts, and aim for the highest score in this fast-paced winter adventure!",
+    "keywords": "slope rider, sledding game, winter racing, snow adventure, endless runner, obstacle dodging, high score challenge, snow sled game"
+  },
+  "addressBar": "slope-rider",
+  "publishDate": "2025-08-25",
+  "imageUrl": "/images/games/game-63.webp",
+  "imageAlt": "Slope Rider gameplay screenshot with sled racing down snowy hills",
+  "iframeUrl": "https://game.azgame.io/slope-rider/",
+  "isHot": false,
+  "isMore": true,
+  "isNew": true,
+  "detailsHtml": `
+    <h2>About Slope Rider</h2>
+    <p>
+      <strong>Slope Rider</strong> is an exciting winter sledding game where reflexes and precision are key. Race down snow-covered hills, weave through icy forests, and tackle treacherous terrain. Your goal is to survive as long as possible while collecting points for distance traveled and obstacles avoided. Stunning winter landscapes and dynamic snow effects make every run thrilling.
+    </p>
+
+    <img src="/images/games/game63-img1.webp" alt="Slope Rider gameplay screenshot with sled racing down snowy hills" />
+
+    <h3>Experience the Winter Thrill</h3>
+    <p>
+      <strong>Slope Rider</strong> puts you on a fast-moving sled across unpredictable snowy slopes. Avoid hazards such as pine trees, rolling snowballs, ice patches, and falling icicles. Each run is a new challenge: the longer you last, the higher your score climbs. Quick reflexes and precise steering are essential to stay alive.
+    </p>
+
+    <h3>How to Play Slope Rider</h3>
+    <ul>
+      <li><strong>Steer Left or Right:</strong> Guide your sled to dodge obstacles at high speed.</li>
+      <li><strong>Jump Over Hazards:</strong> Tap to leap over ice blocks, snow mounds, and other dangers.</li>
+      <li><strong>Collect Gifts:</strong> Grab scattered gift boxes to unlock new sleds and stylish upgrades.</li>
+      <li><strong>Stay Alert:</strong> One mistake can end your run, so maintain focus and rhythm throughout.</li>
+    </ul>
+
+    <h3>Gameplay Objectives</h3>
+    <p>
+      The main objective is to survive the longest while accumulating the highest score possible. Distance, airtime, and collected gifts all contribute to your points. Mastering control over your sled is the key to topping the leaderboard.
+    </p>
+
+    <h3>Tips for Success</h3>
+    <ul>
+      <li><strong>Plan Ahead:</strong> Watch the upcoming terrain to react quickly to obstacles.</li>
+      <li><strong>Perfect Timing:</strong> Jump at the right moments to avoid hazards efficiently.</li>
+      <li><strong>Try Different Sleds:</strong> Unlock new sleds to experiment with different handling styles and effects.</li>
+    </ul>
+
+    <h3>Final Thoughts</h3>
+    <p>
+      With its combination of fast-paced gameplay, stunning snowy environments, and challenging obstacles, <strong>Slope Rider</strong> delivers endless winter fun. Take your sled, navigate the slopes skillfully, and see how far you can go in this high-speed adventure!
+    </p>
+  `
+},
+
+{
+  "id": 64,
+  "pageTitle": "Meme Puzzle",
+  "seo": {
+    "title": "Meme Puzzle - Fun and Addictive Meme Jigsaw Game Online",
+    "description": "Meme Puzzle is a casual puzzle game where you complete hilarious meme jigsaw puzzles. Solve, laugh, and unlock endless meme combinations for endless fun!",
+    "keywords": "meme puzzle, meme game, jigsaw puzzle, funny memes, casual game, brain teaser, online puzzle, meme matching"
+  },
+  "addressBar": "meme-puzzle",
+  "publishDate": "2025-08-25",
+  "imageUrl": "/images/games/game-64.webp",
+  "imageAlt": "Meme Puzzle gameplay showing jigsaw pieces forming a funny meme",
+  "iframeUrl": "https://game.azgame.io/meme-puzzle/",
+  "isHot": false,
+  "isMore": true,
+  "isNew": true,
+  "detailsHtml": `
+    <h2>About Meme Puzzle</h2>
+    <p>
+      <strong>Meme Puzzle</strong> is a hilarious and casual puzzle game where players assemble funny memes piece by piece. Each puzzle features popular internet memes that you need to complete to unlock new challenges and enjoy endless laughs. Perfect for casual gamers looking for a mix of humor and brain-teasing fun.
+    </p>
+
+    <img src="/images/games/game64-img1.webp" alt="Meme Puzzle gameplay showing jigsaw pieces forming a funny meme" />
+
+    <h3>Why You’ll Love Meme Puzzle</h3>
+    <p>
+      The game combines classic jigsaw puzzle mechanics with the humor of viral memes. Completing puzzles not only exercises your mind but also delivers a dose of entertainment as each meme comes to life. With a variety of memes to unlock, every session is a new chance for laughter.
+    </p>
+
+    <h3>How to Play Meme Puzzle</h3>
+    <ul>
+      <li><strong>Select a Puzzle:</strong> Pick from a collection of meme images to start your challenge.</li>
+      <li><strong>Drag & Drop Pieces:</strong> Move puzzle pieces into place to complete the meme image.</li>
+      <li><strong>Use Hints:</strong> Get guidance if a piece is tricky to place.</li>
+      <li><strong>Complete Puzzles:</strong> Finish puzzles to unlock more memes and increase your score.</li>
+    </ul>
+
+    <h3>Gameplay Objectives</h3>
+    <p>
+      The main goal is to solve as many meme puzzles as possible. Speed and accuracy improve your score, while completing puzzles unlocks more meme content for continuous entertainment.
+    </p>
+
+    <h3>Tips for Success</h3>
+    <ul>
+      <li><strong>Start with Corners:</strong> Place corner and edge pieces first to frame the puzzle.</li>
+      <li><strong>Sort Pieces by Color:</strong> Group pieces by color or pattern to make assembly faster.</li>
+      <li><strong>Have Fun:</strong> Enjoy the humor and creativity of each meme while playing.</li>
+    </ul>
+
+    <h3>Final Thoughts</h3>
+    <p>
+      <strong>Meme Puzzle</strong> offers a perfect blend of brain-teasing fun and internet humor. Piece together memes, laugh at your favorite jokes, and challenge yourself to complete puzzles faster and more accurately. Dive in for endless casual entertainment!
+    </p>
+  `
 }
+
+
 
 
 
