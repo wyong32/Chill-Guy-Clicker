@@ -50,41 +50,41 @@
         <div class="footer-section links">
           <h3 class="footer-title">Quick Links</h3>
           <ul class="footer-links">
-            <li><router-link to="/" class="footer-link">Chill Guy Clicker</router-link></li>
-            <li><router-link to="/Chill-Guy-Girl" class="footer-link">Chill Guy Girl</router-link></li>
-            <li><router-link to="/Chill-Guy-Music" class="footer-link">Chill Guy Music</router-link></li>
-            <li><router-link to="/Chill-Guy-PNG" class="footer-link">Chill Guy PNG</router-link></li>
-            <li><router-link to="/Chill-Guy-Wallpaper" class="footer-link">Chill Guy Wallpaper</router-link></li>
+            <li><a href="/" class="footer-link">Chill Guy Clicker</a></li>
+            <li><a href="/Chill-Guy-Girl" class="footer-link">Chill Guy Girl</a></li>
+            <li><a href="/Chill-Guy-Music" class="footer-link">Chill Guy Music</a></li>
+            <li><a href="/Chill-Guy-PNG" class="footer-link">Chill Guy PNG</a></li>
+            <li><a href="/Chill-Guy-Wallpaper" class="footer-link">Chill Guy Wallpaper</a></li>
           </ul>
         </div>
         <div class="footer-section categories">
           <h3 class="footer-title">Game Categories</h3>
           <ul class="footer-links">
             <li>
-              <router-link to="/" class="footer-link">Chill Guy Clicker</router-link>
+              <a href="/" class="footer-link">Chill Guy Clicker</a>
             </li>
             <li>
-              <router-link to="/Chill-Girl-Clicker" class="footer-link">Chill Girl Clicker</router-link>
+              <a href="/Chill-Girl-Clicker" class="footer-link">Chill Girl Clicker</a>
             </li>
             <li>
-              <router-link to="/Chill-Guy-Clicker-3D" class="footer-link">Chill Guy Clicker 3D</router-link>
+              <a href="/Chill-Guy-Clicker-3D" class="footer-link">Chill Guy Clicker 3D</a>
             </li>
             <li>
-              <router-link to="/Chill-Guy-Unification" class="footer-link">Chill Guy: Unification</router-link>
+              <a href="/Chill-Guy-Unification" class="footer-link">Chill Guy: Unification</a>
             </li>
             <li>
-              <router-link to="/Chill-Guy-Evolution" class="footer-link">Chill Guy Evolution</router-link>
+              <a href="/Chill-Guy-Evolution" class="footer-link">Chill Guy Evolution</a>
             </li>
           </ul>
         </div>
         <div class="footer-section legal">
           <h3 class="footer-title">Legal</h3>
           <ul class="footer-links">
-            <li><router-link to="/privacy-policy" class="footer-link">Privacy Policy</router-link></li>
-            <li><router-link to="/terms-of-use" class="footer-link">Terms of Use</router-link></li>
-            <li><router-link to="/copyright" class="footer-link">Copyright</router-link></li>
-            <li><router-link to="/about" class="footer-link">About Us</router-link></li>
-            <li><router-link to="/contact" class="footer-link">Contact Us</router-link></li>
+            <li><a href="/privacy-policy" class="footer-link">Privacy Policy</a></li>
+            <li><a href="/terms-of-use" class="footer-link">Terms of Use</a></li>
+            <li><a href="/copyright" class="footer-link">Copyright</a></li>
+            <li><a href="/about" class="footer-link">About Us</a></li>
+            <li><roua href="/contact" class="footer-link">Contact Us</roua></li>
           </ul>
         </div>
       </div>

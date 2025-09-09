@@ -29,10 +29,10 @@
       </div>
 
       <div class="wallpaper-grid">
-        <router-link
+        <a
           v-for="wallpaper in filteredWallpapers"
           :key="wallpaper.id"
-          :to="'/Chill-Guy-Wallpaper/' + wallpaper.addressBar"
+          :href="'/Chill-Guy-Wallpaper/' + wallpaper.addressBar"
           class="wallpaper-card"
         >
           <div class="wallpaper-image">
@@ -57,7 +57,7 @@
               </span>
             </div>
           </div>
-        </router-link>
+        </a>
       </div>
     </div>
   </div>

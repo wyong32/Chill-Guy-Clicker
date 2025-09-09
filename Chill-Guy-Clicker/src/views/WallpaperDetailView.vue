@@ -2,10 +2,10 @@
   <div class="wallpaper-detail-view">
     <div class="container">
       <div class="back-link">
-        <router-link to="/Chill-Guy-Wallpaper" class="back-button">
+        <a href="/Chill-Guy-Wallpaper" class="back-button">
           <span class="back-icon"></span>
           Back to Wallpapers
-        </router-link>
+        </a>
       </div>
 
       <div v-if="wallpaper" class="wallpaper-detail-content">
@@ -51,7 +51,7 @@
       <div v-else class="not-found">
         <h2>Wallpaper Not Found</h2>
         <p>Sorry, the wallpaper you're looking for doesn't exist.</p>
-        <router-link to="/wallpaper" class="back-button">Back to Wallpapers</router-link>
+        <a href="/wallpaper" class="back-button">Back to Wallpapers</a>
       </div>
     </div>
   </div>

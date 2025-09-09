@@ -2,10 +2,10 @@
   <div class="music-detail-view">
     <div class="container" v-if="track">
       <div class="back-link">
-        <router-link to="/Chill-Guy-Music" class="back-button">
+        <a href="/Chill-Guy-Music" class="back-button">
           <span class="back-icon"></span>
           Back to Music
-        </router-link>
+        </a>
       </div>
 
       <div class="music-detail-content">
@@ -98,7 +98,7 @@
     <div class="not-found" v-else>
       <h2>Track Not Found</h2>
       <p>Sorry, the music track you're looking for doesn't exist.</p>
-      <router-link to="/Chill-Guy-Music" class="back-button">Back to Music</router-link>
+      <a href="/Chill-Guy-Music" class="back-button">Back to Music</a>
     </div>
   </div>
 </template>

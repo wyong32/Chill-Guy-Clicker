@@ -107,10 +107,10 @@
       </div>
 
       <div class="back-link">
-        <router-link to="/" class="back-button">
+        <a href="/" class="back-button">
           <span class="back-icon"></span>
           Back to Home
-        </router-link>
+        </a>
       </div>
     </div>
   </div>

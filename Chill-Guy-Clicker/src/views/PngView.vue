@@ -12,10 +12,10 @@
             :key="'column-' + columnIndex"
             class="waterfall-column"
           >
-            <router-link
+            <a
               v-for="image in column"
               :key="image.id"
-              :to="'/Chill-Guy-PNG/' + image.addressBar"
+              :href="'/Chill-Guy-PNG/' + image.addressBar"
               class="png-card"
             >
               <div class="png-image">
@@ -31,7 +31,7 @@
                 </div>
               </div>
               <div class="png-title">{{ image.title }}</div>
-            </router-link>
+            </a>
           </div>
         </div>
       </div>

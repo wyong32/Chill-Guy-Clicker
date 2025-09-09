@@ -4,11 +4,11 @@
     <section class="hot-games">
       <h2 class="section-title">Hot Games</h2>
       <div class="games-list">
-        <router-link
+        <a
           v-for="game in hotGames"
           :key="'hot-' + game.id"
           class="game-card"
-          :to="getGameRoute(game)"
+          :href="getGameRoute(game)"
           :aria-label="'Play ' + (game.pageTitle || game.title) + ' game'"
         >
           <img
@@ -17,7 +17,7 @@
             class="game-img"
           />
           <h3 class="game-title">{{ game.pageTitle || game.title }}</h3>
-        </router-link>
+        </a>
       </div>
     </section>
 
@@ -25,11 +25,11 @@
     <section v-if="newGames && newGames.length > 0" class="new-games">
       <h2 class="section-title">New Games</h2>
       <div class="games-list">
-        <router-link
+        <a
           v-for="game in newGames"
           :key="'new-' + game.id"
           class="game-card"
-          :to="getGameRoute(game)"
+          :href="getGameRoute(game)"
           :aria-label="'Play ' + (game.pageTitle || game.title) + ' game'"
         >
           <img
@@ -39,7 +39,7 @@
           />
           <h3 class="game-title">{{ game.pageTitle || game.title }}</h3>
           <span class="new-badge">NEW</span>
-        </router-link>
+        </a>
       </div>
     </section>
   </aside>

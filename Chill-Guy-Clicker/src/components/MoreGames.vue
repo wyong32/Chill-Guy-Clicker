@@ -2,11 +2,11 @@
   <section class="more-games">
     <h2 class="section-title">More Games</h2>
     <div class="more-games-grid">
-      <router-link
+      <a
         v-for="game in games"
         :key="game.id"
         class="more-game-card"
-        :to="getGameRoute(game)"
+        :href="getGameRoute(game)"
         :aria-label="'Play ' + (game.pageTitle || game.title) + ' game'"
       >
         <img
@@ -15,7 +15,7 @@
           class="more-game-img"
         />
         <h3 class="more-game-title">{{ game.pageTitle || game.title }}</h3>
-      </router-link>
+      </a>
     </div>
   </section>
 </template>

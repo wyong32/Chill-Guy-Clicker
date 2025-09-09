@@ -2,10 +2,10 @@
   <div class="png-detail-view">
     <div class="container">
       <div class="back-link">
-        <router-link to="/Chill-Guy-PNG" class="back-button">
+        <a href="/Chill-Guy-PNG" class="back-button">
           <span class="back-icon"></span>
           Back to PNG Images
-        </router-link>
+        </a>
       </div>
 
       <div v-if="pngImage" class="png-detail-content">
@@ -37,7 +37,7 @@
       <div v-else class="not-found">
         <h2>PNG Image Not Found</h2>
         <p>Sorry, the PNG image you're looking for doesn't exist.</p>
-        <router-link to="/Chill-Guy-PNG" class="back-button">Back to PNG Images</router-link>
+        <a href="/Chill-Guy-PNG" class="back-button">Back to PNG Images</a>
       </div>
     </div>
   </div>

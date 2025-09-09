@@ -4,7 +4,7 @@
     <div class="container">
       <div class="header-content">
         <div class="logo">
-          <router-link to="/">
+          <a href="/">
             <div class="logo-image-container">
               <img
                 src="/images/logo.png"
@@ -18,24 +18,24 @@
               />
             </div>
             <span>Chill Guy Clicker</span>
-          </router-link>
+          </a>
         </div>
         <nav class="nav">
           <ul class="nav-list">
             <li class="nav-item">
-              <router-link to="/" class="nav-link" :class="{ 'custom-active': isActive('home') }">Chill Guy Clicker</router-link>
+              <a href="/" class="nav-link" :class="{ 'custom-active': isActive('home') }">Chill Guy Clicker</a>
             </li>
             <li class="nav-item">
-              <router-link to="/Chill-Guy-Girl" class="nav-link" :class="{ 'custom-active': isActive('girl') }">Chill Guy Girl</router-link>
+              <a href="/Chill-Guy-Girl" class="nav-link" :class="{ 'custom-active': isActive('girl') }">Chill Guy Girl</a>
             </li>
             <li class="nav-item">
-              <router-link to="/Chill-Guy-Music" class="nav-link" :class="{ 'custom-active': isActive('music') }">Chill Guy Music</router-link>
+              <a href="/Chill-Guy-Music" class="nav-link" :class="{ 'custom-active': isActive('music') }">Chill Guy Music</a>
             </li>
             <li class="nav-item">
-              <router-link to="/Chill-Guy-PNG" class="nav-link" :class="{ 'custom-active': isActive('png') }">Chill Guy PNG</router-link>
+              <a href="/Chill-Guy-PNG" class="nav-link" :class="{ 'custom-active': isActive('png') }">Chill Guy PNG</a>
             </li>
             <li class="nav-item">
-              <router-link to="/Chill-Guy-Wallpaper" class="nav-link" :class="{ 'custom-active': isActive('wallpaper') }">Chill Guy Wallpaper</router-link>
+              <a href="/Chill-Guy-Wallpaper" class="nav-link" :class="{ 'custom-active': isActive('wallpaper') }">Chill Guy Wallpaper</a>
             </li>
           </ul>
         </nav>
@@ -83,54 +83,49 @@
 
       <ul class="mobile-nav-list">
         <li class="mobile-nav-item">
-          <router-link
-            to="/"
+          <a href="/"
             class="mobile-nav-link"
             :class="{ 'active': isActive('home') }"
             @click="closeMobileMenu"
           >
             Chill Guy Clicker
-          </router-link>
+          </a>
         </li>
         <li class="mobile-nav-item">
-          <router-link
-            to="/Chill-Guy-Girl"
+          <a href="/Chill-Guy-Girl"
             class="mobile-nav-link"
             :class="{ 'active': isActive('girl') }"
             @click="closeMobileMenu"
           >
             Chill Guy Girl
-          </router-link>
+          </a>
         </li>
         <li class="mobile-nav-item">
-          <router-link
-            to="/Chill-Guy-Music"
+          <a href="/Chill-Guy-Music"
             class="mobile-nav-link"
             :class="{ 'active': isActive('music') }"
             @click="closeMobileMenu"
           >
             Chill Guy Music
-          </router-link>
+          </a>
         </li>
         <li class="mobile-nav-item">
-          <router-link
-            to="/Chill-Guy-PNG"
+          <a href="/Chill-Guy-PNG"
             class="mobile-nav-link"
             :class="{ 'active': isActive('png') }"
             @click="closeMobileMenu"
           >
             Chill Guy PNG
-          </router-link>
+          </a>
         </li>
         <li class="mobile-nav-item">
-          <router-link
-            to="/Chill-Guy-Wallpaper"
+          <a href="/Chill-Guy-Wallpaper"
             class="mobile-nav-link"
             :class="{ 'active': isActive('wallpaper') }"
             @click="closeMobileMenu"
           >
             Chill Guy Wallpaper
-          </router-link>
+          </a>
         </li>
       </ul>
     </nav>

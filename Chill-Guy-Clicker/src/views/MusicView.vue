@@ -11,9 +11,9 @@
           <div class="music-image">
             <img :src="track.imageUrl" :alt="track.title" />
             <div class="music-overlay">
-              <router-link :to="'/Chill-Guy-Music/' + track.addressBar" class="listen-button">
+              <a :href="'/Chill-Guy-Music/' + track.addressBar" class="listen-button">
                 Listen Now
-              </router-link>
+              </a>
             </div>
           </div>
           <div class="music-info">
