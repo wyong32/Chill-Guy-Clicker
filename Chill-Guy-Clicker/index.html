@@ -71,8 +71,16 @@
     <!-- DNS 预解析 -->
     <link rel="dns-prefetch" href="//www.googletagmanager.com" />
 
-    <!-- CLS 优化 CSS -->
-    <link rel="stylesheet" href="/css/cls-optimize.css" />
+    <!-- CLS 优化 CSS - 异步加载 -->
+    <link rel="preload" href="/css/cls-optimize.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/css/cls-optimize.css"></noscript>
+    
+    <!-- 异步CSS加载polyfill -->
+    <script>
+      /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+      (function(w){"use strict";if(!w.loadCSS){w.loadCSS=function(){}}
+      var rp=loadCSS.relpreload={};rp.support=(function(){var ret;try{ret=w.document.createElement("link").relList.supports("preload")}catch(e){ret=false}return function(){return ret}})();rp.bindMediaToggle=function(link){var finalMedia=link.media||"all";function enableStylesheet(){link.media=finalMedia}if(link.addEventListener){link.addEventListener("load",enableStylesheet)}else if(link.attachEvent){link.attachEvent("onload",enableStylesheet)}setTimeout(function(){link.rel="stylesheet";link.media="only x"});setTimeout(enableStylesheet,3000)};rp.poly=function(){if(rp.support()){return}var links=w.document.getElementsByTagName("link");for(var i=0;i<links.length;i++){var link=links[i];if(link.rel==="preload"&&link.getAttribute("as")==="style"&&!link.getAttribute("data-loadcss")){link.setAttribute("data-loadcss",true);rp.bindMediaToggle(link)}}};if(!rp.support()){rp.poly();var run=w.setInterval(rp.poly,500);if(w.addEventListener){w.addEventListener("load",function(){rp.poly();w.clearInterval(run)})}else if(w.attachEvent){w.attachEvent("onload",function(){rp.poly();w.clearInterval(run)})}}if(typeof exports!=="undefined"){exports.loadCSS=loadCSS}else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this));
+    </script>
 
     <!-- 广告脚本 -->
     <script
@@ -82,14 +90,14 @@
     ></script>
 
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NM6JN6XG6J"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NM6JN6XG6J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-NM6JN6XG6J');
-</script>
+      gtag('config', 'G-NM6JN6XG6J');
+    </script>
 
     <!-- 内联关键CSS防止CLS - 精确复制 Dreamy-Room-Level -->
     <style>

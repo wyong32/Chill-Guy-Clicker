@@ -17,6 +17,14 @@
         <h3 class="more-game-title">{{ game.pageTitle || game.title }}</h3>
       </a>
     </div>
+    
+    <!-- More按钮 - 只在移动端且未显示全部游戏时显示 -->
+    <div class="more-button-container" v-if="isMobile && !showAllMoreGames">
+      <button class="more-button" @click="toggleMoreGames">
+        <span class="more-button-text">More Games</span>
+        <span class="more-button-icon">↓</span>
+      </button>
+    </div>
   </section>
 </template>
 
@@ -26,6 +34,18 @@ export default {
   props: {
     games: {
       type: Array,
+      required: true,
+    },
+    showAllMoreGames: {
+      type: Boolean,
+      default: false,
+    },
+    isMobile: {
+      type: Boolean,
+      default: false,
+    },
+    toggleMoreGames: {
+      type: Function,
       required: true,
     },
   },
@@ -131,6 +151,65 @@ export default {
 @media (max-width: 768px) {
   .more-games-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* More按钮样式 */
+.more-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 0 20px;
+}
+
+.more-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  min-width: 140px;
+  justify-content: center;
+}
+
+.more-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.more-button:active {
+  transform: translateY(0);
+}
+
+.more-button-text {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.more-button-icon {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.more-button:hover .more-button-icon {
+  transform: translateY(2px);
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  .more-button {
+    width: 100%;
+    max-width: 200px;
+    padding: 14px 24px;
+    font-size: 15px;
   }
 }
 </style>

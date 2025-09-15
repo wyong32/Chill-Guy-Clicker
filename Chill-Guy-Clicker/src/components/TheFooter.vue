@@ -84,7 +84,7 @@
             <li><a href="/terms-of-use" class="footer-link">Terms of Use</a></li>
             <li><a href="/copyright" class="footer-link">Copyright</a></li>
             <li><a href="/about" class="footer-link">About Us</a></li>
-            <li><roua href="/contact" class="footer-link">Contact Us</roua></li>
+            <li><a href="/contact" class="footer-link">Contact Us</a></li>
           </ul>
         </div>
       </div>

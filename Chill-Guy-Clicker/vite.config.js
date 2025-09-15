@@ -120,8 +120,11 @@ export default defineConfig(({ command, mode }) => {
             // 开发环境：移除可能导致警告的预加载
             return html.replace(/<link[^>]*rel="preload"[^>]*>/g, '')
           }
-          // 生产环境：保持原有的预加载逻辑
-          return html
+          // 生产环境：优化CSS加载
+          return html.replace(
+            /<link[^>]*rel="stylesheet"[^>]*href="([^"]*\.css)"[^>]*>/g,
+            '<link rel="preload" href="$1" as="style" onload="this.onload=null;this.rel=\'stylesheet\'"><noscript><link rel="stylesheet" href="$1"></noscript>'
+          )
         }
       }
     },
@@ -266,6 +269,11 @@ Crawl-delay: 2`,
       },
       // 启用 CSS 代码分割
       cssCodeSplit: true,
+      // 优化CSS加载
+      css: {
+        // 将CSS提取到单独的文件中
+        extract: true,
+      },
       // 设置 chunk 大小警告限制
       chunkSizeWarningLimit: 1000,
       // 设置资源内联限制

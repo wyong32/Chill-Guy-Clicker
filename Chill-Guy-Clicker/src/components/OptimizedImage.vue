@@ -27,7 +27,7 @@
 
     <!-- 错误状态 -->
     <div v-if="hasError" class="image-error">
-      <span>图片加载失败</span>
+      <span>Image loading failed</span>
     </div>
   </div>
 </template>

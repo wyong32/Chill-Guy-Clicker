@@ -1,7 +1,7 @@
 <template>
   <div class="home-wrapper">
     <div class="home" :class="{ 'theater-mode': isTheaterMode }">
-      <!-- 左侧广告-PC -->
+        <!-- 左侧广告-PC -->
       <aside class="ads-wrapper ads-left" v-if="!isMobile">
         <ins
           class="adsbygoogle"
@@ -55,21 +55,21 @@
         </aside>
 
         <h1 class="game-title" v-show="!isTheaterMode">
-          {{ featuredGame.pageTitle || featuredGame.title }}
+          {{ featuredGame?.pageTitle || featuredGame?.title || defaultGame?.pageTitle || defaultGame?.title || 'Chill Guy Clicker' }}
         </h1>
         <div class="game-layout">
           <!-- Main Game Area -->
           <section class="game-main">
             <article class="featured-game">
               <GamePlayer
-                :game="featuredGame"
+                :game="featuredGame || defaultGame"
                 :gameStarted="gameStarted"
                 @start-game="startGame"
                 @theater-mode-changed="handleTheaterModeChanged"
               />
               <GameInfo
-                :game="featuredGame"
-                v-if="featuredGame.detailsHtml || featuredGame.rating"
+                :game="featuredGame || defaultGame"
+                v-if="(featuredGame?.detailsHtml || featuredGame?.rating) || (defaultGame?.detailsHtml || defaultGame?.rating)"
               />
 
               <!-- 移动端横幅广告2 -->
@@ -84,7 +84,7 @@
                 ></ins>
               </aside>
 
-              <CommentSection :gameId="featuredGame.id" v-show="!isTheaterMode" />
+              <CommentSection :gameId="(featuredGame || defaultGame)?.id" v-show="!isTheaterMode" />
             </article>
           </section>
 
@@ -105,7 +105,13 @@
         </div>
 
         <!-- More Games Section -->
-        <MoreGames :games="moreGames" v-show="!isTheaterMode" />
+        <MoreGames 
+          :games="moreGames" 
+          :showAllMoreGames="showAllMoreGames"
+          :isMobile="isMobile"
+          :toggleMoreGames="toggleMoreGames"
+          v-show="!isTheaterMode" 
+        />
       </main>
     </div>
   </div>
@@ -154,7 +160,24 @@ const currentGame = computed(() => {
 const featuredGame = computed(() => currentGame.value)
 const hotGames = computed(() => games.filter((game) => game.isHot))
 const newGames = computed(() => games.filter((game) => game.isNew))
-const moreGames = computed(() => games.filter((game) => game.isMore || game.isRecommended))
+
+// 添加控制More Games显示状态的响应式变量
+const showAllMoreGames = ref(false)
+
+// 预加载默认游戏，避免异步计算延迟
+const defaultGame = games.find((game) => game.id === 1) || games[0]
+
+// 修改moreGames计算属性，在移动端且未显示全部时只返回前8个游戏
+const moreGames = computed(() => {
+  const allMoreGames = games.filter((game) => game.isMore || game.isRecommended)
+  
+  // 在移动端且未显示全部时，只返回前8个游戏
+  if (isMobile.value && !showAllMoreGames.value) {
+    return allMoreGames.slice(0, 8)
+  }
+  
+  return allMoreGames
+})
 
 // --- Methods ---
 const startGame = () => {
@@ -163,6 +186,11 @@ const startGame = () => {
 
 const handleTheaterModeChanged = (value) => {
   isTheaterMode.value = value
+}
+
+// 添加切换More Games显示状态的方法
+const toggleMoreGames = () => {
+  showAllMoreGames.value = !showAllMoreGames.value
 }
 
 const updateSEO = () => {
