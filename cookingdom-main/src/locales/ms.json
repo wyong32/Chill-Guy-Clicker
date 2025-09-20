@@ -1,0 +1,559 @@
+{
+  "message": {
+    "hello": "Halo Dunia"
+  },
+  "example": "Ini adalah contoh teks.",
+  "header": {
+    "logo": "Cookingdom Level Walkthrough"
+  },
+  "nav": {
+    "home": "🏠 Laman Utama",
+    "guides": "📖 Panduan",
+    "blog": "✍️ Blog",
+    "download": "⬇️ Muat Turun",
+    "language": "Bahasa"
+  },
+  "footer": {
+    "about": {
+      "title": "Laman Peminat Cookingdom",
+      "description": "Laman peminat panduan permainan Cookingdom yang paling comel, berkongsi petua dan keseronokan.",
+      "linkText": "Tentang Kami"
+    },
+    "contact": {
+      "linkText": "Hubungi Kami"
+    },
+    "links": {
+      "quickNav": {
+        "title": "Navigasi Pantas"
+      },
+      "popularLevels": {
+        "title": "Tahap Popular",
+        "level5": "Tahap 5 Stik",
+        "level7": "Tahap 7 BBQ",
+        "level19": "Tahap 19 Burger",
+        "level26": "Tahap 26 Ketam Raja"
+      },
+      "help": {
+        "title": "Bantuan & Info",
+        "privacy": "Dasar Privasi",
+        "terms": "Terma Perkhidmatan"
+      }
+    },
+    "bottom": {
+      "copyright": "© {year} Cookingdom. Semua hak cipta terpelihara.",
+      "credits": "Dibuat dengan ♡ oleh Peminat | Hak cipta permainan Cookingdom adalah milik pembangunnya.",
+      "disclaimer": "Penafian: Laman web ini (www.cookingdom.co) adalah laman peminat tidak rasmi yang dicipta oleh peminat dan tidak mempunyai kaitan dengan permainan rasmi Cookingdom atau penerbitnya. Untuk tujuan maklumat dan hiburan sahaja."
+    },
+    "copyright": {
+      "linkText": "Hak Cipta"
+    },
+    "privacy": "Dasar Privasi",
+    "terms": "Terma Perkhidmatan",
+    "defaultKeywords": "permainan memasak, simulasi, permainan mudah alih, strategi, menyeronokkan, resipi, dapur"
+  },
+  "home": {
+    "hero": {
+      "title": "Cookingdom Game: Panduan Lengkap Permainan",
+      "description": "Teman penting anda untuk menguasai permainan Cookingdom ✨ Akses Panduan Lengkap Semua Tahap Cookingdom, cheat mudah, dan panduan video.",
+      "latestLevels": {
+        "title": "🔥 Kemas kini peringkat terkini",
+        "level94": "Cookingdom Tahap 94 Penyelesaian Dolma Vegan",
+        "level95": "Cookingdom Tahap 95 Penyelesaian Falafel dengan Saus Tahini",
+        "level96": "Cookingdom Tahap 96 Penyelesaian Burrito Style",
+        "level97": "Cookingdom Tahap 97 Penyelesaian Eggplant Panggang",
+        "level98": "Cookingdom Tahap 98 Penyelesaian Salad Herring Jeruk"
+      },
+      "button": {
+        "viewGuides": "Lihat Panduan Permainan Cookingdom",
+        "gameFeatures": "Teroka Ciri-ciri Permainan",
+        "downloadGame": "Muat Turun Permainan"
+      }
+    },
+    "features": {
+      "title": "Ciri-ciri Permainan Cookingdom",
+      "description": "Terokai ciri-ciri menarik yang menjadikan Cookingdom permainan simulasi memasak yang santai dan unik",
+      "card1": {
+        "title": "Simulasi Memasak yang Santai",
+        "description": "Nikmati keseronokan memasak tanpa had masa atau tekanan dalam permainan Cookingdom."
+      },
+      "card2": {
+        "title": "Mini-Games yang Menyeronokkan",
+        "description": "Lengkapkan langkah-langkah memasak seperti memotong dan mengacau melalui mini-games langkah demi langkah dalam permainan Cookingdom."
+      },
+      "card3": {
+        "title": "Penyesuaian Dapur",
+        "description": "Hias dan naik taraf ruang dapur unik anda mengikut citarasa semasa anda bermain permainan Cookingdom."
+      },
+      "card4": {
+        "title": "Suasana Santai dan Mesra",
+        "description": "Visual yang comel dan muzik yang menenangkan mencipta suasana permainan yang selesa sepanjang permainan Cookingdom."
+      },
+      "card5": {
+        "title": "Permainan Lintas Platform",
+        "description": "Tersedia untuk dimuat turun secara percuma di kedua-dua peranti iOS dan Android, nikmati permainan Cookingdom di mana sahaja."
+      }
+    },
+    "downloads": {
+      "title": "Muat Turun Permainan Cookingdom",
+      "description": "Dapatkan Cookingdom secara percuma pada peranti iOS atau Android anda!",
+      "ios": {
+        "title": "Versi iOS",
+        "description": "Aplikasi Cookingdom untuk iPhone dan iPad",
+        "meta": {
+          "type": "App Store",
+          "size": "Percuma"
+        },
+        "button": "Pergi ke App Store"
+      },
+      "android": {
+        "title": "Versi Android",
+        "description": "cookingdom mod apk",
+        "meta": {
+          "type": "Google Play",
+          "size": "Percuma"
+        },
+        "button": "Pergi ke Google Play"
+      },
+      "modCard": {
+        "title": "Mencari Mods?",
+        "description": "Akses versi modded khas Cookingdom dengan ciri-ciri dan peningkatan unik.",
+        "button": "Pergi ke Muat Turun Mod"
+      },
+      "disclaimerTitle": "Penafian",
+      "disclaimerBody": "Semua pautan muat turun yang disediakan di laman ini dikumpulkan dari internet dan adalah untuk tujuan pembelajaran dan penyelidikan sahaja. Laman ini tidak bertanggungjawab ke atas kesahihan, keselamatan, atau kelengkapan mana-mana kandungan yang dimuat turun, dan tidak menanggung sebarang risiko atau liabiliti undang-undang yang mungkin timbul daripada penggunaan pautan muat turun tersebut. Pengguna dinasihatkan untuk menggunakan pertimbangan sendiri sebelum memuat turun dan menggunakan sebarang kandungan."
+    },
+    "about": {
+      "title": "⭐ Tentang Permainan Cookingdom",
+      "description1": "Permainan Cookingdom adalah permainan memasak yang santai dan menyeronokkan yang membolehkan anda merasai kegembiraan memasak dalam persekitaran yang mesra tanpa tekanan. Ia menggabungkan kawalan mudah dan tugas memasak yang semakin mencabar, menjadikannya sesuai untuk pemain dari semua peringkat umur.",
+      "description2": "Permainan utama Cookingdom melibatkan melengkapkan keseluruhan proses dari persediaan makanan hingga memasak dan penyediaan pinggan melalui mini-games interaktif. Sama ada memotong sayur-sayuran, mengacau, mengawal haba, atau menghias pinggan, setiap langkah dalam permainan Cookingdom direka untuk mudah dipelajari dan penuh keseronokan.",
+      "description3": "Semasa anda maju melalui tahap dalam permainan Cookingdom, anda akan membuka resipi baru, alat memasak, dan dekorasi. Anda boleh menyesuaikan dapur anda untuk mencipta ruang memasak peribadi. Permainan ini tidak mempunyai had masa yang ketat, memberi anda kebebasan untuk menikmati proses memasak yang santai mengikut kadar anda sendiri."
+    },
+    "stats": {
+      "title": "Statistik Permainan Cookingdom",
+      "downloads": "Muat Turun",
+      "countries": "Negara",
+      "recipes": "Resipi Unik",
+      "rating": "Penilaian Pengguna"
+    },
+    "howToPlay": {
+      "title": "Cara Bermain Permainan Cookingdom",
+      "step1": {
+        "title": "Apa itu Permainan Cookingdom?",
+        "description": "Permainan Cookingdom adalah simulator memasak yang santai dan selesa yang membawa anda dalam pengembaraan kulinari yang tidak dapat ditandingi. Ikuti petua ini dalam permainan Cookingdom dan anda akan cepat menjadi pakar, memukau rakan-rakan dengan kemahiran memasak maya anda. Ingat, matlamat permainan Cookingdom adalah untuk menikmati proses, jadi berseronoklah dan biarkan kreativiti anda bersinar!"
+      },
+      "step2": {
+        "title": "Belajar Langkah Demi Langkah",
+        "description": "Apabila anda mula bermain permainan Cookingdom, permainan ini akan memberikan tutorial mudah yang menerangkan cara untuk melaksanakan setiap tugas memasak. Panduan ini bertujuan untuk membantu anda membiasakan diri dengan kawalan dan mekanik permainan Cookingdom. Perhatikan panduan ini pada permulaan permainan."
+      },
+      "step3": {
+        "title": "Lengkapkan Tahap",
+        "description": "Setiap tahap dalam permainan Cookingdom mempersembahkan hidangan tertentu yang perlu anda sediakan. Ikuti arahan pada skrin, lengkapkan mini-games untuk setiap langkah (memotong, mengacau, membakar, dan sebagainya), dan berusaha mendapatkan skor tertinggi. Kejayaan dalam permainan Cookingdom biasanya diukur melalui ketepatan dan kadang-kadang kelajuan dalam mini-games."
+      },
+      "step4": {
+        "title": "Menggunakan Panduan Walkthrough Cookingdom",
+        "description": "Jika anda terperangkap pada tahap tertentu atau ingin mengoptimumkan permainan anda, gunakan Panduan Walkthrough Cookingdom yang disediakan di laman ini! Kami menawarkan arahan langkah demi langkah, petua untuk mini-games yang sukar, dan contoh video untuk membantu anda menguasai setiap resipi dan mencapai skor terbaik dengan Panduan Semua Tahap Cookingdom kami.",
+        "prompt": "Semak Panduan Lengkap Walkthrough Cookingdom kami untuk bantuan terperinci!"
+      },
+      "step5": {
+        "title": "Berinteraksi dengan Komuniti",
+        "description": "Sertai komuniti permainan Cookingdom dalam talian! Kongsi reka bentuk dapur anda, minta bantuan, dan bincangkan strategi dengan pemain Cookingdom yang lain. Ikuti pautan di footer untuk sertai."
+      }
+    },
+    "faq": {
+      "title": "🤔 Soalan Lazim Permainan Cookingdom",
+      "q1": {
+        "question": "Adakah permainan Cookingdom percuma untuk dimainkan?",
+        "answer": "Ya, permainan Cookingdom boleh dimuat turun dan dimainkan secara percuma di iOS dan Android. Ia mungkin menawarkan pembelian dalam aplikasi untuk item kosmetik atau peningkatan kecil, tetapi permainan utama boleh dimainkan tanpa sebarang kos."
+      },
+      "q2": {
+        "question": "Adakah panduan di laman ini rasmi?",
+        "answer": "Tidak, ini adalah laman peminat tidak rasmi yang dibuat oleh peminat untuk permainan Cookingdom. Panduan dan maklumat ini berdasarkan pengalaman pemain dan pengetahuan komuniti. Walaupun kami berusaha untuk ketepatan, sentiasa rujuk sumber rasmi permainan Cookingdom jika perlu."
+      },
+      "q3": {
+        "question": "Seberapa kerap panduan dikemas kini?",
+        "answer": "Kami berusaha untuk mengemas kini panduan seiring dengan perubahan besar dalam permainan Cookingdom atau pelepasan tahap baru. Walau bagaimanapun, sebagai projek peminat, kemas kini bergantung pada masa sukarelawan dan sumbangan komuniti. Semak laman ini secara berkala!"
+      },
+      "q4": {
+        "question": "Bolehkah saya menyumbang kepada panduan?",
+        "answer": "Kami amat mengalu-alukan sumbangan komuniti! Jika anda mempunyai petua, pembetulan, atau video walkthrough, sila hubungi kami melalui halaman hubungi atau pautan media sosial kami (Discord/Reddit di footer). Kami akan menyemak dan memberi kredit kepada sumbangan."
+      }
+    },
+    "tips": {
+      "title": "💡 Petua dan Trik Permainan Cookingdom",
+      "description": "Kuasa petua permainan Cookingdom ini untuk menjadikan kerjaya dapur anda lebih cekap dan mendapatkan penarafan tiga bintang dengan mudah! Memohon strategi ini akan meningkatkan pengalaman anda dalam permainan Cookingdom. Pertimbangkan untuk memeriksa Panduan Walkthrough Cookingdom kami untuk strategi tahap khusus.",
+      "tip1_title": "Naik Taraf Peralatan Dapur:",
+      "tip1_text": "Stove yang lebih cepat dan periuk yang lebih besar dapat mengurangkan masa memasak dengan ketara dalam permainan Cookingdom.",
+      "tip2_title": "Sediakan Lebih Awal:",
+      "tip2_text": "Semasa menunggu satu hidangan selesai, anda boleh menyediakan bahan-bahan untuk hidangan seterusnya.",
+      "tip3_title": "Fokus pada Kepuasan Pelanggan:",
+      "tip3_text": "Menyelesaikan pesanan dengan cepat dan tepat akan memperoleh lebih banyak tips dan ulasan positif dalam permainan Cookingdom.",
+      "tip4_title": "Rancang Susunan Dapur:",
+      "tip4_text": "Letakkan peralatan yang sering digunakan di tempat yang mudah diakses untuk aliran kerja yang efisien dalam permainan Cookingdom.",
+      "tip5_title": "Sertai Acara Khas:",
+      "tip5_text": "Acara sering menawarkan ganjaran yang besar untuk membantu anda naik level dengan lebih cepat."
+    }
+  },
+  "guideDetail": {
+    "backLink": "← Kembali ke Panduan",
+    "iframeTitle": "Kandungan Berkongsi",
+    "featuredLevelsTitle": "Tahap Terpilih",
+    "popularSpecialLevelsTitle": "Tahap Khas Popular",
+    "loadingOrNotFound": "Memuatkan butiran panduan atau panduan tidak ditemui...",
+    "idNotFound": "Panduan tidak ditemui"
+  },
+  "seo": {
+    "defaultTitle": "Panduan Cookingdom",
+    "notFoundTitle": "Panduan Tidak Ditemui | Cookingdom",
+    "notFoundDescription": "Panduan yang anda cari tidak dapat ditemui."
+  },
+  "guides": {
+    "title": "📖 Semua Panduan Tahap Cookingdom",
+    "title1": "Strategi Langkah demi Langkah untuk Menguasai Setiap Cabaran Memasak!",
+    "tabs": {
+      "special": "Tahap Khas",
+      "levels1_10": "Tahap 1-10",
+      "levels11_20": "Tahap 11-20",
+      "levels21_30": "Tahap 21-30",
+      "levels31_40": "Tahap 31-40",
+      "levels41_50": "Tahap 41-50",
+      "levels51_60": "Tahap 51-60",
+      "levels61_70": "Tahap 61-70",
+      "levels71_80": "Tahap 71-80",
+      "levels81_90": "Tahap 81-90",
+      "levels91_100": "Tahap 91-100"
+    },
+    "noGuidesAvailable": "Tiada panduan tersedia untuk kategori ini.",
+    "invalidGuideId": "ID panduan tidak ditentukan."
+  },
+  "page": {
+    "privacy": {
+      "title": "Dasar Privasi Laman Peminat Panduan Cookingdom",
+      "contentPlaceholder": "",
+      "lastUpdated": "Kemas Kini Terakhir: 30 April 2025",
+      "intro": "Terima kasih kerana melawat Laman Peminat Panduan Cookingdom (selepas ini dirujuk sebagai \"Laman\"). Kami amat menghargai privasi anda dan komited untuk melindungi maklumat peribadi anda. Sila baca dasar privasi berikut dengan teliti untuk memahami bagaimana kami mengumpul, menggunakan, menyimpan dan melindungi data peribadi anda.",
+      "section1": {
+        "title": "1. Maklumat Peribadi yang Kami Kumpul",
+        "p1": "Apabila anda melawat Laman ini, kami mungkin mengumpul jenis maklumat peribadi berikut: Maklumat teknikal yang dikumpul secara automatik seperti alamat IP anda, jenis pelayar, jenis peranti, versi sistem operasi, masa akses dan sebagainya. Maklumat ini dikumpul secara automatik melalui Cookie dan teknologi yang serupa untuk menambah baik perkhidmatan dan pengalaman pengguna.",
+        "p2": "Maklumat yang diberikan secara sukarela oleh pengguna: Apabila anda mendaftar akaun, melanggan surat berita, menyertai perbincangan atau memberikan maklum balas di Laman, kami mungkin mengumpul maklumat seperti alamat e-mel anda, nama pengguna, kandungan mesej dan sebagainya."
+      },
+      "section2": {
+        "title": "2. Penggunaan Maklumat",
+        "intro": "Maklumat yang kami kumpul digunakan untuk tujuan-tujuan berikut:",
+        "b1": "Memberi perkhidmatan dan sokongan: Untuk menyediakan panduan permainan, kemas kini berita, sokongan teknikal dan perkhidmatan lain berdasarkan permintaan anda.",
+        "b2": "Pengalaman diperibadikan: Untuk menyediakan kandungan dan cadangan yang disesuaikan mengikut minat dan pilihan anda.",
+        "b3": "Penambahbaikan fungsi laman web: Untuk menganalisis tingkah laku pengguna, menambah baik reka bentuk dan ciri laman web, dan meningkatkan pengalaman pengguna.",
+        "b4": "Pemasaran dan komunikasi: Untuk menghantar kemas kini berkaitan permainan, tawaran, promosi dan maklumat lain melalui e-mel atau saluran lain (jika anda bersetuju untuk menerimanya)."
+      },
+      "section3": {
+        "title": "3. Cara Kami Melindungi Maklumat Anda",
+        "p1": "Kami melaksanakan langkah-langkah teknikal dan pentadbiran yang sesuai untuk melindungi maklumat peribadi anda daripada akses, pendedahan atau pengubahsuaian yang tidak dibenarkan. Langkah-langkah ini termasuk penyulitan data, kawalan akses, dan semakan keselamatan berkala."
+      },
+      "section4": {
+        "title": "4. Perkongsian Maklumat",
+        "intro": "Kami tidak menjual atau menyewa maklumat peribadi anda kepada pihak ketiga. Kami hanya berkongsi maklumat anda dalam situasi berikut:",
+        "b1": "Penyedia Perkhidmatan: Kami mungkin berkongsi maklumat anda dengan pihak ketiga yang menyediakan sokongan teknikal, pengehosan laman web dan perkhidmatan lain. Penyedia ini terhad untuk memberikan perkhidmatan kepada kami dan dikehendaki mematuhi obligasi kerahsiaan.",
+        "b2": "Keperluan Undang-undang: Kami mungkin mendedahkan maklumat anda jika diperlukan oleh undang-undang atau proses perundangan."
+      },
+      "section5": {
+        "title": "5. Penggunaan Cookie",
+        "p1": "Kami menggunakan Cookie dan teknologi serupa untuk mengumpul dan menyimpan pilihan anda, tabiat pelayaran, dan maklumat lain. Anda boleh menyahaktifkan Cookie melalui tetapan pelayar anda, tetapi harap maklum bahawa ini mungkin menjejaskan keupayaan anda untuk menggunakan beberapa ciri di Laman ini."
+      },
+      "section6": {
+        "title": "6. Pautan Pihak Ketiga",
+        "p1": "Laman ini mungkin mengandungi pautan ke laman web lain. Kami tidak bertanggungjawab terhadap amalan privasi laman web pihak ketiga tersebut. Kami mengesyorkan anda untuk menyemak dasar privasi mereka apabila melawat laman-laman tersebut."
+      },
+      "section7": {
+        "title": "7. Privasi Kanak-kanak",
+        "p1": "Perkhidmatan kami tidak ditujukan kepada kanak-kanak di bawah umur 13 tahun. Jika kami mendapati bahawa kami telah mengumpul maklumat peribadi daripada kanak-kanak di bawah umur 13 tahun secara tidak sengaja, kami akan segera mengambil langkah untuk memadamkan maklumat tersebut."
+      },
+      "section8": {
+        "title": "8. Hak Anda",
+        "p1": "Mengikut undang-undang dan peraturan yang berkenaan, anda berhak untuk meminta akses, pembetulan atau pemadaman maklumat peribadi yang kami kumpulkan tentang anda. Jika anda mempunyai sebarang pertanyaan atau permintaan berkaitan pemprosesan maklumat peribadi anda, sila hubungi kami menggunakan maklumat hubungan di bawah."
+      },
+      "section9": {
+        "title": "9. Hubungi Kami",
+        "p1": "Jika anda mempunyai sebarang pertanyaan mengenai Dasar Privasi ini atau memerlukan maklumat lanjut, sila hubungi kami melalui kaedah berikut:"
+      }
+    },
+    "terms": {
+      "title": "Terma Perkhidmatan Laman Peminat Panduan Cookingdom",
+      "contentPlaceholder": "",
+      "lastUpdated": "Kemaskini Terakhir: 30 April 2025",
+      "intro": "Selamat datang ke Laman Peminat Panduan Cookingdom (selepas ini dirujuk sebagai \"Laman\"). Sebelum mengakses atau menggunakan perkhidmatan yang disediakan oleh Laman ini, sila baca terma perkhidmatan berikut dengan teliti. Akses atau penggunaan Laman ini bermakna anda bersetuju untuk mematuhi terma ini. Jika anda tidak bersetuju dengan terma ini, sila jangan gunakan Laman ini.",
+      "section1": {
+        "title": "1. Kandungan Perkhidmatan",
+        "p1": "Laman ini menyediakan panduan, petua, maklumat kemas kini, perbincangan komuniti, ulasan pengguna, dan kandungan berkaitan permainan \"Cookingdom\". Kami komited untuk menyediakan sumber permainan yang berkualiti tinggi dan sokongan untuk membantu meningkatkan pengalaman permainan anda."
+      },
+      "section2": {
+        "title": "2. Akaun Pengguna",
+        "p1": "Untuk menggunakan beberapa ciri Laman secara penuh, anda mungkin perlu mencipta akaun. Dengan mendaftar, anda bersetuju untuk memberikan maklumat peribadi yang tepat dan lengkap, serta mengemaskininya apabila perlu. Anda bertanggungjawab ke atas keselamatan akaun dan kata laluan anda serta bersetuju untuk tidak berkongsi maklumat akaun anda dengan pihak ketiga."
+      },
+      "section3": {
+        "title": "3. Kelakuan Pengguna",
+        "intro": "Dengan menggunakan Laman ini, anda bersetuju untuk:",
+        "b1": "Tidak menyiarkan kandungan yang melanggar undang-undang, peraturan, atau etika (termasuk tetapi tidak terhad kepada perisian hasad, iklan, spam, mesej gangguan, atau kandungan yang melanggar hak cipta atau privasi pihak lain).",
+        "b2": "Menghormati hak pengguna lain dan tidak mengganggu operasi biasa Laman ini.",
+        "b3": "Tidak mendapatkan kandungan, data, atau sistem Laman ini melalui cara yang menyalahi undang-undang.",
+        "p1": "Jika anda melanggar panduan kelakuan ini, Laman ini berhak untuk menggantung atau menamatkan akaun anda serta mengambil tindakan undang-undang yang sewajarnya."
+      },
+      "section4": {
+        "title": "4. Penggunaan Kandungan",
+        "p1": "Semua kandungan di Laman ini (termasuk teks, imej, video, audio, dsb.) adalah milik Laman ini atau pemberi lesennya dan dilindungi oleh undang-undang hak cipta. Tanpa kebenaran daripada Laman ini, anda tidak dibenarkan untuk menyalin, mengedar, mengubah, memaparkan, atau menjual sebarang kandungan dalam apa-apa bentuk sekalipun.",
+        "p2": "Pengguna boleh mengakses dan menggunakan kandungan Laman ini untuk tujuan bukan komersial selaras dengan Terma Perkhidmatan ini, tetapi sebarang penggunaan komersial memerlukan kebenaran terlebih dahulu dari pihak Laman."
+      },
+      "section5": {
+        "title": "5. Harta Intelek",
+        "p1": "Semua logo, tanda dagangan, tanda perkhidmatan dan sebagainya yang berkaitan dengan Laman ini adalah hak milik intelek Laman ini atau pemberi lesennya. Tanpa kebenaran, anda tidak dibenarkan untuk menggunakan atau menyalin mana-mana harta intelek tersebut."
+      },
+      "section6": {
+        "title": "6. Gangguan dan Penamatan Perkhidmatan",
+        "p1": "Laman ini mungkin terganggu buat sementara waktu untuk penyelenggaraan, kemas kini, atau sebab lain. Kami akan cuba memberi notis awal yang munasabah, tetapi tidak bertanggungjawab atas sebarang akibat daripada gangguan ini. Laman ini berhak untuk mengubah, menggantung, atau menamatkan perkhidmatannya pada bila-bila masa tanpa notis awal."
+      },
+      "section7": {
+        "title": "7. Laman Web Pihak Ketiga",
+        "p1": "Laman ini mungkin mengandungi pautan ke laman web lain yang dikendalikan oleh pihak ketiga. Kami tidak mempunyai kawalan ke atas kandungan atau dasar privasi laman web tersebut dan tidak bertanggungjawab ke atas kandungan dan amalan privasi mereka. Kami mengesyorkan anda membaca terma perkhidmatan dan dasar privasi mereka dengan teliti sebelum mengunjunginya."
+      },
+      "section8": {
+        "title": "8. Penafian",
+        "p1": "Laman ini berusaha untuk memastikan ketepatan dan kelengkapan kandungan yang disediakan, tetapi tidak memberikan sebarang jaminan secara nyata atau tersirat mengenai ketepatan, kebolehpercayaan, atau kelengkapan kandungan. Kami tidak bertanggungjawab atas sebarang kerugian langsung atau tidak langsung yang timbul daripada penggunaan kandungan di Laman ini."
+      },
+      "section9": {
+        "title": "9. Data Pengguna dan Privasi",
+        "p1": "Pengumpulan, penggunaan, dan perlindungan data peribadi anda diperincikan dalam Polisi Privasi kami. Sila baca dan bersetuju dengan Polisi Privasi kami sebelum menggunakan perkhidmatan Laman ini."
+      },
+      "section10": {
+        "title": "10. Undang-Undang dan Penyelesaian Pertikaian",
+        "p1": "Terma Perkhidmatan ini ditadbir oleh undang-undang Republik Rakyat China. Sebarang pertikaian yang timbul daripada atau berkaitan dengan terma ini hendaklah dibawa ke mahkamah yang mempunyai bidang kuasa di lokasi Laman untuk diselesaikan."
+      },
+      "section11": {
+        "title": "11. Pengubahsuaian Terma",
+        "p1": "Laman ini berhak untuk mengubah atau mengemas kini Terma Perkhidmatan ini pada bila-bila masa. Terma yang telah diubah akan berkuat kuasa sebaik sahaja diterbitkan. Penggunaan berterusan anda terhadap perkhidmatan Laman bermakna anda menerima terma yang telah dikemas kini. Kami mengesyorkan agar anda menyemak halaman ini dari semasa ke semasa."
+      },
+      "section12": {
+        "title": "12. Hubungi Kami",
+        "p1": "Jika anda mempunyai sebarang pertanyaan mengenai Terma Perkhidmatan ini atau memerlukan maklumat lanjut, sila hubungi kami melalui kaedah berikut:"
+      }
+    },
+
+    "contact": {
+      "title": "Hubungi Kami",
+      "getInTouch": {
+        "title": "Hubungi Kami",
+        "description": "Kami suka mendengar daripada komuniti kami! Sama ada anda mempunyai soalan, maklum balas, atau sekadar ingin menyapa, terdapat pelbagai cara untuk menghubungi kami."
+      },
+      "faq": {
+        "title": "Soalan Lazim",
+        "q1": {
+          "question": "Bagaimana saya boleh menyumbang kepada laman ini?",
+          "answer": "Kami mengalu-alukan sumbangan daripada komuniti! Anda boleh menghantar cadangan panduan, pembetulan, atau petua melalui borang hubungi kami atau dengan menyertai pelayan Discord kami."
+        },
+        "q2": {
+          "question": "Seberapa cepat anda membalas mesej?",
+          "answer": "Kami berusaha membalas semua pertanyaan dalam masa 48 jam. Untuk perkara yang mendesak, Discord biasanya adalah cara terpantas untuk menghubungi kami."
+        },
+        "q3": {
+          "question": "Adakah ini laman web rasmi Cookingdom?",
+          "answer": "Tidak, ini adalah laman yang dibuat oleh peminat. Kami tidak mempunyai kaitan dengan pembangun atau penerbit rasmi permainan Cookingdom."
+        }
+      },
+      "community": {
+        "title": "Sertai Komuniti Kami",
+        "description": "Cara terbaik untuk kekal berhubung dengan kami dan peminat Cookingdom lain adalah dengan menyertai komuniti dalam talian kami. Kongsi strategi, ajukan soalan, dan berkawan dengan pemain lain!",
+        "message": "Sertai ribuan pemain dalam komuniti mesra kami dan dapatkan bantuan untuk peringkat yang mencabar!"
+      }
+    },
+    "copyright": {
+      "title": "Maklumat Hak Cipta",
+      "lastUpdated": "Kemaskini Terakhir: 15 Mei 2025",
+      "intro": "Selamat datang ke laman web cookingdom.co. Halaman ini menggariskan maklumat hak cipta kami dan bagaimana kandungan kami boleh digunakan.",
+      "ownership": {
+        "title": "Pemilikan Kandungan",
+        "description": "Semua kandungan di laman web ini, termasuk tetapi tidak terhad kepada teks, grafik, logo, imej, klip audio, muat turun digital, kompilasi data, dan perisian adalah milik cookingdom.co atau pembekal kandungannya dan dilindungi oleh undang-undang hak cipta antarabangsa.<br><br>Permainan Cookingdom itu sendiri, termasuk nama, watak, jalan cerita, seni, dan kandungan berkaitan adalah milik pemilik asalnya. Laman peminat ini tidak mempunyai sebarang kaitan rasmi, sokongan, atau hubungan dengan pembangun atau penerbit rasmi permainan ini."
+      },
+      "usage": {
+        "title": "Penggunaan Kandungan",
+        "description": "Kandungan di laman web ini disediakan untuk kegunaan peribadi dan bukan komersial sahaja. Pengguna mesti mematuhi garis panduan berikut ketika menggunakan kandungan kami:",
+        "allowed": {
+          "title": "Penggunaan Dibenarkan",
+          "item1": "Mengakses dan melihat kandungan untuk tujuan peribadi, bukan komersial",
+          "item2": "Berkongsi pautan kepada kandungan kami di media sosial atau platform lain",
+          "item3": "Menggunakan petikan pendek kandungan dengan kredit yang betul",
+          "item4": "Mencetak atau memuat turun kandungan untuk rujukan peribadi"
+        },
+        "prohibited": {
+          "title": "Penggunaan Dilarang",
+          "item1": "Menggandakan, menyalin, atau menjual mana-mana bahagian laman web kami tanpa kebenaran",
+          "item2": "Mengubah atau mencipta kerja terbitan berdasarkan kandungan kami",
+          "item3": "Menggunakan kandungan kami untuk tujuan komersial tanpa kebenaran bertulis",
+          "item4": "Membuang notis hak cipta atau notis pemilikan lain daripada kandungan kami",
+          "item5": "Menyusun semula atau mencerminkan mana-mana bahagian laman web kami tanpa kebenaran"
+        }
+      },
+      "thirdParty": {
+        "title": "Kandungan Pihak Ketiga",
+        "description": "Sebahagian daripada kandungan di laman web kami mungkin termasuk bahan daripada pihak ketiga. Kami mengiktiraf semua kandungan pihak ketiga dan menghormati hak cipta mereka. Jika anda percaya mana-mana kandungan pihak ketiga di laman kami melanggar hak cipta anda, sila hubungi kami dengan segera."
+      },
+      "allRightsReserved": "Hak Cipta Terpelihara."
+    },
+
+    "faq": {
+      "title": "Soalan Lazim",
+      "q1": {
+        "question": "Bagaimana saya boleh menyumbang kepada laman web ini?",
+        "answer": "Kami mengalu-alukan sumbangan dari komuniti! Anda boleh menghantar cadangan panduan, pembetulan, atau petua melalui borang hubungan kami atau dengan menyertai pelayan Discord kami."
+      },
+      "q2": {
+        "question": "Berapa cepat anda membalas mesej?",
+        "answer": "Kami berusaha untuk membalas semua pertanyaan dalam masa 48 jam. Untuk perkara yang mendesak, Discord biasanya adalah cara terpantas untuk menghubungi kami."
+      },
+      "q3": {
+        "question": "Adakah ini laman web rasmi Cookingdom?",
+        "answer": "Tidak, ini adalah laman web yang dicipta oleh peminat. Kami tidak berkaitan dengan pembangun atau penerbit permainan Cookingdom rasmi."
+      }
+    }
+  },
+
+  "modDownload": {
+    "pageHeadline": "Cookingdom Mod APK",
+    "pageTitle": "Muat Turun Cookingdom Mod APK",
+    "pageIntro": "Muat turun Cookingdom Mod APK. Nikmati ciri-ciri tambahan untuk pengalaman permainan yang lebih baik.",
+    "mainMod": {
+      "title": "Cookingdom Mod APK 1.0.32",
+      "description": "Versi mod terkini Cookingdom Mod APK untuk Android, menawarkan ciri-ciri khas.",
+      "meta": {
+        "type": "Mod APK",
+        "size": "389.21 MB"
+      },
+      "button": "Muat Turun Cookingdom Mod APK",
+      "downloadLink": "https://m.happymod.com/cookingdom-mod/com.abi.cook.chill/download.html"
+    },
+    "modInfo": {
+      "title": "Ciri-ciri Cookingdom Mod APK:",
+      "features": ["Ganjaran tanpa iklan", "Tiada Iklan", "Menu Mod"]
+    },
+    "happymodReference": {
+      "text": "Sumber:",
+      "linkText": "HappyMod",
+      "linkUrl": "https://m.happymod.com/cookingdom-mod/com.abi.cook.chill/"
+    },
+    "apkDetails": {
+      "title": "Butiran Cookingdom Mod APK",
+      "version": "Versi App",
+      "versionValue": "1.0.32",
+      "lastUpdated": "Kemas Kini Terakhir",
+      "lastUpdatedValue": "22 Apr, 2025",
+      "size": "Saiz APK",
+      "sizeValue": "389.21 MB",
+      "price": "Harga",
+      "priceValue": "Percuma",
+      "category": "Kategori",
+      "categoryValue": "Simulasi",
+      "contentRating": "Penilaian Kandungan",
+      "contentRatingValue": "5.0/5 (507 undian)",
+      "supportAndroid": "Android Disokong",
+      "supportAndroidValue": "Android",
+      "appPackage": "Pakej App",
+      "appPackageValue": "com.abi.cook.chill",
+      "rootRequired": "ROOT",
+      "rootRequiredValue": "Tidak diperlukan",
+      "inAppPurchases": "Tawaran Pembelian Dalam Aplikasi",
+      "inAppPurchasesValue": "Ya (App Asal)"
+    },
+    "otherLinks": {
+      "title": "Pilihan Muat Turun Lain",
+      "originalApk": {
+        "text": "Versi iOS",
+        "link": "https://apps.apple.com/us/app/cookingdom/id6742222069"
+      },
+      "googlePlay": {
+        "text": "Versi Android",
+        "link": "https://play.google.com/store/apps/details?id=com.abi.cook.chill"
+      }
+    },
+    "allVersions": {
+      "title": "Versi Mod Sebelumnya",
+      "versions": [
+        {
+          "name": "Cookingdom Mod APK 1.0.31",
+          "size": "385.14 MB",
+          "link": "https://m.happymod.com/cookingdom-mod/com.abi.cook.chill/com.mod.cookingdom-v1-0-31-mod-down.html"
+        },
+        {
+          "name": "Cookingdom Mod APK 1.0.29",
+          "size": "431.29 MB",
+          "link": "https://m.happymod.com/cookingdom-mod/com.abi.cook.chill/nap.mod.cookingdom-1-0-29-down.html"
+        },
+        {
+          "name": "Cookingdom Mod APK 0.24",
+          "size": "369.63 MB",
+          "link": "https://m.happymod.com/cookingdom-mod/com.abi.cook.chill/com.mod.cookingdom-mod-apk-0-24-down.html"
+        }
+      ]
+    },
+    "developerDescription": {
+      "title": "Tentang Cookingdom Mod APK (daripada Pembangun)",
+      "text": "Selamat datang ke Cookingdom Mod APK, permainan santai & selesa terbaik yang menjadikan memasak semudah pagi Ahad yang memuaskan. Semua ini adalah tentang memperlahankan, berseronok, dan mencipta hidangan lazat langkah demi langkah. Anda akan bermula dari menghiris kentang hingga menyajikan karya agung, sambil merasai suasana santai yang menyenangkan."
+    },
+    "disclaimerTitle": "Penafian",
+    "disclaimerBody": "Semua pautan muat turun yang disediakan di laman ini dikumpulkan dari internet dan adalah untuk tujuan pembelajaran dan penyelidikan sahaja. Laman ini tidak bertanggungjawab ke atas kesahihan, keselamatan, atau kelengkapan mana-mana kandungan yang dimuat turun, dan tidak menanggung sebarang risiko atau liabiliti undang-undang yang mungkin timbul daripada penggunaan pautan muat turun tersebut. Pengguna dinasihatkan untuk menggunakan pertimbangan sendiri sebelum memuat turun dan menggunakan sebarang kandungan."
+  },
+  "meta": {
+    "defaultDescription": "Deskripsi lalai untuk laman Cookingdom.",
+    "defaultKeywords": "cookingdom, permainan, panduan, memasak, simulasi, keseronokan",
+    "notFoundTitle": "Halaman Tidak Ditemui | Cookingdom",
+    "errorTitle": "Ralat | Cookingdom",
+    "home": {
+      "title": "Cookingdom Game Strategy Guide – Kuasai Setiap Peringkat",
+      "description": "Temui strategi pakar untuk Cookingdom! Ketahui semua taktik penting di setiap cabaran dan buka peringkat baru dalam permainan pengembaraan memasak yang menyeronokkan ini.",
+      "keywords": "Cookingdom, Cookingdom tips, pengembaraan memasak, Cookingdom gameplay, Cookingdom cheats"
+    },
+    "guides": {
+      "title": "Senarai Panduan Cookingdom – Semua Strategi dan Petua",
+      "description": "Terokai senarai lengkap panduan Cookingdom kami. Dari petua pemula hingga strategi lanjutan, temui semua panduan yang anda perlukan untuk menguasai setiap peringkat.",
+      "keywords": "Cookingdom, Cookingdom tips, pengembaraan memasak, Cookingdom gameplay, Cookingdom cheats"
+    },
+    "blog": {
+      "title": "Blog Cookingdom – Petua, Berita, dan Kemas Kini Terkini",
+      "description": "Dapatkan kemas kini terkini dengan berita, petua, dan strategi untuk Cookingdom. Blog kami meliputi segala-galanya dari ciri baru hingga nasihat pakar.",
+      "keywords": "Cookingdom, Cookingdom blog, Cookingdom tips, kemas kini permainan, Cookingdom news, Cookingdom strategies, pengembaraan memasak"
+    },
+    "blogDetail": {
+      "title": "Blog Post Cookingdom",
+      "description": "Baca pos ini dari blog Cookingdom."
+    },
+    "download": {
+      "title": "Muat Turun Cookingdom – Mulakan Pengembaraan Memasak Anda",
+      "description": "Muat turun Cookingdom sekarang dan mulakan pengembaraan memasak anda! Nikmati cabaran yang menyeronokkan, strategi, dan permainan.",
+      "keywords": "Muat turun Cookingdom, aplikasi Cookingdom, permainan memasak, muat turun Cookingdom, pengembaraan memasak"
+    },
+    "about": {
+      "title": "Tentang Kami | Panduan Permainan Cookingdom",
+      "description": "Ketahui tentang pasukan di sebalik Panduan Permainan Cookingdom, misi kami, dan semangat kami untuk membantu pemain menguasai permainan.",
+      "keywords": "tentang cookingdom, pasukan cookingdom, misi cookingdom, nilai cookingdom, komuniti cookingdom"
+    },
+    "contact": {
+      "title": "Hubungi Kami | Panduan Permainan Cookingdom",
+      "description": "Hubungi pasukan Panduan Permainan Cookingdom. Kami di sini untuk membantu dengan soalan dan maklum balas anda.",
+      "keywords": "hubungi cookingdom, sokongan cookingdom, bantuan cookingdom, maklum balas cookingdom, komuniti cookingdom"
+    },
+    "privacy": {
+      "title": "Dasar Privasi - Cookingdom Fansite",
+      "description": "Baca dasar privasi untuk laman Cookingdom fansite kami.",
+      "keywords": "cookingdom, dasar privasi, data, hak pengguna, undang-undang"
+    },
+    "terms": {
+      "title": "Terma Perkhidmatan - Cookingdom Fansite",
+      "description": "Semak terma perkhidmatan untuk laman Cookingdom fansite kami.",
+      "keywords": "cookingdom, terma perkhidmatan, peraturan penggunaan, undang-undang"
+    },
+    "guideDetail": {
+      "title": "Panduan Cookingdom",
+      "description": "Panduan terperinci untuk satu peringkat Cookingdom."
+    },
+    "modDownload": {
+      "title": "Muat turun Versi APK Cookingdom Mod - Buka Kunci Semuanya",
+      "description": "Dapatkan APK Mod Cookingdom dan IPA terkini. Nikmati sumber tanpa had, semua peringkat dibuka kunci dan pengalaman permainan tanpa iklan.",
+      "keywords": "cookingdom mod, cookingdom apk mod, cookingdom ipa mod, permainan yang retak, sumber tanpa had, tanpa iklan"
+    }
+  }
+}

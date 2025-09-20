@@ -129,8 +129,6 @@ import CommentSection from '@/components/CommentSection.vue'
 // Composable and data imports
 import { useDeviceDetection } from '@/utils/useDeviceDetection.js'
 import { games } from '@/data/games.js'
-// AdSense helper
-import adSenseHelper from '@/utils/adSenseHelper.js'
 
 // --- State and Route ---
 const { isMobile } = useDeviceDetection()
@@ -218,33 +216,41 @@ const updateSEO = () => {
   metaKeywords.setAttribute('content', game.seo.keywords)
 }
 
-onMounted(() => {
-  // 使用AdSense辅助工具初始化广告
-  adSenseHelper.initializeAds((success) => {
-    if (success) {
-      console.log('AdSense ads initialized successfully')
-    } else {
-      console.warn('AdSense initialization failed, but site functionality is not affected')
+// 简单的广告加载函数 - 参考cookingdom-main
+const loadAds = () => {
+  if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
+    try {
+      // 直接处理所有广告元素，但添加错误处理
+      const adElements = document.querySelectorAll('.adsbygoogle')
+      adElements.forEach((el) => {
+        try {
+          ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+        } catch (pushError) {
+          // 忽略重复加载错误
+          if (!pushError.message.includes('already have ads')) {
+            console.error('广告加载失败:', pushError)
+          }
+        }
+      })
+    } catch (e) {
+      console.error('广告加载失败:', e)
     }
-  })
-  
-  // 监听页面可见性变化
-  const handleVisibilityChange = () => {
-    adSenseHelper.handleVisibilityChange()
+  } else {
+    // 如果 adsbygoogle 还没加载，延迟重试
+    setTimeout(loadAds, 1000)
   }
-  document.addEventListener('visibilitychange', handleVisibilityChange)
+}
 
-  // 监听路由变化，重新加载广告
+onMounted(() => {
+  // 延迟加载广告
+  setTimeout(loadAds, 1000)
+  
+  // 路由变化时重新加载
   const unwatch = watch(() => route.path, () => {
-    // 路由变化后刷新广告
-    setTimeout(() => {
-      adSenseHelper.refreshAds()
-    }, 1000)
+    setTimeout(loadAds, 1000)
   })
 
-  // 清理监听器
   onUnmounted(() => {
-    document.removeEventListener('visibilitychange', handleVisibilityChange)
     unwatch()
   })
 })

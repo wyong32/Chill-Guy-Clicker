@@ -1,0 +1,82 @@
+# Nginx配置示例，用于支持Vue.js SPA路由
+# 将此配置添加到您的Nginx服务器配置中
+
+server {
+    listen 80;
+    server_name cookingdom.co www.cookingdom.co;
+    root /path/to/your/dist/folder;
+    index index.html;
+
+    # 启用gzip压缩
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 1024;
+    gzip_proxied expired no-cache no-store private must-revalidate auth;
+    gzip_types
+        text/plain
+        text/css
+        text/xml
+        text/javascript
+        application/javascript
+        application/xml+rss
+        application/json;
+
+    # 设置正确的MIME类型
+    location ~* \.js$ {
+        add_header Content-Type application/javascript;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    location ~* \.mjs$ {
+        add_header Content-Type application/javascript;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    location ~* \.css$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    location ~* \.(png|jpg|jpeg|gif|webp|svg|ico)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # 处理静态资源
+    location /js/ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        try_files $uri =404;
+    }
+
+    location /css/ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        try_files $uri =404;
+    }
+
+    location /images/ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        try_files $uri =404;
+    }
+
+    # SPA路由回退 - 这是关键配置
+    location / {
+        try_files $uri $uri/ /index.html;
+        
+        # 为HTML文件设置较短的缓存时间
+        location ~* \.html$ {
+            expires 1h;
+            add_header Cache-Control "public, must-revalidate";
+        }
+    }
+
+    # 安全头部
+    add_header X-Frame-Options "DENY" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+}

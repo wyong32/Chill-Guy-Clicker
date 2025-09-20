@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- 精简Favicon配置 -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/logo.webp" type="image/webp" />
+    <link rel="apple-touch-icon" href="/logo.webp" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#4DBA87" />
+    <title>Cookingdom Fansite - Complete Guides & Latest News</title>
+
+    <!-- 基础SEO Meta Tags（不会被动态覆盖的） -->
+    <meta name="author" content="Cookingdom Fansite" />
+    <meta name="description" content="Complete Cookingdom game walkthrough guides, level strategies, latest news and download resources to help you easily complete the game and become a cooking master.">
+    <meta name="keywords" content="Cookingdom, guides, game, levels, download, fansite, cooking game, restaurant management">
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+
+    <!-- 静态Open Graph基础信息（会被路由动态更新） -->
+    <meta property="og:site_name" content="Cookingdom Fansite" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Cookingdom Fansite - Complete Guides & Latest News" />
+    <meta property="og:description" content="Complete Cookingdom game walkthrough guides, level strategies, latest news and download resources to help you easily complete the game and become a cooking master." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.cookingdom.co/" />
+    <meta property="og:image" content="https://www.cookingdom.co/logo.webp" />
+    <meta property="og:image:width" content="240" />
+    <meta property="og:image:height" content="240" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Cookingdom Fansite - Complete Guides & Latest News" />
+    <meta name="twitter:description" content="Complete Cookingdom game walkthrough guides, level strategies, latest news and download resources to help you easily complete the game and become a cooking master." />
+    <meta name="twitter:image" content="https://www.cookingdom.co/logo.webp" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.cookingdom.co/" />
+
+    <!-- Hreflang Tags for Multilingual SEO -->
+    <link rel="alternate" hreflang="en" href="https://www.cookingdom.co/" />
+    <link rel="alternate" hreflang="zh" href="https://www.cookingdom.co/zh/" />
+    <link rel="alternate" hreflang="ru" href="https://www.cookingdom.co/ru/" />
+    <link rel="alternate" hreflang="fil" href="https://www.cookingdom.co/fil/" />
+    <link rel="alternate" hreflang="ms" href="https://www.cookingdom.co/ms/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.cookingdom.co/" />
+
+    <!-- Note: title, description, keywords, og:title, og:description, og:url, twitter:* etc.
+         will be dynamically updated by the routing system, so no static values are set here -->
+
+    <!-- Search Engine Verification -->
+    <meta name="msvalidate.01" content="686CBA524F78B16021B42B9BF2F70F12" />
+    <!-- Add Google verification tag placeholder, please replace with your actual verification code -->
+    <!-- <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" /> -->
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="application-name" content="Cookingdom Fansite" />
+    <meta name="msapplication-TileColor" content="#4DBA87" />
+    <!-- canonical URL 由路由系统动态设置 -->
+
+    <!-- 广告，手动添加 -->
+    <meta name="6a97888e-site-verification" content="5078bd8b28757b6bbf310fc848f72fbd" />
+
+    <!-- 预加载关键资源 -->
+    <link
+      rel="preload"
+      href="/images/banner1.webp"
+      as="image"
+      type="image/webp"
+      fetchpriority="high"
+    />
+    <link rel="preload" href="/logo.webp" as="image" type="image/webp" />
+
+    <!-- DNS 预解析 -->
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+
+    <!-- 关键 CSS 内联 -->
+    <style>
+      /* 关键渲染路径 CSS - 只包含首屏必需的样式 */
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+          'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+        background-color: #fff0f5;
+        color: #5b4b8a;
+        line-height: 1.6;
+        min-height: 100vh;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      /* 关键图片样式内联 */
+      .guide-image-placeholder {
+        width: 100%;
+        height: 150px;
+        background-color: #f0f0f0;
+        position: relative;
+        overflow: hidden;
+        contain: layout paint;
+        will-change: transform;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+      }
+
+      .guide-image-placeholder img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateZ(0);
+      }
+
+      /* 首屏 Hero 区域关键样式 */
+      .hero-section {
+        background-color: #fff0f5;
+        padding: 0 0 3rem;
+      }
+
+      .hero-section .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+      }
+
+      .hero-single-image-container {
+        margin: 1rem auto;
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        contain: layout style paint;
+      }
+
+      .hero-single-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 15px;
+        transform: translateZ(0);
+      }
+
+      /* 加载指示器 */
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(160, 142, 230, 0.3);
+        border-radius: 50%;
+        border-top-color: #a08ee6;
+        animation: spin 1s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* 移动端优化 */
+      @media (max-width: 767px) {
+        .hero-section .container {
+          flex-direction: column;
+          padding: 2rem 1rem;
+        }
+
+        .hero-single-image-container {
+          width: 90%;
+          max-width: 350px;
+          min-height: 280px;
+          margin: 1rem auto;
+          /* 防止布局偏移 */
+          aspect-ratio: 350 / 280;
+        }
+      }
+    </style>
+
+    <!-- 延迟加载 Google Analytics -->
+    <script>
+      // 延迟加载 GTM，减少初始加载时间
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          // Google tag (gtag.js)
+          var script = document.createElement('script')
+          script.async = true
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-81VQXRQEHC'
+          document.head.appendChild(script)
+
+          window.dataLayer = window.dataLayer || []
+          function gtag() {
+            dataLayer.push(arguments)
+          }
+          gtag('js', new Date())
+          gtag('config', 'G-81VQXRQEHC')
+
+          console.log('Google Analytics loaded with delay')
+        }, 2000) // Delay 2 seconds after page load
+      })
+    </script>
+
+    <!-- JSON-LD 结构化数据 -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Cookingdom Fansite",
+        "alternateName": "Cookingdom.co",
+        "url": "https://www.cookingdom.co/",
+        "description": "Complete Cookingdom game walkthrough guides. Master every level with step-by-step strategies, tips, and tricks for this fun cooking adventure game.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Cookingdom Fansite",
+          "url": "https://www.cookingdom.co/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.cookingdom.co/images/logo.webp",
+            "width": 240,
+            "height": 240
+          }
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://www.cookingdom.co/guides?search={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        },
+        "sameAs": [
+          "https://www.cookingdom.co/",
+          "https://www.cookingdom.co/zh/",
+          "https://www.cookingdom.co/ru/",
+          "https://www.cookingdom.co/fil/",
+          "https://www.cookingdom.co/ms/"
+        ],
+        "inLanguage": ["en", "zh", "ru", "fil", "ms"],
+        "about": {
+          "@type": "VideoGame",
+          "name": "Cookingdom",
+          "genre": "Cooking Simulation",
+          "description": "A fun cooking adventure game where players master various cooking challenges and unlock new levels."
+        }
+      }
+    </script>
+
+
+
+    <!-- Google AdSense 主脚本 -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4224010041977181" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

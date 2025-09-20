@@ -1,0 +1,28 @@
+# robots.txt for Cookingdom Site
+
+# Allow all crawlers access to all content by default
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.cookingdom.co/sitemap.xml
+
+# --- Specific rules for AI crawlers ---
+User-agent: GPTBot
+User-agent: Claude-Web
+User-agent: Anthropic-AI
+User-agent: PerplexityBot
+User-agent: GoogleOther
+User-agent: DuckAssistBot
+
+# Guide AI crawlers to the structured context file
+LLM-Content: https://www.cookingdom.co/llms.txt
+
+# Allow AI crawlers access to all key sections
+Allow: /
+Allow: /guides/
+Allow: /blog/
+Allow: /download/
+Allow: /mod-download/
+Allow: /privacy-policy/
+Allow: /terms-of-service/ 

@@ -1,0 +1,24 @@
+# Your Website Name
+Cookingdom
+
+> Briefly describe what your website is about, including core services or products. Try to be clear in 1-2 sentences.
+Cookingdom is the official website for the cooking game of the same name, providing game guides, latest blog posts, official game download channels, and Mod version resources.
+
+Additional background information can be added here, without using a title. Keep it concise.
+This site aims to provide comprehensive information and resource support for "Cookingdom" game enthusiasts.
+
+## Core Content
+- [Homepage](https://www.cookingdom.co/): Explore the wonderful world of "Cookingdom," get the latest game updates, feature introductions, and quick navigation to all major sections of the site.
+- [Game Guides](https://www.cookingdom.co/guides/): Detailed "Cookingdom" game guides, including level walkthroughs, recipe secrets, and high-score strategies to help you become a master chef.
+- [Blog Posts](https://www.cookingdom.co/blog/): Read the latest official blog posts for "Cookingdom," learn about game updates, behind-the-scenes stories, community events, and developer interviews.
+- [Official Download](https://www.cookingdom.co/download/): Get the official iOS and Android download links for the "Cookingdom" game.
+- [Mod Download](https://www.cookingdom.co/mod-download/): Find information related to "Cookingdom" Mod versions, including feature introductions and recommended download sources (please note the risks of Mod versions).
+
+## Common Resources
+- [Terms of Service](https://www.cookingdom.co/terms-of-service/): Understand the specific terms and conditions for using the Cookingdom website and related services.
+- [Privacy Policy](https://www.cookingdom.co/privacy-policy/): Read our privacy policy to understand how we handle and protect your personal information.
+- [Sitemap](https://www.cookingdom.co/sitemap.xml): A complete index of the site's pages, making it easy for you and search engines to find all content.
+
+## Additional Pages
+- [About Us](https://www.cookingdom.co/about/): Learn about the team behind Cookingdom Level Walkthrough, our mission, and our passion for helping players master the game.
+- [Contact Us](https://www.cookingdom.co/contact/): Get in touch with the Cookingdom Level Walkthrough team. We're here to help with your questions and feedback.

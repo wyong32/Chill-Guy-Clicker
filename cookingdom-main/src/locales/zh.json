@@ -1,0 +1,565 @@
+{
+  "message": {
+    "hello": "你好世界"
+  },
+  "example": "这是一个示例文本。",
+  "header": {
+    "logo": "Cookingdom Level Walkthrough"
+  },
+  "nav": {
+    "home": "🏠 首页",
+    "guides": "📖 指南",
+    "blog": "✍️ 博客",
+    "download": "⬇️ 下载",
+    "language": "语言"
+  },
+  "footer": {
+    "about": {
+      "title": "Cookingdom粉丝站",
+      "description": "最可爱的Cookingdom游戏指南粉丝站，分享技巧和乐趣。",
+      "linkText": "关于我们"
+    },
+    "contact": {
+      "linkText": "联系我们"
+    },
+    "links": {
+      "quickNav": {
+        "title": "快速导航"
+      },
+      "popularLevels": {
+        "title": "热门关卡",
+        "level5": "关卡 5 牛排",
+        "level7": "关卡 7 烧烤",
+        "level19": "关卡 19 汉堡",
+        "level26": "关卡 26 帝王蟹"
+      },
+      "help": {
+        "title": "帮助与信息",
+        "privacy": "隐私政策",
+        "terms": "服务条款"
+      }
+    },
+    "bottom": {
+      "copyright": "© {year} Cookingdom. 保留所有权利。",
+      "credits": "由粉丝用 ♡ 制作 | 料理王国游戏版权归其开发者所有。",
+      "disclaimer": "免责声明：本网站（www.cookingdom.co）是由爱好者创建的非官方粉丝网站，与官方料理王国游戏或其发行商无关。仅供参考和娱乐目的。"
+    },
+    "copyright": {
+      "linkText": "版权"
+    },
+    "privacy": "隐私政策",
+    "terms": "服务条款"
+  },
+  "home": {
+    "hero": {
+      "title": "料理王国 (Cookingdom Game)：完整攻略指南",
+      "description": "掌握料理王国游戏 (Cookingdom game) 的必备伙伴 ✨ 查看我们详尽的料理王国全关卡攻略指南 (Cookingdom all Level Walkthrough Guides)、简单技巧和视频演练。",
+      "latestLevels": {
+        "title": "🔥 最新关卡更新",
+        "level94": "Cookingdom 第94关 纯素多尔玛通关攻略",
+        "level95": "Cookingdom 第95关 鹰嘴豆丸子配芝麻酱通关攻略",
+        "level96": "Cookingdom 第96关 使命风格卷饼通关攻略",
+        "level97": "Cookingdom 第97关 烤茄子通关攻略",
+        "level98": "Cookingdom 第98关 腌鲱鱼沙拉攻略"
+      },
+      "button": {
+        "viewGuides": "查看料理王国攻略指南",
+        "gameFeatures": "探索游戏特色",
+        "downloadGame": "下载游戏"
+      }
+    },
+    "features": {
+      "title": "料理王国游戏 (Cookingdom Game) 特色",
+      "description": "探索让料理王国 (Cookingdom) 成为独特放松的烹饪模拟游戏的有趣特色。",
+      "card1": {
+        "title": "放松的烹饪模拟",
+        "description": "在料理王国游戏 (Cookingdom game) 中享受制作食物的纯粹乐趣，没有时间限制或压力。"
+      },
+      "card2": {
+        "title": "有趣的小游戏",
+        "description": "在料理王国游戏 (Cookingdom game) 中通过分步小游戏完成切菜、搅拌等烹饪步骤。"
+      },
+      "card3": {
+        "title": "厨房定制",
+        "description": "随着你在料理王国游戏 (Cookingdom game) 中的进展，根据自己的喜好装饰和升级您独特的厨房空间。"
+      },
+      "card4": {
+        "title": "轻松友好的氛围",
+        "description": "可爱的视觉效果和舒缓的音乐在整个料理王国游戏 (Cookingdom game) 中营造出舒适的游戏氛围。"
+      },
+      "card5": {
+        "title": "跨平台游戏",
+        "description": "可在 iOS 和 Android 设备上免费下载，随时随地享受料理王国游戏 (Cookingdom game)。"
+      }
+    },
+    "downloads": {
+      "title": "⬇️ 下载料理王国游戏 (Cookingdom Game)",
+      "description": "在您的 iOS 或 Android 设备上免费获取料理王国！",
+      "ios": {
+        "title": "iOS 版本",
+        "description": "适用于 iPhone 和 iPad 的料理王国应用",
+        "meta": {
+          "type": "App Store",
+          "size": "免费"
+        },
+        "button": "前往 App Store"
+      },
+      "android": {
+        "title": "Android 版本",
+        "description": "适用于 Android 设备的料理王国应用",
+        "meta": {
+          "type": "Google Play",
+          "size": "免费"
+        },
+        "button": "前往 Google Play"
+      },
+      "modCard": {
+        "title": "寻找Mod版？",
+        "description": "获取《Cookingdom》的特别改装版本，体验独特功能和增强内容。",
+        "button": "前往Mod版下载"
+      },
+      "disclaimerTitle": "免责声明",
+      "disclaimerBody": "本站提供的所有下载链接均收集自互联网，仅供学习和研究使用。本站不对任何下载内容的合法性、安全性及完整性负责，亦不承担任何因使用这些下载链接而可能产生的风险或法律责任。请用户在下载和使用前自行判断。"
+    },
+    "about": {
+      "title": "⭐ 关于料理王国游戏 (Cookingdom Game)",
+      "description1": "料理王国游戏 (Cookingdom game) 是一款超级有趣、放松的休闲烹饪模拟游戏，让你在友好、无压力的环境中体验烹饪的乐趣。它结合了简单直观的操作和逐渐增加难度的烹饪挑战，使得料理王国游戏 (Cookingdom game) 适合所有年龄段的玩家。",
+      "description2": "料理王国游戏 (Cookingdom game) 的核心玩法在于通过一系列互动小游戏，完成从备料到烹饪再到装盘的整个过程。无论是切菜、搅拌、控制火候还是装饰摆盘，料理王国游戏 (Cookingdom game) 中的每个步骤都设计得易于上手且充满乐趣。",
+      "description3": "随着你在料理王国游戏 (Cookingdom game) 中通过关卡，你将解锁新的食谱、厨具和厨房装饰品。你可以自由定制你的厨房，打造个性化的烹饪空间。游戏没有严格的时间限制，鼓励你按照自己的节奏享受料理王国游戏 (Cookingdom game) 所提供的放松烹饪过程。"
+    },
+    "stats": {
+      "title": "料理王国游戏数据",
+      "downloads": "下载量",
+      "countries": "国家/地区",
+      "recipes": "独特食谱",
+      "rating": "用户评分"
+    },
+    "howToPlay": {
+      "title": "🎮 如何玩转料理王国游戏 (Cookingdom Game)",
+      "step1": {
+        "title": "什么是料理王国游戏 (Cookingdom Game)？",
+        "description": "料理王国游戏 (Cookingdom game) 是一款放松舒适的烹饪模拟器，带你踏上前所未有的烹饪冒险。遵循料理王国游戏 (Cookingdom game) 中的这些提示，你将迅速成为专家，用你的虚拟烹饪技巧给朋友留下深刻印象。请记住，料理王国游戏 (Cookingdom game) 的目标是享受过程，所以尽情享受并发挥你的创造力吧！"
+      },
+      "step2": {
+        "title": "熟悉操作",
+        "description": "当你第一次开始料理王国游戏 (Cookingdom game) 时，它会提供易于理解的教程，解释如何执行每个烹饪任务。这些指南旨在帮助你熟悉料理王国游戏 (Cookingdom game) 的控制和游戏机制。请留意这些初始指南。"
+      },
+      "step3": {
+        "title": "完成关卡",
+        "description": "料理王国游戏 (Cookingdom game) 中的每个关卡都会呈现一道你需要准备的特定菜肴。按照屏幕上的说明进行操作，完成每个步骤的小游戏（切菜、搅拌、烘烤等），并争取获得最佳分数。在料理王国游戏 (Cookingdom game) 中，成功通常取决于小游戏中的准确性，有时还取决于速度。"
+      },
+      "step4": {
+        "title": "使用料理王国攻略指南 (Cookingdom Walkthrough Guides)",
+        "description": "如果你在料理王国游戏 (Cookingdom game) 的某个关卡卡住了，或者只是想优化你的烹饪流程，请使用本站提供的料理王国攻略指南 (Cookingdom Walkthrough Guides)！我们提供分步说明、针对棘手小游戏的提示以及视频示例，帮助你掌握每个食谱，并通过我们的料理王国全关卡攻略指南 (Cookingdom all Level Walkthrough Guides) 获得高分。",
+        "prompt": "查看我们全面的料理王国攻略指南 (Cookingdom Walkthrough Guides) 获取详细帮助！"
+      },
+      "step5": {
+        "title": "参与社区",
+        "description": "在线加入料理王国游戏 (Cookingdom game) 社区！分享你的厨房设计，寻求帮助，并与其他料理王国游戏 (Cookingdom game) 的玩家讨论策略。点击我们页脚中的链接加入。"
+      }
+    },
+    "faq": {
+      "title": "🤔 料理王国游戏 (Cookingdom Game) 常见问题",
+      "q1": {
+        "question": "料理王国游戏 (Cookingdom game) 是免费的吗？",
+        "answer": "是的，料理王国游戏 (Cookingdom game) 可以在 iOS 和 Android 设备上免费下载和游玩。它可能会提供可选的应用内购买项目，用于购买装饰物品或次要增益效果，但核心游戏玩法无需花费金钱即可体验。"
+      },
+      "q2": {
+        "question": "本站的指南是官方的吗？",
+        "answer": "不，这是一个由料理王国游戏 (Cookingdom game) 爱好者创建的非官方粉丝网站。指南和信息基于玩家经验和社区知识。虽然我们力求准确，但如有需要，请始终参考官方料理王国游戏 (Cookingdom game) 资源。"
+      },
+      "q3": {
+        "question": "指南多久更新一次？",
+        "answer": "我们的目标是根据料理王国游戏 (Cookingdom game) 的重大变更或新关卡发布来更新指南。然而，作为一个粉丝项目，更新取决于志愿者的可用时间和社区贡献。请定期回来查看！"
+      },
+      "q4": {
+        "question": "我可以为指南做出贡献吗？",
+        "answer": "我们非常欢迎社区贡献！如果您有技巧、修正或视频攻略，请通过我们的联系页面或社交媒体链接（页脚中的 Discord/Reddit）与我们联系。我们将审核并署名贡献。"
+      }
+    },
+    "tips": {
+      "title": "💡 料理王国游戏 (Cookingdom Game) 提示与技巧",
+      "description": "掌握这些料理王国游戏 (Cookingdom game) 技巧，让你的厨房生涯更高效，轻松获得三星评价！运用这些策略将提升您在料理王国游戏 (Cookingdom game) 中的体验。可以考虑查看我们的料理王国攻略指南 (Cookingdom Walkthrough Guides) 以获取针对特定关卡的策略。",
+      "tip1_title": "升级厨具：",
+      "tip1_text": "在料理王国游戏 (Cookingdom game) 中，更快的炉灶和更大的锅具可以显著减少烹饪时间。",
+      "tip2_title": "提前准备：",
+      "tip2_text": "在等待一道菜完成时，可以为下一道菜准备食材。",
+      "tip3_title": "关注顾客满意度：",
+      "tip3_text": "在料理王国游戏 (Cookingdom game) 中，快速准确地完成订单可以获得更多小费和好评。",
+      "tip4_title": "规划厨房布局：",
+      "tip4_text": "在料理王国游戏 (Cookingdom game) 中，将常用的设备放置在方便的位置以提高工作效率。",
+      "tip5_title": "参与特殊活动：",
+      "tip5_text": "活动通常会提供丰厚的奖励，帮助您更快地升级。"
+    }
+  },
+  "guideDetail": {
+    "backLink": "← 返回指南列表",
+    "iframeTitle": "嵌入内容",
+    "featuredLevelsTitle": "推荐关卡",
+    "popularSpecialLevelsTitle": "热门特殊关卡",
+    "loadingOrNotFound": "正在加载指南详情或未找到指南...",
+    "idNotFound": "指南未找到"
+  },
+  "seo": {
+    "defaultTitle": "料理王国指南",
+    "notFoundTitle": "未找到指南 | 料理王国"
+  },
+  "guides": {
+    "title": "📖 料理王国攻略指南 (Cookingdom Walkthrough Guides)",
+    "title1": "逐步掌握每个烹饪挑战的策略！",
+    "tabs": {
+      "special": "特殊关卡",
+      "levels1_10": "关卡 1-10",
+      "levels11_20": "关卡 11-20",
+      "levels21_30": "关卡 21-30",
+      "levels31_40": "关卡 31-40",
+      "levels41_50": "关卡 41-50",
+      "levels51_60": "关卡 51-60",
+      "levels61_70": "关卡 61-70",
+      "levels71_80": "关卡 71-80",
+      "levels81_90": "关卡 81-90",
+      "levels91_100": "关卡 91-100"
+    },
+    "noGuidesAvailable": "该分类下暂无指南。",
+    "invalidGuideId": "未指定指南ID。"
+  },
+  "page": {
+    "privacy": {
+      "title": "Cookingdom 指南粉丝网站隐私政策",
+      "contentPlaceholder": "",
+      "lastUpdated": "最后更新日期：2025年4月30日",
+      "intro": "感谢您访问 Cookingdom 指南粉丝网站（以下简称“本网站”）。我们高度重视您的隐私，并致力于保护您的个人信息。请仔细阅读以下隐私政策，以了解我们如何收集、使用、存储和保护您的个人数据。",
+      "section1": {
+        "title": "1. 我们收集的个人信息",
+        "p1": "当您访问本网站时，我们可能会收集以下类型的个人信息：自动收集的技术信息，例如您的 IP 地址、浏览器类型、设备类型、操作系统版本、访问时间等。这些信息通过 Cookie 及类似技术自动收集，用于改进我们的服务和用户体验。",
+        "p2": "用户自愿提供的信息：当您注册账户、订阅新闻、参与讨论或提供反馈时，我们可能会收集您提供的个人信息，如电子邮件地址、用户名、留言内容等。"
+      },
+      "section2": {
+        "title": "2. 信息的使用方式",
+        "intro": "我们收集的信息主要用于以下目的：",
+        "b1": "提供服务与支持：根据您的请求向您提供游戏指南、新闻更新、技术支持及其他服务。",
+        "b2": "个性化体验：根据您的兴趣和偏好提供定制内容和推荐。",
+        "b3": "改进网站功能：分析用户行为，改进网站设计和功能，提升用户体验。",
+        "b4": "营销与沟通：在您同意接收的前提下，通过电子邮件或其他方式向您发送与游戏相关的更新、优惠、促销等信息。"
+      },
+      "section3": {
+        "title": "3. 我们如何保护您的信息",
+        "p1": "我们采取适当的技术与管理措施，防止您的个人信息被未经授权访问、披露或篡改。这些措施包括数据加密、访问控制以及定期的安全审查。"
+      },
+      "section4": {
+        "title": "4. 信息共享",
+        "intro": "我们不会出售或出租您的个人信息给第三方。我们仅在以下情况下共享您的信息：",
+        "b1": "服务提供商：我们可能会与为我们提供技术支持、网站托管等服务的第三方共享信息。这些服务提供商仅可用于为我们提供服务，且需遵守保密义务。",
+        "b2": "法律要求：若法律或法律程序要求，我们可能披露您的信息。"
+      },
+      "section5": {
+        "title": "5. Cookie 的使用",
+        "p1": "我们使用 Cookie 及类似技术来收集和存储您的偏好、浏览行为及其他信息。您可以通过浏览器设置禁用 Cookie，但这可能会影响您使用本网站部分功能的能力。"
+      },
+      "section6": {
+        "title": "6. 第三方链接",
+        "p1": "本网站可能包含指向其他网站的链接。我们不对这些第三方网站的隐私实践负责。建议您在访问其他网站时查阅其隐私政策。"
+      },
+      "section7": {
+        "title": "7. 儿童隐私",
+        "p1": "我们的服务不面向13岁以下儿童。如果我们发现意外收集了13岁以下儿童的个人信息，我们将立即采取措施删除相关信息。"
+      },
+      "section8": {
+        "title": "8. 您的权利",
+        "p1": "根据相关法律法规，您有权请求访问、更正或删除我们收集的关于您的个人信息。如您对我们处理个人信息有任何问题或请求，请通过以下联系方式与我们联系。"
+      },
+      "section9": {
+        "title": "9. 联系我们",
+        "p1": "如果您对本隐私政策有任何疑问，或需要更多信息，请通过以下方式联系我们："
+      }
+    },
+    "terms": {
+      "title": "Cookingdom 指南粉丝站服务条款",
+      "contentPlaceholder": "",
+      "lastUpdated": "最后更新：2025年4月30日",
+      "intro": "欢迎访问 Cookingdom 指南粉丝站（以下简称“本网站”）。在访问或使用本网站提供的服务之前，请您仔细阅读以下服务条款。访问或使用本网站即表示您同意遵守这些条款。如果您不同意这些条款，请不要使用本网站。",
+      "section1": {
+        "title": "1. 服务内容",
+        "p1": "本网站提供关于《Cookingdom》游戏的攻略、技巧、更新信息、社区讨论、用户评价及相关内容。我们致力于为玩家提供高质量的游戏资源和支持，以帮助提升您的游戏体验。"
+      },
+      "section2": {
+        "title": "2. 用户账户",
+        "p1": "为充分使用本网站的某些功能，您可能需要创建账户。在注册时，您同意提供准确、完整的个人信息，并及时更新信息以保持其准确性。您有责任保护账户及密码的安全，并同意不向任何第三方透露您的账户信息。"
+      },
+      "section3": {
+        "title": "3. 用户行为规范",
+        "intro": "在使用本网站时，您同意：",
+        "b1": "不发布违反法律法规或不道德的内容（包括但不限于恶意软件、广告、垃圾信息、骚扰信息、侵犯他人版权或隐私的内容）；",
+        "b2": "尊重其他用户的权利，不干扰网站的正常运行；",
+        "b3": "不通过非法手段获取本网站的内容、数据或系统信息。",
+        "p1": "若您违反上述行为规范，本网站有权暂停或终止您的账户，并采取必要的法律措施。"
+      },
+      "section4": {
+        "title": "4. 内容使用",
+        "p1": "本网站提供的所有内容（包括文字、图片、视频、音频等）均为本网站或其授权人的财产，并受版权法保护。未经本网站授权，您不得以任何形式复制、分发、修改、展示或出售网站内容。",
+        "p2": "用户可以根据本服务条款的规定，出于非商业目的访问和使用本网站内容，任何商业用途必须事先获得本网站的明确授权。"
+      },
+      "section5": {
+        "title": "5. 知识产权",
+        "p1": "与本网站相关的所有标识、商标、服务标志等均为本网站或其授权人拥有的知识产权。未经本网站授权，您不得以任何形式使用或复制这些知识产权。"
+      },
+      "section6": {
+        "title": "6. 服务中断与终止",
+        "p1": "本网站可能因维护、更新或其他原因临时中断服务。我们将尽合理努力提前通知用户，但对因服务中断造成的任何后果概不负责。本网站保留在无需事先通知的情况下，随时修改、暂停或终止部分或全部服务的权利。"
+      },
+      "section7": {
+        "title": "7. 第三方网站",
+        "p1": "本网站可能包含指向由第三方运营的其他网站的链接。我们无法控制这些网站的内容或隐私政策，因此不对其内容和隐私做法承担任何责任。建议您在访问这些网站时仔细阅读其服务条款和隐私政策。"
+      },
+      "section8": {
+        "title": "8. 免责声明",
+        "p1": "本网站将尽力确保所提供内容的准确性与完整性，但不对任何内容的准确性、可靠性或完整性做出明示或暗示的保证。我们不对因使用本网站内容所造成的任何直接或间接损失承担责任。"
+      },
+      "section9": {
+        "title": "9. 用户数据与隐私",
+        "p1": "我们如何收集、使用和保护您的个人数据，详见我们的《隐私政策》。在使用本网站服务前，请您仔细阅读并同意我们的《隐私政策》。"
+      },
+      "section10": {
+        "title": "10. 法律适用与争议解决",
+        "p1": "本服务条款受中华人民共和国法律管辖。因本条款引起或与之相关的任何争议，应提交本网站所在地有管辖权的法院进行裁决。"
+      },
+      "section11": {
+        "title": "11. 条款变更",
+        "p1": "本网站保留随时修改或更新本服务条款的权利。修改后的条款一经发布即生效。您继续使用本网站服务即视为接受修改后的条款。建议您定期查看本页面，了解最新服务条款。"
+      },
+      "section12": {
+        "title": "12. 联系我们",
+        "p1": "如您对本服务条款有任何疑问或需要更多信息，请通过以下方式联系我们："
+      }
+    }
+  },
+
+  "contact": {
+    "title": "联系我们",
+    "getInTouch": {
+      "title": "保持联系",
+      "description": "我们很高兴听到社区的声音！无论您有任何问题、反馈，还是只是想打个招呼，都有多种方式可以联系我们。"
+    },
+    "faq": {
+      "title": "常见问题",
+      "q1": {
+        "question": "我怎样才能为网站做出贡献？",
+        "answer": "我们欢迎社区的贡献！您可以通过联系我们的表单或加入我们的Discord服务器提交攻略建议、更正或技巧。"
+      },
+      "q2": {
+        "question": "你们回复消息的速度有多快？",
+        "answer": "我们力求在48小时内回复所有咨询。紧急事项通常通过Discord联系最快。"
+      },
+      "q3": {
+        "question": "这是官方的 Cookingdom 网站吗？",
+        "answer": "不是，这是一个粉丝创建的网站。我们与官方 Cookingdom 游戏开发者或发行商无关。"
+      }
+    },
+    "community": {
+      "title": "加入我们的社区",
+      "description": "保持与我们及其他 Cookingdom 粉丝联系的最佳方式是加入我们的在线社区。分享策略、提问、结识玩家朋友！",
+      "message": "加入成千上万友善的玩家社区，获取过关难题的帮助！"
+    }
+  },
+  "copyright": {
+    "title": "版权信息",
+    "lastUpdated": "最后更新：2025年5月15日",
+    "intro": "欢迎访问 cookingdom.co 网站。本页面介绍我们的版权信息及内容使用说明。",
+    "ownership": {
+      "title": "内容所有权",
+      "description": "本网站上的所有内容，包括但不限于文字、图形、标志、图片、音频剪辑、数字下载、数据汇编和软件，均为 cookingdom.co 或其内容供应商所有，并受国际版权法保护。<br><br>Cookingdom 游戏本身，包括其名称、角色、故事情节、艺术作品及相关内容，均为其各自所有者所有。本粉丝网站与官方游戏开发者或发行商无关联、未获认可或未有合作关系。"
+    },
+    "usage": {
+      "title": "内容使用",
+      "description": "本网站内容仅供个人非商业用途。用户在使用内容时须遵守以下准则：",
+      "allowed": {
+        "title": "允许的使用方式",
+        "item1": "为个人非商业目的访问和浏览内容",
+        "item2": "在社交媒体或其他平台分享我们内容的链接",
+        "item3": "合理引用内容的小段落并注明出处",
+        "item4": "打印或下载内容作个人参考"
+      },
+      "prohibited": {
+        "title": "禁止的使用方式",
+        "item1": "未经许可复制、复刻、出售网站任何部分",
+        "item2": "修改或基于内容创作衍生作品",
+        "item3": "未经明确许可将内容用于商业目的",
+        "item4": "移除内容中的版权或其他所有权声明",
+        "item5": "未经许可框架化或镜像网站任何部分"
+      }
+    },
+    "thirdParty": {
+      "title": "第三方内容",
+      "description": "我们网站的部分内容可能包含第三方材料。我们尊重所有第三方版权。如您认为本站内容侵犯了您的版权，请立即联系我们。"
+    },
+    "allRightsReserved": "版权所有。"
+  },
+
+  "modDownload": {
+    "pageHeadline": "Cookingdom Mod APK",
+    "pageTitle": "Cookingdom Mod APK 下载",
+    "pageIntro": "下载 Cookingdom Mod APK 特别改装版 APK。享受增强功能，获得更佳游戏体验。",
+    "mainMod": {
+      "title": "Cookingdom Mod APK 1.0.32",
+      "description": "最新版 Cookingdom Mod APK安卓改装版，提供特别功能。",
+      "meta": {
+        "type": "Mod APK",
+        "size": "389.21 MB"
+      },
+      "button": "下载 Cookingdom Mod APK",
+      "downloadLink": "https://m.happymod.com/cookingdom-mod/com.abi.cook.chill/download.html"
+    },
+    "modInfo": {
+      "title": "Cookingdom Mod APK 特性：",
+      "features": ["奖励免广告", "无广告", "Mod 菜单"]
+    },
+    "apkDetails": {
+      "title": "APK 详细信息",
+      "version": "应用版本",
+      "versionValue": "1.0.32",
+      "lastUpdated": "最后更新",
+      "lastUpdatedValue": "2025年4月22日",
+      "size": "APK 大小",
+      "sizeValue": "389.21 MB",
+      "price": "价格",
+      "priceValue": "免费",
+      "category": "类别",
+      "categoryValue": "模拟",
+      "contentRating": "内容评级",
+      "contentRatingValue": "5.0/5 (507 票)",
+      "supportAndroid": "支持安卓版本",
+      "supportAndroidValue": "安卓",
+      "appPackage": "应用包名",
+      "appPackageValue": "com.abi.cook.chill",
+      "rootRequired": "需要ROOT",
+      "rootRequiredValue": "不需要",
+      "inAppPurchases": "提供应用内购买",
+      "inAppPurchasesValue": "是 (原版应用)"
+    },
+    "otherLinks": {
+      "title": "其他下载选项",
+      "originalApk": {
+        "text": "iOS 版本",
+        "link": "https://apps.apple.com/us/app/cookingdom/id6742222069"
+      },
+      "googlePlay": {
+        "text": "Android 版本",
+        "link": "https://play.google.com/store/apps/details?id=com.abi.cook.chill"
+      }
+    },
+    "allVersions": {
+      "title": "历史Cookingdom Mod APK版本",
+      "versions": [
+        {
+          "name": "Cookingdom Mod APK v1.0.31",
+          "size": "385.14 MB",
+          "link": "https://m.happymod.com/cookingdom-mod/com.abi.cook.chill/com.mod.cookingdom-v1-0-31-mod-down.html"
+        },
+        {
+          "name": "Cookingdom Mod APK v1.0.29",
+          "size": "431.29 MB",
+          "link": "https://m.happymod.com/cookingdom-mod/com.abi.cook.chill/nap.mod.cookingdom-1-0-29-down.html"
+        },
+        {
+          "name": "Cookingdom Mod APK v0.24",
+          "size": "369.63 MB",
+          "link": "https://m.happymod.com/cookingdom-mod/com.abi.cook.chill/com.mod.cookingdom-mod-apk-0-24-down.html"
+        }
+      ]
+    },
+    "developerDescription": {
+      "title": "关于 Cookingdom Mod APK",
+      "text": "欢迎来到 Cookingdom Mod APK，这是一款极致放松和舒适的游戏，让烹饪像周日早晨一样轻松。一切都关乎放慢节奏，享受乐趣，一步步创造美味佳肴。您将从切土豆到装盘杰作，全程沉浸在舒缓的氛围中。"
+    },
+    "disclaimerTitle": "免责声明",
+    "disclaimerBody": "本站提供的所有下载链接均收集自互联网，仅供学习和研究使用。本站不对任何下载内容的合法性、安全性及完整性负责，亦不承担任何因使用这些下载链接而可能产生的风险或法律责任。请用户在下载和使用前自行判断。"
+  },
+  "about": {
+    "title": "关于我们",
+    "whoWeAre": {
+      "title": "我们是谁",
+      "teamMessage": "一支热爱Cookingdom游戏的团队，致力于创建最好的游戏指南！",
+      "description": "我们是一群热爱Cookingdom游戏的爱好者，希望帮助其他玩家充分享受游戏乐趣。我们的团队由经验丰富的玩家、内容创作者和游戏专家组成，他们花费了无数时间掌握Cookingdom的每一个关卡。<br><br>成立于2025年，我们的使命是为全球Cookingdom玩家创建最全面、最有用的资源。"
+    },
+    "ourMission": {
+      "title": "我们的使命",
+      "description": "我们的使命很简单：帮助各个技能水平的Cookingdom玩家克服挑战，发现新策略，充分享受游戏乐趣。<br><br>我们相信游戏应该对所有人都有趣且易于上手，这就是为什么我们创建了详细的指南、技巧和资源，以满足初学者和有经验玩家的需求。"
+    },
+    "ourValues": {
+      "title": "我们的价值观",
+      "quality": {
+        "title": "质量",
+        "description": "我们致力于提供准确、研究充分且全面的指南，真正帮助玩家提高游戏水平。"
+      },
+      "community": {
+        "title": "社区",
+        "description": "我们相信建立一个支持性和包容性的社区，让玩家可以分享经验并相互学习。"
+      },
+      "fun": {
+        "title": "乐趣",
+        "description": "最重要的是，我们相信游戏应该是愉快的。我们的指南旨在增强您的体验，而不是将其变成工作。"
+      }
+    }
+  },
+
+  "meta": {
+    "defaultDescription": "这是Cookingdom站点的默认描述。",
+    "defaultKeywords": "料理王国, 游戏, 指南, 烹饪, 模拟, 有趣",
+    "notFoundTitle": "页面未找到 | 料理王国",
+    "notFoundDescription": "您要查找的指南未找到。",
+    "errorTitle": "错误 | 料理王国",
+    "home": {
+      "title": "《烹饪大师》游戏策略指南——精通每一关",
+      "description": "欢迎来到最好的料理王国粉丝站！指南、技巧和乐趣。",
+      "keywords": "料理王国, 粉丝站, 首页, 指南, 博客, 下载"
+    },
+    "guides": {
+      "title": "所有料理王国指南和攻略",
+      "description": "查找料理王国游戏每个关卡的指南。",
+      "keywords": "料理王国, 指南, 攻略, 关卡, 技巧, 策略"
+    },
+    "blog": {
+      "title": "料理王国博客 - 新闻和更新",
+      "description": "阅读关于料理王国游戏的最新新闻和文章。",
+      "keywords": "料理王国, 博客, 新闻, 更新, 文章, 社区"
+    },
+    "blogDetail": {
+      "title": "料理王国博客文章",
+      "description": "阅读这篇来自料理王国博客的文章。"
+    },
+    "download": {
+      "title": "下载料理王国游戏",
+      "description": "获取适用于iOS和Android的料理王国游戏。",
+      "keywords": "料理王国, 下载, 游戏, ios, 安卓, 免费"
+    },
+    "about": {
+      "title": "关于我们 | 料理王国游戏指南",
+      "description": "了解料理王国游戏指南背后的团队、我们的使命以及我们帮助玩家掌握游戏的热情。",
+      "keywords": "关于料理王国, 料理王国团队, 料理王国使命, 料理王国价值观, 料理王国社区"
+    },
+    "contact": {
+      "title": "联系我们 | 料理王国游戏指南",
+      "description": "与料理王国游戏指南团队联系。我们随时为您解答问题和提供反馈。",
+      "keywords": "联系料理王国, 料理王国支持, 料理王国帮助, 料理王国反馈, 料理王国社区"
+    },
+    "privacy": {
+      "title": "隐私政策 - 料理王国粉丝站",
+      "description": "阅读我们料理王国粉丝站的隐私政策。",
+      "keywords": "料理王国, 隐私政策, 数据, 用户权利, 法律"
+    },
+    "terms": {
+      "title": "服务条款 - 料理王国粉丝站",
+      "description": "查看我们料理王国粉丝站的服务条款。",
+      "keywords": "料理王国, 服务条款, 使用规则, 法律"
+    },
+    "guideDetail": {
+      "title": "料理王国指南",
+      "description": "料理王国关卡的详细指南。"
+    },
+    "modDownload": {
+      "title": "下载 Cookingdom Mod APK 版本 - 解锁所有内容",
+      "description": "获取最新的 Cookingdom Mod APK 和 IPA。畅享无限资源、解锁所有关卡以及无广告的游戏体验。",
+      "keywords": "Cookingdom Mod APK,cookingdom apk mod,cookingdom ipa mod,破解游戏,无限资源"
+    }
+  }
+}
