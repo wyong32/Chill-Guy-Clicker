@@ -1,3 +1,4 @@
+/* 广告容器样式 - 增强版稳定性和兼容性 */
 .ads-wrapper {
   width: 100%;
   max-width: 100%;
@@ -6,10 +7,35 @@
   display: block;
   margin: 1rem auto;
   text-align: center;
-  min-height: 90px; 
+  min-height: 90px;
   position: relative;
+  /* 优化广告容器的渲染性能和稳定性 */
+  background: transparent;
+  z-index: 1;
+  contain: layout style;
+  will-change: auto;
 }
 
+/* 广告元素基础样式 - 加强版 */
+.adsbygoogle {
+  display: block !important;
+  width: 100%;
+  height: auto;
+  min-height: 50px;
+  background: transparent;
+  border: none;
+  /* 确保广告元素在DOM中稳定存在 */
+  visibility: visible;
+  opacity: 1;
+  position: relative;
+  box-sizing: border-box;
+  /* 防止广告容器闪烁和布局跳动 */
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: none;
+}
+
+/* PC端侧边栏广告 */
 .ads-left {
   width: 160px;
   min-height: 500px;
@@ -17,6 +43,9 @@
   top: 90px;
   left: 20px;
   z-index: 999999;
+  /* 防止布局偏移 */
+  background: transparent;
+  pointer-events: auto;
 }
 
 .ads-right {
@@ -26,4 +55,88 @@
   top: 90px;
   right: 20px;
   z-index: 999999;
+  /* 防止布局偏移 */
+  background: transparent;
+  pointer-events: auto;
+}
+
+/* 防止广告加载失败时的闪烁 - 改进版 */
+.ads-wrapper .adsbygoogle {
+  transition: opacity 0.3s ease-in-out;
+  /* 加强广告容器的稳定性 */
+  will-change: auto;
+  contain: layout;
+}
+
+.ads-wrapper .adsbygoogle[data-ad-status="unfilled"] {
+  opacity: 0.3;
+  min-height: 20px;
+}
+
+.ads-wrapper .adsbygoogle[data-adsbygoogle-status="reserved"] {
+  opacity: 0.6;
+}
+
+.ads-wrapper .adsbygoogle[data-adsbygoogle-status="done"] {
+  opacity: 1;
+}
+
+/* 广告加载失败时的后备样式 */
+.ads-wrapper .adsbygoogle:empty:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: transparent;
+}
+
+/* 移动端广告优化 */
+@media (max-width: 768px) {
+  .ads-wrapper {
+    margin: 0.5rem auto;
+    min-height: 50px;
+  }
+  
+  .ads-left,
+  .ads-right {
+    display: none; /* 移动端隐藏侧边栏广告 */
+  }
+}
+
+/* 广告容器安全区域 - 加强版 */
+.ads-wrapper::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: transparent;
+  position: absolute;
+  top: -1px;
+  left: 0;
+  pointer-events: none;
+}
+
+/* 剧院模式下隐藏广告 */
+.theater-mode .ads-wrapper {
+  display: none !important;
+}
+
+/* 防止广告溢出容器和影响布局 */
+.adsbygoogle iframe {
+  max-width: 100% !important;
+  height: auto !important;
+  border: none;
+  background: transparent;
+}
+
+/* 广告容器边界保护 */
+.ads-wrapper {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* 高度自适应优化 */
+.ads-wrapper .adsbygoogle[style*="height"] {
+  height: auto !important;
+  min-height: 50px;
 }

@@ -129,6 +129,8 @@ import CommentSection from '@/components/CommentSection.vue'
 // Composable and data imports
 import { useDeviceDetection } from '@/utils/useDeviceDetection.js'
 import { games } from '@/data/games.js'
+// AdSense helper
+import adSenseHelper from '@/utils/adSenseHelper.js'
 
 // --- State and Route ---
 const { isMobile } = useDeviceDetection()
@@ -216,85 +218,29 @@ const updateSEO = () => {
   metaKeywords.setAttribute('content', game.seo.keywords)
 }
 
-// 手动触发广告加载
-const loadAds = () => {
-  if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
-    try {
-      // 只处理当前页面中的广告元素
-      const homeContainer = document.querySelector('.home-wrapper')
-      if (!homeContainer) return
-
-      const adElements = homeContainer.querySelectorAll('.adsbygoogle')
-
-      // 检查哪些广告需要重新加载
-      const adsToReload = []
-      adElements.forEach((el, index) => {
-        const status = el.getAttribute('data-ad-status')
-        const hasContent = el.children.length > 0
-
-        if (!status || status === 'unfilled' || !hasContent) {
-          adsToReload.push({ element: el, index })
-        }
-      })
-
-      if (adsToReload.length === 0) {
-        return
-      }
-
-      adsToReload.forEach(({ element, index }) => {
-        try {
-          // 标记广告元素已处理
-          element.setAttribute('data-ad-status', 'loading')
-          ;(window.adsbygoogle = window.adsbygoogle || []).push({})
-        } catch (pushError) {
-          // 忽略重复加载错误
-          if (!pushError.message.includes('already have ads')) {
-            console.error('HomeView广告加载失败:', pushError)
-          }
-          // 移除标记，允许重试
-          element.removeAttribute('data-ad-status')
-        }
-      })
-    } catch (e) {
-      console.error('HomeView广告加载失败:', e)
-    }
-  } else {
-    // 如果 adsbygoogle 还没加载，延迟重试
-    setTimeout(loadAds, 1000)
-  }
-}
-
-// 监听广告脚本加载完成
-const waitForAdScript = () => {
-  if (window.adsbygoogle) {
-    // 延迟加载广告，确保页面完全渲染
-    setTimeout(loadAds, 3000)
-  } else {
-    setTimeout(waitForAdScript, 100)
-  }
-}
-
-// 监听页面可见性变化，重新加载广告
-const handleVisibilityChange = () => {
-  if (!document.hidden) {
-    setTimeout(loadAds, 1000)
-  }
-}
-
 onMounted(() => {
-  // 等待广告脚本加载完成后立即加载广告
-  waitForAdScript()
-
+  // 使用AdSense辅助工具初始化广告
+  adSenseHelper.initializeAds((success) => {
+    if (success) {
+      console.log('AdSense ads initialized successfully')
+    } else {
+      console.warn('AdSense initialization failed, but site functionality is not affected')
+    }
+  })
+  
   // 监听页面可见性变化
+  const handleVisibilityChange = () => {
+    adSenseHelper.handleVisibilityChange()
+  }
   document.addEventListener('visibilitychange', handleVisibilityChange)
 
-  // 监听路由变化
-  const unwatch = watch(
-    () => route.path,
-    () => {
-      setTimeout(loadAds, 2000)
-    },
-  )
+  // 监听路由变化，重新加载广告
+  const unwatch = watch(() => route.path, () => {
+    // 路由变化后刷新广告
+    setTimeout(() => {
+      adSenseHelper.refreshAds()
+    }, 1000)
+  })
 
   // 清理监听器
   onUnmounted(() => {
