@@ -12,10 +12,20 @@
   align-items: center;
   justify-content: center;
   margin: 0 10px;
-  position: sticky;
-  top: 80px;
-  z-index: 10;
+  /* 修改为fixed定位，避免和内容区重叠 */
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
   overflow: visible;
+}
+
+.ads-left {
+  left: 10px;
+}
+
+.ads-right {
+  right: 10px;
 }
 
 /* 确保广告元素本身有正确的尺寸 */
@@ -23,7 +33,7 @@
 .ads-right .adsbygoogle {
   width: 100% !important;
   height: 100% !important;
-  min-height: 320px !important;
+  min-height: 250px !important;
   display: block !important;
 }
 
@@ -32,7 +42,7 @@
 .ads-right iframe {
   width: 100% !important;
   height: 100% !important;
-  min-height: 320px !important;
+  min-height: 250px !important;
   display: block !important;
 }
 
@@ -67,7 +77,9 @@
 }
 
 /* 剧院模式下隐藏广告 */
-.theater-mode .ads-wrapper {
+.theater-mode .ads-wrapper,
+.theater-mode .ads-left,
+.theater-mode .ads-right {
   display: none !important;
 }
 

@@ -1,8 +1,8 @@
 <template>
   <div class="home-wrapper">
     <div class="home" :class="{ 'theater-mode': isTheaterMode }">
-        <!-- 左侧广告-PC -->
-      <aside class="ads-wrapper ads-left" v-if="!isMobile">
+      <!-- 左侧广告-PC -->
+      <aside class="ads-left" v-if="!isMobile">
         <ins
           class="adsbygoogle"
           style="display: block; width: 160px; min-height: 250px"
@@ -14,7 +14,7 @@
       </aside>
 
       <!-- 右侧广告-PC -->
-      <aside class="ads-wrapper ads-right" v-if="!isMobile">
+      <aside class="ads-right" v-if="!isMobile">
         <ins
           class="adsbygoogle"
           style="display: block; width: 160px; min-height: 250px"
@@ -286,6 +286,14 @@ watch(
   width: 100%;
   overflow-x: hidden;
   box-sizing: border-box;
+  /* 为左右侧广告预留空间 */
+  padding: 0 200px;
+}
+
+@media (max-width: 768px) {
+  .home {
+    padding: 0; /* 移动端不需要预留空间 */
+  }
 }
 
 .container {
