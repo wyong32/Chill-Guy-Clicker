@@ -211,28 +211,39 @@ export default {
     }
   },
   methods: {
-    // 加载评论 - 简化版本
+    // 加载评论 - 增强调试版本
     async loadComments() {
       this.isLoading = true
       this.error = null
       this.comments = []
 
       try {
-        const response = await fetch(`${this.apiBaseUrl}/comments/game/${this.gameId}`, {
+        const url = `${this.apiBaseUrl}/comments/game/${this.gameId}`;
+        console.log('📈 加载评论:', url);
+        
+        const response = await fetch(url, {
           method: 'GET',
           headers: {
             'Accept': 'application/json',
           }
         })
 
+        console.log('📤 加载响应状态:', response.status);
+        console.log('📤 加载响应头:', Object.fromEntries(response.headers.entries()));
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
 
         const data = await response.json()
-        this.comments = data.comments || []
+        console.log('📈 加载到的评论数据:', data);
+        
+        this.comments = data.comments || data || [] // 兼容两种格式
         this.ratingStats = data.ratingStats || { average: 0, total: 0 }
+        
+        console.log('✅ 评论加载成功:', this.comments.length, '条评论');
       } catch (error) {
+        console.error('❌ 加载评论失败:', error);
         this.comments = []
         this.ratingStats = { average: 0, total: 0 }
         this.error = 'Failed to load comments'
@@ -241,9 +252,12 @@ export default {
       }
     },
 
-    // 添加新评论 - 简化版本
+    // 添加新评论 - 增强调试版本
     async addComment(newComment) {
       try {
+        console.log('💬 准备提交评论:', newComment);
+        console.log('📡 API地址:', `${this.apiBaseUrl}/comments`);
+        
         const response = await fetch(`${this.apiBaseUrl}/comments`, {
           method: 'POST',
           headers: {
@@ -252,15 +266,29 @@ export default {
           body: JSON.stringify(newComment),
         })
 
+        console.log('📤 响应状态:', response.status);
+        console.log('📤 响应头:', Object.fromEntries(response.headers.entries()));
+        
+        // 无论成功失败都读取响应内容
+        const responseText = await response.text();
+        console.log('📤 响应内容:', responseText);
+        
         if (!response.ok) {
-          throw new Error('Failed to add comment')
+          throw new Error(`API错误 ${response.status}: ${responseText}`);
         }
 
-        const savedComment = await response.json()
+        const savedComment = JSON.parse(responseText);
+        console.log('✅ 评论保存成功:', savedComment);
+        
         await this.loadComments() // 重新加载评论
         return savedComment
       } catch (error) {
-        console.error('Error adding comment:', error)
+        console.error('❌ 添加评论失败:', error);
+        console.error('❌ 错误详情:', {
+          message: error.message,
+          stack: error.stack,
+          name: error.name
+        });
         throw error
       }
     },
@@ -343,6 +371,8 @@ export default {
       }
     },
     async submitComment() {
+      console.log('🚀 开始提交评论...');
+      
       if (!this.userName.trim()) {
         this.showNotification('warning', null, 'Please enter your name')
         return
@@ -381,10 +411,9 @@ export default {
           content: this.userComment,
         }
 
-        // 只在开发环境中输出日志
-        if (import.meta.env.DEV) {
-          console.log(`Submitting comment for game ID: ${this.gameId}`, newComment)
-        }
+        console.log('📝 准备提交的评论数据:', newComment);
+        console.log('🎲 当前游戏ID:', this.gameId);
+        console.log('🌍 API基地址:', this.apiBaseUrl);
 
         // 添加评论
         await this.addComment(newComment)
@@ -401,7 +430,10 @@ export default {
           null,
           'Your review has been successfully added!'
         )
+        
+        console.log('✅ 评论提交成功!');
       } catch (error) {
+        console.error('❌ 评论提交失败:', error);
         this.showNotification(
           'error',
           null,

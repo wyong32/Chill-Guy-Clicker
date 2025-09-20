@@ -9,6 +9,10 @@
   z-index: 999;
   /* 确保广告不会影响页面布局 */
   pointer-events: auto;
+  /* 增强 DOM 容器稳定性，防止 AdSense 脚本错误 */
+  contain: layout style paint;
+  min-height: 250px;
+  overflow: hidden;
 }
 
 .ads-left {
@@ -28,6 +32,10 @@
   margin: 20px 0;
   padding: 10px;
   box-sizing: border-box;
+  /* 增强 DOM 容器稳定性，防止 AdSense 脚本错误 */
+  contain: layout style paint;
+  min-height: 90px;
+  overflow: hidden;
 }
 
 .ads-wrapper .adsbygoogle {
@@ -64,6 +72,22 @@
 .adsbygoogle {
   width: 100%;
   height: auto;
+  /* 防止 AdSense DOM 操作错误 */
+  display: block !important;
+  min-height: 50px;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+  position: relative;
+}
+
+/* 为空的广告容器添加占位内容，防止 replaceChild 错误 */
+.adsbygoogle:empty::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 50px;
+  background-color: transparent;
 }
 
 
