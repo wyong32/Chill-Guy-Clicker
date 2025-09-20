@@ -254,10 +254,11 @@ export default {
     };
   },
   created() {
-    // 设置API基础URL
-    this.apiBaseUrl = import.meta.env.PROD
-      ? 'https://chill-guy-clicker-api.vercel.app/api'
-      : 'http://localhost:3000/api';
+    // 设置API基础URL - 优先使用环境变量
+    this.apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 
+      (import.meta.env.PROD
+        ? 'https://chill-guy-clicker-api.vercel.app/api'
+        : 'https://chill-guy-clicker-api.vercel.app/api'); // 默认使用线上API
 
     this.checkAuth();
     this.loadGameData();
@@ -326,26 +327,40 @@ export default {
 
       try {
         const token = localStorage.getItem('adminToken');
+        
+        console.log('🔑 使用的 token:', token ? 'exists' : 'missing');
+        console.log('🌐 API URL:', `${this.apiBaseUrl}/comments`);
 
         // 加载所有评论
         const response = await fetch(`${this.apiBaseUrl}/comments`, {
           headers: {
-            'x-auth-token': token
+            'x-auth-token': token,
+            'Accept': 'application/json'
           }
         });
 
+        console.log('📡 Response status:', response.status);
+        console.log('📡 Response headers:', Object.fromEntries(response.headers.entries()));
+
         if (!response.ok) {
           if (response.status === 401) {
+            console.error('❌ 认证失败，跳转到登录页');
             this.logout();
             throw new Error('登录已过期，请重新登录');
           }
-          throw new Error('加载数据失败');
+          const errorText = await response.text();
+          console.error('❌ API 错误响应:', errorText);
+          throw new Error(`加载数据失败: ${response.status} ${response.statusText}`);
         }
 
-        this.comments = await response.json();
+        const data = await response.json();
+        console.log('✅ 成功获取评论数据:', data.length, '条评论');
+        this.comments = data;
       } catch (error) {
+        console.error('❌ 加载数据失败:', error);
+        this.error = error.message || 'Failed to load data';
+      } finally {
         this.isLoading = false;
-        this.error = 'Failed to load data';
       }
     },
 

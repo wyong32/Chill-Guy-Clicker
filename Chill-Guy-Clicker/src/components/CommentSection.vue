@@ -186,8 +186,8 @@ export default {
         message: '',
         timeout: null
       },
-      // 简化 API 配置 - 直接使用生产环境 API
-      apiBaseUrl: 'https://chill-guy-clicker-api.vercel.app/api'
+      // API 配置 - 优先使用环境变量
+      apiBaseUrl: import.meta.env.VITE_API_BASE_URL || 'https://chill-guy-clicker-api.vercel.app/api'
     }
   },
   computed: {

@@ -57,10 +57,14 @@ export default {
       this.isLoading = true;
       
       try {
-        // 获取API基础URL
-        const apiBaseUrl = import.meta.env.PROD 
-          ? 'https://chill-guy-clicker-api.vercel.app/api'
-          : 'http://localhost:3000/api';
+        // 获取API基础URL - 优先使用环境变量
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 
+          (import.meta.env.PROD 
+            ? 'https://chill-guy-clicker-api.vercel.app/api'
+            : 'https://chill-guy-clicker-api.vercel.app/api'); // 默认使用线上API
+        
+        console.log('🔑 尝试登录:', this.username);
+        console.log('🌐 API URL:', `${apiBaseUrl}/auth/login`);
         
         const response = await fetch(`${apiBaseUrl}/auth/login`, {
           method: 'POST',
@@ -73,21 +77,30 @@ export default {
           })
         });
         
+        console.log('📡 Login response status:', response.status);
+        
         const data = await response.json();
+        console.log('📡 Login response data:', data);
         
         if (!response.ok) {
           throw new Error(data.message || '登录失败');
         }
         
+        console.log('✅ 登录成功，保存 token');
+        
         // 保存令牌到本地存储
         localStorage.setItem('adminToken', data.token);
         localStorage.setItem('adminUser', JSON.stringify(data.admin));
         
+        console.log('🚀 重定向到管理面板');
+        
         // 重定向到管理面板
         this.$router.push('/admin/dashboard');
       } catch (error) {
+        console.error('❌ 登录失败:', error);
+        this.error = error.message || 'Login failed';
+      } finally {
         this.isLoading = false;
-        this.error = 'Login failed';
       }
     }
   }
