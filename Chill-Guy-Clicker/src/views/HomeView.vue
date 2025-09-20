@@ -5,7 +5,7 @@
       <aside class="ads-left" v-if="!isMobile">
         <ins
           class="adsbygoogle"
-          style="display: block; width: 160px; min-height: 250px"
+          style="display: block"
           data-ad-client="ca-pub-4638984121333143"
           data-ad-slot="6904540807"
           data-ad-format="auto"
@@ -17,7 +17,7 @@
       <aside class="ads-right" v-if="!isMobile">
         <ins
           class="adsbygoogle"
-          style="display: block; width: 160px; min-height: 250px"
+          style="display: block"
           data-ad-client="ca-pub-4638984121333143"
           data-ad-slot="5591459134"
           data-ad-format="auto"
@@ -222,9 +222,16 @@ const loadAds = () => {
     try {
       // 直接处理所有广告元素，但添加错误处理
       const adElements = document.querySelectorAll('.adsbygoogle')
-      adElements.forEach((el) => {
+      console.log(`发现 ${adElements.length} 个广告位`)
+      
+      adElements.forEach((el, index) => {
         try {
-          ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+          // 检查广告是否已经加载
+          if (el.getAttribute('data-adsbygoogle-status') !== 'done' && 
+              !el.querySelector('iframe')) {
+            ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+            console.log(`广告位 ${index + 1} 已触发加载`)
+          }
         } catch (pushError) {
           // 忽略重复加载错误
           if (!pushError.message.includes('already have ads')) {
@@ -236,6 +243,7 @@ const loadAds = () => {
       console.error('广告加载失败:', e)
     }
   } else {
+    console.log('AdSense脚本还未加载，1秒后重试')
     // 如果 adsbygoogle 还没加载，延迟重试
     setTimeout(loadAds, 1000)
   }
@@ -287,7 +295,7 @@ watch(
   overflow-x: hidden;
   box-sizing: border-box;
   /* 为左右侧广告预留空间 */
-  padding: 0 200px;
+  padding: 0 180px;
 }
 
 @media (max-width: 768px) {

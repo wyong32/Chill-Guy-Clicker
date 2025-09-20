@@ -2,16 +2,16 @@
 
 /* 通用左右侧广告样式 */
 .ads-left, .ads-right {
-  width: 180px;
+  width: 160px;
   min-width: 160px;
-  max-width: 220px;
-  background: #fff;
-  border: 1px solid #eee;
+  max-width: 160px;
+  min-height: 600px;
+  background: transparent;
   box-sizing: border-box;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  margin: 0 10px;
+  margin: 0;
   /* 修改为fixed定位，避免和内容区重叠 */
   position: fixed;
   top: 50%;
@@ -31,18 +31,17 @@
 /* 确保广告元素本身有正确的尺寸 */
 .ads-left .adsbygoogle,
 .ads-right .adsbygoogle {
-  width: 100% !important;
-  height: 100% !important;
-  min-height: 250px !important;
+  width: 160px !important;
+  min-height: 600px !important;
   display: block !important;
+  background: transparent;
 }
 
 /* 确保广告容器内的iframe可见 */
 .ads-left iframe,
 .ads-right iframe {
-  width: 100% !important;
-  height: 100% !important;
-  min-height: 250px !important;
+  width: 160px !important;
+  min-height: 600px !important;
   display: block !important;
 }
 
@@ -65,14 +64,14 @@
 
 .adsbygoogle {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 /* 移动端优化 */
 @media (max-width: 768px) {
   .ads-left,
   .ads-right {
-    display: none; /* 移动端隐藏侧边栏广告 */
+    display: none !important; /* 移动端隐藏侧边栏广告 */
   }
 }
 
