@@ -1,27 +1,14 @@
 <template>
   <div class="home-wrapper">
     <div class="home" :class="{ 'theater-mode': isTheaterMode }">
-      <!-- 左侧广告-PC -->
+      <!-- 左侧广告 - 简洁悬浮式 -->
       <aside class="ads-left" v-if="!isMobile">
         <ins
           class="adsbygoogle"
           style="display: block"
           data-ad-client="ca-pub-4638984121333143"
           data-ad-slot="6904540807"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        ></ins>
-      </aside>
-
-      <!-- 右侧广告-PC -->
-      <aside class="ads-right" v-if="!isMobile">
-        <ins
-          class="adsbygoogle"
-          style="display: block"
-          data-ad-client="ca-pub-4638984121333143"
-          data-ad-slot="5591459134"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
+          data-ad-format="vertical"
         ></ins>
       </aside>
 
@@ -113,6 +100,17 @@
           v-show="!isTheaterMode" 
         />
       </main>
+      
+      <!-- 右侧广告 - 简洁悬浮式 -->
+      <aside class="ads-right" v-if="!isMobile">
+        <ins
+          class="adsbygoogle"
+          style="display: block"
+          data-ad-client="ca-pub-4638984121333143"
+          data-ad-slot="5591459134"
+          data-ad-format="vertical"
+        ></ins>
+      </aside>
     </div>
   </div>
 </template>
@@ -216,36 +214,23 @@ const updateSEO = () => {
   metaKeywords.setAttribute('content', game.seo.keywords)
 }
 
-// 简单的广告加载函数 - 参考cookingdom-main
+// 简洁的广告加载函数
 const loadAds = () => {
-  if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
+  if (window.adsbygoogle) {
     try {
-      // 直接处理所有广告元素，但添加错误处理
       const adElements = document.querySelectorAll('.adsbygoogle')
-      console.log(`发现 ${adElements.length} 个广告位`)
-      
-      adElements.forEach((el, index) => {
-        try {
-          // 检查广告是否已经加载
-          if (el.getAttribute('data-adsbygoogle-status') !== 'done' && 
-              !el.querySelector('iframe')) {
-            ;(window.adsbygoogle = window.adsbygoogle || []).push({})
-            console.log(`广告位 ${index + 1} 已触发加载`)
-          }
-        } catch (pushError) {
-          // 忽略重复加载错误
-          if (!pushError.message.includes('already have ads')) {
-            console.error('广告加载失败:', pushError)
-          }
+      adElements.forEach((el) => {
+        // 检查是否已加载
+        if (!el.getAttribute('data-adsbygoogle-status') && !el.querySelector('iframe')) {
+          (window.adsbygoogle = window.adsbygoogle || []).push({})
         }
       })
-    } catch (e) {
-      console.error('广告加载失败:', e)
+    } catch (error) {
+      // 静默处理错误，不影响用户体验
     }
   } else {
-    console.log('AdSense脚本还未加载，1秒后重试')
-    // 如果 adsbygoogle 还没加载，延迟重试
-    setTimeout(loadAds, 1000)
+    // AdSense脚本未加载，稍后重试
+    setTimeout(loadAds, 500)
   }
 }
 
@@ -294,14 +279,15 @@ watch(
   width: 100%;
   overflow-x: hidden;
   box-sizing: border-box;
-  /* 为左右侧广告预留空间 */
-  padding: 0 180px;
 }
 
-@media (max-width: 768px) {
-  .home {
-    padding: 0; /* 移动端不需要预留空间 */
-  }
+.main-content {
+  flex: 1;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  min-height: calc(100vh - 380px);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .container {

@@ -1,23 +1,14 @@
-/* 广告样式 - 参考cookingdom-main的简单方案 */
+/* 广告样式 - 简洁直接的实现方案 */
 
-/* 通用左右侧广告样式 */
+/* 侧边固定广告 - 简单悬浮式 */
 .ads-left, .ads-right {
-  width: 160px;
-  min-width: 160px;
-  max-width: 160px;
-  min-height: 600px;
-  background: transparent;
-  box-sizing: border-box;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  margin: 0;
-  /* 修改为fixed定位，避免和内容区重叠 */
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 100;
-  overflow: visible;
+  width: 160px;
+  z-index: 999;
+  /* 确保广告不会影响页面布局 */
+  pointer-events: auto;
 }
 
 .ads-left {
@@ -28,21 +19,63 @@
   right: 10px;
 }
 
-/* 确保广告元素本身有正确的尺寸 */
+/* 广告内容样式 */
 .ads-left .adsbygoogle,
 .ads-right .adsbygoogle {
   width: 160px !important;
-  min-height: 600px !important;
+  min-height: 300px;
   display: block !important;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-/* 确保广告容器内的iframe可见 */
-.ads-left iframe,
-.ads-right iframe {
-  width: 160px !important;
-  min-height: 600px !important;
+/* 横幅广告容器 */
+.ads-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.ads-wrapper .adsbygoogle {
+  max-width: 100%;
+  min-height: 90px;
   display: block !important;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  .ads-left,
+  .ads-right {
+    display: none;
+  }
+  
+  .ads-wrapper {
+    margin: 15px 0;
+    padding: 8px;
+  }
+}
+
+/* 小屏幕优化 */
+@media (max-width: 1200px) {
+  .ads-left {
+    left: 5px;
+  }
+  
+  .ads-right {
+    right: 5px;
+  }
+}
+
+/* 剧院模式隐藏所有广告 */
+.theater-mode .ads-left,
+.theater-mode .ads-right,
+.theater-mode .ads-wrapper {
+  display: none !important;
 }
 
 .ads-wrapper {
