@@ -103,22 +103,16 @@ export default {
 }
 
 html {
-  /* 启用硬件加速 */
-  /* transform: translateZ(0); */
-  /* 优化字体渲染 */
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* 防止iOS缩放 */
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  /* 使用系统字体栈，提升性能 */
   font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   line-height: 1.6;
   color: #333;
-  /* 防止字体加载导致的布局偏移 */
   font-display: swap;
 }
 
@@ -127,24 +121,17 @@ body {
   display: flex;
   flex-direction: column;
   z-index: 1;
-  /* will-change: transform; */
-  /* 优化滚动性能 */
   -webkit-overflow-scrolling: touch;
 }
 
 .main-content {
   flex: 1;
-  /* 创建新的层叠上下文 */
   isolation: isolate;
-  /* 优化重绘性能 */
-  /* contain: layout style paint; */
 }
 
 .route-container {
-  /* 确保路由组件有正确的容器 */
   width: 100%;
   min-height: 100%;
-  /* contain: layout style; */
 }
 
 /* 加载状态样式 */

@@ -189,13 +189,10 @@ export default {
 .header {
   background-color: rgba(17, 14, 25, 0.8);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  /* position: fixed; */
   top: 0;
   z-index: 100;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  /* 防止布局偏移的关键属性 */
-  /* contain: layout style paint; */
   min-height: 70px;
   width: 100%;
   box-sizing: border-box;
@@ -205,8 +202,6 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
-  /* 防止布局偏移 */
-  /* contain: layout style; */
   box-sizing: border-box;
   width: 100%;
 }
@@ -216,8 +211,6 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 70px;
-  /* 防止布局偏移 */
-  /* contain: layout style; */
   width: 100%;
   box-sizing: border-box;
 }
@@ -226,24 +219,19 @@ export default {
   display: flex;
   align-items: center;
   color: #fff;
-  /* 防止布局偏移 */
-  /* contain: layout style; */
-  min-width: 200px; /* 设置最小宽度 */
+  min-width: 200px;
 }
 
 .logo a {
   display: flex;
   align-items: center;
   text-decoration: none;
-  /* 防止布局偏移 */
-  /* contain: layout style; */
 }
 
 .logo-image-container {
   width: 50px;
   height: 50px;
   margin-right: 10px;
-  /* contain: layout paint; */
   backface-visibility: hidden;
   perspective: 1000px;
   flex-shrink: 0;

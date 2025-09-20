@@ -306,8 +306,6 @@ export default {
 .game-container {
   margin-bottom: 20px;
   position: relative;
-  /* 防止布局偏移的关键属性 */
-  contain: layout style paint;
   min-height: 400px;
   width: 100%;
   box-sizing: border-box;
@@ -396,8 +394,6 @@ export default {
   background: rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  /* 防止布局偏移 */
-  contain: layout style;
   min-height: 50px;
   box-sizing: border-box;
 }
@@ -431,8 +427,6 @@ export default {
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  /* 防止布局偏移 */
-  contain: layout paint;
   min-height: 36px;
   min-width: 36px;
   flex-shrink: 0;

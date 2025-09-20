@@ -107,16 +107,12 @@ const isIntersecting = ref(false)
 // 当前图片源
 const currentSrc = ref('')
 
-// 计算样式 - 基于 Cookingdom 优化
+// 计算样式
 const containerStyle = computed(() => ({
   width: typeof props.width === 'number' ? `${props.width}px` : props.width,
   height: typeof props.height === 'number' ? `${props.height}px` : props.height,
   position: 'relative',
-  overflow: 'hidden',
-  // 防止布局偏移的关键属性
-  contain: 'layout paint',
-  contentVisibility: 'auto',
-  containIntrinsicSize: `${typeof props.width === 'number' ? props.width : 300}px ${typeof props.height === 'number' ? props.height : 200}px`
+  overflow: 'hidden'
 }))
 
 const placeholderStyle = computed(() => ({
@@ -220,13 +216,9 @@ onUnmounted(() => {
   background-color: #f5f5f5;
   border-radius: 4px;
   transition: all 0.3s ease;
-  /* 防止布局偏移的关键属性 - 基于 Cookingdom */
-  contain: layout paint;
   box-sizing: border-box;
-  /* 确保容器有固定尺寸 */
   min-width: 100px;
   min-height: 100px;
-  /* 防止内容溢出导致布局偏移 */
   overflow: hidden;
 }
 

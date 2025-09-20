@@ -302,12 +302,10 @@ export default {
 </script>
 
 <style scoped>
-/* 游戏容器组件样式 - 使用 :deep() 选择器针对 v-html 内容 */
+/* 游戏容器组件样式 */
 .game-container {
   margin-bottom: 20px;
   position: relative;
-  /* 防止布局偏移的关键属性 */
-  contain: layout style paint;
   min-height: 400px;
   width: 100%;
   box-sizing: border-box;
@@ -385,8 +383,6 @@ export default {
   aspect-ratio: unset !important;
 }
 
-/* 移除重复的全屏样式，已在上方统一定义 */
-
 /* 游戏主体下方全屏控制按钮 */
 .fullscreen-controls-bottom {
   display: flex;
@@ -396,8 +392,6 @@ export default {
   background: rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  /* 防止布局偏移 */
-  contain: layout style;
   min-height: 50px;
   box-sizing: border-box;
 }
@@ -431,8 +425,6 @@ export default {
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  /* 防止布局偏移 */
-  contain: layout paint;
   min-height: 36px;
   min-width: 36px;
   flex-shrink: 0;
