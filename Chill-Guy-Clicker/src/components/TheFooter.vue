@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
-        <div class="footer-section about">
+        <div class="footer-section">
           <h3 class="footer-title">Chill Guy Clicker</h3>
           <p class="footer-text">
             Chill Guy Games is a platform offering various fun casual games. We are dedicated to
@@ -17,34 +17,27 @@
             <a href="https://share.evernote.com/note/c880fa8a-a5b4-ca1b-23db-a0f6dfc9475f" class="social-link" target="_blank">
               <img src="/images/icon/evernote-icon.svg" alt="Evernote logo" width="24" height="24">
             </a>
-            <!-- 3 -->
-            <a href="https://www.notion.so/ChillGuymemeClicker-com-1fb7ae35635d804e8a50fd5e971fd3b8" class="social-link" target="_blank">
+            <!-- <a href="https://www.notion.so/ChillGuymemeClicker-com-1fb7ae35635d804e8a50fd5e971fd3b8" class="social-link" target="_blank">
               <img src="/images/icon/notion-icon.ico" alt="Notion logo" width="24" height="24">
             </a>
-            <!-- 4 -->
             <a href="https://ko-fi.com/post/Chill-Guy-meme-Clicker-D1D31FCJUT" class="social-link" target="_blank">
               <img src="/images/icon/ko-fi-icon.webp" alt="Ko-fi logo" width="24" height="24">
             </a>
-            <!-- 5 -->
             <a href="https://substack.com/inbox/post/164135785?triedRedirect=true" class="social-link" target="_blank">
               <img src="/images/icon/substack-icon.ico" alt="substack" width="24" height="24">
             </a>
-            <!-- 6 -->
             <a href="https://wenyong3.gumroad.com/l/chillguymemeclicker" class="social-link" target="_blank">
               <img src="/images/icon/gumroad-icon.webp" alt="gumroad" width="24" height="24">
             </a>
-            <!-- 7 -->
             <a href="https://cookingdom.podia.com/blog/6d6cd40b-5af0-4659-b494-06f9fed4c072" class="social-link" target="_blank">
               <img src="/images/icon/podia-icon.ico" alt="podia" width="24" height="24">
             </a>
-            <!-- 8 -->
             <a href="https://jimmy11.kit.com/0a9818835d" class="social-link" target="_blank">
               <img src="/images/icon/kit-icon.png" alt="kit" width="24" height="24">
             </a>
-            <!-- 9 -->
             <a href="https://www.pinterest.com/wenyong3124/chill-guy" class="social-link" target="_blank">
               <img src="/images/icon/pinterest-icon.png" alt="pinimg" width="24" height="24">
-            </a>
+            </a> -->
           </div>
         </div>
         <div class="footer-section links">
@@ -103,20 +96,7 @@
 <script>
 export default {
   name: 'TheFooter',
-  mounted() {
-    // 强制设置 Footer 尺寸，防止 CLS
-    this.$nextTick(() => {
-      const footer = this.$el;
-      if (footer) {
-        footer.style.setProperty('min-height', '420px', 'important');
-        footer.style.setProperty('height', '420px', 'important');
-        footer.style.setProperty('max-height', '420px', 'important');
-        footer.style.setProperty('overflow', 'hidden', 'important');
-        footer.style.setProperty('flex-shrink', '0', 'important');
-        footer.style.setProperty('contain', 'layout style paint', 'important');
-      }
-    });
-  }
+  mounted() {}
 }
 </script>
 
@@ -132,23 +112,10 @@ export default {
   backdrop-filter: blur(10px);
   /* 防止布局偏移的关键属性 - 强化版本 */
   contain: layout style paint;
-  min-height: 420px !important;
-  height: 420px !important;
-  max-height: 420px !important;
   width: 100%;
   box-sizing: border-box;
   flex-shrink: 0;
   overflow: hidden;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-  /* 防止布局偏移 */
-  contain: layout style;
-  box-sizing: border-box;
-  width: 100%;
 }
 
 .footer-content {
@@ -191,13 +158,6 @@ export default {
   /* 防止伪元素导致的布局偏移 */
   /* will-change: transform; */
   /* transform: translateZ(0); */
-}
-
-.footer-section {
-  /* 防止布局偏移 */
-  contain: layout style;
-  min-height: 180px;
-  box-sizing: border-box;
 }
 
 .about{
@@ -253,16 +213,11 @@ export default {
   list-style: none;
   padding: 0;
   margin: 0;
-  /* 防止布局偏移 */
-  contain: layout style;
-  min-height: 120px;
 }
 
 .footer-links li {
   margin-bottom: 10px;
   /* 防止布局偏移 */
-  contain: layout style;
-  min-height: 20px;
 }
 
 .footer-link {
@@ -279,35 +234,19 @@ export default {
   color: var(--accent-color);
 }
 
-
-
 .footer-bottom {
   border-top: 1px solid var(--border-color);
   padding-top: 20px;
-  /* 防止布局偏移 */
-  contain: layout style;
-  min-height: 80px;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .footer-bottom-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
-  gap: 15px;
-  /* 防止布局偏移 */
-  contain: layout style;
 }
 
 .copyright {
   color: #ccc;
   font-size: 14px;
   margin: 0;
-  /* 防止文字渲染导致的布局偏移 */
-  contain: layout style;
-  white-space: nowrap;
 }
 
 .disclaimer {
@@ -326,22 +265,37 @@ export default {
   .footer-content {
     grid-template-columns: repeat(2, 1fr);
   }
-
-
 }
 
-@media (max-width: 576px) {
+@media (max-width: 767px) {
+  .footer{
+    padding: 20px 0;
+  }
+  .footer-title{
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .footer-text{
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
   .footer-content {
-    grid-template-columns: 1fr;
-    
+    grid-template-columns: 1fr; 
+    gap: 10px;
+    margin-bottom: 10px;
   }
 
-  .disclaimer {
-    font-size: 11px;
+  .footer-link{
+    font-size: 12px;
   }
 
-  .footer-bottom {
-    min-height: 60px; /* 调整移动端最小高度 */
+  .copyright{
+    font-size: 12px;
+  }
+
+  .footer-bottom{
+    padding-top: 10px;
   }
 }
 </style>

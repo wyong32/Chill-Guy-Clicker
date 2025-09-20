@@ -662,7 +662,9 @@ export default {
     margin: 0 auto;
   }
 
-  /* 移动端全屏模式样式继承上方统一定义 */
+  .game-container{
+    padding: 10px;
+  }
 
   .fullscreen-controls-bottom {
     margin: 8px 0;

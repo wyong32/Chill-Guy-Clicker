@@ -244,7 +244,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
   imageUrl: '/images/games/game-05.webp',
   imageAlt: 'Chill Guy Evolution gameplay showing chill characters in different evolution stages',
   iframeUrl: 'https://st.8games.net/10/8g/igra-chillovyy-paren-evolyutsiya-stan-korolem-chilla/',
-  isHot: true,
+  isHot: false,
   isMore: false,
   isNew: false,
   detailsHtml: `
@@ -378,7 +378,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
   imageUrl: '/images/games/game-07.webp',
   imageAlt: 'Call Chill Guy gameplay showing a relaxing virtual call interface with Chill Guy',
   iframeUrl: 'https://st.8games.net/10/8g/igra-pozvoni-chilovomu-parnyu/',
-  isHot: true,
+  isHot: false,
   isMore: false,
   isNew: false,
   detailsHtml: `
@@ -445,7 +445,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
   imageUrl: '/images/games/game-08.webp',
   imageAlt: 'Chill Guy Geometry Dash gameplay with the Chill Dog jumping over obstacles to the rhythm',
   iframeUrl: 'https://chillguygeometrydash.pages.dev/',
-  isHot: true,
+  isHot: false,
   isMore: false,
   isNew: false,
   detailsHtml: `
@@ -513,7 +513,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
   imageUrl: '/images/games/game-09.webp',
   imageAlt: 'Dress Up a Chill Guy gameplay showing chill dog wearing a beanie and sunglasses',
   iframeUrl: 'https://makechillguy.pages.dev/',
-  isHot: true,
+  isHot: false,
   isMore: false,
   isNew: false,
   detailsHtml: `
@@ -3404,7 +3404,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
   "iframeUrl": "https://1games.io/game/billiards-master/",
   "isHot": false,
   "isMore": true,
-  "isNew": true,
+  "isNew": false,
   "detailsHtml": `
     <h2>Billiards Master – Precision, Style, and Realism</h2>
     <p>
@@ -3466,7 +3466,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
   "iframeUrl": "https://1games.io/game/arcade-volley/",
   "isHot": false,
   "isMore": true,
-  "isNew": true,
+  "isNew": false,
   "detailsHtml": `
     <h2>Arcade Volley – Retro Speed Meets Volleyball Excitement</h2>
     <p>
@@ -3522,7 +3522,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
   "iframeUrl": "https://game.azgame.io/icy-dash/",
   "isHot": false,
   "isMore": true,
-  "isNew": true,
+  "isNew": false,
   "detailsHtml": `
     <h2>Icy Dash – High-Speed Stickman Snowboarding Fun</h2>
     <p>
@@ -3578,7 +3578,7 @@ Start tapping today and embrace the chill life with <strong>Chill Guy Clicker</s
   "iframeUrl": "https://azgames.io/run-3.embed",
   "isHot": false,
   "isMore": true,
-  "isNew": true,
+  "isNew": false,
   "detailsHtml": `
     <h2>Run 3 – The Classic Space Running Challenge</h2>
     <p>

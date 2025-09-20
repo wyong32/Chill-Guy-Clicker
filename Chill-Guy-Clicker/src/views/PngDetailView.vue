@@ -164,12 +164,9 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
+.png-detail-view{
+  padding: 40px 0;
 }
-
 .back-link {
   margin-bottom: 30px;
 }
@@ -327,8 +324,25 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .png-detail-view{
+    padding: 20px 0;
+  }
+
+  .back-link{
+    margin-bottom: 15px;
+  }
+
+  .back-button{
+    font-size: 12px;
+  }
+
+  .png-detail-content{
+    padding: 10px;
+  }
+
   .png-title {
-    font-size: 26px;
+    font-size: 22px;
+    margin-bottom: 15px;
   }
 
   .image-meta {
@@ -336,5 +350,47 @@ export default {
     align-items: center;
     gap: 10px;
   }
+
+  .png-image{
+    max-width: 100%;
+    max-height: 400px;
+    padding: 10px;
+  }
+
+  .png-image-container{
+    margin-bottom: 10px;
+  }
+
+  .download-container{
+    width: 100%;
+  }
+
+  .download-button{
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .png-tags{
+    gap: 5px;
+  }
+
+  .png-tag{
+    font-size: 12px;
+    padding: 3px 10px;
+  }
+
+  .png-description{
+    margin-bottom: 15px;
+  }
+
+  .png-description h2{
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .png-description p{
+    font-size: 12px;
+  }
+
 }
 </style>

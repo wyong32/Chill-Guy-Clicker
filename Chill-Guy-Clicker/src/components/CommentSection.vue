@@ -1169,6 +1169,48 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .comment-form{
+    padding: 10px;
+  }
+
+  .form-title{
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .form-group label{
+    font-size: 12px;
+  }
+  
+  .form-input{
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .rating-label{
+    font-size: 12px;
+  }
+
+  .stars-input .star{
+    width: 25px;
+    height: 25px;
+  }
+
+  .comment-textarea{
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .form-group{
+    margin-bottom: 10px;
+  }
+
+  .submit-button{
+    padding: 10px 20px;
+    margin-top: 0;
+    font-size: 14px;
+  }
+
   .comment-stats {
     flex-direction: column;
   }

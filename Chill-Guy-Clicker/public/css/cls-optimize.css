@@ -93,20 +93,6 @@ img:not([width]):not([height]) {
   flex-shrink: 0;
 }
 
-/* Footer 稳定性 - 关键优化 */
-.footer,
-footer {
-  min-height: 420px;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-  flex-shrink: 0;
-  display: block;
-  visibility: visible;
-}
-
 /* 按钮稳定性 */
 button,
 .btn {
@@ -136,13 +122,6 @@ ol {
 
 li {
   min-height: 20px;
-}
-
-/* 网格布局稳定性 */
-.grid,
-.footer-content {
-  display: grid;
-  grid-template-rows: minmax(auto, 1fr);
 }
 
 /* Flexbox 稳定性 */
@@ -222,11 +201,6 @@ svg {
     aspect-ratio: 300 / 120;
   }
 
-  .footer-content {
-    grid-template-columns: 1fr;
-    min-height: 300px;
-  }
-
   .header-content {
     min-height: 60px;
   }
@@ -242,43 +216,3 @@ svg {
   }
 }
 
-/* 高对比度模式优化 */
-@media (prefers-contrast: high) {
-  /* 高对比度模式下的稳定性 */
-  img {
-    image-rendering: pixelated;
-  }
-}
-
-/* 打印样式稳定性 */
-@media print {
-  * {
-    contain: none !important;
-    will-change: auto !important;
-    transform: none !important;
-  }
-}
-
-/* 关键资源预加载完成后的优化 */
-.resources-loaded {
-  /* 所有关键资源加载完成后应用的样式 */
-  contain: layout style paint;
-}
-
-/* 系统字体度量稳定性 */
-.system-font-optimized {
-  /* 系统字体天然稳定，无需额外优化 */
-  font-variant-numeric: normal;
-}
-
-/* 内容可见性优化 */
-.below-fold {
-  content-visibility: auto;
-  contain-intrinsic-size: 0 200px;
-}
-
-/* GPU 加速优化 */
-.gpu-accelerated {
-  backface-visibility: hidden;
-  perspective: 1000px;
-}

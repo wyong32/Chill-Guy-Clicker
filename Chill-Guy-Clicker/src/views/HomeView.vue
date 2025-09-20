@@ -173,7 +173,7 @@ const moreGames = computed(() => {
   
   // 在移动端且未显示全部时，只返回前8个游戏
   if (isMobile.value && !showAllMoreGames.value) {
-    return allMoreGames.slice(0, 8)
+    return allMoreGames.slice(0, 6)
   }
   
   return allMoreGames
@@ -524,11 +524,15 @@ watch(
     padding-bottom: 60%;
   }
 
-  /* 移除未使用的 CSS 类 */
-
   .game-title {
-    font-size: 28px;
+    font-size: 24px;
+    margin-bottom: 20px;
   }
+
+  .featured-game{
+    padding: 10px;
+  }
+  
 }
 
 @media (max-width: 480px) {
@@ -539,20 +543,10 @@ watch(
     padding-top: 30px;
   }
 
-  .featured-game {
-    padding: 20px 10px;
-  }
-
-  /* 移除未使用的 CSS 类 */
-
   .game-meta {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-  }
-
-  .game-title {
-    font-size: 24px;
   }
 }
 </style>

@@ -103,7 +103,6 @@ export default {
 .content-html >>> h2,
 .content-html >>> h3 {
   color: #333;
-  margin-top: 1.5em;
   margin-bottom: 0.8em;
   border-bottom: 1px solid #eee;
   padding-bottom: 0.3em;
@@ -127,5 +126,21 @@ export default {
 
 .content-html >>> a:hover {
   color: #2c8e63;
+}
+
+@media (max-width: 768px) {
+  .game-details-wrapper{
+    padding: 10px;
+  }
+  .content-html >>> p{
+    font-size: 0.8rem;
+  }
+
+  .content-html >>> ul,
+.content-html >>> ol{
+  padding-left: 1rem;
+  font-size: 0.8rem;
+}
+  
 }
 </style> 

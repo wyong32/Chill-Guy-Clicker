@@ -125,7 +125,7 @@ export default {
 
 .more-game-img {
   width: 100%;
-  height: 140px;
+  aspect-ratio: 1/1;
   object-fit: cover;
 }
 
@@ -205,11 +205,25 @@ export default {
 
 /* 移动端优化 */
 @media (max-width: 768px) {
-  .more-button {
-    width: 100%;
-    max-width: 200px;
-    padding: 14px 24px;
-    font-size: 15px;
+  .more-button-container{
+    margin-top: 10px;
   }
+
+  .more-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .more-games{
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .section-title{
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  
 }
 </style>

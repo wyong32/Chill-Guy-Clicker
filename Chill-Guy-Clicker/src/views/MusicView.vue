@@ -51,40 +51,10 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
+@import '../style/publc.css';
 
-.page-title {
-  font-size: 36px;
-  color: var(--primary-color);
-  margin-bottom: 20px;
-  text-align: center;
-  position: relative;
-  padding-bottom: 15px;
-}
-
-.page-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-  border-radius: 2px;
-}
-
-.page-description {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 40px;
-  color: #666;
-  font-size: 18px;
-  line-height: 1.6;
+.music-view{
+  padding: 40px 0;
 }
 
 .music-grid {
@@ -221,23 +191,38 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .music-view{
+    padding: 20px 0;
+  }
+
   .music-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
   }
 
-  .page-title {
-    font-size: 28px;
-  }
-
-  .page-description {
-    font-size: 16px;
-  }
+  
 }
 
 @media (max-width: 480px) {
   .music-grid {
     grid-template-columns: 1fr;
+  }
+
+  .music-info{
+    padding: 10px;
+  }
+
+  .music-title{
+    font-size: 14px;
+  }
+
+  .music-artist{
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  .music-tags{
+    gap: 5px;
   }
 }
 </style>

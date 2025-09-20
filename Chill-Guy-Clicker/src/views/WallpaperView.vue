@@ -98,40 +98,10 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
+@import '../style/publc.css';
 
-.page-title {
-  font-size: 36px;
-  color: var(--primary-color);
-  margin-bottom: 20px;
-  text-align: center;
-  position: relative;
-  padding-bottom: 15px;
-}
-
-.page-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-  border-radius: 2px;
-}
-
-.page-description {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 40px;
-  color: #666;
-  font-size: 18px;
-  line-height: 1.6;
+.wallpaper-view{
+  padding: 40px 0;
 }
 
 .filter-section {
@@ -307,17 +277,53 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .wallpaper-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+  .wallpaper-view{
+    padding: 20px 0;
   }
 
-  .page-title {
-    font-size: 28px;
+  .filter-section{
+    margin-bottom: 15px;
   }
 
-  .page-description {
-    font-size: 16px;
+  .category-tabs{
+    margin-bottom: 0;
+  }
+
+  .category-tab{
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .wallpaper-grid{
+    gap: 10px;
+  }
+
+  .wallpaper-info{
+    padding: 10px;
+  }
+
+  .wallpaper-title{
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .wallpaper-meta{
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  .wallpaper-resolution{
+    padding: 2px 8px;
+    font-size: 12px;
+  }
+
+  .wallpaper-tags{
+    gap: 3px;
+  }
+
+  .wallpaper-tag{
+    font-size: 10px;
+    padding: 2px 8px;
   }
 
   .filter-section {
@@ -328,6 +334,10 @@ export default {
   .filter-group {
     margin: 10px 0;
   }
+
+  .desktop-only{
+    display: none;
+  }
 }
 
 /* 桌面端显示，移动端隐藏的元素 */
@@ -335,30 +345,4 @@ export default {
   display: inline-block;
 }
 
-@media (max-width: 480px) {
-  .wallpaper-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .overlay-buttons {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  /* 在移动端隐藏 View Details 按钮 */
-  .desktop-only {
-    display: none;
-  }
-
-  /* 在移动端调整覆盖层样式 */
-  .wallpaper-overlay {
-    background: rgba(0, 0, 0, 0.2);
-    opacity: 0.5;
-  }
-
-  /* 确保在触摸设备上图片有轻微的缩放效果，提示可点击 */
-  .wallpaper-card:active .wallpaper-image img {
-    transform: scale(1.05);
-  }
-}
 </style>

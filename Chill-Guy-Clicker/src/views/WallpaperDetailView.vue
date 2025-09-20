@@ -191,10 +191,8 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
+.wallpaper-detail-view{
+  padding: 40px 0;
 }
 
 .back-link {
@@ -353,14 +351,67 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .wallpaper-title {
-    font-size: 26px;
+  .wallpaper-detail-view{
+    padding: 20px 0;
   }
 
-  .image-meta {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+  .back-link{
+    margin-bottom: 15px;
   }
+
+  .back-button{
+    font-size: 12px;
+  }
+  
+  .wallpaper-detail-content{
+    padding: 10px;
+  }
+
+  .wallpaper-title{
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  .download-button{
+    padding: 5px 10px;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .image-meta{
+    margin-bottom: 0;
+    gap: 5px;
+  }
+
+  .meta-item{
+    font-size: 12px;
+  }
+
+  .wallpaper-image-container{
+    margin-bottom: 10px;
+  }
+
+  .wallpaper-tags{
+    gap: 5px;
+  }
+
+  .wallpaper-tag{
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+  
+  .wallpaper-description{
+    margin-bottom: 15px;
+  }
+
+  .wallpaper-description h2{
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .wallpaper-description p{
+    font-size: 12px;
+  }
+  
 }
 </style>

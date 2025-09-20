@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <aside class="game-sidebar">
     <!-- Hot Games Section -->
     <section class="hot-games">
@@ -55,8 +55,8 @@ export default {
     },
     newGames: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
   methods: {
     getGameRoute(game) {
@@ -64,8 +64,8 @@ export default {
         return '/'
       }
       return '/' + (game.addressBar || game.id)
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -133,8 +133,7 @@ export default {
 }
 
 .game-img {
-  width: 100%;
-  height: 100px;
+  aspect-ratio: 1/1;
   object-fit: cover;
 }
 
@@ -193,6 +192,21 @@ export default {
 
   .games-list {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
+
+  .hot-games,
+  .new-games {
+    padding: 10px;
+  }
+
+  .section-title{
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+
+  
+  
 }
 </style>
