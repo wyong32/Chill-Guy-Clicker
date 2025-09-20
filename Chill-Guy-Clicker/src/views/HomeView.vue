@@ -2,7 +2,7 @@
   <div class="home-wrapper">
     <div class="home" :class="{ 'theater-mode': isTheaterMode }">
         <!-- 左侧广告-PC -->
-      <aside class="ads-wrapper ads-left" v-if="!isMobile">
+      <aside class="" v-if="!isMobile">
         <ins
           class="adsbygoogle"
           style="display: block; width: 160px; min-height: 250px"
@@ -14,7 +14,7 @@
       </aside>
 
       <!-- 右侧广告-PC -->
-      <aside class="ads-wrapper ads-right" v-if="!isMobile">
+      <aside class="" v-if="!isMobile">
         <ins
           class="adsbygoogle"
           style="display: block; width: 160px; min-height: 250px"
@@ -28,7 +28,7 @@
       <main class="main-content container">
         <!-- 头部横幅广告-PC -->
         <aside
-          class="ads-wrapper"
+          class=""
           v-if="!isMobile"
           style="width: 100%; min-height: 90px; margin: 10px 0"
         >
@@ -43,7 +43,7 @@
         </aside>
 
         <!-- 移动端横幅广告1 -->
-        <aside class="ads-wrapper" v-if="isMobile">
+        <aside class="" v-if="isMobile">
           <ins
             class="adsbygoogle"
             style="display: block"
@@ -73,7 +73,7 @@
               />
 
               <!-- 移动端横幅广告2 -->
-              <aside class="ads-wrapper" v-if="isMobile">
+              <aside class="" v-if="isMobile">
                 <ins
                   class="adsbygoogle"
                   style="display: block"
@@ -89,7 +89,7 @@
           </section>
 
           <!-- 移动端横幅广告3 -->
-          <aside class="ads-wrapper" v-if="isMobile">
+          <aside class="" v-if="isMobile">
             <ins
               class="adsbygoogle"
               style="display: block"
