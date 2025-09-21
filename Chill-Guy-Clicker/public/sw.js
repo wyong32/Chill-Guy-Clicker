@@ -9,7 +9,7 @@ const DYNAMIC_CACHE = 'dynamic-v1'
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/images/logo.png',
+  '/images/logo.webp',
   '/images/favicon.ico',
   '/manifest.json'
 ]

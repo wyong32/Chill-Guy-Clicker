@@ -113,7 +113,7 @@ const updateStructuredData = (gameData) => {
     url: window.location.href,
     image: gameData.imageUrl
       ? `https://chillguymemeclicker.com${gameData.imageUrl}`
-      : 'https://chillguymemeclicker.com/images/logo.png',
+      : 'https://chillguymemeclicker.com/images/logo.webp',
     offers: {
       '@type': 'Offer',
       price: '0',

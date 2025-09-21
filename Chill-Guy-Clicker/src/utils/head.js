@@ -61,7 +61,7 @@ export const updatePageSEO = (options = {}) => {
     title = 'Chill Guy Clicker',
     description = 'Best Chill Guy clicker game experience',
     keywords = 'chill guy, clicker game, casual game, web game',
-    image = '/images/logo.png',
+    image = '/images/logo.webp',
     url = window.location.href,
     type = 'website'
   } = options
@@ -100,7 +100,7 @@ export const updateGameSEO = (game) => {
 
   const gameTitle = `${game.title} - Chill Guy Clicker`
   const gameDescription = game.description || `Experience the exciting ${game.title} game content`
-  const gameImage = game.imageUrl || '/images/logo.png'
+  const gameImage = game.imageUrl || '/images/logo.webp'
 
   updatePageSEO({
     title: gameTitle,

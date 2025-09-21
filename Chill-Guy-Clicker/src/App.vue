@@ -56,7 +56,7 @@ export default {
 
     const preloadCriticalResources = () => {
       const resources = [
-        '/images/logo.png',
+        '/images/logo.webp',
         '/images/chill-guy.png'
       ]
 

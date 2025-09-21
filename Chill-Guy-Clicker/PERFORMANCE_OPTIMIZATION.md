@@ -132,7 +132,7 @@ npm run optimize
 ```vue
 <!-- 使用优化的图片组件 -->
 <OptimizedImage
-  src="/images/logo.png"
+  src="/images/logo.webp"
   alt="Logo"
   :lazy-load="true"
   priority="high"
