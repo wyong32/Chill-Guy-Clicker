@@ -11,11 +11,15 @@
           <div class="social-links">
             <!-- 1 -->
             <a href="https://www.indiehackers.com/delldremo" class="social-link" target="_blank">
-              <img src="/images/icon/indiehackers-icon.webp" alt="indiehackers" width="24" height="24" loading="eager" decoding="sync">
+              <span class="social-icon-container">
+                <img src="/images/icon/indiehackers-icon.webp" alt="indiehackers" width="24" height="24" loading="eager" decoding="sync">
+              </span>
             </a>
             <!-- 2 -->
             <a href="https://share.evernote.com/note/c880fa8a-a5b4-ca1b-23db-a0f6dfc9475f" class="social-link" target="_blank">
-              <img src="/images/icon/evernote-icon.svg" alt="Evernote logo" width="24" height="24" loading="eager" decoding="sync">
+              <span class="social-icon-container">
+                <img src="/images/icon/evernote-icon.svg" alt="Evernote logo" width="24" height="24" loading="eager" decoding="sync">
+              </span>
             </a>
             <!-- <a href="https://www.notion.so/ChillGuymemeClicker-com-1fb7ae35635d804e8a50fd5e971fd3b8" class="social-link" target="_blank">
               <img src="/images/icon/notion-icon.ico" alt="Notion logo" width="24" height="24">
@@ -29,15 +33,7 @@
             <a href="https://wenyong3.gumroad.com/l/chillguymemeclicker" class="social-link" target="_blank">
               <img src="/images/icon/gumroad-icon.webp" alt="gumroad" width="24" height="24">
             </a>
-            <a href="https://cookingdom.podia.com/blog/6d6cd40b-5af0-4659-b494-06f9fed4c072" class="social-link" target="_blank">
-              <img src="/images/icon/podia-icon.ico" alt="podia" width="24" height="24">
-            </a>
-            <a href="https://jimmy11.kit.com/0a9818835d" class="social-link" target="_blank">
-              <img src="/images/icon/kit-icon.png" alt="kit" width="24" height="24">
-            </a>
-            <a href="https://www.pinterest.com/wenyong3124/chill-guy" class="social-link" target="_blank">
-              <img src="/images/icon/pinterest-icon.png" alt="pinimg" width="24" height="24">
-            </a> -->
+            -->
           </div>
         </div>
         <div class="footer-section links">
@@ -113,8 +109,6 @@ export default {
   box-sizing: border-box;
   flex-shrink: 0;
   overflow: hidden;
-  /* 添加固定高度防止CLS */
-  height: 400px;
 }
 
 .footer-content {
@@ -152,9 +146,7 @@ export default {
   background-color: #41b883;
 }
 
-.about{
-  width: 320px;
-}
+/* 移除固定宽度约束 */
 
 .footer-text {
   color: #fff;
@@ -184,13 +176,17 @@ export default {
   flex-shrink: 0;
 }
 
-.social-link img {
+.social-icon-container {
+  display: block;
   width: 24px;
   height: 24px;
+}
+
+.social-link img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   display: block;
-  /* 防止图片加载时的布局偏移 */
-  aspect-ratio: 1;
 }
 
 .social-link:hover {
@@ -257,7 +253,6 @@ export default {
 @media (max-width: 767px) {
   .footer{
     padding: 20px 0;
-    height: 300px;
   }
   .footer-title{
     font-size: 16px;
