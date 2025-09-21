@@ -116,17 +116,17 @@ export default {
 }
 
 .footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  margin-bottom: 40px;
+  display: block;
   width: 100%;
   box-sizing: border-box;
-  justify-content: space-between;
 }
 
 .footer-section {
-  flex: 1;
+  display: inline-block;
+  vertical-align: top;
+  width: 24%;
+  margin-right: 1%;
+  margin-bottom: 30px;
 }
 
 .footer-title {
@@ -246,13 +246,9 @@ export default {
 
 
 @media (max-width: 992px) {
-  .footer-content {
-    flex-direction: column;
-    gap: 20px;
-  }
-  
   .footer-section {
-    /* 移动端无需额外约束 */
+    width: 48%;
+    margin-right: 2%;
   }
 }
 
@@ -269,9 +265,10 @@ export default {
     margin-bottom: 10px;
   }
 
-  .footer-content {
-    gap: 10px;
-    margin-bottom: 10px;
+  .footer-section {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
   }
 
   .footer-link{
