@@ -323,39 +323,39 @@ export default {
 
 /* Theater 模式样式 */
 .game-container.theater-mode {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  z-index: 9999 !important;
-  background-color: #000 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  border-radius: 0 !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background-color: #000;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .game-container.theater-mode .game-iframe-container {
-  width: 90vw !important;
-  height: auto !important;
-  max-width: 1800px !important;
-  max-height: 98vh !important;
-  aspect-ratio: 16 / 9 !important;
-  border-radius: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  width: 90vw;
+  height: auto;
+  max-width: 1800px;
+  max-height: 98vh;
+  aspect-ratio: 16 / 9;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* Theater 模式下隐藏其他内容 */
 .game-container.theater-mode .fullscreen-controls-bottom,
 .game-container.theater-mode .game-details-html,
 .game-container.theater-mode .game-details {
-  display: none !important;
+  display: none;
 }
 
 .game-iframe {
@@ -368,19 +368,19 @@ export default {
 
 /* 浏览器原生全屏样式 */
 .game-iframe-container:fullscreen {
-  max-width: none !important;
-  max-height: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  aspect-ratio: unset !important;
+  max-width: none;
+  max-height: none;
+  border-radius: 0;
+  box-shadow: none;
+  aspect-ratio: unset;
 }
 
 .game-iframe-container:-webkit-full-screen {
-  max-width: none !important;
-  max-height: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  aspect-ratio: unset !important;
+  max-width: none;
+  max-height: none;
+  border-radius: 0;
+  box-shadow: none;
+  aspect-ratio: unset;
 }
 
 /* 游戏主体下方全屏控制按钮 */

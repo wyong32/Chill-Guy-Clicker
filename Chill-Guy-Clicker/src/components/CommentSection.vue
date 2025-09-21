@@ -838,7 +838,7 @@ export default {
 }
 
 .input-error {
-  border-color: #e74c3c !important;
+  border-color: #e74c3c;
   background-color: rgba(231, 76, 60, 0.05);
   box-shadow: 0 0 0 1px rgba(231, 76, 60, 0.2);
 }
