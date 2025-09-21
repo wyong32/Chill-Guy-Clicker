@@ -17,25 +17,11 @@
   right: 10px;
 }
 
-/* 横幅广告容器 - 最简单的实现 */
+/* 横幅广告容器 */
 .ads-wrapper {
   width: 100%;
   margin: 20px 0;
   text-align: center;
-  position: relative;
-}
-
-/* 广告占位符样式 */
-.ad-placeholder {
-  background-color: #f8f9fa;
-  border: 1px dashed #dee2e6;
-  border-radius: 4px;
-  transition: opacity 0.3s ease;
-}
-
-/* 广告加载后隐藏占位符 */
-.ads-wrapper .adsbygoogle + .ad-placeholder {
-  display: none;
 }
 
 /* 剧院模式隐藏所有广告 */
@@ -44,5 +30,3 @@
 .theater-mode .ads-wrapper {
   display: none;
 }
-
-
