@@ -5,7 +5,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import { robots } from 'vite-plugin-robots'
 // import ViteSitemapPlugin from 'vite-plugin-sitemap'
-import { VitePWA } from 'vite-plugin-pwa'
+// import { VitePWA } from 'vite-plugin-pwa' // 移除PWA插件
 
 // 导入数据文件
 import { games } from './src/data/games.js'
@@ -166,41 +166,7 @@ User-agent: Slurp
 Allow: /
 Crawl-delay: 2`,
     }),
-    VitePWA({
-      registerType: 'autoUpdate',
-      workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,jpg,jpeg,webmanifest,txt,xml}'],
-        cleanupOutdatedCaches: true,
-        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5MB
-        skipWaiting: true,
-        clientsClaim: true,
-      },
-      includeAssets: ['images/favicon.ico', 'images/logo.webp'],
-      manifest: {
-        name: 'Chill Guy Clicker Games',
-        short_name: 'Chill Guy',
-        description: 'Play relaxing Chill Guy clicker games online for free. Multiple games available!',
-        theme_color: '#41b883',
-        background_color: '#ffffff',
-        display: 'standalone',
-        scope: '/',
-        start_url: '/',
-        icons: [
-          {
-            src: '/images/logo.webp',
-            sizes: '192x192',
-            type: 'image/png',
-            purpose: 'any',
-          },
-          {
-            src: '/images/logo.webp',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'any',
-          },
-        ],
-      },
-    }),
+    // VitePWA 插件已移除以优化渲染性能
   ]
 
   return {

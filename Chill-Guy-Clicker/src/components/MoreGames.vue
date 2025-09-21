@@ -110,7 +110,7 @@ export default {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 8px;
   overflow: hidden;
-  transition: transform 0.3s;
+  /* 移除transform动画以防止CLS */
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   text-decoration: none;
@@ -119,7 +119,7 @@ export default {
 }
 
 .more-game-card:hover {
-  transform: translateY(-5px);
+  /* 移除transform动画，只保留阴影变化 */
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
@@ -176,17 +176,17 @@ export default {
   align-items: center;
   gap: 8px;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-  min-width: 140px;
+  /* 移除固定宽度，让内容自然撑开 */
   justify-content: center;
 }
 
 .more-button:hover {
-  transform: translateY(-2px);
+  /* 移除transform动画，只保留阴影变化 */
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
 .more-button:active {
-  transform: translateY(0);
+  /* 移除transform动画 */
 }
 
 .more-button-text {
@@ -200,7 +200,7 @@ export default {
 }
 
 .more-button:hover .more-button-icon {
-  transform: translateY(2px);
+  /* 移除transform动画 */
 }
 
 /* 移动端优化 */

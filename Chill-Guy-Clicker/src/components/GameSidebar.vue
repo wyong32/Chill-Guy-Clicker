@@ -318,7 +318,7 @@ export default {
 }
 
 .sidebar-comment-section :deep(.comment-textarea) {
-  min-height: 80px;
+  /* 移除固定高度 */
 }
 
 /* 调整星级输入区域 */

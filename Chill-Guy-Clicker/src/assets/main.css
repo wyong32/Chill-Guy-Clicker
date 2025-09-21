@@ -1,10 +1,277 @@
-/* 主样式文件 - 优化后的结构 */
+/* 主样式文件 - 完全内联，无@import */
 
-/* 广告样式：保持现有的广告相关样式 */
-@import './css/ad-style.css';
+/* ===== 广告样式 ===== */
+/* 侧边固定广告 */
+.ads-left, .ads-right {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 160px;
+  z-index: 999;
+}
 
-/* 内容样式：文章、游戏详情等内容区域样式 */
-@import './css/content-styles.css';
+.ads-left {
+  left: 10px;
+}
+
+.ads-right {
+  right: 10px;
+}
+
+/* 横幅广告容器 */
+.ads-wrapper {
+  width: 100%;
+  margin: 20px 0;
+  text-align: center;
+}
+
+/* 剧院模式隐藏所有广告 */
+.theater-mode .ads-left,
+.theater-mode .ads-right,
+.theater-mode .ads-wrapper {
+  display: none;
+}
+
+/* ===== v-html 内容样式 ===== */
+/* Base styles for content */
+.content-html {
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+/* Headings */
+.content-html h1,
+.content-html h2,
+.content-html h3,
+.content-html h4,
+.content-html h5,
+.content-html h6 {
+  color: #333;
+  font-weight: 600;
+  margin: 0 0 0.8em;
+  line-height: 1.4;
+}
+
+.content-html h1 {
+  font-size: 2em;
+  border-bottom: 2px solid #41b883;
+  padding-bottom: 0.3em;
+  margin-top: 0;
+}
+
+.content-html h2 {
+  font-size: 1.75em;
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 0.3em;
+}
+
+.content-html h3 {
+  font-size: 1.5em;
+  color: #41b883;
+}
+
+.content-html h4 {
+  font-size: 1.25em;
+}
+
+.content-html h5 {
+  font-size: 1em;
+}
+
+.content-html h6 {
+  font-size: 0.875em;
+  color: #6a737d;
+}
+
+/* Paragraphs and text */
+.content-html p {
+  margin: 0 0 1.2em;
+  line-height: 1.8;
+}
+
+.content-html strong {
+  font-weight: 600;
+  color: #24292e;
+}
+
+.content-html em {
+  font-style: italic;
+}
+
+.content-html del {
+  text-decoration: line-through;
+  color: #6a737d;
+}
+
+.content-html blockquote {
+  margin: 1.5em 0;
+  padding: 0.8em 1em;
+  border-left: 4px solid #41b883;
+  background-color: rgba(65, 184, 131, 0.05);
+  color: #555;
+  font-style: italic;
+}
+
+.content-html blockquote p {
+  margin: 0;
+}
+
+/* Lists */
+.content-html ul,
+.content-html ol {
+  margin: 1em 0 1.5em;
+  padding-left: 2em;
+}
+
+.content-html ul {
+  list-style-type: disc;
+}
+
+.content-html ol {
+  list-style-type: decimal;
+}
+
+.content-html li {
+  margin-bottom: 0.5em;
+  line-height: 1.6;
+}
+
+.content-html li > ul,
+.content-html li > ol {
+  margin: 0.5em 0 0.5em;
+}
+
+/* Links */
+.content-html a {
+  color: #41b883;
+  text-decoration: none;
+  transition: color 0.2s, border-bottom 0.2s;
+  border-bottom: 1px solid transparent;
+}
+
+.content-html a:hover {
+  color: #f39c12;
+  border-bottom: 1px solid #f39c12;
+}
+
+/* Images */
+.content-html img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5em auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.content-html figure {
+  margin: 1.5em 0;
+  text-align: center;
+}
+
+.content-html figcaption {
+  font-size: 0.875em;
+  color: #6a737d;
+  margin-top: 0.5em;
+  text-align: center;
+}
+
+/* Code blocks */
+.content-html pre {
+  background-color: #f6f8fa;
+  border-radius: 6px;
+  padding: 16px;
+  overflow: auto;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.875em;
+  line-height: 1.45;
+  margin: 1.5em 0;
+}
+
+.content-html code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 3px;
+  padding: 0.2em 0.4em;
+  font-size: 0.875em;
+}
+
+.content-html pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Tables */
+.content-html table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  overflow-x: auto;
+  display: block;
+}
+
+.content-html table thead {
+  background-color: #f6f8fa;
+}
+
+.content-html table th,
+.content-html table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #dfe2e5;
+}
+
+.content-html table th {
+  font-weight: 600;
+}
+
+.content-html table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+/* Horizontal rule */
+.content-html hr {
+  height: 1px;
+  background-color: #e1e4e8;
+  border: none;
+  margin: 2em 0;
+}
+
+/* Responsive adjustments for content */
+@media (max-width: 768px) {
+  .content-html {
+    font-size: 15px;
+  }
+  
+  .content-html h1 {
+    font-size: 1.8em;
+  }
+  
+  .content-html h2 {
+    font-size: 1.5em;
+  }
+  
+  .content-html h3 {
+    font-size: 1.3em;
+  }
+  
+  .content-html h4 {
+    font-size: 1.1em;
+  }
+  
+  .content-html blockquote {
+    padding: 0.5em 0.8em;
+  }
+  
+  .content-html ul,
+  .content-html ol {
+    padding-left: 1.5em;
+  }
+}
 
 /* ===== 合并的主要样式：基础、布局、组件样式 ===== */
 

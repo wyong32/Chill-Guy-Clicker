@@ -391,7 +391,7 @@ export default {
   background: rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  min-height: 50px;
+  /* 移除固定高度 */
   box-sizing: border-box;
 }
 
@@ -406,8 +406,7 @@ export default {
   padding: 10px;
   background: rgba(0, 0, 0, 0.8);
   border-radius: 8px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  /* 移除backdrop-filter以防止CLS */
 }
 
 .fullscreen-button {
@@ -424,7 +423,7 @@ export default {
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  min-height: 36px;
+  /* 移除固定高度 */
   min-width: 36px;
   flex-shrink: 0;
 }
@@ -463,8 +462,7 @@ export default {
   padding: 10px;
   background: rgba(0, 0, 0, 0.7);
   border-radius: 8px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  /* 移除backdrop-filter以防止CLS */
 }
 
 .game-container.theater-mode .theater-controls-overlay {
@@ -508,7 +506,7 @@ export default {
   z-index: 9999;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
-  backdrop-filter: blur(5px);
+  /* 移除backdrop-filter以防止CLS */
   border: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 14px;
 }
@@ -558,8 +556,7 @@ export default {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  /* 移除backdrop-filter以防止CLS */
   z-index: -1;
 }
 
@@ -570,7 +567,7 @@ export default {
   max-width: 80%;
   /* 防止布局偏移 */
   contain: layout style;
-  min-height: 220px;
+  /* 移除固定高度，让内容自然撑开 */
   justify-content: center;
 }
 
@@ -612,7 +609,7 @@ export default {
   z-index: 3;
   /* 防止布局偏移 */
   contain: layout paint;
-  min-height: 48px;
+  /* 移除固定高度 */
   min-width: 140px;
   flex-shrink: 0;
   white-space: nowrap;

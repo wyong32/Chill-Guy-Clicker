@@ -218,7 +218,7 @@ onUnmounted(() => {
   transition: all 0.3s ease;
   box-sizing: border-box;
   min-width: 100px;
-  min-height: 100px;
+  /* 移除固定高度 */
   overflow: hidden;
 }
 

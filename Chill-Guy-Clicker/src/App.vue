@@ -50,8 +50,7 @@ export default {
       // 预加载关键资源
       preloadCriticalResources()
 
-      // 注册 Service Worker
-      registerServiceWorker()
+      // Service Worker 已移除以优化渲染性能
     })
 
     const preloadCriticalResources = () => {
@@ -66,26 +65,7 @@ export default {
       })
     }
 
-    const registerServiceWorker = () => {
-      if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
-        // 使用 requestIdleCallback 延迟注册，避免阻塞主线程
-        const registerSW = () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-              // Service Worker registered successfully
-            })
-            .catch(registrationError => {
-              // Service Worker registration failed
-            })
-        }
-
-        if ('requestIdleCallback' in window) {
-          requestIdleCallback(registerSW, { timeout: 2000 })
-        } else {
-          setTimeout(registerSW, 1000)
-        }
-      }
-    }
+    // Service Worker 注册功能已移除
 
     return {}
   }

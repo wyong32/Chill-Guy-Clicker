@@ -191,9 +191,9 @@ export default {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(10px);
+  /* 移除backdrop-filter以防止CLS */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  min-height: 70px;
+  /* 移除固定高度 */
   width: 100%;
   box-sizing: border-box;
 }
@@ -309,7 +309,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   min-width: 30px;
-  min-height: 20px;
+  /* 移除固定高度 */
   width: 30px;
   height: 20px;
   cursor: pointer;
@@ -384,7 +384,7 @@ export default {
   transition: color 0.2s ease;
   z-index: 1001;
   min-width: 44px;
-  min-height: 44px;
+  /* 移除固定高度 */
   display: flex;
   align-items: center;
   justify-content: center;
