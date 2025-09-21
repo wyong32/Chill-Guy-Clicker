@@ -1,4 +1,4 @@
-﻿<template>
+﻿﻿﻿﻿﻿﻿﻿<template>
   <aside class="game-sidebar">
     <!-- Hot Games Section -->
     <section class="hot-games">
@@ -42,12 +42,22 @@
         </a>
       </div>
     </section>
+
+    <!-- Player Reviews Section -->
+    <section class="player-reviews" v-if="gameId">
+      <CommentSection :gameId="gameId" class="sidebar-comment-section" />
+    </section>
   </aside>
 </template>
 
 <script>
+import CommentSection from '@/components/CommentSection.vue'
+
 export default {
   name: 'GameSidebar',
+  components: {
+    CommentSection
+  },
   props: {
     hotGames: {
       type: Array,
@@ -56,6 +66,14 @@ export default {
     newGames: {
       type: Array,
       default: () => [],
+    },
+    gameId: {
+      type: Number,
+      default: null,
+    },
+    isTheaterMode: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {
@@ -78,7 +96,8 @@ export default {
 }
 
 .hot-games,
-.new-games {
+.new-games,
+.player-reviews {
   background-color: rgba(255, 255, 255, 0.95);
   padding: 20px;
   border-radius: 10px;
@@ -168,6 +187,185 @@ export default {
   z-index: 1;
 }
 
+/* Player Reviews 特有样式 */
+.player-reviews {
+  /* 匹配右侧布局的样式 */
+}
+
+.player-reviews .section-title::before {
+  background-color: #4285f4; /* 蓝色表示评论区 */
+}
+
+/* 右侧评论区样式调整 */
+.sidebar-comment-section {
+  /* 重置外边距以匹配侧边栏布局 */
+  margin-top: 0;
+}
+
+/* 在右侧布局中调整评论组件的字体和间距 */
+.sidebar-comment-section :deep(.section-title) {
+  font-size: 18px;
+  margin-bottom: 12px;
+  padding-left: 15px;
+}
+
+.sidebar-comment-section :deep(.section-title::before) {
+  background-color: #4285f4;
+  width: 4px;
+  height: 16px;
+}
+
+/* 调整评论统计区域 - 更紧凑的布局 */
+.sidebar-comment-section :deep(.comment-stats) {
+  padding: 12px;
+  margin-bottom: 15px;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar-comment-section :deep(.average-rating) {
+  padding-right: 0;
+  margin-right: 0;
+  border-right: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.sidebar-comment-section :deep(.rating-number) {
+  font-size: 36px;
+  margin-right: 12px;
+}
+
+/* 调整星星大小和布局 */
+.sidebar-comment-section :deep(.star) {
+  width: 16px;
+  height: 16px;
+  margin-right: 2px;
+}
+
+.sidebar-comment-section :deep(.rating-count) {
+  font-size: 12px;
+  padding: 2px 8px;
+}
+
+/* 调整评分分布条 */
+.sidebar-comment-section :deep(.rating-bars) {
+  padding-left: 0;
+}
+
+.sidebar-comment-section :deep(.rating-bar-item) {
+  margin-bottom: 8px;
+}
+
+.sidebar-comment-section :deep(.rating-label) {
+  width: 30px;
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+.sidebar-comment-section :deep(.rating-percentage) {
+  width: 35px;
+  font-size: 11px;
+}
+
+/* 调整评论列表 */
+.sidebar-comment-section :deep(.comment-item) {
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.sidebar-comment-section :deep(.comment-author) {
+  font-size: 14px;
+}
+
+.sidebar-comment-section :deep(.comment-date) {
+  font-size: 11px;
+}
+
+.sidebar-comment-section :deep(.comment-rating .star) {
+  width: 14px;
+  height: 14px;
+}
+
+.sidebar-comment-section :deep(.comment-content) {
+  margin-bottom: 12px;
+  padding: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* 调整评论表单 */
+.sidebar-comment-section :deep(.comment-form) {
+  padding: 15px;
+}
+
+.sidebar-comment-section :deep(.form-title) {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+/* 调整表单组间距 */
+.sidebar-comment-section :deep(.form-group) {
+  margin-bottom: 10px;
+}
+
+.sidebar-comment-section :deep(.form-group label) {
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+.sidebar-comment-section :deep(.form-input),
+.sidebar-comment-section :deep(.comment-textarea) {
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+.sidebar-comment-section :deep(.comment-textarea) {
+  min-height: 80px;
+}
+
+/* 调整星级输入区域 */
+.sidebar-comment-section :deep(.rating-input) {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sidebar-comment-section :deep(.rating-label) {
+  margin-right: 0;
+  margin-bottom: 5px;
+}
+
+.sidebar-comment-section :deep(.stars-input .star) {
+  width: 20px;
+  height: 20px;
+  margin-right: 3px;
+}
+
+.sidebar-comment-section :deep(.rating-tooltip) {
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+/* 调整按钮 */
+.sidebar-comment-section :deep(.submit-button) {
+  padding: 8px 15px;
+  font-size: 13px;
+}
+
+.sidebar-comment-section :deep(.action-button) {
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+/* 调整通知组件在侧边栏中的位置 */
+.sidebar-comment-section :deep(.message-notification) {
+  width: 280px;
+  max-width: 95%;
+  font-size: 12px;
+  padding: 10px 12px;
+}
+
 @media (max-width: 1024px) {
   .game-sidebar {
     width: 100%;
@@ -178,6 +376,10 @@ export default {
   .hot-games,
   .new-games {
     flex: 1;
+  }
+
+  .player-reviews {
+    flex: 2; /* 给评论区更多空间 */
   }
 
   .games-list {
@@ -196,17 +398,39 @@ export default {
   }
 
   .hot-games,
-  .new-games {
-    padding: 10px;
+  .new-games,
+  .player-reviews {
+    padding: 12px;
   }
 
   .section-title{
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 10px;
   }
   
-
+  /* 移动端评论区更紧凑的布局 */
+  .sidebar-comment-section :deep(.comment-stats) {
+    padding: 10px;
+    margin-bottom: 12px;
+  }
   
+  .sidebar-comment-section :deep(.comment-form) {
+    padding: 12px;
+  }
   
+  .sidebar-comment-section :deep(.comment-item) {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .sidebar-comment-section :deep(.rating-number) {
+    font-size: 28px;
+  }
+  
+  .sidebar-comment-section :deep(.stars-input .star) {
+    width: 24px;
+    height: 24px;
+    margin-right: 4px;
+  }
 }
 </style>

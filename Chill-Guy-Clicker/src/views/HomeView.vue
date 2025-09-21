@@ -70,8 +70,6 @@
                   data-full-width-responsive="true"
                 ></ins>
               </aside>
-
-              <CommentSection :gameId="(featuredGame || defaultGame)?.id" v-show="!isTheaterMode" />
             </article>
           </section>
 
@@ -88,7 +86,13 @@
           </aside>
 
           <!-- Hot Games Sidebar -->
-          <GameSidebar :hotGames="hotGames" :newGames="newGames" v-show="!isTheaterMode" />
+          <GameSidebar 
+            :hotGames="hotGames" 
+            :newGames="newGames" 
+            :gameId="(featuredGame || defaultGame)?.id"
+            :isTheaterMode="isTheaterMode"
+            v-show="!isTheaterMode" 
+          />
         </div>
 
         <!-- More Games Section -->
@@ -123,7 +127,6 @@ import GamePlayer from '@/components/GamePlayer.vue'
 import GameInfo from '@/components/GameInfo.vue'
 import GameSidebar from '@/components/GameSidebar.vue'
 import MoreGames from '@/components/MoreGames.vue'
-import CommentSection from '@/components/CommentSection.vue'
 // Composable and data imports
 import { useDeviceDetection } from '@/utils/useDeviceDetection.js'
 import { games } from '@/data/games.js'

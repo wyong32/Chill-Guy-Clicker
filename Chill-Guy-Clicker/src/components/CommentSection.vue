@@ -453,10 +453,6 @@ export default {
 </script>
 
 <style scoped>
-.comment-section {
-  margin-top: 40px;
-}
-
 .section-title {
   font-size: 24px;
   margin-bottom: 20px;
