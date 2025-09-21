@@ -82,20 +82,22 @@ export default {
 }
 
 .footer-content {
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
   width: 100%;
   box-sizing: border-box;
   contain: layout style;
+  /* 预定义网格高度防止CLS */
+  grid-template-rows: minmax(180px, auto);
 }
 
 .footer-section {
-  display: inline-block;
-  vertical-align: top;
-  width: 24%;
-  margin-right: 1%;
-  margin-bottom: 30px;
+  display: block;
   box-sizing: border-box;
   contain: layout style;
+  /* 确保每列有稳定的最小高度 */
+  min-height: 180px;
 }
 
 .footer-title {
@@ -220,17 +222,13 @@ export default {
 
 
 
-/* 清除浮动 */
-.footer-content::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 @media (max-width: 992px) {
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: minmax(160px, auto);
+  }
   .footer-section {
-    width: 48%;
-    margin-right: 2%;
+    min-height: 160px;
   }
 }
 
@@ -238,10 +236,13 @@ export default {
   .footer{
     padding: 20px 0;
   }
+  .footer-content {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, minmax(120px, auto));
+    grid-gap: 15px;
+  }
   .footer-section {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 20px;
+    min-height: 120px;
   }
   .footer-title{
     font-size: 16px;
