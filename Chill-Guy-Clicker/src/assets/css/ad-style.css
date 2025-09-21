@@ -1,4 +1,4 @@
-/* 广告样式 - 简洁直接的实现方案 */
+/* 广告样式 - 简洁实现，不干预Google AdSense */
 
 /* 侧边固定广告 */
 .ads-left, .ads-right {
@@ -7,7 +7,6 @@
   transform: translateY(-50%);
   width: 160px;
   z-index: 999;
-  pointer-events: auto;
 }
 
 .ads-left {
@@ -18,41 +17,11 @@
   right: 10px;
 }
 
-.ads-left .adsbygoogle,
-.ads-right .adsbygoogle {
-  width: 160px;
-  display: block;
-}
-
-/* 横幅广告容器 - 给广告预留自然空间 */
+/* 横幅广告容器 - 最简单的实现 */
 .ads-wrapper {
   width: 100%;
-  display: block; /* 改为block，避免flex导致的布局问题 */
   margin: 20px 0;
-  padding: 10px;
-  box-sizing: border-box;
-  /* 为广告预留空间，但不固定高度 */
-  overflow: hidden;
-}
-
-.ads-wrapper .adsbygoogle {
-  width: 100%;
-  display: block;
-  background-color: transparent;
-  /* 让广告内容自然决定高度 */
-}
-
-/* 广告加载前的占位效果 */
-.ads-wrapper:empty {
-  /* 空状态时不占用空间 */
-  margin: 0;
-  padding: 0;
-}
-
-/* 通用广告容器样式 */
-.adsbygoogle {
-  display: block;
-  background-color: transparent;
+  text-align: center;
 }
 
 /* 剧院模式隐藏所有广告 */

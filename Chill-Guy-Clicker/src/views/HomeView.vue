@@ -217,7 +217,7 @@ const updateSEO = () => {
   metaKeywords.setAttribute('content', game.seo.keywords)
 }
 
-// 简单的广告加载函数 - 参考cookingdom-main
+// 简单的广告加载函数
 const loadAds = () => {
   if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
     try {
@@ -226,36 +226,27 @@ const loadAds = () => {
       
       adElements.forEach((el, index) => {
         try {
+          // 检查广告是否已经加载
           if (el.getAttribute('data-adsbygoogle-status') !== 'done' && 
               !el.querySelector('iframe')) {
             ;(window.adsbygoogle = window.adsbygoogle || []).push({})
             console.log(`广告位 ${index + 1} 已触发加载`)
           }
         } catch (pushError) {
-          if (!pushError.message.includes('already have ads')) {
-            console.error('广告加载失败:', pushError)
-          }
+          console.error('广告加载失败:', pushError)
         }
       })
     } catch (e) {
       console.error('广告加载失败:', e)
     }
+  } else {
+    console.log('AdSense脚本还未加载')
   }
 }
 
 onMounted(() => {
-  // 立即加载广告，不延迟
-  loadAds()
-  
-  // 只在AdSense脚本完全加载后再补充加载
-  const checkAdSenseReady = () => {
-    if (window.adsbygoogle && window.adsbygoogle.loaded) {
-      loadAds()
-    } else {
-      setTimeout(checkAdSenseReady, 100)
-    }
-  }
-  checkAdSenseReady()
+  // 2秒后加载广告，给页面充分时间渲染
+  setTimeout(loadAds, 2000)
 })
 
 // --- Watcher ---

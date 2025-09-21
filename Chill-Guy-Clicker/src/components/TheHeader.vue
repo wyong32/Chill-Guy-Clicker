@@ -7,7 +7,7 @@
           <a href="/">
             <div class="logo-image-container">
               <img
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt="Chill Guy Clicker"
                 class="logo-image"
                 width="50"
