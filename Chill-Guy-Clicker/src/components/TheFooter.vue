@@ -8,33 +8,8 @@
             Chill Guy Games is a platform offering various fun casual games. We are dedicated to
             providing the best gaming experience for players.
           </p>
-          <div class="social-links">
-            <!-- 1 -->
-            <a href="https://www.indiehackers.com/delldremo" class="social-link" target="_blank">
-              <span class="social-icon-container">
-                <img src="/images/icon/indiehackers-icon.webp" alt="indiehackers" width="24" height="24" loading="eager" decoding="sync">
-              </span>
-            </a>
-            <!-- 2 -->
-            <a href="https://share.evernote.com/note/c880fa8a-a5b4-ca1b-23db-a0f6dfc9475f" class="social-link" target="_blank">
-              <span class="social-icon-container">
-                <img src="/images/icon/evernote-icon.svg" alt="Evernote logo" width="24" height="24" loading="eager" decoding="sync">
-              </span>
-            </a>
-            <!-- <a href="https://www.notion.so/ChillGuymemeClicker-com-1fb7ae35635d804e8a50fd5e971fd3b8" class="social-link" target="_blank">
-              <img src="/images/icon/notion-icon.ico" alt="Notion logo" width="24" height="24">
-            </a>
-            <a href="https://ko-fi.com/post/Chill-Guy-meme-Clicker-D1D31FCJUT" class="social-link" target="_blank">
-              <img src="/images/icon/ko-fi-icon.webp" alt="Ko-fi logo" width="24" height="24">
-            </a>
-            <a href="https://substack.com/inbox/post/164135785?triedRedirect=true" class="social-link" target="_blank">
-              <img src="/images/icon/substack-icon.ico" alt="substack" width="24" height="24">
-            </a>
-            <a href="https://wenyong3.gumroad.com/l/chillguymemeclicker" class="social-link" target="_blank">
-              <img src="/images/icon/gumroad-icon.webp" alt="gumroad" width="24" height="24">
-            </a>
-            -->
-          </div>
+          <!-- 暂时移除所有社交图标以测试CLS -->
+          <p>Follow us on social media</p>
         </div>
         <div class="footer-section links">
           <h3 class="footer-title">Quick Links</h3>
@@ -132,11 +107,12 @@ export default {
   color: #f39c12;
   position: relative;
   padding-bottom: 10px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  /* 移除text-shadow以防止渲染问题 */
   line-height: 1.4;
 }
 
-.footer-title::after {
+/* 移除伪元素以防止CLS */
+/* .footer-title::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -144,7 +120,7 @@ export default {
   width: 40px;
   height: 2px;
   background-color: #41b883;
-}
+} */
 
 /* 移除固定宽度约束 */
 
@@ -171,8 +147,8 @@ export default {
   border-radius: 50%;
   color: white;
   transition: background-color 0.3s;
-  box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
-  backface-visibility: hidden;
+  /* 移除box-shadow以防止渲染问题 */
+  /* 移除backface-visibility */
   flex-shrink: 0;
 }
 

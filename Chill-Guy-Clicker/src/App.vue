@@ -1,7 +1,7 @@
 <template>
   <div class="app">
-    <!-- 添加星空背景到所有页面 -->
-    <StarryBackground />
+    <!-- 暂时移除星空背景以消除CLS -->
+    <!-- <StarryBackground /> -->
     <TheHeader />
     <main class="main-content">
       <RouterView v-slot="{ Component, route }">
