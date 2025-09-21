@@ -317,9 +317,6 @@ export default {
   font-size: 13px;
 }
 
-.sidebar-comment-section :deep(.comment-textarea) {
-  /* 移除固定高度 */
-}
 
 /* 调整星级输入区域 */
 .sidebar-comment-section :deep(.rating-input) {

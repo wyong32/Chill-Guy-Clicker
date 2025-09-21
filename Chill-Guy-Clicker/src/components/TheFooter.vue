@@ -1,64 +1,9 @@
 <template>
   <footer class="footer">
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3 class="footer-title">Chill Guy Clicker</h3>
-          <p class="footer-text">
-            Chill Guy Games is a platform offering various fun casual games. We are dedicated to
-            providing the best gaming experience for players.
-          </p>
-          <!-- 暂时移除所有社交图标以测试CLS -->
-          <p>Follow us on social media</p>
-        </div>
-        <div class="footer-section links">
-          <h3 class="footer-title">Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="/" class="footer-link">Chill Guy Clicker</a></li>
-            <li><a href="/Chill-Guy-Girl" class="footer-link">Chill Guy Girl</a></li>
-            <li><a href="/Chill-Guy-Music" class="footer-link">Chill Guy Music</a></li>
-            <li><a href="/Chill-Guy-PNG" class="footer-link">Chill Guy PNG</a></li>
-            <li><a href="/Chill-Guy-Wallpaper" class="footer-link">Chill Guy Wallpaper</a></li>
-          </ul>
-        </div>
-        <div class="footer-section categories">
-          <h3 class="footer-title">Game Categories</h3>
-          <ul class="footer-links">
-            <li>
-              <a href="/" class="footer-link">Chill Guy Clicker</a>
-            </li>
-            <li>
-              <a href="/Chill-Girl-Clicker" class="footer-link">Chill Girl Clicker</a>
-            </li>
-            <li>
-              <a href="/Chill-Guy-Clicker-3D" class="footer-link">Chill Guy Clicker 3D</a>
-            </li>
-            <li>
-              <a href="/Chill-Guy-Unification" class="footer-link">Chill Guy: Unification</a>
-            </li>
-            <li>
-              <a href="/Chill-Guy-Evolution" class="footer-link">Chill Guy Evolution</a>
-            </li>
-          </ul>
-        </div>
-        <div class="footer-section legal">
-          <h3 class="footer-title">Legal</h3>
-          <ul class="footer-links">
-            <li><a href="/privacy-policy" class="footer-link">Privacy Policy</a></li>
-            <li><a href="/terms-of-use" class="footer-link">Terms of Use</a></li>
-            <li><a href="/copyright" class="footer-link">Copyright</a></li>
-            <li><a href="/about" class="footer-link">About Us</a></li>
-            <li><a href="/contact" class="footer-link">Contact Us</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="footer-bottom-content">
-          <p class="copyright">© 2025 chillguymemeclicker.com. All rights reserved.</p>
-          <!-- <p class="disclaimer">
-            Disclaimer: This website is for entertainment purposes only. All games, images, and content are either owned by Chill Guy Games or used with permission. We are not responsible for any external content linked from this site.
-          </p> -->
-        </div>
+      <!-- 极简版Footer测试CLS -->
+      <div class="footer-content-simple">
+        <p class="copyright">© 2025 chillguymemeclicker.com. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -86,13 +31,11 @@ export default {
   overflow: hidden;
 }
 
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+.footer-content-simple {
+  text-align: center;
+  padding: 20px 0;
   width: 100%;
   box-sizing: border-box;
-  /* CSS containment 隔离布局计算 */
   contain: layout style;
 }
 
@@ -151,9 +94,7 @@ export default {
   background-color: #41b883;
   border-radius: 50%;
   color: white;
-  transition: background-color 0.3s;
-  /* 移除box-shadow以防止渲染问题 */
-  /* 移除backface-visibility */
+  /* 移除所有动画和transition以防止CLS */
   flex-shrink: 0;
 }
 
@@ -188,7 +129,7 @@ export default {
 .footer-link {
   color: #fff;
   text-decoration: none;
-  transition: color 0.3s;
+  /* 移除transition动画以防止CLS */
   display: block;
   line-height: 1.4;
   font-display: swap;
