@@ -1,6 +1,6 @@
 /* 广告样式 - 简洁直接的实现方案 */
 
-/* 侧边固定广告 - 简单悬浮式 */
+/* 侧边固定广告 */
 .ads-left, .ads-right {
   position: fixed;
   top: 50%;
@@ -18,41 +18,35 @@
   right: 10px;
 }
 
-/* 侧边广告内容 */
 .ads-left .adsbygoogle,
 .ads-right .adsbygoogle {
   width: 160px;
   display: block;
 }
 
-
-/* 横幅广告容器 - 自然预留空间 */
+/* 横幅广告容器 - 给广告预留自然空间 */
 .ads-wrapper {
   width: 100%;
-  min-height: 90px; /* 自然最小高度，给广告预留空间 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block; /* 改为block，避免flex导致的布局问题 */
   margin: 20px 0;
   padding: 10px;
   box-sizing: border-box;
-  background-color: rgba(248, 248, 248, 0.1); /* 淡色背景，加载前占位 */
+  /* 为广告预留空间，但不固定高度 */
+  overflow: hidden;
 }
 
 .ads-wrapper .adsbygoogle {
   width: 100%;
-  min-height: 70px; /* 内容区域预留高度 */
   display: block;
   background-color: transparent;
+  /* 让广告内容自然决定高度 */
 }
 
-/* 防止Google AdSense动态修改关键布局属性 */
-.footer {
-  min-height: 280px; /* 设置更稳定的最小高度 */
-}
-
-.featured-game {
-  min-height: 450px; /* 确保游戏区域有稳定空间 */
+/* 广告加载前的占位效果 */
+.ads-wrapper:empty {
+  /* 空状态时不占用空间 */
+  margin: 0;
+  padding: 0;
 }
 
 /* 通用广告容器样式 */

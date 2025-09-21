@@ -1,55 +1,18 @@
-/* CLS优化样式 - 自然防止累积布局偏移 */
+/* CLS优化样式 - 简单直接的防止累积布局偏移 */
 
 /* 防止字体加载导致的布局偏移 */
 body {
   font-display: swap;
 }
 
-/* 预设容器最小高度，但不强制固定 */
+/* 基础布局稳定性 */
 #app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* 主要内容区域自然适应 */
+/* 自然内容适应 */
 .home {
-  min-height: calc(100vh - 200px); /* 给header和footer预留空间 */
   flex: 1;
-}
-
-/* 对抗Google AdSense动态修改的稳定化样式 */
-.app .footer {
-  min-height: 280px;
-  box-sizing: border-box;
-}
-
-.app .featured-game {
-  min-height: 450px;
-  box-sizing: border-box;
-}
-
-/* 侧边栏自然高度 */
-.game-sidebar {
-  min-height: 350px; /* 给内容预留空间 */
-}
-
-/* 广告加载时的占位效果 */
-.ads-wrapper:empty::before {
-  content: '加载中...';
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ccc;
-  font-size: 12px;
-  height: 70px;
-}
-
-/* 布局稳定性增强 - 使用contain属性 */
-.home .game-layout {
-  contain: layout style;
-}
-
-.home .main-content {
-  contain: layout;
 }

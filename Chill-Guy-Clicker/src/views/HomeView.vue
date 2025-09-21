@@ -221,20 +221,17 @@ const updateSEO = () => {
 const loadAds = () => {
   if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
     try {
-      // 直接处理所有广告元素，但添加错误处理
       const adElements = document.querySelectorAll('.adsbygoogle')
       console.log(`发现 ${adElements.length} 个广告位`)
       
       adElements.forEach((el, index) => {
         try {
-          // 检查广告是否已经加载
           if (el.getAttribute('data-adsbygoogle-status') !== 'done' && 
               !el.querySelector('iframe')) {
             ;(window.adsbygoogle = window.adsbygoogle || []).push({})
             console.log(`广告位 ${index + 1} 已触发加载`)
           }
         } catch (pushError) {
-          // 忽略重复加载错误
           if (!pushError.message.includes('already have ads')) {
             console.error('广告加载失败:', pushError)
           }
@@ -243,25 +240,22 @@ const loadAds = () => {
     } catch (e) {
       console.error('广告加载失败:', e)
     }
-  } else {
-    console.log('AdSense脚本还未加载，1秒后重试')
-    // 如果 adsbygoogle 还没加载，延迟重试
-    setTimeout(loadAds, 1000)
   }
 }
 
 onMounted(() => {
-  // 延迟加载广告
-  setTimeout(loadAds, 1000)
+  // 立即加载广告，不延迟
+  loadAds()
   
-  // 路由变化时重新加载
-  const unwatch = watch(() => route.path, () => {
-    setTimeout(loadAds, 1000)
-  })
-
-  onUnmounted(() => {
-    unwatch()
-  })
+  // 只在AdSense脚本完全加载后再补充加载
+  const checkAdSenseReady = () => {
+    if (window.adsbygoogle && window.adsbygoogle.loaded) {
+      loadAds()
+    } else {
+      setTimeout(checkAdSenseReady, 100)
+    }
+  }
+  checkAdSenseReady()
 })
 
 // --- Watcher ---
