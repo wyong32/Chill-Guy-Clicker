@@ -54,27 +54,28 @@ body {
   clear: both;
 }
 
-/* 基础图片样式 - 防止布局偏移 */
+/* 基础图片样式 - 自然防止布局偏移 */
 img {
   max-width: 100%;
   height: auto;
   background-color: #f0f0f0;
   transition: opacity 0.3s ease;
   backface-visibility: hidden;
+  display: block;
 }
 
-/* 游戏图片基础尺寸 */
+/* 游戏图片基础样式 */
 .game-img {
   width: 100%;
-  aspect-ratio: 1/1; /* 1:1比例，防止CLS */
+  aspect-ratio: 1/1; /* 保持比例，自然防止CLS */
   object-fit: cover;
   background-color: #f0f0f0;
 }
 
-/* logo基础尺寸 */
-.logo {
+/* logo基础样式 */
+.logo img {
   width: auto;
-  height: 40px; /* 固定高度 */
+  max-height: 50px; /* 最大高度而非固定高度 */
 }
 
 /* 响应式调整 */

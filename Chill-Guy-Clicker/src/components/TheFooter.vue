@@ -187,6 +187,13 @@ export default {
   flex-shrink: 0;
 }
 
+.social-link img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
+
 .social-link:hover {
   background-color: var(--accent-color);
   transform: scale(1.1);

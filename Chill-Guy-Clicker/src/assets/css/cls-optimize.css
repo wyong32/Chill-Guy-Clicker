@@ -1,42 +1,40 @@
-/* CLS优化样式 - 防止累积布局偏移 */
-
-/* 初始加载状态 */
-.loading-spinner {
-  width: 40px;
-  height: 40px;
-  margin: 50px auto;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #41b883;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+/* CLS优化样式 - 自然防止累积布局偏移 */
 
 /* 防止字体加载导致的布局偏移 */
 body {
   font-display: swap;
 }
 
-/* 预设容器最小高度，防止内容加载时的偏移 */
+/* 预设容器最小高度，但不强制固定 */
 #app {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* 主要内容区域预设高度 */
+/* 主要内容区域自然适应 */
 .home {
-  min-height: 100vh;
+  min-height: calc(100vh - 200px); /* 给header和footer预留空间 */
+  flex: 1;
 }
 
-/* 游戏容器预设高度 */
+/* 游戏容器自然高度 */
 .featured-game {
-  min-height: 500px;
+  min-height: 400px; /* 自然最小高度 */
 }
 
-/* 侧边栏预设高度 */
+/* 侧边栏自然高度 */
 .game-sidebar {
-  min-height: 400px;
+  min-height: 300px; /* 给内容预留空间 */
+}
+
+/* 广告加载时的占位效果 */
+.ads-wrapper:empty::before {
+  content: '加载中...';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  font-size: 12px;
+  height: 70px;
 }
