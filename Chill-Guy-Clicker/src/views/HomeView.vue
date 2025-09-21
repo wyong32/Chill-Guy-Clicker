@@ -14,14 +14,11 @@
 
       <main class="main-content container">
         <!-- 头部横幅广告-PC -->
-        <aside
-          class="ads-wrapper"
-          v-if="!isMobile"
-          style="width: 100%; min-height: 90px; margin: 10px 0"
-        >
+        <aside class="ads-wrapper" v-if="!isMobile">
+          <div class="ad-placeholder" style="height: 90px; display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 12px;">广告位</div>
           <ins
             class="adsbygoogle"
-            style="display: block; width: 100%; min-height: 90px"
+            style="display: block"
             data-ad-client="ca-pub-4638984121333143"
             data-ad-slot="3707198686"
             data-ad-format="auto"
@@ -31,6 +28,7 @@
 
         <!-- 移动端横幅广告1 -->
         <aside class="ads-wrapper" v-if="isMobile">
+          <div class="ad-placeholder" style="height: 70px; display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 12px;">广告位</div>
           <ins
             class="adsbygoogle"
             style="display: block"
@@ -61,6 +59,7 @@
 
               <!-- 移动端横幅广告2 -->
               <aside class="ads-wrapper" v-if="isMobile">
+                <div class="ad-placeholder" style="height: 70px; display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 12px;">广告位</div>
                 <ins
                   class="adsbygoogle"
                   style="display: block"
@@ -75,6 +74,7 @@
 
           <!-- 移动端横幅广告3 -->
           <aside class="ads-wrapper" v-if="isMobile">
+            <div class="ad-placeholder" style="height: 70px; display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 12px;">广告位</div>
             <ins
               class="adsbygoogle"
               style="display: block"
@@ -231,6 +231,14 @@ const loadAds = () => {
               !el.querySelector('iframe')) {
             ;(window.adsbygoogle = window.adsbygoogle || []).push({})
             console.log(`广告位 ${index + 1} 已触发加载`)
+            
+            // 广告加载后隐藏占位符
+            setTimeout(() => {
+              const placeholder = el.parentElement?.querySelector('.ad-placeholder')
+              if (placeholder && el.querySelector('iframe')) {
+                placeholder.style.display = 'none'
+              }
+            }, 1000)
           }
         } catch (pushError) {
           console.error('广告加载失败:', pushError)
