@@ -110,14 +110,13 @@ html {
 }
 
 body {
-  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; */
   line-height: 1.6;
   color: #333;
   font-display: swap;
 }
 
 .app {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   z-index: 1;
@@ -131,7 +130,6 @@ body {
 
 .route-container {
   width: 100%;
-  min-height: 100%;
 }
 
 /* 加载状态样式 */
@@ -140,7 +138,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 200px;
+  padding: 2rem;
   color: #fff;
 }
 

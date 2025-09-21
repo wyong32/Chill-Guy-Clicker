@@ -358,7 +358,7 @@ watch(
   transform: translateY(-50%);
   width: 5px;
   height: 20px;
-  background-color: var(--primary-color);
+  background-color: #41b883;
   border-radius: 3px;
 }
 

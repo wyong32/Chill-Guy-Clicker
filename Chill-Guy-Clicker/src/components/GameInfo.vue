@@ -54,7 +54,6 @@ export default {
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 0 0 10px 10px;
-  margin-top: -10px; 
   border-top: 1px solid #eee;
 }
 

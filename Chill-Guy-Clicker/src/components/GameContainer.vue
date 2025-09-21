@@ -306,7 +306,6 @@ export default {
 .game-container {
   margin-bottom: 20px;
   position: relative;
-  min-height: 400px;
   width: 100%;
   box-sizing: border-box;
 }
