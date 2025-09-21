@@ -113,6 +113,8 @@ export default {
   box-sizing: border-box;
   flex-shrink: 0;
   overflow: hidden;
+  /* 添加固定高度防止CLS */
+  height: 400px;
 }
 
 .footer-content {
@@ -255,6 +257,7 @@ export default {
 @media (max-width: 767px) {
   .footer{
     padding: 20px 0;
+    height: 300px;
   }
   .footer-title{
     font-size: 16px;
