@@ -11,11 +11,11 @@
           <div class="social-links">
             <!-- 1 -->
             <a href="https://www.indiehackers.com/delldremo" class="social-link" target="_blank">
-              <img src="/images/icon/indiehackers-icon.webp" alt="indiehackers" width="24" height="24">
+              <img src="/images/icon/indiehackers-icon.webp" alt="indiehackers" width="24" height="24" loading="eager" decoding="sync">
             </a>
             <!-- 2 -->
             <a href="https://share.evernote.com/note/c880fa8a-a5b4-ca1b-23db-a0f6dfc9475f" class="social-link" target="_blank">
-              <img src="/images/icon/evernote-icon.svg" alt="Evernote logo" width="24" height="24">
+              <img src="/images/icon/evernote-icon.svg" alt="Evernote logo" width="24" height="24" loading="eager" decoding="sync">
             </a>
             <!-- <a href="https://www.notion.so/ChillGuymemeClicker-com-1fb7ae35635d804e8a50fd5e971fd3b8" class="social-link" target="_blank">
               <img src="/images/icon/notion-icon.ico" alt="Notion logo" width="24" height="24">
@@ -123,13 +123,15 @@ export default {
   margin-bottom: 40px;
   width: 100%;
   box-sizing: border-box;
+  /* 防止网格布局偏移 */
+  contain: layout;
 }
 
 .footer-title {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 20px;
-  color: var(--accent-color);
+  color: #f39c12;
   position: relative;
   padding-bottom: 10px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
@@ -143,7 +145,7 @@ export default {
   left: 0;
   width: 40px;
   height: 2px;
-  background-color: var(--primary-color);
+  background-color: #41b883;
 }
 
 .about{
@@ -169,7 +171,7 @@ export default {
   justify-content: center;
   width: 36px;
   height: 36px;
-  background-color: var(--primary-color);
+  background-color: #41b883;
   border-radius: 50%;
   color: white;
   transition:
@@ -185,10 +187,12 @@ export default {
   height: 24px;
   object-fit: contain;
   display: block;
+  /* 防止图片加载时的布局偏移 */
+  aspect-ratio: 1;
 }
 
 .social-link:hover {
-  background-color: var(--accent-color);
+  background-color: #f39c12;
   transform: scale(1.1);
 }
 
@@ -211,11 +215,11 @@ export default {
 }
 
 .footer-link:hover {
-  color: var(--accent-color);
+  color: #f39c12;
 }
 
 .footer-bottom {
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid #ddd;
   padding-top: 20px;
 }
 
