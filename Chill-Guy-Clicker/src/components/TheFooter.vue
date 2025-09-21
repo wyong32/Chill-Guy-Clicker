@@ -116,14 +116,17 @@ export default {
 }
 
 .footer-content {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 30px;
   margin-bottom: 40px;
   width: 100%;
   box-sizing: border-box;
-  /* 防止网格布局偏移 */
-  contain: layout;
+  justify-content: space-between;
+}
+
+.footer-section {
+  flex: 1;
 }
 
 .footer-title {
@@ -173,9 +176,7 @@ export default {
   background-color: #41b883;
   border-radius: 50%;
   color: white;
-  transition:
-    background-color 0.3s,
-    transform 0.3s;
+  transition: background-color 0.3s;
   box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
   backface-visibility: hidden;
   flex-shrink: 0;
@@ -192,7 +193,7 @@ export default {
 
 .social-link:hover {
   background-color: #f39c12;
-  transform: scale(1.1);
+  /* 移除transform动画以防止CLS */
 }
 
 .footer-links {
@@ -246,7 +247,12 @@ export default {
 
 @media (max-width: 992px) {
   .footer-content {
-    grid-template-columns: repeat(2, 1fr);
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .footer-section {
+    /* 移动端无需额外约束 */
   }
 }
 
@@ -264,7 +270,6 @@ export default {
   }
 
   .footer-content {
-    grid-template-columns: 1fr; 
     gap: 10px;
     margin-bottom: 10px;
   }
