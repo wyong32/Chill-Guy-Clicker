@@ -87,17 +87,20 @@ export default {
 }
 
 .footer-content {
-  display: block;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
   width: 100%;
   box-sizing: border-box;
+  /* CSS containment 隔离布局计算 */
+  contain: layout style;
 }
 
 .footer-section {
-  display: inline-block;
-  vertical-align: top;
-  width: 24%;
-  margin-right: 1%;
-  margin-bottom: 30px;
+  display: block;
+  box-sizing: border-box;
+  /* 确保内容稳定渲染 */
+  contain: layout style;
 }
 
 .footer-title {
@@ -107,8 +110,9 @@ export default {
   color: #f39c12;
   position: relative;
   padding-bottom: 10px;
-  /* 移除text-shadow以防止渲染问题 */
-  line-height: 1.4;
+  /* 稳定的行高和字体渲染 */
+  line-height: 1.2;
+  font-display: swap;
 }
 
 /* 移除伪元素以防止CLS */
@@ -126,8 +130,9 @@ export default {
 
 .footer-text {
   color: #fff;
-  line-height: 1.6;
+  line-height: 1.4;
   margin-bottom: 20px;
+  font-display: swap;
 }
 
 .social-links {
@@ -186,6 +191,7 @@ export default {
   transition: color 0.3s;
   display: block;
   line-height: 1.4;
+  font-display: swap;
 }
 
 .footer-link:hover {
@@ -205,6 +211,8 @@ export default {
   color: #ccc;
   font-size: 14px;
   margin: 0;
+  line-height: 1.4;
+  font-display: swap;
 }
 
 .disclaimer {
@@ -220,9 +228,9 @@ export default {
 
 
 @media (max-width: 992px) {
-  .footer-section {
-    width: 48%;
-    margin-right: 2%;
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
   }
 }
 
@@ -230,27 +238,30 @@ export default {
   .footer{
     padding: 20px 0;
   }
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
   .footer-title{
     font-size: 16px;
     margin-bottom: 10px;
+    /* 稳定的行高防止字体渲染偏移 */
+    line-height: 1.2;
   }
   .footer-text{
     font-size: 12px;
     margin-bottom: 10px;
-  }
-
-  .footer-section {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 20px;
+    line-height: 1.4;
   }
 
   .footer-link{
     font-size: 12px;
+    line-height: 1.4;
   }
 
   .copyright{
     font-size: 12px;
+    line-height: 1.4;
   }
 
   .footer-bottom{
