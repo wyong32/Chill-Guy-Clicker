@@ -131,7 +131,7 @@ export default {
 h1 {
   text-align: center;
   margin-bottom: 30px;
-  color: var(--primary-color);
+  color: #41b883;
   font-size: 28px;
 }
 
@@ -162,7 +162,7 @@ input {
 }
 
 input:focus {
-  border-color: var(--primary-color);
+  border-color: #41b883;
   outline: none;
   box-shadow: 0 0 0 2px rgba(65, 184, 131, 0.2);
 }
@@ -170,7 +170,7 @@ input:focus {
 .login-button {
   margin-top: 10px;
   padding: 12px;
-  background-color: var(--primary-color);
+  background-color: #41b883;
   color: white;
   border: none;
   border-radius: 6px;

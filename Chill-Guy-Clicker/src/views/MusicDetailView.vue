@@ -271,14 +271,14 @@ export default {
 .back-button {
   display: inline-flex;
   align-items: center;
-  color: var(--primary-color);
+  color: #41b883;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
 }
 
 .back-button:hover {
-  color: var(--accent-color);
+  color: #f39c12;
 }
 
 .back-icon {
@@ -332,7 +332,7 @@ export default {
 
 .music-artist {
   font-size: 20px;
-  color: var(--primary-color);
+  color: #41b883;
   margin: 0 0 20px;
   font-weight: 500;
 }
@@ -374,7 +374,7 @@ export default {
 
 .music-tag {
   background: rgba(65, 184, 131, 0.1);
-  color: var(--primary-color);
+  color: #41b883;
   padding: 5px 15px;
   border-radius: 20px;
   font-size: 14px;
@@ -400,7 +400,7 @@ export default {
   left: 0;
   width: 60px;
   height: 3px;
-  background: var(--primary-color);
+  background: #41b883;
   border-radius: 2px;
 }
 

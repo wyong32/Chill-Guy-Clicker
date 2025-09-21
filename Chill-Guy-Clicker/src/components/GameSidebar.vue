@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿<template>
+﻿﻿<template>
   <aside class="game-sidebar">
     <!-- Hot Games Section -->
     <section class="hot-games">
@@ -123,7 +123,7 @@ export default {
   transform: translateY(-50%);
   width: 5px;
   height: 20px;
-  background-color: var(--primary-color);
+  background-color: #41b883;
   border-radius: 3px;
 }
 
@@ -166,7 +166,7 @@ export default {
 }
 
 .game-card:hover .game-title {
-  color: var(--primary-color);
+  color: #41b883;
 }
 
 /* New Games 特有样式 */

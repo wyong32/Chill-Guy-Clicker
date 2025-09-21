@@ -163,7 +163,7 @@ export default {
 }
 
 .category-tab.active {
-  background-color: var(--primary-color);
+  background-color: #41b883;
   color: white;
 }
 
@@ -249,7 +249,7 @@ export default {
   }
 
   .view-button {
-    background-color: var(--primary-color);
+    background-color: #41b883;
     color: white;
     font-weight: bold;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -262,7 +262,7 @@ export default {
 }
 
 .view-button {
-  background: var(--primary-color);
+  background: #41b883;
   color: white;
   padding: 10px 25px;
   border-radius: 30px;
@@ -277,7 +277,7 @@ export default {
 }
 
 .view-button:hover {
-  background: var(--accent-color);
+  background: #f39c12;
 }
 
 .png-info {
@@ -331,7 +331,7 @@ export default {
 
 .png-tag {
   background: rgba(65, 184, 131, 0.1);
-  color: var(--primary-color);
+  color: #41b883;
   padding: 3px 10px;
   border-radius: 15px;
   font-size: 12px;

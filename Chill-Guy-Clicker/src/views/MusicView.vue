@@ -112,7 +112,7 @@ export default {
 }
 
 .listen-button {
-  background: var(--primary-color);
+  background: #41b883;
   color: white;
   padding: 10px 25px;
   border-radius: 30px;
@@ -127,7 +127,7 @@ export default {
 }
 
 .listen-button:hover {
-  background: var(--accent-color);
+  background: #f39c12;
 }
 
 .music-info {
@@ -142,7 +142,7 @@ export default {
 
 .music-artist {
   font-size: 16px;
-  color: var(--primary-color);
+  color: #41b883;
   margin: 0 0 10px;
   font-weight: 500;
 }
@@ -184,7 +184,7 @@ export default {
 
 .music-tag {
   background: rgba(65, 184, 131, 0.1);
-  color: var(--primary-color);
+  color: #41b883;
   padding: 3px 10px;
   border-radius: 15px;
   font-size: 12px;

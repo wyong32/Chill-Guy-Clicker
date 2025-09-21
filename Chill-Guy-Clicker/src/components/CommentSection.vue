@@ -495,7 +495,7 @@ export default {
   left: 0;
   width: 100%;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  background: linear-gradient(90deg, #41b883, #f39c12);
 }
 
 .average-rating {
@@ -599,7 +599,7 @@ export default {
 
 .rating-bar {
   height: 100%;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  background: linear-gradient(90deg, #41b883, #f39c12);
   border-radius: 5px;
   transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
@@ -668,7 +668,7 @@ export default {
     0 5px 15px rgba(0, 0, 0, 0.03),
     0 1px 3px rgba(0, 0, 0, 0.02);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-left: 3px solid var(--primary-color);
+  border-left: 3px solid #41b883;
 }
 
 .comment-item:hover {
@@ -705,7 +705,7 @@ export default {
   transform: translateY(-50%);
   width: 3px;
   height: 16px;
-  background-color: var(--primary-color);
+  background-color: #41b883;
   border-radius: 3px;
   opacity: 0.7;
 }
@@ -776,13 +776,13 @@ export default {
   left: 0;
   width: 100%;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  background: linear-gradient(90deg, #41b883, #f39c12);
 }
 
 .form-title {
   font-size: 22px;
   margin-bottom: 25px;
-  color: var(--secondary-color);
+  color: #34495e;
   font-weight: 700;
   position: relative;
   display: inline-block;
@@ -796,7 +796,7 @@ export default {
   left: 0;
   width: 40px;
   height: 3px;
-  background-color: var(--primary-color);
+  background-color: #41b883;
   border-radius: 3px;
 }
 
@@ -808,7 +808,7 @@ export default {
   display: block;
   margin-bottom: 5px;
   font-weight: 500;
-  color: var(--secondary-color);
+  color: #34495e;
 }
 
 .form-input {
@@ -830,7 +830,7 @@ export default {
 
 .form-input:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: #41b883;
   background-color: #fff;
   box-shadow:
     inset 0 1px 3px rgba(0, 0, 0, 0.02),
@@ -1005,7 +1005,7 @@ export default {
 
 .rating-label {
   margin-right: 10px;
-  color: var(--secondary-color);
+  color: #34495e;
   font-weight: 500;
 }
 
@@ -1127,7 +1127,7 @@ export default {
 
 .comment-textarea:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: #41b883;
   background-color: #fff;
   box-shadow:
     inset 0 1px 3px rgba(0, 0, 0, 0.02),
@@ -1135,7 +1135,7 @@ export default {
 }
 
 .submit-button {
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  background: linear-gradient(135deg, #41b883, #f39c12);
   color: white;
   border: none;
   border-radius: 8px;

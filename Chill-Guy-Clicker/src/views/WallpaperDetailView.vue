@@ -202,14 +202,14 @@ export default {
 .back-button {
   display: inline-flex;
   align-items: center;
-  color: var(--primary-color);
+  color: #41b883;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
 }
 
 .back-button:hover {
-  color: var(--accent-color);
+  color: #f39c12;
 }
 
 .back-icon {
@@ -259,7 +259,7 @@ export default {
 }
 
 .download-button {
-  background: var(--primary-color);
+  background: #41b883;
   color: white;
   padding: 12px 30px;
   border-radius: 30px;
@@ -271,7 +271,7 @@ export default {
 }
 
 .download-button:hover {
-  background: var(--accent-color);
+  background: #f39c12;
 }
 
 .image-meta {
@@ -297,7 +297,7 @@ export default {
 
 .wallpaper-tag {
   background: rgba(65, 184, 131, 0.1);
-  color: var(--primary-color);
+  color: #41b883;
   padding: 5px 15px;
   border-radius: 20px;
   font-size: 14px;
@@ -322,7 +322,7 @@ export default {
   left: 0;
   width: 50px;
   height: 3px;
-  background: var(--primary-color);
+  background: #41b883;
   border-radius: 2px;
 }
 

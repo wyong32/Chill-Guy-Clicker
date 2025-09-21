@@ -58,7 +58,7 @@ export default {
   transform: translateX(-50%);
   width: 80px;
   height: 3px;
-  background-color: var(--primary-color, #41B883);
+  background-color: #41b883;
   border-radius: 3px;
 }
 

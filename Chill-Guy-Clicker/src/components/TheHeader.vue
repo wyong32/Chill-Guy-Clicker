@@ -281,7 +281,7 @@ export default {
 }
 
 .nav-link:hover {
-  color: var(--accent-color);
+  color: #f39c12;
 }
 
 .nav-link::after {
@@ -291,7 +291,7 @@ export default {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: var(--primary-color);
+  background-color: #41b883;
   transition: width 0.3s;
 }
 
@@ -301,7 +301,7 @@ export default {
 }
 
 .custom-active {
-  color: var(--primary-color);
+  color: #41b883;
 }
 
 .mobile-menu-toggle {
@@ -332,11 +332,11 @@ export default {
 
 .mobile-menu-toggle:hover .bar,
 .mobile-menu-toggle:focus .bar {
-  background-color: var(--accent-color);
+  background-color: #f39c12;
 }
 
 .mobile-menu-toggle:focus {
-  outline: 2px solid var(--primary-color);
+  outline: 2px solid #41b883;
   outline-offset: 2px;
 }
 

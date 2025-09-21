@@ -132,7 +132,7 @@ export default {
 
 .page-title {
   font-size: 36px;
-  color: var(--primary-color);
+  color: #41b883;
   margin-bottom: 30px;
   text-align: center;
   position: relative;
@@ -147,7 +147,7 @@ export default {
   transform: translateX(-50%);
   width: 100px;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  background: linear-gradient(90deg, #41b883, #f39c12);
   border-radius: 2px;
 }
 
@@ -193,13 +193,13 @@ export default {
 }
 
 .terms-section a {
-  color: var(--primary-color);
+  color: #41b883;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .terms-section a:hover {
-  color: var(--accent-color);
+  color: #f39c12;
 }
 
 .back-link {
@@ -209,14 +209,14 @@ export default {
 .back-button {
   display: inline-flex;
   align-items: center;
-  color: var(--primary-color);
+  color: #41b883;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
 }
 
 .back-button:hover {
-  color: var(--accent-color);
+  color: #f39c12;
 }
 
 .back-icon {

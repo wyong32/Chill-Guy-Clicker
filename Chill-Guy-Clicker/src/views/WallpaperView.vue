@@ -139,7 +139,7 @@ export default {
 }
 
 .category-tab.active {
-  background-color: var(--primary-color);
+  background-color: #41b883;
   color: white;
 }
 
@@ -214,7 +214,7 @@ export default {
   transition: background 0.3s ease, transform 0.3s ease;
   transform: translateY(20px);
   font-size: 14px;
-  background: var(--primary-color);
+  background: #41b883;
   color: white;
 }
 
@@ -223,7 +223,7 @@ export default {
 }
 
 .view-button:hover {
-  background: var(--accent-color);
+  background: #f39c12;
 }
 
 .wallpaper-info {
@@ -270,7 +270,7 @@ export default {
 
 .wallpaper-tag {
   background: rgba(65, 184, 131, 0.1);
-  color: var(--primary-color);
+  color: #41b883;
   padding: 3px 10px;
   border-radius: 15px;
   font-size: 12px;

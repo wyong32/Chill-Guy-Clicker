@@ -1,6 +1,6 @@
 .page-title {
   font-size: 36px;
-  color: var(--primary-color);
+  color: #41b883;
   margin-bottom: 20px;
   text-align: center;
   position: relative;
@@ -15,7 +15,7 @@
   transform: translateX(-50%);
   width: 100px;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  background: linear-gradient(90deg, #41b883, #f39c12);
   border-radius: 2px;
 }
 

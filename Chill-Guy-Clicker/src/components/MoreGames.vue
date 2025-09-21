@@ -96,7 +96,7 @@ export default {
   transform: translateY(-50%);
   width: 5px;
   height: 20px;
-  background-color: var(--primary-color);
+  background-color: #41b883;
   border-radius: 3px;
 }
 
@@ -111,7 +111,7 @@ export default {
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.3s;
-  box-shadow: var(--shadow);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   text-decoration: none;
   display: block;
@@ -120,7 +120,7 @@ export default {
 
 .more-game-card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 .more-game-img {
@@ -139,7 +139,7 @@ export default {
 }
 
 .more-game-card:hover .more-game-title {
-  color: var(--primary-color);
+  color: #41b883;
 }
 
 @media (max-width: 1024px) {
