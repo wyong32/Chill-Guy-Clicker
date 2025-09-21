@@ -6,8 +6,8 @@
   top: 50%;
   transform: translateY(-50%);
   width: 160px;
+  min-height: 600px; /* 基础最小高度 */
   z-index: 999;
-  /* 确保广告不会影响页面布局 */
   pointer-events: auto;
 }
 
@@ -19,21 +19,32 @@
   right: 10px;
 }
 
+/* 侧边广告内容 */
+.ads-left .adsbygoogle,
+.ads-right .adsbygoogle {
+  width: 160px;
+  min-height: 600px;
+  display: block !important;
+}
 
-/* 横幅广告容器 */
+
+/* 横幅广告容器 - 防止布局偏移 */
 .ads-wrapper {
   width: 100%;
+  min-height: 90px; /* 基础最小高度，防止CLS */
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 20px 0;
   padding: 10px;
   box-sizing: border-box;
 }
 
 .ads-wrapper .adsbygoogle {
-  max-width: 100%;
-  min-height: 90px;
+  width: 100%;
+  min-height: 90px; /* 广告位基础高度 */
   display: block !important;
+  background-color: transparent;
 }
 
 
@@ -44,33 +55,16 @@
   display: none !important;
 }
 
-.ads-wrapper {
-  width: 100%;
-  max-width: 100%;
-  overflow: visible;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 1rem auto;
-  text-align: center;
-}
-
-.ads-wrapper ins {
-  display: block;
-  margin: 0 auto;
-}
-
+/* 通用广告容器样式 */
 .adsbygoogle {
-  width: 100%;
-  height: auto;
+  display: block !important;
+  background-color: transparent;
 }
 
-
-/* 剧院模式下隐藏广告 */
-.theater-mode .ads-wrapper,
+/* 剧院模式隐藏所有广告 */
 .theater-mode .ads-left,
-.theater-mode .ads-right {
+.theater-mode .ads-right,
+.theater-mode .ads-wrapper {
   display: none !important;
 }
 

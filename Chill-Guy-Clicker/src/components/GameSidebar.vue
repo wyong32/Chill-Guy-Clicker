@@ -187,11 +187,6 @@ export default {
   z-index: 1;
 }
 
-/* Player Reviews 特有样式 */
-.player-reviews {
-  /* 匹配右侧布局的样式 */
-}
-
 .player-reviews .section-title::before {
   background-color: #4285f4; /* 蓝色表示评论区 */
 }

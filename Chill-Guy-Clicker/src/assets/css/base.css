@@ -54,13 +54,27 @@ body {
   clear: both;
 }
 
-/* 基础图片样式 */
+/* 基础图片样式 - 防止布局偏移 */
 img {
   max-width: 100%;
   height: auto;
   background-color: #f0f0f0;
   transition: opacity 0.3s ease;
   backface-visibility: hidden;
+}
+
+/* 游戏图片基础尺寸 */
+.game-img {
+  width: 100%;
+  aspect-ratio: 1/1; /* 1:1比例，防止CLS */
+  object-fit: cover;
+  background-color: #f0f0f0;
+}
+
+/* logo基础尺寸 */
+.logo {
+  width: auto;
+  height: 40px; /* 固定高度 */
 }
 
 /* 响应式调整 */
