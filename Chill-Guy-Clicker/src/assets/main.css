@@ -1,13 +1,7 @@
-/* 主样式文件 - 统一引入所有模块样式 */
+/* 主样式文件 - 优化后的结构 */
 
-/* 基础样式：CSS变量、重置样式、字体等 */
-@import './css/base.css';
-
-/* 布局样式：容器、网格、定位等 */
-@import './css/layout.css';
-
-/* 组件样式：按钮、表单、卡片等通用组件 */
-@import './css/components.css';
+/* 合并的主要样式：基础、布局、组件样式 */
+@import './css/main.css';
 
 /* 广告样式：保持现有的广告相关样式 */
 @import './css/ad-style.css';
