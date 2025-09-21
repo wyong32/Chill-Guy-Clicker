@@ -121,7 +121,6 @@ export default {
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   margin-bottom: 40px;
-  min-height: 200px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -134,11 +133,7 @@ export default {
   position: relative;
   padding-bottom: 10px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  min-height: 28px;
   line-height: 1.4;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .footer-title::after {
@@ -159,14 +154,12 @@ export default {
   color: #fff;
   line-height: 1.6;
   margin-bottom: 20px;
-  min-height: 60px;
 }
 
 .social-links {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
-  min-height: 36px;
   align-items: center;
 }
 

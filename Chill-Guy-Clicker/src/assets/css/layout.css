@@ -18,19 +18,15 @@
   flex-direction: column;
   width: 100%;
   overflow-x: hidden;
+  /* 基础布局稳定性 */
+  position: relative;
 }
 
 .main-content {
   flex: 1;
   width: 100%;
-  min-height: calc(100vh - 380px);
-}
-
-/* Header和Footer占位 */
-.header-placeholder {
-  min-height: 80px;
-  width: 100%;
-  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
 }
 
 /* 游戏容器布局 */
@@ -41,7 +37,6 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: #333;
-  min-height: 600px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -63,14 +58,13 @@
   display: block;
 }
 
-/* 评论区域 */
-.comment-section {
-  min-height: 400px;
-}
+/* 评论区域 - 让内容自然撑开 */
 
 /* 响应式布局 */
 @media (max-width: 768px) {
   .container {
     padding: 0 10px;
   }
+  
+  /* 移动端让内容自然撑开 */
 }

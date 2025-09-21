@@ -263,11 +263,9 @@ watch(
 /* 包装器样式 */
 .home-wrapper {
   width: 100%;
-  min-height: 100vh;
 }
 
 .home {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   color: #fff;
@@ -292,7 +290,6 @@ watch(
   flex: 1;
   padding-top: 30px;
   padding-bottom: 50px;
-  min-height: calc(100vh - 380px);
   width: 100%;
   box-sizing: border-box;
 }
@@ -304,13 +301,9 @@ watch(
   color: #fff;
   text-align: center;
   text-shadow: 0 0 10px rgba(65, 184, 131, 0.8);
-  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 /* Game Layout */
@@ -318,7 +311,6 @@ watch(
   display: flex;
   gap: 30px;
   margin-bottom: 40px;
-  min-height: 600px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -343,11 +335,8 @@ watch(
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: #333;
-  min-height: 500px;
   width: 100%;
   box-sizing: border-box;
-  /* will-change: transform; */
-  /* transform: translateZ(0); */
   backface-visibility: hidden;
 }
 
