@@ -394,64 +394,63 @@ watch(
 
 /* Theater 模式样式 */
 .home.theater-mode {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  z-index: 9998 !important;
-  background-color: #000 !important;
-  overflow: hidden !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9998;
+  background-color: #000;
+  overflow: hidden;
 }
 
 .home.theater-mode .main-content {
-  padding: 0 !important;
-  margin: 0 !important;
-  max-width: none !important;
-  height: 100vh !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  padding: 0;
+  margin: 0;
+  max-width: none;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .home.theater-mode .game-layout {
-  width: 100% !important;
-  height: 100% !important;
-  margin: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .home.theater-mode .game-main {
-  width: 100% !important;
-  height: 100% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .home.theater-mode .featured-game {
-  width: 100% !important;
-  height: 100% !important;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
 }
 
-/* 强制广告固定定位 - 覆盖父级影响 */
+/* 广告侧边栏定位样式 */
 .ad-sidebar.ad-left.ad-isPc {
-  position: fixed !important;
-  top: 90px !important;
-  left: 10px !important;
-  width: 200px !important;
-  min-height: 600px !important;
-  z-index: 9999 !important;
-  transform: none !important;
-  will-change: auto !important;
+  position: fixed;
+  top: 90px;
+  left: 10px;
+  width: 200px;
+  z-index: 9999;
+  transform: none;
+  will-change: auto;
 }
 
 @media (max-width: 1024px) {

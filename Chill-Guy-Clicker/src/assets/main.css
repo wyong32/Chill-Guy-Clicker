@@ -6,6 +6,9 @@
 /* CLS优化：防止累积布局偏移 */
 @import './css/cls-optimize.css';
 
+/* AdSense稳定性：专门处理Google AdSense的布局干扰 */
+@import './css/adsense-stability.css';
+
 /* 布局样式：容器、网格、定位等 */
 @import './css/layout.css';
 

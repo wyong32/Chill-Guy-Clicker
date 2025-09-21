@@ -18,14 +18,20 @@ body {
   flex: 1;
 }
 
-/* 游戏容器自然高度 */
-.featured-game {
-  min-height: 400px; /* 自然最小高度 */
+/* 对抗Google AdSense动态修改的稳定化样式 */
+.app .footer {
+  min-height: 280px;
+  box-sizing: border-box;
+}
+
+.app .featured-game {
+  min-height: 450px;
+  box-sizing: border-box;
 }
 
 /* 侧边栏自然高度 */
 .game-sidebar {
-  min-height: 300px; /* 给内容预留空间 */
+  min-height: 350px; /* 给内容预留空间 */
 }
 
 /* 广告加载时的占位效果 */
@@ -37,4 +43,13 @@ body {
   color: #ccc;
   font-size: 12px;
   height: 70px;
+}
+
+/* 布局稳定性增强 - 使用contain属性 */
+.home .game-layout {
+  contain: layout style;
+}
+
+.home .main-content {
+  contain: layout;
 }

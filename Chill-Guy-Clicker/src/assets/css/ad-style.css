@@ -46,6 +46,14 @@
   background-color: transparent;
 }
 
+/* 防止Google AdSense动态修改关键布局属性 */
+.footer {
+  min-height: 280px; /* 设置更稳定的最小高度 */
+}
+
+.featured-game {
+  min-height: 450px; /* 确保游戏区域有稳定空间 */
+}
 
 /* 通用广告容器样式 */
 .adsbygoogle {
