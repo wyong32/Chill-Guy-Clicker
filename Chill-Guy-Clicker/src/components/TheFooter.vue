@@ -102,14 +102,13 @@ export default {
 
 <style scoped>
 .footer {
-  background-color: rgba(17, 14, 25, 0.8);
+  background-color: rgb(17, 14, 25);
   padding: 60px 0 20px;
   margin-top: 0;
   color: #fff;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   z-index: 1;
-  backdrop-filter: blur(10px);
   width: 100%;
   box-sizing: border-box;
   flex-shrink: 0;

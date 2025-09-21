@@ -1,7 +1,10 @@
 <template>
   <div class="game-details-wrapper">
     <!-- Game Details from HTML -->
-    <div v-if="game.detailsHtml" class="game-details-html content-html" v-html="game.detailsHtml"></div>
+    <!-- 为v-html内容添加稳定的容器以防止CLS -->
+    <div v-if="game.detailsHtml" class="game-details-html content-html" 
+         style="contain: layout style;" 
+         v-html="game.detailsHtml"></div>
 
     <!-- Game Metadata -->
     <div v-if="hasGameMeta" class="game-details">
