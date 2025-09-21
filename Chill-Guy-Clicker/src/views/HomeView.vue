@@ -2,7 +2,7 @@
   <div class="home-wrapper">
     <div class="home" :class="{ 'theater-mode': isTheaterMode }">
       <!-- 左侧广告 - 简洁悬浮式 -->
-      <!-- <aside class="ads-left" v-if="!isMobile">
+      <aside class="ads-left" v-if="!isMobile">
         <ins
           class="adsbygoogle"
           style="display: block"
@@ -10,11 +10,11 @@
           data-ad-slot="6904540807"
           data-ad-format="vertical"
         ></ins>
-      </aside> -->
+      </aside>
 
       <main class="main-content container">
         <!-- 头部横幅广告-PC -->
-        <!-- <aside class="ads-wrapper" v-if="!isMobile">
+        <aside class="ads-wrapper" v-if="!isMobile">
           <ins
             class="adsbygoogle"
             style="display: block"
@@ -23,10 +23,10 @@
             data-ad-format="auto"
             data-full-width-responsive="true"
           ></ins>
-        </aside> -->
+        </aside>
 
         <!-- 移动端横幅广告1 -->
-        <!-- <aside class="ads-wrapper" v-if="isMobile">
+        <aside class="ads-wrapper" v-if="isMobile">
           <ins
             class="adsbygoogle"
             style="display: block"
@@ -35,7 +35,7 @@
             data-ad-format="auto"
             data-full-width-responsive="true"
           ></ins>
-        </aside> -->
+        </aside>
 
         <h1 class="game-title" v-show="!isTheaterMode">
           {{ featuredGame?.pageTitle || featuredGame?.title || defaultGame?.pageTitle || defaultGame?.title || 'Chill Guy Clicker' }}
@@ -56,7 +56,7 @@
               />
 
               <!-- 移动端横幅广告2 -->
-              <!-- <aside class="ads-wrapper" v-if="isMobile">
+              <aside class="ads-wrapper" v-if="isMobile">
                 <ins
                   class="adsbygoogle"
                   style="display: block"
@@ -65,12 +65,12 @@
                   data-ad-format="auto"
                   data-full-width-responsive="true"
                 ></ins>
-              </aside> -->
+              </aside>
             </article>
           </section>
 
           <!-- 移动端横幅广告3 -->
-          <!-- <aside class="ads-wrapper" v-if="isMobile">
+          <aside class="ads-wrapper" v-if="isMobile">
             <ins
               class="adsbygoogle"
               style="display: block"
@@ -79,7 +79,7 @@
               data-ad-format="auto"
               data-full-width-responsive="true"
             ></ins>
-          </aside> -->
+          </aside>
 
           <!-- Hot Games Sidebar -->
           <GameSidebar 
@@ -102,7 +102,7 @@
       </main>
       
       <!-- 右侧广告 - 简洁悬浮式 -->
-      <!-- <aside class="ads-right" v-if="!isMobile">
+      <aside class="ads-right" v-if="!isMobile">
         <ins
           class="adsbygoogle"
           style="display: block"
@@ -110,7 +110,7 @@
           data-ad-slot="5591459134"
           data-ad-format="vertical"
         ></ins>
-      </aside> -->
+      </aside>
     </div>
   </div>
 </template>
@@ -242,7 +242,7 @@ const loadAds = () => {
 
 onMounted(() => {
   // 2秒后加载广告，给页面充分时间渲染
-  // setTimeout(loadAds, 2000)
+  setTimeout(loadAds, 2000)
 })
 
 // --- Watcher ---
