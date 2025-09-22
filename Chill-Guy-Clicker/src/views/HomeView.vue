@@ -442,10 +442,6 @@ watch(
 }
 
 @media (max-width: 768px) {
-  .game-iframe-container {
-    padding-bottom: 60%;
-  }
-
   .game-title {
     font-size: 24px;
     margin-bottom: 20px;

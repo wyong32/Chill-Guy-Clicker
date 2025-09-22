@@ -317,18 +317,8 @@ export default {
   overflow: hidden;
   position: relative;
   backface-visibility: hidden;
-  /* aspect-ratio回退方案 */
+  /* 统一使用aspect-ratio，移除padding-bottom回退 */
   aspect-ratio: 16 / 9;
-  height: 0;
-  padding-bottom: 56.25%; /* 16:9 = 56.25% */
-}
-
-/* 支持aspect-ratio的浏览器 */
-@supports (aspect-ratio: 16 / 9) {
-  .game-iframe-container {
-    height: auto;
-    padding-bottom: 0;
-  }
 }
 
 /* Theater 模式样式 */
@@ -655,10 +645,11 @@ export default {
 
 @media (max-width: 768px) {
   .game-iframe-container {
-    padding-bottom: 75%; /* 更接近正方形 */
     border-radius: 8px;
     max-width: 95%;
     margin: 0 auto;
+    /* 移动端保持16:9比例 */
+    aspect-ratio: 16 / 9;
   }
 
   .game-container{
@@ -756,9 +747,10 @@ export default {
 
 @media (max-width: 480px) {
   .game-iframe-container {
-    padding-bottom: 170%; /* 正方形比例 */
     max-width: 100%;
     margin: 0 auto;
+    /* 小屏幕也保持16:9比例，避免布局跳跃 */
+    aspect-ratio: 16 / 9;
   }
 
   /* 小屏幕全屏模式样式继承上方统一定义 */
