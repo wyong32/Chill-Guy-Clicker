@@ -1,6 +1,7 @@
 <template>
   <div class="app">
-    <StarryBackground />
+    <!-- 暂时禁用StarryBackground测试CLS -->
+    <!-- <StarryBackground /> -->
     <TheHeader />
     <main class="main-content">
       <RouterView v-slot="{ Component, route }">
@@ -22,14 +23,14 @@ import { updatePageSEO } from '@/utils/head'
 // 同步加载关键组件，避免路由问题
 import TheHeader from '@/components/TheHeader.vue'
 import TheFooter from '@/components/TheFooter.vue'
-import StarryBackground from '@/components/StarryBackground.vue'
+// import StarryBackground from '@/components/StarryBackground.vue'
 
 export default {
   name: 'App',
   components: {
     TheHeader,
     TheFooter,
-    StarryBackground
+    // StarryBackground
   },
   mounted() {
     
