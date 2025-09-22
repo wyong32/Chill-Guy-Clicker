@@ -312,12 +312,23 @@ export default {
 
 .game-iframe-container {
   width: 100%;
-  aspect-ratio: 16 / 9;
   background-color: #f0f0f0;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
   backface-visibility: hidden;
+  /* aspect-ratio回退方案 */
+  aspect-ratio: 16 / 9;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 = 56.25% */
+}
+
+/* 支持aspect-ratio的浏览器 */
+@supports (aspect-ratio: 16 / 9) {
+  .game-iframe-container {
+    height: auto;
+    padding-bottom: 0;
+  }
 }
 
 /* Theater 模式样式 */
