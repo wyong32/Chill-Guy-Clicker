@@ -1,5 +1,7 @@
 <template>
   <div class="girl-games-view">
+    <!-- 页面级Header -->
+    <TheHeader />
     <main class="main-content container">
       <h1 class="game-title">{{ featuredGame.pageTitle || featuredGame.title }}</h1>
 
@@ -21,12 +23,16 @@
         </aside>
       </div>
     </main>
+    <!-- 页面级Footer -->
+    <TheFooter />
   </div>
 </template>
 
 <script>
 import GameContainer from '@/components/GameContainer.vue'
 import GirlSkinsSidebar from '@/components/GirlSkinsSidebar.vue'
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
 import { girlGames } from '@/data/girlGames.js'
 
 export default {
@@ -34,6 +40,8 @@ export default {
   components: {
     GameContainer,
     GirlSkinsSidebar,
+    TheHeader,
+    TheFooter,
   },
   data() {
     return {

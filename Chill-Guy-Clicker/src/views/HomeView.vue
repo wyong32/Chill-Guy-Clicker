@@ -1,5 +1,7 @@
 <template>
   <div class="home-wrapper">
+    <!-- 页面级Header -->
+    <TheHeader />
     <div class="home" :class="{ 'theater-mode': isTheaterMode }">
       <!-- 左侧广告 - 简洁悬浮式 -->
       <!-- <aside class="ads-left" v-if="!isMobile">
@@ -127,6 +129,7 @@ import GamePlayer from '@/components/GamePlayer.vue'
 import GameInfo from '@/components/GameInfo.vue'
 import GameSidebar from '@/components/GameSidebar.vue'
 import MoreGames from '@/components/MoreGames.vue'
+import TheHeader from '@/components/TheHeader.vue'
 import TheFooter from '@/components/TheFooter.vue'
 // Composable and data imports
 import { useDeviceDetection } from '@/utils/useDeviceDetection.js'

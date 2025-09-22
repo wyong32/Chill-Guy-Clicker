@@ -2,7 +2,6 @@
   <div class="app">
     <!-- 暂时禁用StarryBackground测试CLS -->
     <!-- <StarryBackground /> -->
-    <TheHeader />
     <main class="main-content">
       <RouterView v-slot="{ Component, route }">
         <KeepAlive :include="['HomeView']">
@@ -12,7 +11,6 @@
         </KeepAlive>
       </RouterView>
     </main>
-    <!-- Footer移除，将在各页面中单独添加 -->
   </div>
 </template>
 
@@ -20,17 +18,15 @@
 import { onMounted } from 'vue'
 import { updatePageSEO } from '@/utils/head'
 
-// 同步加载关键组件，避免路由问题
-import TheHeader from '@/components/TheHeader.vue'
-// import TheFooter from '@/components/TheFooter.vue'  // 移动到页面级别
+// Header和Footer都移动到页面级别
+// import TheHeader from '@/components/TheHeader.vue'
+// import TheFooter from '@/components/TheFooter.vue'
 // import StarryBackground from '@/components/StarryBackground.vue'
 
 export default {
   name: 'App',
   components: {
-    TheHeader,
-    // TheFooter,  // 移动到页面级别
-    // StarryBackground
+    // 所有组件都移动到页面级别
   },
   mounted() {
     
