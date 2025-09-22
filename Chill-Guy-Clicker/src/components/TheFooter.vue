@@ -79,6 +79,7 @@ export default {
   box-sizing: border-box;
   flex-shrink: 0;
   overflow: hidden;
+  contain: layout style;
 }
 
 .footer-content {
@@ -88,16 +89,13 @@ export default {
   width: 100%;
   box-sizing: border-box;
   contain: layout style;
-  /* 预定义网格高度防止CLS */
-  grid-template-rows: minmax(180px, auto);
+  align-items: start;
 }
 
 .footer-section {
   display: block;
   box-sizing: border-box;
   contain: layout style;
-  /* 确保每列有稳定的最小高度 */
-  min-height: 180px;
 }
 
 .footer-title {
