@@ -4,13 +4,7 @@
     <!-- <StarryBackground /> -->
     <TheHeader />
     <main class="main-content">
-      <RouterView v-slot="{ Component, route }">
-        <KeepAlive :include="['HomeView']">
-          <div class="route-container">
-            <component :is="Component" :key="route.path" />
-          </div>
-        </KeepAlive>
-      </RouterView>
+      <RouterView />
     </main>
     <TheFooter />
   </div>
@@ -39,12 +33,12 @@ export default {
   },
   setup() {
     onMounted(() => {
-      // 设置基础 SEO
-      updatePageSEO({
-        title: 'Chill Guy Clicker - Best Clicker Game Experience',
-        description: 'Experience the most fun Chill Guy clicker game, easy to get started, endless fun awaits you!',
-        keywords: 'chill guy, clicker game, casual game, web game, online game'
-      })
+      // 移除SEO更新，避免与路由守卫冲突
+      // updatePageSEO({
+      //   title: 'Chill Guy Clicker - Best Clicker Game Experience',
+      //   description: 'Experience the most fun Chill Guy clicker game, easy to get started, endless fun awaits you!',
+      //   keywords: 'chill guy, clicker game, casual game, web game, online game'
+      // })
 
       // 预加载关键资源
       preloadCriticalResources()

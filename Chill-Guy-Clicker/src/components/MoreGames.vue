@@ -197,9 +197,6 @@ export default {
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
-.more-button:active {
-  /* 移除transform动画 */
-}
 
 .more-button-text {
   font-size: 14px;
@@ -211,9 +208,6 @@ export default {
   transition: transform 0.3s ease;
 }
 
-.more-button:hover .more-button-icon {
-  /* 移除transform动画 */
-}
 
 /* 移动端优化 */
 @media (max-width: 768px) {
