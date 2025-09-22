@@ -191,28 +191,10 @@ const toggleMoreGames = () => {
   showAllMoreGames.value = !showAllMoreGames.value
 }
 
-const updateSEO = () => {
-  const game = currentGame.value
-  if (!game || !game.seo) return
-
-  document.title = game.seo.title
-
-  let metaDescription = document.querySelector('meta[name="description"]')
-  if (!metaDescription) {
-    metaDescription = document.createElement('meta')
-    metaDescription.setAttribute('name', 'description')
-    document.head.appendChild(metaDescription)
-  }
-  metaDescription.setAttribute('content', game.seo.description)
-
-  let metaKeywords = document.querySelector('meta[name="keywords"]')
-  if (!metaKeywords) {
-    metaKeywords = document.createElement('meta')
-    metaKeywords.setAttribute('name', 'keywords')
-    document.head.appendChild(metaKeywords)
-  }
-  metaKeywords.setAttribute('content', game.seo.keywords)
-}
+// 移除本地SEO更新，依赖路由守卫处理
+// const updateSEO = () => {
+//   // SEO更新已在路由守卫中优化处理
+// }
 
 // 优化的广告加载函数
 const loadAds = () => {
@@ -261,7 +243,7 @@ watch(
   (newGame) => {
     if (newGame) {
       gameStarted.value = false
-      updateSEO()
+      // SEO更新由路由守卫处理，避免重复DOM操作
     }
   },
   { immediate: true },

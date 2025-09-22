@@ -83,20 +83,10 @@ export default {
 }
 
 .footer-content {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 40px;
   margin-bottom: 40px;
-}
-
-.footer-section:first-child {
-  flex: 2;
-  min-width: 300px;
-}
-
-.footer-section:not(:first-child) {
-  flex: 1;
-  min-width: 200px;
 }
 
 .footer-section {
@@ -167,15 +157,9 @@ export default {
   }
   
   .footer-content {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 30px;
     margin-bottom: 30px;
-  }
-  
-  .footer-section:first-child,
-  .footer-section:not(:first-child) {
-    flex: none;
-    min-width: auto;
   }
   
   .footer-section {
