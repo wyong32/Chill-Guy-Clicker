@@ -231,7 +231,7 @@ onMounted(() => {
   setTimeout(() => {
     try {
       // 为所有设备加载广告，使用新的loadAds函数
-      // loadAds()
+      loadAds()
     } catch (e) {
       console.error('广告初始化失败:', e)
     }
