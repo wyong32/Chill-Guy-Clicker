@@ -12,8 +12,10 @@
         </KeepAlive>
       </RouterView>
     </main>
-    <!-- 暂时禁用Footer测试CLS -->
-    <!-- <TheFooter /> -->
+    <!-- 测试简化版Footer -->
+    <footer style="background-color: #1a1a2e; color: white; padding: 20px; text-align: center;">
+      <p>© 2025 chillguymemeclicker.com. All rights reserved.</p>
+    </footer>
   </div>
 </template>
 
