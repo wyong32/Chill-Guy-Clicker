@@ -102,6 +102,9 @@
         />
       </main>
       
+      <!-- 页面级Footer组件 -->
+      <TheFooter />
+      
       <!-- 右侧广告 - 简洁悬浮式 -->
       <!-- <aside class="ads-right" v-if="!isMobile">
         <ins
@@ -124,6 +127,7 @@ import GamePlayer from '@/components/GamePlayer.vue'
 import GameInfo from '@/components/GameInfo.vue'
 import GameSidebar from '@/components/GameSidebar.vue'
 import MoreGames from '@/components/MoreGames.vue'
+import TheFooter from '@/components/TheFooter.vue'
 // Composable and data imports
 import { useDeviceDetection } from '@/utils/useDeviceDetection.js'
 import { games } from '@/data/games.js'
