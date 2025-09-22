@@ -32,6 +32,13 @@
   display: none;
 }
 
+.adsbygoogle{
+  width: 100%;
+  height: auto;
+  min-height: 50px;
+  display: block;
+}
+
 /* ===== v-html 内容样式 ===== */
 /* Base styles for content */
 .content-html {

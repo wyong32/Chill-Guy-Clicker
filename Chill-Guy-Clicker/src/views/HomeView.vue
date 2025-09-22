@@ -9,6 +9,7 @@
           data-ad-client="ca-pub-4638984121333143"
           data-ad-slot="6904540807"
           data-ad-format="vertical"
+          data-full-width-responsive="true"
         ></ins>
       </aside>
 
@@ -214,35 +215,43 @@ const updateSEO = () => {
 }
 
 // 简单的广告加载函数
-const loadAds = () => {
-  if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
-    try {
-      const adElements = document.querySelectorAll('.adsbygoogle')
-      console.log(`发现 ${adElements.length} 个广告位`)
-      
-      adElements.forEach((el, index) => {
-        try {
-          // 检查广告是否已经加载
-          if (el.getAttribute('data-adsbygoogle-status') !== 'done' && 
-              !el.querySelector('iframe')) {
-            ;(window.adsbygoogle = window.adsbygoogle || []).push({})
-            console.log(`广告位 ${index + 1} 已触发加载`)
-          }
-        } catch (pushError) {
-          console.error('广告加载失败:', pushError)
-        }
-      })
-    } catch (e) {
-      console.error('广告加载失败:', e)
-    }
-  } else {
-    console.log('AdSense脚本还未加载')
+// 初始化所有广告单元
+const initializeAds = () => {
+  try {
+    const adElements = document.querySelectorAll('.adsbygoogle')
+    console.log(`找到 ${adElements.length} 个广告单元`)
+
+    adElements.forEach((element, index) => {
+      // 检查广告单元是否已经被初始化
+      if (!element.getAttribute('data-adsbygoogle-status')) {
+        ;(adsbygoogle = window.adsbygoogle || []).push({})
+        console.log(`初始化广告单元 ${index + 1}`)
+      } else {
+        console.log(`广告单元 ${index + 1} 已经初始化`)
+      }
+    })
+  } catch (e) {
+    console.error('广告初始化失败:', e)
   }
 }
 
 onMounted(() => {
   // 2秒后加载广告，给页面充分时间渲染
-  setTimeout(loadAds, 2000)
+    // 初始化Google AdSense广告
+    setTimeout(() => {
+    try {
+      // 初始化移动端广告
+      if (isMobile.value) {
+        initializeAds()
+      }
+
+      // AdProvider初始化
+      window.AdProvider = window.AdProvider || []
+      window.AdProvider.push({ serve: {} })
+    } catch (e) {
+      console.error('Ad initialization failed:', e)
+    }
+  }, 1000)
 })
 
 // --- Watcher ---
