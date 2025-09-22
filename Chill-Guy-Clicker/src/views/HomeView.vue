@@ -241,9 +241,9 @@ onMounted(() => {
     setTimeout(() => {
     try {
       // 初始化移动端广告
-      if (isMobile.value) {
+      // if (isMobile.value) {
         initializeAds()
-      }
+      // }
 
       // AdProvider初始化
       window.AdProvider = window.AdProvider || []
