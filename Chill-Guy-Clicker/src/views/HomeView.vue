@@ -214,44 +214,44 @@ const updateSEO = () => {
   metaKeywords.setAttribute('content', game.seo.keywords)
 }
 
-// 简单的广告加载函数
-// 初始化所有广告单元
-const initializeAds = () => {
-  try {
-    const adElements = document.querySelectorAll('.adsbygoogle')
-    console.log(`找到 ${adElements.length} 个广告单元`)
-
-    adElements.forEach((element, index) => {
-      // 检查广告单元是否已经被初始化
-      if (!element.getAttribute('data-adsbygoogle-status')) {
-        ;(adsbygoogle = window.adsbygoogle || []).push({})
-        console.log(`初始化广告单元 ${index + 1}`)
-      } else {
-        console.log(`广告单元 ${index + 1} 已经初始化`)
-      }
-    })
-  } catch (e) {
-    console.error('广告初始化失败:', e)
+// 优化的广告加载函数
+const loadAds = () => {
+  if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
+    try {
+      const adElements = document.querySelectorAll('.adsbygoogle')
+      console.log(`发现 ${adElements.length} 个广告位`)
+      
+      adElements.forEach((el, index) => {
+        try {
+          // 检查广告是否已经加载
+          if (el.getAttribute('data-adsbygoogle-status') !== 'done' && 
+              !el.querySelector('iframe') &&
+              el.offsetParent !== null) { // 确保元素可见
+            ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+            console.log(`广告位 ${index + 1} 已触发加载`)
+          }
+        } catch (pushError) {
+          console.error(`广告位 ${index + 1} 加载失败:`, pushError)
+        }
+      })
+    } catch (e) {
+      console.error('广告加载失败:', e)
+    }
+  } else {
+    console.log('AdSense脚本还未加载完成')
   }
 }
 
 onMounted(() => {
-  // 2秒后加载广告，给页面充分时间渲染
-    // 初始化Google AdSense广告
-    setTimeout(() => {
+  // 延迟加载广告，确保DOM完全渲染
+  setTimeout(() => {
     try {
-      // 初始化移动端广告
-      // if (isMobile.value) {
-        initializeAds()
-      // }
-
-      // AdProvider初始化
-      window.AdProvider = window.AdProvider || []
-      window.AdProvider.push({ serve: {} })
+      // 为所有设备加载广告，使用新的loadAds函数
+      loadAds()
     } catch (e) {
-      console.error('Ad initialization failed:', e)
+      console.error('广告初始化失败:', e)
     }
-  }, 1000)
+  }, 2000)
 })
 
 // --- Watcher ---
