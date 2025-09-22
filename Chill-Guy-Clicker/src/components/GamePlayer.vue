@@ -648,8 +648,7 @@ export default {
     border-radius: 8px;
     max-width: 95%;
     margin: 0 auto;
-    /* 移动端保持16:9比例 */
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 2 / 3;
   }
 
   .game-container{
@@ -749,8 +748,8 @@ export default {
   .game-iframe-container {
     max-width: 100%;
     margin: 0 auto;
-    /* 小屏幕也保持16:9比例，避免布局跳跃 */
-    aspect-ratio: 16 / 9;
+    /* 小屏幕使用1:2比例，更适合手机竖屏 */
+    aspect-ratio: 2 / 3;
   }
 
   /* 小屏幕全屏模式样式继承上方统一定义 */

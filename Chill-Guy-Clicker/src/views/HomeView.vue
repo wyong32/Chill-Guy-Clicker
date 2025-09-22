@@ -165,15 +165,10 @@ const showAllMoreGames = ref(false)
 // 预加载默认游戏，避免异步计算延迟
 const defaultGame = games.find((game) => game.id === 1) || games[0]
 
-// 修改moreGames计算属性，在移动端且未显示全部时只返回前8个游戏
+// 固定moreGames数组，避免动态长度变化导致CLS
+const allMoreGames = games.filter((game) => game.isMore || game.isRecommended)
 const moreGames = computed(() => {
-  const allMoreGames = games.filter((game) => game.isMore || game.isRecommended)
-  
-  // 在移动端且未显示全部时，只返回前8个游戏
-  if (isMobile.value && !showAllMoreGames.value) {
-    return allMoreGames.slice(0, 6)
-  }
-  
+  // 始终返回完整数组，通过CSS控制显示
   return allMoreGames
 })
 

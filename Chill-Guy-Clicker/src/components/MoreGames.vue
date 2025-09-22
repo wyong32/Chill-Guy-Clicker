@@ -3,9 +3,10 @@
     <h2 class="section-title">More Games</h2>
     <div class="more-games-grid">
       <a
-        v-for="game in games"
+        v-for="(game, index) in games"
         :key="game.id"
         class="more-game-card"
+        :class="{ 'mobile-hidden': isMobile && !showAllMoreGames && index >= 6 }"
         :href="getGameRoute(game)"
         :aria-label="'Play ' + (game.pageTitle || game.title) + ' game'"
       >
@@ -18,8 +19,8 @@
       </a>
     </div>
     
-    <!-- More按钮 - 只在移动端且未显示全部游戏时显示 -->
-    <div class="more-button-container" v-if="isMobile && !showAllMoreGames">
+    <!-- More按钮 - 使用visibility控制避免CLS -->
+    <div class="more-button-container" :style="{ visibility: (isMobile && !showAllMoreGames) ? 'visible' : 'hidden', height: (isMobile && !showAllMoreGames) ? 'auto' : '0' }">
       <button class="more-button" @click="toggleMoreGames">
         <span class="more-button-text">More Games</span>
         <span class="more-button-icon">↓</span>
@@ -102,7 +103,7 @@ export default {
 
 .more-games-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
 }
 
@@ -150,8 +151,19 @@ export default {
 
 @media (max-width: 768px) {
   .more-games-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .more-games-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* 移动端隐藏多余游戏的样式 */
+.mobile-hidden {
+  display: none;
 }
 
 /* More按钮样式 */

@@ -1,9 +1,9 @@
 <template>
   <div class="game-details-wrapper">
     <!-- Game Details from HTML -->
-    <!-- 预设高度防止v-html内容导致CLS -->
+    <!-- 固定高度防止v-html内容导致CLS -->
     <div v-if="game.detailsHtml" class="game-details-html content-html" 
-         style="min-height: 400px; overflow: hidden;" 
+         style="height: 500px; overflow-y: auto;" 
          v-html="game.detailsHtml"></div>
 
     <!-- Game Metadata -->
