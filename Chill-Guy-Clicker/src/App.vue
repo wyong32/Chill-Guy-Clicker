@@ -6,6 +6,7 @@
     <main class="main-content">
       <RouterView v-slot="{ Component, route }">
         <!-- 移除 Suspense 组件，防止布局偏移 -->
+        <StarryBackground />
         <KeepAlive :include="['HomeView']">
           <div class="route-container">
             <component :is="Component" :key="route.path" />
