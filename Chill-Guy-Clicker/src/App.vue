@@ -4,9 +4,16 @@
     <!-- <StarryBackground /> -->
     <TheHeader />
     <main class="main-content">
-      <RouterView />
+      <RouterView v-slot="{ Component, route }">
+        <KeepAlive :include="['HomeView']">
+          <div class="route-container">
+            <component :is="Component" :key="route.path" />
+          </div>
+        </KeepAlive>
+      </RouterView>
     </main>
-    <TheFooter />
+    <!-- 暂时禁用Footer测试CLS -->
+    <!-- <TheFooter /> -->
   </div>
 </template>
 
