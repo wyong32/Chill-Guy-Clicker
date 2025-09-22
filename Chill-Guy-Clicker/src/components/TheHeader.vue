@@ -189,11 +189,10 @@ export default {
 .header {
   background-color: rgba(17, 14, 25, 0.8);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
   top: 0;
   z-index: 100;
-  /* 移除backdrop-filter以防止CLS */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  /* 移除固定高度 */
   width: 100%;
   box-sizing: border-box;
 }
