@@ -16,7 +16,7 @@
 
     <!-- DNS 预解析 - 仅保留实际使用的域名 -->
     <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" />
 
     <!-- 权限策略 -->
     <meta
@@ -24,32 +24,21 @@
       content="autoplay=*, fullscreen=*, cross-origin-isolated=*"
     />
 
-    <!-- 默认社交媒体标签 - 会被路由守卫动态更新 -->
-    <!-- Open Graph 标签 (Facebook, 微信等) -->
+    <!-- 基础社交媒体标签 - 动态更新 -->
     <meta property="og:title" content="Chill Guy Games - Play Free Online Games" />
-    <meta
-      property="og:description"
-      content="chill guy clicker, idle game, clicker game, relaxing game, online game, free game"
-    />
+    <meta property="og:description" content="chill guy clicker, idle game, clicker game, relaxing game, online game, free game" />
     <meta property="og:image" content="https://chillguymemeclicker.com/images/logo.webp" />
     <meta property="og:url" content="https://chillguymemeclicker.com" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Chill Guy Games" />
 
-    <!-- Twitter Card 标签 -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Chill Guy Games - Play Free Online Games" />
-    <meta
-      name="twitter:description"
-      content="chill guy clicker, idle game, clicker game, relaxing game, online game, free game"
-    />
+    <meta name="twitter:description" content="chill guy clicker, idle game, clicker game, relaxing game, online game, free game" />
     <meta name="twitter:image" content="https://chillguymemeclicker.com/images/logo.webp" />
 
     <!-- 规范URL -->
     <link rel="canonical" href="https://chillguymemeclicker.com" />
-
-    <!-- DNS 预解析 -->
-    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
     
     <!-- 异步CSS加载polyfill -->
     <!-- <script>
@@ -61,92 +50,36 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4638984121333143"
      crossorigin="anonymous"></script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NM6JN6XG6J"></script>
+    <!-- Google Analytics - 延迟加载 -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-NM6JN6XG6J');
+      // 延迟加载Google Analytics以减少TBT
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NM6JN6XG6J';
+          document.head.appendChild(script);
+          
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-NM6JN6XG6J');
+        }, 1000);
+      });
     </script>
 
-    <!-- JSON-LD 结构化数据 -->
+    <!-- 简化的结构化数据 -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "Chill Guy Clicker",
-        "alternateName": "Chill Guy Games",
         "url": "https://chillguymemeclicker.com",
-        "description": "Chill Guy Clicker offers the ultimate collection of relaxing idle games, chill guy meme games, and fun clicking experiences. Play free online games featuring the viral chill guy meme!",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://chillguymemeclicker.com/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        },
+        "description": "Play Chill Guy Clicker and other relaxing idle games online for free.",
         "publisher": {
           "@type": "Organization",
           "name": "Chill Guy Games",
-          "url": "https://chillguymemeclicker.com",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://chillguymemeclicker.com/images/logo.webp"
-          }
-        },
-        "mainEntity": {
-          "@type": "Game",
-          "name": "Chill Guy Clicker",
-          "description": "A relaxing idle clicker game featuring the viral chill guy meme. Click to earn points, unlock upgrades, and enjoy the ultimate chill gaming experience.",
-          "genre": ["Idle Game", "Clicker Game", "Casual Game"],
-          "gamePlatform": "Web Browser",
-          "operatingSystem": ["Windows", "macOS", "Linux", "iOS", "Android"],
-          "applicationCategory": "Game",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "1250",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
-          "featureList": [
-            "Relaxing idle gameplay",
-            "Chill guy meme characters",
-            "Multiple upgrade paths",
-            "Offline progress",
-            "Mobile-friendly design",
-            "Free to play"
-          ],
-          "screenshot": "https://chillguymemeclicker.com/images/games/game-01.webp",
-          "video": {
-            "@type": "VideoObject",
-            "name": "Chill Guy Clicker Gameplay",
-            "description": "Watch how to play Chill Guy Clicker",
-            "thumbnailUrl": "https://chillguymemeclicker.com/images/games/game-01.webp"
-          }
-        },
-        "breadcrumb": {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://chillguymemeclicker.com"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Games",
-              "item": "https://chillguymemeclicker.com/games"
-            }
-          ]
+          "url": "https://chillguymemeclicker.com"
         }
       }
     </script>

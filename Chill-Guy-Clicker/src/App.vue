@@ -104,6 +104,8 @@ body {
 .main-content {
   flex: 1;
   isolation: isolate;
+  /* 减少重排 */
+  contain: layout;
 }
 
 .route-container {
@@ -146,9 +148,12 @@ body {
 
 /* 减少动画在低性能设备上的影响 */
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.2s !important;
-    transition-duration: 0.2s !important;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.1s !important;
+    transition-duration: 0.1s !important;
+    animation-iteration-count: 1 !important;
   }
 }
 </style>

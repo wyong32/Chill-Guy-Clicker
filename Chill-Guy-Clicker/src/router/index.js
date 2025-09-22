@@ -81,14 +81,24 @@ const updateSocialTags = (
   updateMetaTag('name', 'twitter:image', image)
 }
 
-// 辅助函数：更新或创建meta标签
+// 缓存meta标签引用，避免重复查询
+const metaCache = new Map()
+
+// 优化的meta标签更新函数
 const updateMetaTag = (attrName, attrValue, content) => {
-  let metaTag = document.querySelector(`meta[${attrName}="${attrValue}"]`)
+  const cacheKey = `${attrName}:${attrValue}`
+  let metaTag = metaCache.get(cacheKey)
+  
   if (!metaTag) {
-    metaTag = document.createElement('meta')
-    metaTag.setAttribute(attrName, attrValue)
-    document.head.appendChild(metaTag)
+    metaTag = document.querySelector(`meta[${attrName}="${attrValue}"]`)
+    if (!metaTag) {
+      metaTag = document.createElement('meta')
+      metaTag.setAttribute(attrName, attrValue)
+      document.head.appendChild(metaTag)
+    }
+    metaCache.set(cacheKey, metaTag)
   }
+  
   metaTag.setAttribute('content', content)
 }
 
@@ -601,26 +611,10 @@ router.beforeEach((to, _from, next) => {
 
       // 如果找到了数据项，使用数据项中的SEO信息
       if (item && item.seo) {
-        // 使用数据项中的SEO信息
+        // 使用优化的SEO更新函数
         document.title = item.seo.title
-
-        // 更新描述
-        let metaDescription = document.querySelector('meta[name="description"]')
-        if (!metaDescription) {
-          metaDescription = document.createElement('meta')
-          metaDescription.setAttribute('name', 'description')
-          document.head.appendChild(metaDescription)
-        }
-        metaDescription.setAttribute('content', item.seo.description)
-
-        // 更新关键词
-        let metaKeywords = document.querySelector('meta[name="keywords"]')
-        if (!metaKeywords) {
-          metaKeywords = document.createElement('meta')
-          metaKeywords.setAttribute('name', 'keywords')
-          document.head.appendChild(metaKeywords)
-        }
-        metaKeywords.setAttribute('content', item.seo.keywords)
+        updateMetaTag('name', 'description', item.seo.description)
+        updateMetaTag('name', 'keywords', item.seo.keywords)
 
         // 获取图片URL
         const imageUrl = item.detailImageUrl || item.imageUrl || item.thumbnailUrl
@@ -639,29 +633,10 @@ router.beforeEach((to, _from, next) => {
         next() // 继续路由导航
         return
       } else if (item) {
-        // 如果数据项没有SEO信息，但有标题和描述
+        // 使用优化的SEO更新函数
         document.title = item.pageTitle || 'Chill Guy Games'
-
-        // 更新描述
-        let metaDescription = document.querySelector('meta[name="description"]')
-        if (!metaDescription) {
-          metaDescription = document.createElement('meta')
-          metaDescription.setAttribute('name', 'description')
-          document.head.appendChild(metaDescription)
-        }
-        metaDescription.setAttribute(
-          'content',
-          item.description || 'Play free online games at Chill Guy Games',
-        )
-
-        // 更新关键词
-        let metaKeywords = document.querySelector('meta[name="keywords"]')
-        if (!metaKeywords) {
-          metaKeywords = document.createElement('meta')
-          metaKeywords.setAttribute('name', 'keywords')
-          document.head.appendChild(metaKeywords)
-        }
-        metaKeywords.setAttribute('content', 'online games, free games, browser games, chill games')
+        updateMetaTag('name', 'description', item.description || 'Play free online games at Chill Guy Games')
+        updateMetaTag('name', 'keywords', 'online games, free games, browser games, chill games')
 
         // 获取图片URL
         const imageUrl = item.detailImageUrl || item.imageUrl || item.thumbnailUrl
@@ -688,26 +663,10 @@ router.beforeEach((to, _from, next) => {
       }
     }
 
-    // 如果不是详情页或没有找到数据项，使用路由中定义的SEO信息
+    // 使用优化的SEO更新函数
     document.title = seo.title
-
-    // 更新描述
-    let metaDescription = document.querySelector('meta[name="description"]')
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta')
-      metaDescription.setAttribute('name', 'description')
-      document.head.appendChild(metaDescription)
-    }
-    metaDescription.setAttribute('content', seo.description)
-
-    // 更新关键词
-    let metaKeywords = document.querySelector('meta[name="keywords"]')
-    if (!metaKeywords) {
-      metaKeywords = document.createElement('meta')
-      metaKeywords.setAttribute('name', 'keywords')
-      document.head.appendChild(metaKeywords)
-    }
-    metaKeywords.setAttribute('content', seo.keywords || '')
+    updateMetaTag('name', 'description', seo.description)
+    updateMetaTag('name', 'keywords', seo.keywords || '')
 
     // 更新规范URL
     updateCanonicalUrl(to.fullPath)
@@ -726,26 +685,10 @@ router.beforeEach((to, _from, next) => {
     // 首页使用默认游戏的元数据
     const defaultGame = games.find((game) => game.id === 1) || games[0]
     if (defaultGame && defaultGame.seo) {
-      // 使用默认游戏的SEO信息
+      // 使用优化的SEO更新函数
       document.title = defaultGame.seo.title
-
-      // 更新描述
-      let metaDescription = document.querySelector('meta[name="description"]')
-      if (!metaDescription) {
-        metaDescription = document.createElement('meta')
-        metaDescription.setAttribute('name', 'description')
-        document.head.appendChild(metaDescription)
-      }
-      metaDescription.setAttribute('content', defaultGame.seo.description)
-
-      // 更新关键词
-      let metaKeywords = document.querySelector('meta[name="keywords"]')
-      if (!metaKeywords) {
-        metaKeywords = document.createElement('meta')
-        metaKeywords.setAttribute('name', 'keywords')
-        document.head.appendChild(metaKeywords)
-      }
-      metaKeywords.setAttribute('content', defaultGame.seo.keywords)
+      updateMetaTag('name', 'description', defaultGame.seo.description)
+      updateMetaTag('name', 'keywords', defaultGame.seo.keywords)
 
       // 更新规范URL
       updateCanonicalUrl('/')
@@ -759,26 +702,10 @@ router.beforeEach((to, _from, next) => {
         'website',
       )
     } else {
-      // 如果默认游戏没有SEO信息，使用基本信息
+      // 使用优化的SEO更新函数
       document.title = 'Chill Guy Games'
-
-      // 更新描述
-      let metaDescription = document.querySelector('meta[name="description"]')
-      if (!metaDescription) {
-        metaDescription = document.createElement('meta')
-        metaDescription.setAttribute('name', 'description')
-        document.head.appendChild(metaDescription)
-      }
-      metaDescription.setAttribute('content', 'Play free online games at Chill Guy Games')
-
-      // 更新关键词
-      let metaKeywords = document.querySelector('meta[name="keywords"]')
-      if (!metaKeywords) {
-        metaKeywords = document.createElement('meta')
-        metaKeywords.setAttribute('name', 'keywords')
-        document.head.appendChild(metaKeywords)
-      }
-      metaKeywords.setAttribute('content', 'online games, free games, browser games, chill games')
+      updateMetaTag('name', 'description', 'Play free online games at Chill Guy Games')
+      updateMetaTag('name', 'keywords', 'online games, free games, browser games, chill games')
 
       // 更新规范URL
       updateCanonicalUrl('/')
@@ -793,26 +720,10 @@ router.beforeEach((to, _from, next) => {
       )
     }
   } else {
-    // 其他页面也需要设置规范URL和基本的社交媒体标签
+    // 使用优化的SEO更新函数
     document.title = 'Chill Guy Games'
-
-    // 更新描述
-    let metaDescription = document.querySelector('meta[name="description"]')
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta')
-      metaDescription.setAttribute('name', 'description')
-      document.head.appendChild(metaDescription)
-    }
-    metaDescription.setAttribute('content', 'Play free online games at Chill Guy Games')
-
-    // 更新关键词
-    let metaKeywords = document.querySelector('meta[name="keywords"]')
-    if (!metaKeywords) {
-      metaKeywords = document.createElement('meta')
-      metaKeywords.setAttribute('name', 'keywords')
-      document.head.appendChild(metaKeywords)
-    }
-    metaKeywords.setAttribute('content', 'online games, free games, browser games, chill games')
+    updateMetaTag('name', 'description', 'Play free online games at Chill Guy Games')
+    updateMetaTag('name', 'keywords', 'online games, free games, browser games, chill games')
 
     // 更新规范URL
     updateCanonicalUrl(to.fullPath)

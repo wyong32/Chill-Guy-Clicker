@@ -68,95 +68,55 @@ export default {
 
 <style scoped>
 .footer {
-  background-color: rgb(17, 14, 25);
-  padding: 60px 0 20px;
-  margin-top: 0;
-  color: #fff;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #1a1a2e;
+  color: #ffffff;
+  padding: 60px 0 30px;
   width: 100%;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
   box-sizing: border-box;
 }
 
 .footer-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 20px;
-  width: 100%;
-  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-section:first-child {
+  flex: 2;
+  min-width: 300px;
+}
+
+.footer-section:not(:first-child) {
+  flex: 1;
+  min-width: 200px;
 }
 
 .footer-section {
-  display: block;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-title {
+  color: #f39c12;
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 20px;
-  color: #f39c12;
-  position: relative;
-  padding-bottom: 10px;
-  /* 稳定的行高和字体渲染 */
   line-height: 1.2;
-  font-display: swap;
 }
-
-.footer-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 40px;
-  height: 2px;
-  background-color: #41b883;
-}
-
-/* 移除固定宽度约束 */
 
 .footer-text {
-  color: #fff;
-  line-height: 1.4;
-  margin-bottom: 20px;
-  font-display: swap;
-}
-
-.social-links {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background-color: #41b883;
-  border-radius: 50%;
-  color: white;
-  transition: background-color 0.3s ease;
-  flex-shrink: 0;
-}
-
-.social-icon-container {
-  display: block;
-  width: 24px;
-  height: 24px;
-}
-
-.social-link img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-.social-link:hover {
-  background-color: #f39c12;
-  transform: translateY(-2px);
+  color: #cccccc;
+  line-height: 1.6;
+  font-size: 14px;
+  margin: 0;
 }
 
 .footer-links {
@@ -166,16 +126,15 @@ export default {
 }
 
 .footer-links li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .footer-link {
-  color: #fff;
+  color: #cccccc;
   text-decoration: none;
-  /* 移除transition动画以防止CLS */
-  display: block;
+  font-size: 14px;
   line-height: 1.4;
-  font-display: swap;
+  transition: color 0.3s ease;
 }
 
 .footer-link:hover {
@@ -183,8 +142,8 @@ export default {
 }
 
 .footer-bottom {
-  border-top: 1px solid #ddd;
-  padding-top: 20px;
+  border-top: 1px solid #333;
+  padding-top: 30px;
 }
 
 .footer-bottom-content {
@@ -192,70 +151,61 @@ export default {
 }
 
 .copyright {
-  color: #ccc;
+  color: #999;
   font-size: 14px;
   margin: 0;
-  line-height: 1.4;
-  font-display: swap;
 }
 
-.disclaimer {
-  color: #aaa;
-  font-size: 12px;
-  line-height: 1.6;
-  max-width: 800px;
-  margin: 0;
-  /* 防止文字渲染导致的布局偏移 */
-  contain: layout style;
-}
-
-
-
-@media (max-width: 992px) {
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 0 20px;
+  }
+  
+  .container {
+    padding: 0 15px;
+  }
+  
   .footer-content {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: minmax(160px, auto);
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 30px;
   }
+  
+  .footer-section:first-child,
+  .footer-section:not(:first-child) {
+    flex: none;
+    min-width: auto;
+  }
+  
   .footer-section {
-    min-height: 160px;
+    text-align: left;
   }
-}
-
-@media (max-width: 767px) {
-  .footer{
-    padding: 20px 0;
-  }
-  .footer-content {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, minmax(120px, auto));
-    grid-gap: 15px;
-  }
-  .footer-section {
-    min-height: 120px;
-  }
-  .footer-title{
+  
+  .footer-title {
     font-size: 16px;
+    margin-bottom: 15px;
+  }
+  
+  .footer-text {
+    font-size: 13px;
+  }
+  
+  .footer-link {
+    font-size: 13px;
+  }
+  
+  .footer-links li {
     margin-bottom: 10px;
-    line-height: 1.2;
   }
-  .footer-text{
+  
+  .footer-bottom {
+    padding-top: 20px;
+  }
+  
+  .copyright {
     font-size: 12px;
-    margin-bottom: 10px;
-    line-height: 1.4;
-  }
-
-  .footer-link{
-    font-size: 12px;
-    line-height: 1.4;
-  }
-
-  .copyright{
-    font-size: 12px;
-    line-height: 1.4;
-  }
-
-  .footer-bottom{
-    padding-top: 10px;
   }
 }
+
 </style>

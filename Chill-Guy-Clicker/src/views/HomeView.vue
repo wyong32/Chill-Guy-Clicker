@@ -251,7 +251,7 @@ onMounted(() => {
     } catch (e) {
       console.error('广告初始化失败:', e)
     }
-  }, 2000)
+  }, 1000)
 })
 
 // --- Watcher ---
