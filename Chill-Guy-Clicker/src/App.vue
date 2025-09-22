@@ -1,12 +1,9 @@
 <template>
   <div class="app">
-    <!-- 暂时移除星空背景以消除CLS -->
-    <!-- <StarryBackground /> -->
+    <StarryBackground />
     <TheHeader />
     <main class="main-content">
       <RouterView v-slot="{ Component, route }">
-        <!-- 移除 Suspense 组件，防止布局偏移 -->
-        <StarryBackground />
         <KeepAlive :include="['HomeView']">
           <div class="route-container">
             <component :is="Component" :key="route.path" />
@@ -149,19 +146,9 @@ body {
 
 /* 减少动画在低性能设备上的影响 */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* 高对比度模式支持 */
-@media (prefers-contrast: high) {
-  .app {
-    filter: contrast(1.2);
+  * {
+    animation-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
   }
 }
 </style>

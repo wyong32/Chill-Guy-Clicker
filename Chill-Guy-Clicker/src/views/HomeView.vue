@@ -346,10 +346,6 @@ watch(
   color: #333;
   width: 100%;
   box-sizing: border-box;
-  backface-visibility: hidden;
-  /* 预设最小高度防止CLS */
-  min-height: 600px;
-  contain: layout style;
 }
 
 .section-title {

@@ -73,13 +73,8 @@ export default {
   margin-top: 0;
   color: #fff;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-  z-index: 1;
   width: 100%;
   box-sizing: border-box;
-  flex-shrink: 0;
-  overflow: hidden;
-  contain: layout style;
 }
 
 .footer-content {
@@ -88,14 +83,11 @@ export default {
   grid-gap: 20px;
   width: 100%;
   box-sizing: border-box;
-  contain: layout style;
-  align-items: start;
 }
 
 .footer-section {
   display: block;
   box-sizing: border-box;
-  contain: layout style;
 }
 
 .footer-title {
@@ -110,8 +102,7 @@ export default {
   font-display: swap;
 }
 
-/* 移除伪元素以防止CLS */
-/* .footer-title::after {
+.footer-title::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -119,7 +110,7 @@ export default {
   width: 40px;
   height: 2px;
   background-color: #41b883;
-} */
+}
 
 /* 移除固定宽度约束 */
 
@@ -146,7 +137,7 @@ export default {
   background-color: #41b883;
   border-radius: 50%;
   color: white;
-  /* 移除所有动画和transition以防止CLS */
+  transition: background-color 0.3s ease;
   flex-shrink: 0;
 }
 
@@ -165,7 +156,7 @@ export default {
 
 .social-link:hover {
   background-color: #f39c12;
-  /* 移除transform动画以防止CLS */
+  transform: translateY(-2px);
 }
 
 .footer-links {

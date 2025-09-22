@@ -242,9 +242,6 @@ export default {
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 0 5px rgba(255, 204, 0, 0.5));
-  backface-visibility: hidden;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
 }
 
 .logo span{
