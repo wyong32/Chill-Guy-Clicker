@@ -1,5 +1,7 @@
 <template>
   <div class="png-view">
+    <!-- 页面级Header -->
+    <TheHeader />
     <div class="container">
       <h1 class="page-title">Chill Guy PNG Images</h1>
       <h2 class="page-description">
@@ -36,14 +38,22 @@
         </div>
       </div>
     </div>
+    <!-- 页面级Footer -->
+    <TheFooter />
   </div>
 </template>
 
 <script>
 import { pngImages } from '@/data/png.js'
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
 
 export default {
   name: 'PngView',
+  components: {
+    TheHeader,
+    TheFooter,
+  },
   data() {
     return {
       pngImages: pngImages,

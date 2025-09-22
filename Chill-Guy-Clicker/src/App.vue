@@ -16,12 +16,7 @@
 
 <script>
 import { onMounted } from 'vue'
-import { updatePageSEO } from '@/utils/head'
 
-// Header和Footer都移动到页面级别
-// import TheHeader from '@/components/TheHeader.vue'
-// import TheFooter from '@/components/TheFooter.vue'
-// import StarryBackground from '@/components/StarryBackground.vue'
 
 export default {
   name: 'App',
@@ -36,11 +31,6 @@ export default {
   setup() {
     onMounted(() => {
       // 移除SEO更新，避免与路由守卫冲突
-      // updatePageSEO({
-      //   title: 'Chill Guy Clicker - Best Clicker Game Experience',
-      //   description: 'Experience the most fun Chill Guy clicker game, easy to get started, endless fun awaits you!',
-      //   keywords: 'chill guy, clicker game, casual game, web game, online game'
-      // })
 
       // 预加载关键资源
       preloadCriticalResources()
@@ -49,9 +39,10 @@ export default {
     })
 
     const preloadCriticalResources = () => {
+      // 简单的资源预加载，避免过度优化
       const resources = [
         '/images/logo.webp',
-        '/images/chill-guy.png'
+        '/images/games/game-01.webp'
       ]
 
       resources.forEach(src => {
@@ -100,8 +91,7 @@ body {
 
 .main-content {
   flex: 1;
-  isolation: isolate;
-  /* 减少重排 */
+  /* 保守的性能优化 */
   contain: layout;
 }
 

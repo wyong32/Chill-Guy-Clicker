@@ -1,5 +1,7 @@
 <template>
   <div class="copyright-page">
+    <!-- 页面级Header -->
+    <TheHeader />
     <div class="copyright-container">
       <h1>Copyright Notice</h1>
       
@@ -68,12 +70,21 @@
         </p>
       </section>
     </div>
+    <!-- 页面级Footer -->
+    <TheFooter />
   </div>
 </template>
 
 <script>
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
+
 export default {
   name: 'CopyrightView',
+  components: {
+    TheHeader,
+    TheFooter,
+  },
   meta: {
     title: 'Copyright Notice - Chill Guy Games',
     description: 'Read our copyright notice to understand the intellectual property rights and usage terms for Chill Guy Games content.',

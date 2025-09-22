@@ -1,5 +1,7 @@
 <template>
   <div class="png-detail-view">
+    <!-- 页面级Header -->
+    <TheHeader />
     <div class="container">
       <div class="back-link">
         <a href="/Chill-Guy-PNG" class="back-button">
@@ -40,14 +42,22 @@
         <a href="/Chill-Guy-PNG" class="back-button">Back to PNG Images</a>
       </div>
     </div>
+    <!-- 页面级Footer -->
+    <TheFooter />
   </div>
 </template>
 
 <script>
 import { pngImages } from '@/data/png.js'
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
 
 export default {
   name: 'PngDetailView',
+  components: {
+    TheHeader,
+    TheFooter,
+  },
   props: {
     id: {
       type: [String, Number],
@@ -164,9 +174,6 @@ export default {
 </script>
 
 <style scoped>
-.png-detail-view{
-  padding: 40px 0;
-}
 .back-link {
   margin-bottom: 30px;
 }
@@ -324,9 +331,6 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .png-detail-view{
-    padding: 20px 0;
-  }
 
   .back-link{
     margin-bottom: 15px;

@@ -44,125 +44,28 @@ const updateCanonicalUrl = (path) => {
 }
 
 // 更新社交媒体标签
-const updateSocialTags = (
-  title,
-  description,
-  image = DEFAULT_IMAGE,
-  url,
-  contentType = 'website',
-) => {
-  // 确保URL是完整的
-  const fullUrl = url.startsWith('http')
-    ? url
-    : `${SITE_DOMAIN}${url.startsWith('/') ? url : `/${url}`}`
-
-  // Open Graph标签 (Facebook, 微信等)
-  updateMetaTag('property', 'og:title', title)
-  updateMetaTag('property', 'og:description', description)
-  updateMetaTag('property', 'og:image', image)
-  updateMetaTag('property', 'og:url', fullUrl)
-  updateMetaTag('property', 'og:type', contentType)
-  updateMetaTag('property', 'og:site_name', SITE_NAME)
-
-  // 音乐特定的Open Graph标签
-  if (contentType === 'music.song') {
-    // 尝试从URL中提取音乐信息
-    const addressBar = url.split('/').pop()
-    const musicItem = findMusicByAddressBar(addressBar)
-    if (musicItem && musicItem.artist) {
-      updateMetaTag('property', 'music:musician', musicItem.artist)
-    }
-  }
-
-  // Twitter Card标签
-  updateMetaTag('name', 'twitter:card', 'summary_large_image')
-  updateMetaTag('name', 'twitter:title', title)
-  updateMetaTag('name', 'twitter:description', description)
-  updateMetaTag('name', 'twitter:image', image)
+// 简化的社交媒体标签更新 - 只保留核心功能
+const updateBasicSocialTags = (title, description) => {
+  // 只更新最基础的社交媒体标签
+  const metaOgTitle = document.querySelector('meta[property="og:title"]')
+  if (metaOgTitle) metaOgTitle.setAttribute('content', title)
+  
+  const metaOgDesc = document.querySelector('meta[property="og:description"]')
+  if (metaOgDesc) metaOgDesc.setAttribute('content', description)
 }
 
-// 缓存meta标签引用，避免重复查询
-const metaCache = new Map()
-
-// 优化的meta标签更新函数
-const updateMetaTag = (attrName, attrValue, content) => {
-  const cacheKey = `${attrName}:${attrValue}`
-  let metaTag = metaCache.get(cacheKey)
-  
+// 简化的meta标签更新函数
+const updateMetaTag = (name, content) => {
+  let metaTag = document.querySelector(`meta[name="${name}"]`)
   if (!metaTag) {
-    metaTag = document.querySelector(`meta[${attrName}="${attrValue}"]`)
-    if (!metaTag) {
-      metaTag = document.createElement('meta')
-      metaTag.setAttribute(attrName, attrValue)
-      document.head.appendChild(metaTag)
-    }
-    metaCache.set(cacheKey, metaTag)
+    metaTag = document.createElement('meta')
+    metaTag.setAttribute('name', name)
+    document.head.appendChild(metaTag)
   }
-  
   metaTag.setAttribute('content', content)
 }
 
-// 更新结构化数据的函数
-const updateStructuredData = (gameData) => {
-  // 移除现有的游戏结构化数据
-  const existingScript = document.querySelector('script[type="application/ld+json"]')
-  if (existingScript && existingScript.textContent.includes('"@type": "Game"')) {
-    existingScript.remove()
-  }
-
-  // 创建新的结构化数据
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Game',
-    name: gameData.pageTitle || gameData.title,
-    description: gameData.seo?.description || 'Play this exciting chill guy game online for free',
-    genre: ['Idle Game', 'Clicker Game', 'Casual Game'],
-    gamePlatform: 'Web Browser',
-    operatingSystem: ['Windows', 'macOS', 'Linux', 'iOS', 'Android'],
-    applicationCategory: 'Game',
-    url: window.location.href,
-    image: gameData.imageUrl
-      ? `https://chillguymemeclicker.com${gameData.imageUrl}`
-      : 'https://chillguymemeclicker.com/images/logo.webp',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Chill Guy Games',
-      url: 'https://chillguymemeclicker.com',
-    },
-    datePublished: gameData.publishDate || '2025-01-15',
-    inLanguage: 'en-US',
-    isAccessibleForFree: true,
-    featureList: [
-      'Free to play',
-      'Browser-based gaming',
-      'Mobile-friendly',
-      'No download required',
-    ],
-  }
-
-  // 如果是热门游戏，添加评分
-  if (gameData.isHot) {
-    structuredData.aggregateRating = {
-      '@type': 'AggregateRating',
-      ratingValue: '4.7',
-      ratingCount: '850',
-      bestRating: '5',
-      worstRating: '1',
-    }
-  }
-
-  // 创建并插入新的结构化数据脚本
-  const script = document.createElement('script')
-  script.type = 'application/ld+json'
-  script.textContent = JSON.stringify(structuredData, null, 2)
-  document.head.appendChild(script)
-}
+// 删除复杂的结构化数据生成 - 保留HTML中的基础结构化数据即可
 
 // 根据 addressBar 查找游戏
 const findGameByAddressBar = (addressBarParam) => {
@@ -189,34 +92,7 @@ const findMusicByAddressBar = (addressBarParam) => {
   )
 }
 
-// 更新页面元数据
-const updateMetaTags = (item, path = null, contentType = 'website') => {
-  if (!item) return
-
-  // 如果item是SEO对象，直接使用
-  const seo = item.seo || item
-
-  // 更新页面标题
-  const title = seo.title || item.pageTitle || 'Chill Guy Games'
-  document.title = title
-
-  // 更新描述
-  const description = seo.description || ''
-  updateMetaTag('name', 'description', description)
-
-  // 更新关键词
-  updateMetaTag('name', 'keywords', seo.keywords || '')
-
-  // 获取路径和图片
-  const urlPath = path || (item.addressBar ? `/${item.addressBar}` : '/')
-  const image = item.imageUrl || item.thumbnail || DEFAULT_IMAGE
-
-  // 更新规范URL
-  updateCanonicalUrl(urlPath)
-
-  // 更新社交媒体标签
-  updateSocialTags(title, description, image, urlPath, contentType)
-}
+// 删除了复杂的updateMetaTags函数，使用简化的updatePageTDK
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -321,28 +197,8 @@ const router = createRouter({
 
         // 设置游戏的SEO信息
         if (game.seo) {
-          document.title = game.seo.title
-
-          // 更新描述
-          let metaDescription = document.querySelector('meta[name="description"]')
-          if (!metaDescription) {
-            metaDescription = document.createElement('meta')
-            metaDescription.setAttribute('name', 'description')
-            document.head.appendChild(metaDescription)
-          }
-          metaDescription.setAttribute('content', game.seo.description)
-
-          // 更新关键词
-          let metaKeywords = document.querySelector('meta[name="keywords"]')
-          if (!metaKeywords) {
-            metaKeywords = document.createElement('meta')
-            metaKeywords.setAttribute('name', 'keywords')
-            document.head.appendChild(metaKeywords)
-          }
-          metaKeywords.setAttribute('content', game.seo.keywords)
-
-          // 更新结构化数据
-          updateStructuredData(game)
+          updatePageTDK(game.seo.title, game.seo.description, game.seo.keywords)
+          updateCanonicalUrl(to.fullPath)
         }
 
         next()
@@ -372,40 +228,9 @@ const router = createRouter({
           seoInfo = pngImages[0].seo
         }
 
-        // 设置页面标题
-        document.title = seoInfo.title
-
-        // 更新描述
-        let metaDescription = document.querySelector('meta[name="description"]')
-        if (!metaDescription) {
-          metaDescription = document.createElement('meta')
-          metaDescription.setAttribute('name', 'description')
-          document.head.appendChild(metaDescription)
-        }
-        metaDescription.setAttribute('content', seoInfo.description)
-
-        // 更新关键词
-        let metaKeywords = document.querySelector('meta[name="keywords"]')
-        if (!metaKeywords) {
-          metaKeywords = document.createElement('meta')
-          metaKeywords.setAttribute('name', 'keywords')
-          document.head.appendChild(metaKeywords)
-        }
-        metaKeywords.setAttribute('content', seoInfo.keywords)
-
-        // 更新规范URL
+        // 使用简化的TDK更新函数
+        updatePageTDK(seoInfo.title, seoInfo.description, seoInfo.keywords)
         updateCanonicalUrl('/Chill-Guy-PNG')
-
-        // 更新社交媒体标签
-        updateSocialTags(
-          seoInfo.title,
-          seoInfo.description,
-          pngImages && pngImages.length > 0
-            ? pngImages[0].imageUrl || DEFAULT_IMAGE
-            : DEFAULT_IMAGE,
-          '/Chill-Guy-PNG',
-          'website',
-        )
 
         next()
       },
@@ -563,6 +388,15 @@ const router = createRouter({
   ],
 })
 
+// 简化的TDK更新函数
+const updatePageTDK = (title, description, keywords) => {
+  // 直接同步更新，避免延迟导致的SEO问题
+  document.title = title
+  updateMetaTag('description', description)
+  if (keywords) updateMetaTag('keywords', keywords)
+  updateBasicSocialTags(title, description)
+}
+
 // 路由前置守卫，用于更新页面元数据和认证检查
 router.beforeEach((to, _from, next) => {
   // 检查是否需要认证
@@ -584,10 +418,6 @@ router.beforeEach((to, _from, next) => {
     // 使用路由中定义的 SEO 信息
     const seo = to.meta.seo
 
-    // 获取图片和内容类型
-    let image = DEFAULT_IMAGE
-    let contentType = 'website'
-
     // 处理详情页
     if (to.params.addressBar) {
       let item = null
@@ -605,137 +435,53 @@ router.beforeEach((to, _from, next) => {
           break
         case 'musicByAddressBar':
           item = findMusicByAddressBar(to.params.addressBar)
-          contentType = 'music.song'
           break
       }
 
       // 如果找到了数据项，使用数据项中的SEO信息
       if (item && item.seo) {
-        // 使用优化的SEO更新函数
-        document.title = item.seo.title
-        updateMetaTag('name', 'description', item.seo.description)
-        updateMetaTag('name', 'keywords', item.seo.keywords)
-
-        // 获取图片URL
-        const imageUrl = item.detailImageUrl || item.imageUrl || item.thumbnailUrl
-        const image = imageUrl
-          ? imageUrl.startsWith('http')
-            ? imageUrl
-            : `${SITE_DOMAIN}/${imageUrl}`
-          : DEFAULT_IMAGE
-
-        // 更新规范URL
+        updatePageTDK(item.seo.title, item.seo.description, item.seo.keywords)
         updateCanonicalUrl(to.fullPath)
-
-        // 更新社交媒体标签
-        updateSocialTags(item.seo.title, item.seo.description, image, to.fullPath, contentType)
-
-        next() // 继续路由导航
+        next()
         return
       } else if (item) {
-        // 使用优化的SEO更新函数
-        document.title = item.pageTitle || 'Chill Guy Games'
-        updateMetaTag('name', 'description', item.description || 'Play free online games at Chill Guy Games')
-        updateMetaTag('name', 'keywords', 'online games, free games, browser games, chill games')
-
-        // 获取图片URL
-        const imageUrl = item.detailImageUrl || item.imageUrl || item.thumbnailUrl
-        const image = imageUrl
-          ? imageUrl.startsWith('http')
-            ? imageUrl
-            : `${SITE_DOMAIN}/${imageUrl}`
-          : DEFAULT_IMAGE
-
-        // 更新规范URL
-        updateCanonicalUrl(to.fullPath)
-
-        // 更新社交媒体标签
-        updateSocialTags(
+        updatePageTDK(
           item.pageTitle || 'Chill Guy Games',
           item.description || 'Play free online games at Chill Guy Games',
-          image,
-          to.fullPath,
-          contentType,
+          'online games, free games, browser games, chill games'
         )
-
-        next() // 继续路由导航
+        updateCanonicalUrl(to.fullPath)
+        next()
         return
       }
     }
 
-    // 使用优化的SEO更新函数
-    document.title = seo.title
-    updateMetaTag('name', 'description', seo.description)
-    updateMetaTag('name', 'keywords', seo.keywords || '')
-
-    // 更新规范URL
+    updatePageTDK(seo.title, seo.description, seo.keywords)
     updateCanonicalUrl(to.fullPath)
-
-    // 更新社交媒体标签
-    updateSocialTags(seo.title, seo.description, image, to.fullPath, contentType)
   } else if (to.meta.title) {
     // 兼容旧的 title 设置
-    const title = `${to.meta.title} - Chill Guy Games`
-    const metaData = {
-      title: title,
-      description: '欢迎访问Chill Guy Games',
-    }
-    updateMetaTags(metaData, to.fullPath)
+    updatePageTDK(`${to.meta.title} - Chill Guy Games`, '欢迎访问Chill Guy Games', '')
   } else if (to.path === '/') {
     // 首页使用默认游戏的元数据
     const defaultGame = games.find((game) => game.id === 1) || games[0]
     if (defaultGame && defaultGame.seo) {
-      // 使用优化的SEO更新函数
-      document.title = defaultGame.seo.title
-      updateMetaTag('name', 'description', defaultGame.seo.description)
-      updateMetaTag('name', 'keywords', defaultGame.seo.keywords)
-
-      // 更新规范URL
+      updatePageTDK(defaultGame.seo.title, defaultGame.seo.description, defaultGame.seo.keywords)
       updateCanonicalUrl('/')
-
-      // 更新社交媒体标签
-      updateSocialTags(
-        defaultGame.seo.title,
-        defaultGame.seo.description,
-        defaultGame.imageUrl || DEFAULT_IMAGE,
-        '/',
-        'website',
-      )
     } else {
-      // 使用优化的SEO更新函数
-      document.title = 'Chill Guy Games'
-      updateMetaTag('name', 'description', 'Play free online games at Chill Guy Games')
-      updateMetaTag('name', 'keywords', 'online games, free games, browser games, chill games')
-
-      // 更新规范URL
-      updateCanonicalUrl('/')
-
-      // 更新社交媒体标签
-      updateSocialTags(
+      updatePageTDK(
         'Chill Guy Games',
         'Play free online games at Chill Guy Games',
-        DEFAULT_IMAGE,
-        '/',
-        'website',
+        'online games, free games, browser games, chill games'
       )
+      updateCanonicalUrl('/')
     }
   } else {
-    // 使用优化的SEO更新函数
-    document.title = 'Chill Guy Games'
-    updateMetaTag('name', 'description', 'Play free online games at Chill Guy Games')
-    updateMetaTag('name', 'keywords', 'online games, free games, browser games, chill games')
-
-    // 更新规范URL
-    updateCanonicalUrl(to.fullPath)
-
-    // 更新社交媒体标签
-    updateSocialTags(
+    updatePageTDK(
       'Chill Guy Games',
       'Play free online games at Chill Guy Games',
-      DEFAULT_IMAGE,
-      to.fullPath,
-      'website',
+      'online games, free games, browser games, chill games'
     )
+    updateCanonicalUrl(to.fullPath)
   }
 
   next()

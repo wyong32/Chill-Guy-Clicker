@@ -1,5 +1,7 @@
 <template>
   <div class="contact-page">
+    <!-- 页面级Header -->
+    <TheHeader />
     <div class="contact-container">
       <h1>Contact Us</h1>
       
@@ -24,12 +26,21 @@
 
       </div>
     </div>
+    <!-- 页面级Footer -->
+    <TheFooter />
   </div>
 </template>
 
 <script>
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
+
 export default {
   name: 'ContactView',
+  components: {
+    TheHeader,
+    TheFooter,
+  },
   meta: {
     title: 'Contact Us - Chill Guy Games',
     description: 'Get in touch with the Chill Guy Games team. We welcome your feedback, suggestions, and questions.',

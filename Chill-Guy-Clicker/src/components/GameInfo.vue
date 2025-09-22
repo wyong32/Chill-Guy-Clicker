@@ -3,7 +3,7 @@
     <!-- Game Details from HTML -->
     <!-- 固定高度防止v-html内容导致CLS -->
     <div v-if="game.detailsHtml" class="game-details-html content-html" 
-         style="height: 500px; overflow-y: auto;" 
+        
          v-html="game.detailsHtml"></div>
 
     <!-- Game Metadata -->

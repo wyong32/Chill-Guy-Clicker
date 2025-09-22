@@ -1,5 +1,7 @@
 <template>
   <div class="music-detail-view">
+    <!-- 页面级Header -->
+    <TheHeader />
     <div class="container" v-if="track">
       <div class="back-link">
         <a href="/Chill-Guy-Music" class="back-button">
@@ -100,15 +102,23 @@
       <p>Sorry, the music track you're looking for doesn't exist.</p>
       <a href="/Chill-Guy-Music" class="back-button">Back to Music</a>
     </div>
+    <!-- 页面级Footer -->
+    <TheFooter />
   </div>
 </template>
 
 <script>
 import { music } from '@/data/music.js'
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
 import { SITE_DOMAIN } from '@/config/site.js'
 
 export default {
   name: 'MusicDetailView',
+  components: {
+    TheHeader,
+    TheFooter,
+  },
   props: {
     id: {
       type: [String, Number],

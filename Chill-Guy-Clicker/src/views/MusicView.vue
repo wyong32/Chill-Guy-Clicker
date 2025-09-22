@@ -1,5 +1,7 @@
 <template>
   <div class="music-view">
+    <!-- 页面级Header -->
+    <TheHeader />
     <div class="container">
       <h1 class="page-title">Chill Guy Music</h1>
       <h2 class="page-description">
@@ -28,14 +30,22 @@
         </div>
       </div>
     </div>
+    <!-- 页面级Footer -->
+    <TheFooter />
   </div>
 </template>
 
 <script>
 import { music } from '@/data/music.js'
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
 
 export default {
   name: 'MusicView',
+  components: {
+    TheHeader,
+    TheFooter,
+  },
   data() {
     return {
       music: music
@@ -52,10 +62,6 @@ export default {
 
 <style scoped>
 @import '../style/publc.css';
-
-.music-view{
-  padding: 40px 0;
-}
 
 .music-grid {
   display: grid;
@@ -191,9 +197,6 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .music-view{
-    padding: 20px 0;
-  }
 
   .music-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

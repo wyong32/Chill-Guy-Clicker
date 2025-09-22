@@ -1,5 +1,7 @@
 <template>
   <div class="wallpaper-view">
+    <!-- 页面级Header -->
+    <TheHeader />
     <div class="container">
       <h1 class="page-title">Chill Guy Wallpapers</h1>
       <h2 class="page-description">
@@ -60,14 +62,22 @@
         </a>
       </div>
     </div>
+    <!-- 页面级Footer -->
+    <TheFooter />
   </div>
 </template>
 
 <script>
 import { wallpapers } from '@/data/wallpapers.js'
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
 
 export default {
   name: 'WallpaperView',
+  components: {
+    TheHeader,
+    TheFooter,
+  },
   data() {
     return {
       wallpapers: wallpapers,
@@ -99,10 +109,6 @@ export default {
 
 <style scoped>
 @import '../style/publc.css';
-
-.wallpaper-view{
-  padding: 40px 0;
-}
 
 .filter-section {
   margin-bottom: 30px;
@@ -277,9 +283,6 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .wallpaper-view{
-    padding: 20px 0;
-  }
 
   .filter-section{
     margin-bottom: 15px;

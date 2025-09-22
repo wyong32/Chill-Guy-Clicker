@@ -14,9 +14,17 @@
       content="chill guy clicker, idle game, clicker game, relaxing game, online game, free game"
     />
 
-    <!-- DNS 预解析 - 仅保留实际使用的域名 -->
+    <!-- DNS 预解析和预连接优化 -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- DNS 预解析作为降级方案 -->
     <link rel="dns-prefetch" href="//www.googletagmanager.com" />
     <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
 
     <!-- 权限策略 -->
     <meta
@@ -40,9 +48,40 @@
     <!-- 规范URL -->
     <link rel="canonical" href="https://chillguymemeclicker.com" />
     
-    <!-- 预加载关键图片资源 -->
-    <link rel="preload" href="/images/logo.webp" as="image" type="image/webp" />
-    <link rel="preload" href="/images/games/game-01.webp" as="image" type="image/webp" />
+    <!-- 预加载关键资源 -->
+    <link rel="preload" href="/images/logo.webp" as="image" type="image/webp" fetchpriority="high" />
+    <link rel="preload" href="/images/games/game-01.webp" as="image" type="image/webp" fetchpriority="high" />
+    
+    <!-- 关键CSS内联 - 只保留必要样式 -->
+    <style>
+      /* 防止FOUC的最基础样式 */
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #1a1a2e;
+        color: #fff;
+      }
+      
+      .loading-spinner {
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid #41b883;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+      }
+      
+      @keyframes spin {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+    </style>
     
     <!-- 异步CSS加载polyfill -->
     <!-- <script>
@@ -54,9 +93,9 @@
     <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4638984121333143"
      crossorigin="anonymous"></script> -->
 
-    <!-- Google Analytics - 延迟加载 -->
+    <!-- Google Analytics - 适度延迟加载 -->
     <script>
-      // 延迟加载Google Analytics以减少TBT
+      // 适度延迟加载Google Analytics，平衡性能和数据完整性
       window.addEventListener('load', function() {
         setTimeout(function() {
           var script = document.createElement('script');
@@ -68,7 +107,7 @@
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-NM6JN6XG6J');
-        }, 1000);
+        }, 1000); // 减少到1秒延迟
       });
     </script>
 

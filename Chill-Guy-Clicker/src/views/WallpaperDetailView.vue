@@ -1,5 +1,7 @@
 <template>
   <div class="wallpaper-detail-view">
+    <!-- 页面级Header -->
+    <TheHeader />
     <div class="container">
       <div class="back-link">
         <a href="/Chill-Guy-Wallpaper" class="back-button">
@@ -54,15 +56,23 @@
         <a href="/wallpaper" class="back-button">Back to Wallpapers</a>
       </div>
     </div>
+    <!-- 页面级Footer -->
+    <TheFooter />
   </div>
 </template>
 
 <script>
 import { wallpapers } from '@/data/wallpapers.js'
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
 import { SITE_DOMAIN } from '@/config/site.js'
 
 export default {
   name: 'WallpaperDetailView',
+  components: {
+    TheHeader,
+    TheFooter,
+  },
   props: {
     id: {
       type: [String, Number],
@@ -191,10 +201,6 @@ export default {
 </script>
 
 <style scoped>
-.wallpaper-detail-view{
-  padding: 40px 0;
-}
-
 .back-link {
   margin-bottom: 30px;
 }
@@ -351,10 +357,6 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .wallpaper-detail-view{
-    padding: 20px 0;
-  }
-
   .back-link{
     margin-bottom: 15px;
   }

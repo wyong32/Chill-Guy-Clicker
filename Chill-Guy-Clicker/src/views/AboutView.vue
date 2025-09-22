@@ -1,5 +1,7 @@
 <template>
   <div class="about-page">
+    <!-- 页面级Header -->
+    <TheHeader />
     <div class="about-container">
       <h1>About Chill Guy Games</h1>
       
@@ -53,12 +55,21 @@
         </div>
       </section>
     </div>
+    <!-- 页面级Footer -->
+    <TheFooter />
   </div>
 </template>
 
 <script>
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
+
 export default {
   name: 'AboutView',
+  components: {
+    TheHeader,
+    TheFooter,
+  },
   meta: {
     title: 'About Us - Chill Guy Games',
     description: 'Learn about Chill Guy Games, our mission, values, and what we offer to our community of players.',

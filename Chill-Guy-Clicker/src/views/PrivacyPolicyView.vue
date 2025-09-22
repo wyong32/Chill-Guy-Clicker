@@ -1,5 +1,7 @@
 <template>
   <div class="privacy-policy-view">
+    <!-- 页面级Header -->
+    <TheHeader />
     <div class="container">
       <h1 class="page-title">Privacy Policy</h1>
 
@@ -107,12 +109,21 @@
         </a>
       </div>
     </div>
+    <!-- 页面级Footer -->
+    <TheFooter />
   </div>
 </template>
 
 <script>
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
+
 export default {
   name: 'PrivacyPolicyView',
+  components: {
+    TheHeader,
+    TheFooter,
+  },
   // SEO 信息已在路由中设置
 }
 </script>
